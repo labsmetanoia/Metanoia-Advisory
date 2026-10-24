@@ -219,15 +219,21 @@
         "id": "Yang diterima dewan"
       },
       "text": {
-        "en": "A page from a board pack in our standard: an action title that states the finding, one accent on the series it is about, a reference line for what it is measured against, labelled values and a source line. Figures here are synthetic.",
-        "id": "Satu halaman dari materi dewan dalam standar kami: judul tindakan yang menyatakan temuan, satu aksen pada seri yang dibahas, garis acuan untuk pembandingnya, nilai berlabel, dan baris sumber. Angka di sini bersifat sintetis."
+        "en": "A page from a board pack in our standard: an action title that states the finding, a matrix that carries one message, side notes per market group, labelled values and a source line. The page is illustrative and draws on a published industry scenario.",
+        "id": "Satu halaman dari materi dewan dalam standar kami: judul tindakan yang menyatakan temuan, matriks yang membawa satu pesan, catatan samping per kelompok pasar, nilai berlabel, dan baris sumber. Halaman ini ilustratif dan merujuk pada skenario industri yang telah dipublikasikan."
       },
       "component": "slide-after",
       "frame": true,
       "illustrative": true,
       "caption": {
-        "en": "Illustrative board-pack page with synthetic figures. Real artefacts are published only with client permission.",
-        "id": "Halaman materi dewan ilustratif dengan angka sintetis. Artefak nyata dipublikasikan hanya dengan izin klien."
+        "en": "An illustrative board page: the finding in the title, one matrix, notes per market group, sources under the chart.",
+        "id": "Halaman dewan ilustratif: temuan di judul, satu matriks, catatan per kelompok pasar, sumber di bawah grafik."
+      },
+      "image": "/assets/img/photos/board-lng-1600.webp",
+      "imageSmall": "/assets/img/photos/board-lng-1000.webp",
+      "alt": {
+        "en": "Board page titled \"Asia and Europe will house the key long term demand nodes for LNG\": a matrix of 2030 net LNG imports against 2030–40 growth by market, grouped into nascent, emerging and resilient legacy markets, with notes per group and sources.",
+        "id": "Halaman dewan berjudul \"Asia and Europe will house the key long term demand nodes for LNG\": matriks impor LNG neto 2030 terhadap pertumbuhan 2030–40 per pasar, dikelompokkan menjadi pasar baru, berkembang, dan legacy yang tangguh, dengan catatan per kelompok dan sumber."
       }
     },
     "engagementsFrom": {
@@ -350,24 +356,26 @@
         "id": "Sebelum dan sesudah"
       },
       "text": {
-        "en": "Drag the handle. The same quarter, told twice: once as a dense overview, once with the finding in the title and one accent on the series it is about. The figures on both sides are synthetic; real pairs are published with client permission.",
-        "id": "Geser pegangannya. Kuartal yang sama, diceritakan dua kali: sekali sebagai ikhtisar padat, sekali dengan temuan di judul dan satu aksen pada seri yang dibahas. Angka di kedua sisi bersifat sintetis; pasangan nyata dipublikasikan dengan izin klien."
+        "en": "Drag the handle. The same case, told twice: once as two paragraphs beside a photograph, once with the message in the title, three labelled points, the shift stated plainly and a three-step path. An illustrative example built on public information about John Deere, not client work.",
+        "id": "Geser pegangannya. Kasus yang sama, diceritakan dua kali: sekali sebagai dua paragraf di samping foto, sekali dengan pesan di judul, tiga poin berlabel, pergeseran yang dinyatakan dengan jelas, dan jalur tiga langkah. Contoh ilustratif yang disusun dari informasi publik tentang John Deere, bukan pekerjaan klien."
       },
       "illustrative": true,
       "pair": {
-        "before": "slide-before",
-        "after": "slide-after",
+        "beforeImg": "/assets/img/photos/ba-before-1600.webp",
+        "beforeImgSmall": "/assets/img/photos/ba-before-1000.webp",
+        "afterImg": "/assets/img/photos/ba-after-1600.webp",
+        "afterImgSmall": "/assets/img/photos/ba-after-1000.webp",
         "altBefore": {
-          "en": "Before: a dense results slide titled Financial Performance Overview with four bullet points, three small charts in six colours and a footer.",
-          "id": "Sebelum: slide kinerja padat berjudul Financial Performance Overview dengan empat butir, tiga grafik kecil dalam enam warna, dan catatan kaki."
+          "en": "Before: a dense slide with two long paragraphs about John Deere's strategy beside a photograph of a tractor spraying a field.",
+          "id": "Sebelum: slide padat dengan dua paragraf panjang tentang strategi John Deere di samping foto traktor yang menyemprot ladang."
         },
         "altAfter": {
-          "en": "After: one chart with the title EBITDA margin recovered to 14% in Q3 as logistics costs normalised, one accent bar, labelled values and a source line.",
-          "id": "Sesudah: satu grafik berjudul Margin EBITDA pulih ke 14% di Q3 setelah biaya logistik kembali normal, satu batang beraksen, nilai berlabel, dan baris sumber."
+          "en": "After: 'From Equipment to Intelligence', a one-message slide with a subtitle, three labelled points, a highlighted shift statement and a three-step path over the same field photograph.",
+          "id": "Sesudah: 'From Equipment to Intelligence', slide satu pesan dengan subjudul, tiga poin berlabel, pernyataan pergeseran yang ditonjolkan, dan jalur tiga langkah di atas foto ladang yang sama."
         },
         "caption": {
-          "en": "Illustrative before/after with synthetic figures.",
-          "id": "Ilustrasi sebelum/sesudah dengan angka sintetis."
+          "en": "Left: the original. Right: the same content rebuilt on our standard. Illustrative; figures and company references are public.",
+          "id": "Kiri: versi asli. Kanan: konten yang sama dibangun ulang dengan standar kami. Ilustratif; angka dan rujukan perusahaan bersifat publik."
         }
       }
     },

@@ -1,8 +1,8 @@
-{# expects `pair`: {before: component, after: component, altBefore, altAfter, caption}, `lang`, `uid` #}
+{# expects `pair`: {before/after chart components, or beforeImg/afterImg image paths; altBefore, altAfter, caption}, `lang`, `uid` #}
 <figure>
   <div class="ba" style="--ba:50%">
-    <div class="ba__pane ba__before" role="img" aria-label="{{ pair.altBefore | L(lang) }}">{% include "charts/" + pair.before + ".njk" %}</div>
-    <div class="ba__pane ba__after" role="img" aria-label="{{ pair.altAfter | L(lang) }}">{% include "charts/" + pair.after + ".njk" %}</div>
+    <div class="ba__pane ba__before">{% if pair.beforeImg %}<img src="{{ pair.beforeImg }}"{% if pair.beforeImgSmall %} srcset="{{ pair.beforeImgSmall }} 1000w, {{ pair.beforeImg }} 1600w" sizes="(min-width: 1024px) 66vw, 100vw"{% endif %} alt="{{ pair.altBefore | L(lang) }}" width="1600" height="900" loading="lazy" decoding="async">{% else %}<div role="img" aria-label="{{ pair.altBefore | L(lang) }}">{% include "charts/" + pair.before + ".njk" %}</div>{% endif %}</div>
+    <div class="ba__pane ba__after">{% if pair.afterImg %}<img src="{{ pair.afterImg }}"{% if pair.afterImgSmall %} srcset="{{ pair.afterImgSmall }} 1000w, {{ pair.afterImg }} 1600w" sizes="(min-width: 1024px) 66vw, 100vw"{% endif %} alt="{{ pair.altAfter | L(lang) }}" width="1600" height="900" loading="lazy" decoding="async">{% else %}<div role="img" aria-label="{{ pair.altAfter | L(lang) }}">{% include "charts/" + pair.after + ".njk" %}</div>{% endif %}</div>
     <input class="ba__range" type="range" min="0" max="100" value="50" step="1" aria-label="{{ ui | t(lang, 'labels.before') }} / {{ ui | t(lang, 'labels.after') }}" id="{{ uid }}">
     <div class="ba__divider" aria-hidden="true"></div>
     <span class="ba__label ba__label--before" aria-hidden="true">{{ ui | t(lang, "labels.before") }}</span>

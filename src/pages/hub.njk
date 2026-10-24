@@ -43,6 +43,7 @@ pageKey: hub
     <div class="col-4"><h2 id="proof-title">{{ hub.proof.title | L(lang) }}</h2><p class="muted">{{ hub.proof.text | L(lang) }}</p>{% if hub.proof.illustrative %}<p class="meta"><span class="tag tag--draft">{{ ui | t(lang, "labels.illustrative") }}</span></p>{% endif %}</div>
     <div class="col-8">
       {% if pr.proof == "beforeAfter" %}{% set pair = hub.proof.pair %}{% set uid = "ba-" + pr.key %}{% include "components/before-after.njk" %}
+      {% elif hub.proof.image %}<figure class="proof-figure"><img src="{{ hub.proof.image }}"{% if hub.proof.imageSmall %} srcset="{{ hub.proof.imageSmall }} 1000w, {{ hub.proof.image }} 1600w" sizes="(min-width: 1024px) 66vw, 100vw"{% endif %} alt="{{ hub.proof.alt | L(lang) }}" width="1600" height="900" loading="lazy" decoding="async"><figcaption>{{ hub.proof.caption | L(lang) }}</figcaption></figure>
       {% else %}<figure><div class="{{ "artefact" if hub.proof.frame }}">{% include "charts/" + hub.proof.component + ".njk" %}</div><figcaption>{{ hub.proof.caption | L(lang) }}</figcaption></figure>{% endif %}
     </div>
   </div>

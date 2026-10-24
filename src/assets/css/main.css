@@ -1300,3 +1300,41 @@ body.menu-open { overflow: hidden; }
 .footer__bottom > span { background: rgba(250,248,244,.7); padding: 6px 10px; border-radius: 8px; }
 .footer .langsel__btn { background: rgba(250,248,244,.85); }
 @media (max-width: 768px) { .footer__top { flex-direction: column; align-items: flex-start; } .footer__cta { width: 100%; } .footer { padding-top: var(--s-5); } }
+
+/* ---------- Revision 2.1: text clearance in cut-panel cards, footer refinement, proof images ---------- */
+/* The gold diagonal's foot sat at 50% of the card while copy ran to 56%, so lower lines slipped under it. Copy now stops at 48% and the diagonal lands further right. */
+.card-cut > :not(.cut), .adv-card > :not(.cut) { max-width: 48%; }
+.cut__gold { clip-path: polygon(32% 0, 100% 0, 100% 100%, 12% 100%); }
+.cut__art { clip-path: polygon(36% 0, 100% 0, 100% 100%, 16% 100%); }
+.tile--dark > :not(.cut) { max-width: 50%; }
+.adv-card .cut__gold, .adv-card .cut__art { clip-path: polygon(30% 0, 100% 0, 100% 100%, 12% 100%); }
+@media (max-width: 768px) { .card-cut > :not(.cut) { max-width: 54%; } .tile--dark > :not(.cut) { max-width: 56%; } .adv-card > :not(.cut) { max-width: 100%; } }
+@media (max-width: 480px) { .card-cut > :not(.cut), .tile--dark > :not(.cut) { max-width: 100%; } }
+
+/* Footer: gold rule above the brand, headings with a hairline, roomier links, frosted legal strip */
+.footer { padding-top: var(--s-7); }
+.footer__top { align-items: flex-end; padding-bottom: var(--s-5); margin-bottom: var(--s-5); }
+.footer__brand::before { content: ""; display: block; width: 72px; height: 2px; background: var(--gold); margin-bottom: var(--s-3); }
+.wordmark--footer { font-size: 38px; }
+.footer__tagline { font-size: 24px; line-height: 32px; margin: 18px 0 0; max-width: 30ch; letter-spacing: -0.01em; }
+.footer__grid { gap: var(--s-5); margin-bottom: var(--s-5); }
+.footer__heading { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer__heading::after { content: ""; width: 20px; height: 1px; background: var(--gold); }
+.footer li { padding: 6px 0; }
+.footer a { font-size: 15px; line-height: 22px; color: var(--ink); text-decoration: none; background-image: linear-gradient(var(--gold), var(--gold)); background-size: 0 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size 200ms ease, color 150ms ease; }
+.footer a:hover { text-decoration: none; background-size: 100% 1.5px; color: var(--ink); }
+.footer__statement { background: rgba(250,248,244,.78); border-left: 2px solid var(--gold); border-radius: 0 10px 10px 0; }
+.footer__bottom { border-top: 0; padding: 12px 16px; background: rgba(250,248,244,.8); backdrop-filter: blur(4px); border-radius: 10px; align-items: center; }
+.footer__bottom > span { background: none; padding: 0; }
+.footer .langsel__btn { background: transparent; border-color: color-mix(in srgb, var(--ink) 22%, transparent); }
+@media (max-width: 768px) { .footer__tagline { font-size: 21px; line-height: 29px; } .footer__grid { gap: var(--s-4); } }
+
+/* Proof images */
+.ba__pane img { object-fit: cover; object-position: left center; }
+.proof-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--grey-2); border-radius: 6px; background: #fff; }
+/* Titles sit near the top of the card where the diagonal is further right, so they may run wider than the body copy; no mid-word breaks */
+.card-cut > h3, .adv-card > h3 { max-width: 58%; overflow-wrap: normal; hyphens: manual; }
+.tile--dark > h3 { max-width: 60%; }
+.svc-grid .card-cut > h3 { font-size: 19px; line-height: 24px; }
+@media (max-width: 768px) { .card-cut > h3 { max-width: 62%; } }
+@media (max-width: 480px) { .card-cut > h3, .tile--dark > h3 { max-width: 100%; } }
