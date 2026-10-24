@@ -67,8 +67,8 @@
     "id": "Tinjauan mingguan dengan sponsor Anda; pemaparan tengah jalan; partner memaparkan kepada dewan Anda."
   },
   "next": {
-    "en": "Most clients move to the partner and site search; the HQ approval deck is built with the Presentation practice from the same numbers.",
-    "id": "Sebagian besar klien melanjutkan ke pencarian mitra dan lokasi; dek persetujuan kantor pusat disusun bersama praktik Presentasi dari angka yang sama."
+    "en": "Most clients move to the partner and site search; the HQ approval deck is built with the Strategic Storytelling practice from the same numbers.",
+    "id": "Sebagian besar klien melanjutkan ke pencarian mitra dan lokasi; dek persetujuan kantor pusat disusun bersama praktik Strategic Storytelling dari angka yang sama."
   },
   "timeline": [
     {
@@ -137,5 +137,7 @@
       "id": "Realisasi PMA ke Indonesia menurut negara asal, Januari–September 2025."
     }
   },
-  "relatedService": "adv-feasibility"
+  "relatedService": "adv-feasibility",
+  "photo": "/assets/img/photos/me-1.webp",
+  "icon": "bars"
 }

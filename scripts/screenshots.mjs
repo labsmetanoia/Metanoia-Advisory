@@ -15,8 +15,8 @@ const server = createServer((req, res) => {
 const port = server.address().port;
 mkdirSync("screenshots", { recursive: true });
 const shots = [
-  ["home-en", "/en/"], ["home-id", "/id/"], ["about-en", "/en/about/"], ["hub-market-entry-en", "/en/indonesia-market-entry/"], ["hub-advisory-id", "/id/strategi-investasi/"], ["hub-presentation-en", "/en/presentation/"],
-  ["service-en", "/en/advisory/business-cases-and-investment-analysis/"], ["work-en", "/en/work/"], ["case-en", "/en/work/illustrative-distributor-led-entry/"], ["insights-en", "/en/insights/"], ["article-en", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/"], ["contact-id", "/id/kontak/"],
+  ["home-en", "/en/"], ["home-id", "/id/"], ["about-en", "/en/about/"], ["hub-market-entry-en", "/en/indonesia-market-entry/"], ["hub-advisory-id", "/id/strategi-investasi/"], ["hub-presentation-en", "/en/strategic-storytelling/"],
+  ["service-en", "/en/advisory/business-cases-and-investment-analysis/"], ["insights-en", "/en/insights/"], ["article-en", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/"], ["contact-id", "/id/kontak/"],
 ];
 const route = "gold";
 const browser = await chromium.launch();

@@ -70,5 +70,7 @@
     "en": "Handover to your general manager with a documented pipeline, partner file and board pack.",
     "id": "Serah terima kepada general manager Anda dengan pipeline, berkas mitra, dan materi dewan yang terdokumentasi."
   },
-  "relatedService": "pres-earnings"
+  "relatedService": "pres-earnings",
+  "photo": "/assets/img/photos/me-4.webp",
+  "icon": "chartup"
 }

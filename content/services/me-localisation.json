@@ -66,5 +66,7 @@
     "en": "Market representation: a senior local lead runs the plan until your own general manager is hired.",
     "id": "Representasi pasar: pemimpin lokal senior menjalankan rencana hingga general manager Anda direkrut."
   },
-  "relatedService": "pres-board-decks"
+  "relatedService": "pres-board-decks",
+  "photo": "/assets/img/photos/me-3.webp",
+  "icon": "gear"
 }

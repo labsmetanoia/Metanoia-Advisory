@@ -2,3 +2,11 @@
 /  /id/  302  Language=id
 /  /en/  302
 # Legacy and interim-site redirects go here (301), one per line: /old-path  /en/new-path/  301
+/en/presentation  /en/strategic-storytelling/  301
+/en/presentation/*  /en/strategic-storytelling/:splat  301
+/id/presentasi  /id/storytelling-strategis/  301
+/id/presentasi/*  /id/storytelling-strategis/:splat  301
+/en/work  /en/  301
+/en/work/*  /en/  301
+/id/karya  /id/  301
+/id/karya/*  /id/  301

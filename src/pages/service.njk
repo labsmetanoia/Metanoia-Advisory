@@ -38,12 +38,10 @@ pageKey: service
 </section>
 {% endif %}
 
-{% set relCase = cases | whereIncludes("relatedServices", s.key) | first %}
 {% set relService = services | find("key", s.relatedService) %}
-{% if relCase or relService %}
+{% if relService %}
 <section class="section fade-up">
   <div class="wrap grid">
-    {% if relCase %}<div class="col-6"><h2 class="kicker">{{ ui | t(lang, "labels.relatedCase") }}</h2>{% set c = relCase %}{% include "components/case-card.njk" %}</div>{% endif %}
     {% if relService %}<div class="col-6"><h2 class="kicker">{{ ui | t(lang, "labels.relatedService") }}</h2><div class="service-block"><h3><a class="link-ink" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a></h3><p class="muted">{{ site.practiceNames[relService.practice] | L(lang) }}</p><p>{{ relService.promise | L(lang) }}</p><a class="arrow-link" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a></div></div>{% endif %}
   </div>
 </section>

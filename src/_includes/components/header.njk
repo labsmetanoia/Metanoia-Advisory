@@ -13,14 +13,11 @@
             {% if site.phase == 2 %}
             <div class="practice-menu__panel">
               {% for s in services | where("practice", pr.key) %}<a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a>{% endfor %}
-              {% set featured = (cases | whereIncludes("practices", pr.key) | where("featuredHub", true)) | first %}
-              {% if featured %}<p class="meta">{{ ui | t(lang, "labels.featured") }}</p><a href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a>{% endif %}
             </div>
             {% endif %}
           </li>
           {% endfor %}
           {% if site.phase == 2 %}
-          <li><a class="nav__link{% if activeNav == 'work' %} is-active{% endif %}" href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a></li>
           <li><a class="nav__link{% if activeNav == 'insights' %} is-active{% endif %}" href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
           {% endif %}
           <li><a class="nav__link{% if activeNav == 'about' %} is-active{% endif %}" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>

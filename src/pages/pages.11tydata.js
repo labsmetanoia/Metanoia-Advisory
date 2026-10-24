@@ -8,7 +8,6 @@ function urlFor(data, lang) {
     case "hub": return pageUrl(p.practice.key, lang);
     case "service": return serviceUrl(p.service, lang);
     case "person": return itemUrl("people", p.person, lang);
-    case "case": return itemUrl("work", p.item, lang);
     case "article": return itemUrl("insights", p.item, lang);
     case "legal": return legalUrl(p.key, lang);
     case "notfound": return `/${lang}/404.html`;
@@ -31,7 +30,6 @@ export default {
       if (data.pageKey === "hub") return p.practice.key;
       if (data.pageKey === "service") return p.service.practice;
       if (data.pageKey === "person") return "about";
-      if (data.pageKey === "case") return "work";
       if (data.pageKey === "article") return "insights";
       return data.pageKey;
     }),
@@ -42,7 +40,6 @@ export default {
         case "hub": return `${L(site.practiceNames[p.practice.key], lang)} — ${name}`;
         case "service": return `${L(p.service.title, lang)} — ${L(site.practiceNames[p.service.practice], lang)} — ${name}`;
         case "person": return `${p.person.name} — ${L(p.person.role, lang)} — ${name}`;
-        case "case": return `${L(p.item.title, lang)} — ${name}`;
         case "article": return `${L(p.item.title, lang)} — ${name}`;
         case "legal": return `${L(pages.legal[p.key].title, lang)} — ${name}`;
         case "notfound": return `404 — ${name}`;
@@ -55,7 +52,6 @@ export default {
         case "hub": return L(pages.hubs[p.practice.key].metaDescription, lang);
         case "service": return L(p.service.metaDescription, lang);
         case "person": return L(p.person.summary, lang);
-        case "case": return L(p.item.metaDescription, lang);
         case "article": return L(p.item.metaDescription, lang);
         case "legal": return L(pages.legal[p.key].metaDescription, lang);
         case "notfound": return "";
@@ -63,9 +59,9 @@ export default {
       }
     }),
     noindex: guard((data) => data.pageKey === "notfound" || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
-    ogType: guard((data) => (["case", "article"].includes(data.pageKey) ? "article" : "website")),
+    ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
-      const map = { home: "home", hub: "hub", service: "service", case: "case", article: "insight", person: "person" };
+      const map = { home: "home", hub: "hub", service: "service", article: "insight", person: "person" };
       return `/assets/img/og/og-${map[data.pageKey] || "default"}.png`;
     }),
   },

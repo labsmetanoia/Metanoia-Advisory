@@ -30,11 +30,12 @@
       "text": {
         "en": "For regional headquarters, fund operating partners and leadership teams deciding whether, how and with whom to enter or expand in Indonesia. We assess the market, build the entry case, find and vet the partner or site, and stay as your senior local presence until your own team is in place.",
         "id": "Untuk kantor pusat regional, operating partner dana investasi, dan tim kepemimpinan yang memutuskan apakah, bagaimana, dan dengan siapa memasuki atau memperluas bisnis di Indonesia. Kami menilai pasar, menyusun kajian masuk, mencari dan menguji mitra atau lokasi, dan menjadi kehadiran senior lokal Anda hingga tim Anda sendiri siap."
-      }
+      },
+      "photo": "/assets/img/photos/hero-market-entry.webp"
     },
     "servicesTitle": {
-      "en": "Four services, one entry path",
-      "id": "Empat layanan, satu jalur masuk"
+      "en": "Four services, *one entry path*",
+      "id": "Empat layanan, *satu jalur masuk*"
     },
     "servicesText": {
       "en": "Buy one phase and roll into the next. Entity formation, licensing and compliance are coordinated through partners, never the headline.",
@@ -96,21 +97,6 @@
         }
       }
     ],
-    "proof": {
-      "title": {
-        "en": "What a market assessment page looks like",
-        "id": "Seperti apa halaman penilaian pasar"
-      },
-      "text": {
-        "en": "Every chart we deliver states its finding in the title, uses one accent for the series that matters, labels the values and cites the source. This one is from our own research files.",
-        "id": "Setiap grafik yang kami serahkan menyatakan temuannya di judul, menggunakan satu aksen untuk seri yang penting, memberi label nilai, dan mencantumkan sumbernya. Grafik ini berasal dari berkas riset kami sendiri."
-      },
-      "component": "chart-fdi-sources",
-      "caption": {
-        "en": "Realised foreign direct investment by source country, January–September 2025.",
-        "id": "Realisasi penanaman modal asing menurut negara asal, Januari–September 2025."
-      }
-    },
     "engagementsFrom": {
       "en": "USD 20,000",
       "id": "USD 20.000"
@@ -158,11 +144,12 @@
       "text": {
         "en": "For CFOs, boards and investors weighing an investment, a capital raise, a restructuring or a new strategic direction. Feasibility studies, financial models, business cases and investment-grade documents, built by the people who will present them, so the numbers in the model are the numbers in the room.",
         "id": "Untuk CFO, dewan, dan investor yang menimbang investasi, penggalangan dana, restrukturisasi, atau arah strategis baru. Studi kelayakan, model keuangan, kajian bisnis, dan dokumen berstandar investor, disusun oleh orang-orang yang akan memaparkannya, sehingga angka dalam model adalah angka yang dipaparkan di ruang rapat."
-      }
+      },
+      "photo": "/assets/img/photos/hero-advisory.webp"
     },
     "servicesTitle": {
-      "en": "Four services for one decision cycle",
-      "id": "Empat layanan untuk satu siklus keputusan"
+      "en": "Four services for *one decision cycle*",
+      "id": "Empat layanan untuk *satu siklus keputusan*"
     },
     "servicesText": {
       "en": "From the first feasibility question to the document an investor signs on. Each service ends in something a board can act on.",
@@ -259,8 +246,8 @@
   },
   "presentation": {
     "metaDescription": {
-      "en": "Presentation design and corporate communications in Indonesia: board and investor decks, proposals, reports, templates and an AI-powered express service ready in hours.",
-      "id": "Desain presentasi dan komunikasi korporat di Indonesia: dek dewan dan investor, proposal, laporan, templat, dan layanan ekspres berbasis AI yang siap dalam hitungan jam."
+      "en": "Strategic storytelling and corporate communications in Indonesia: board and investor decks, proposals, reports, templates and an AI-powered express service ready in hours.",
+      "id": "Strategic storytelling dan komunikasi korporat di Indonesia: dek dewan dan investor, proposal, laporan, templat, dan layanan ekspres berbasis AI yang siap dalam hitungan jam."
     },
     "situationLine": {
       "en": "Results decks, equity stories and annual reports that say what the numbers mean.",
@@ -281,13 +268,14 @@
       }
     ],
     "hero": {
+      "photo": "/assets/img/photos/hero-storytelling.webp",
       "title": {
-        "en": "Investor materials, board packs and proposals that say what the numbers mean.",
-        "id": "Materi investor, materi dewan, dan proposal yang menjelaskan makna di balik angka."
+        "en": "Strategy first. Then the deck.",
+        "id": "Strategi dulu. Baru dek."
       },
       "text": {
-        "en": "Our core practice. For CFOs, heads of investor relations, corporate secretaries and marketing leads of listed, pre-IPO and growing companies: presentations, reports and templates built on one chart and storytelling standard, reconciled to your figures, by a team that understands the disclosure rules it works within.",
-        "id": "Praktik inti kami. Untuk CFO, kepala hubungan investor, sekretaris perusahaan, dan pimpinan pemasaran di perusahaan tercatat, pra-IPO, dan yang sedang bertumbuh: presentasi, laporan, dan templat yang dibangun dengan satu standar grafik dan penuturan, direkonsiliasi dengan angka Anda, oleh tim yang memahami aturan keterbukaan yang menjadi kerangkanya."
+        "en": "Our core practice. Conventional presentation design makes slides look better; strategic storytelling decides what they must say. For CFOs, heads of investor relations, corporate secretaries and marketing leads, we build the argument before the layout: the message, the evidence and the decision each page has to earn, reconciled to your figures and within the disclosure rules you work under.",
+        "id": "Praktik inti kami. Desain presentasi konvensional membuat slide tampak lebih baik; strategic storytelling menentukan apa yang harus disampaikannya. Untuk CFO, kepala hubungan investor, sekretaris perusahaan, dan pimpinan pemasaran, kami membangun argumen sebelum tata letak: pesan, bukti, dan keputusan yang harus dimenangkan setiap halaman, direkonsiliasi dengan angka Anda dan dalam kerangka aturan keterbukaan yang berlaku."
       }
     },
     "servicesTitle": {

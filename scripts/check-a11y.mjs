@@ -14,7 +14,7 @@ const server = createServer((req, res) => {
   res.writeHead(200, { "Content-Type": types[extname(p)] || "application/octet-stream" }); res.end(readFileSync(p));
 }).listen(0);
 const port = server.address().port;
-const pages = process.argv.slice(2).length ? process.argv.slice(2) : ["/en/", "/id/", "/en/about/", "/en/indonesia-market-entry/", "/id/presentasi/", "/en/advisory/business-cases-and-investment-analysis/", "/en/work/", "/en/work/illustrative-distributor-led-entry/", "/en/insights/", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/", "/en/contact/", "/id/kontak/", "/en/legal/privacy/", "/en/404.html"];
+const pages = process.argv.slice(2).length ? process.argv.slice(2) : ["/en/", "/id/", "/en/about/", "/en/indonesia-market-entry/", "/id/storytelling-strategis/", "/en/advisory/business-cases-and-investment-analysis/", "/en/insights/", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/", "/en/contact/", "/id/kontak/", "/en/legal/privacy/", "/en/404.html"];
 const browser = await chromium.launch();
 let failed = false;
 for (const url of pages) {

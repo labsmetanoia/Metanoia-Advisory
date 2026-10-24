@@ -85,5 +85,7 @@
       "id": "Modal disetor minimum PT PMA sebelum dan sesudah Peraturan BKPM 5/2025."
     }
   },
-  "relatedService": "me-assessment"
+  "relatedService": "me-assessment",
+  "photo": "/assets/img/photos/adv-1.webp",
+  "icon": "chartup"
 }

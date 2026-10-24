@@ -13,7 +13,6 @@
         <p class="footer__heading">{{ ui | t(lang, "footer.workInsights") }}</p>
         <ul>
           {% if site.phase == 2 %}
-          <li><a href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a></li>
           <li><a href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
           {% endif %}
           {% if site.credentialsPdf %}<li><a href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf">{{ ui | t(lang, "cta.credentials") }}</a></li>{% endif %}

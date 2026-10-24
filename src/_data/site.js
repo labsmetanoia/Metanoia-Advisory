@@ -37,6 +37,6 @@ export default {
   practiceNames: {
     marketEntry: { en: "Indonesia Market Entry & Localization Strategy", id: "Strategi Masuk Pasar & Lokalisasi Indonesia" },
     advisory: { en: "Strategy & Investment Advisory", id: "Advisory Strategi & Investasi" },
-    presentation: { en: "Presentation Design & Corporate Communications", id: "Desain Presentasi & Komunikasi Korporat" },
+    presentation: { en: "Strategic Storytelling & Corporate Communications", id: "Strategic Storytelling & Komunikasi Korporat" },
   },
 };

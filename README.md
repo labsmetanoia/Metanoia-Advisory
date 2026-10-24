@@ -1,6 +1,6 @@
 # Metanoia Advisory — corporate website
 
-Bilingual (Bahasa Indonesia / English) corporate website for Metanoia Advisory, a Jakarta firm with Presentation Design & Corporate Communications as its core practice, supported by Indonesia Market Entry & Localization Strategy and Strategy & Investment Advisory.
+Bilingual (Bahasa Indonesia / English) corporate website for Metanoia Advisory, a Jakarta firm with Strategic Storytelling & Corporate Communications as its core practice, supported by Indonesia Market Entry & Localization Strategy and Strategy & Investment Advisory.
 
 The strategy, sitemap, page-by-page content structure, design specification, functional and technical requirements, open decisions and launch plan are in **[docs/website-blueprint.md](docs/website-blueprint.md)**. Read that first.
 

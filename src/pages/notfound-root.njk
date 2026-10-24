@@ -13,7 +13,7 @@ layout: false
   <section data-l="{{ l }}" lang="{{ l }}" style="margin-top:48px">
     <h1>{{ ui | t(l, "notFound.title") }}</h1>
     <p class="lede">{{ ui | t(l, "notFound.text") }}</p>
-    <p class="cluster" style="margin-top:24px"><a class="btn btn--secondary" href="{{ 'home' | pageUrl(l) }}">{{ ui | t(l, "cta.backHome") }}</a>{% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'work' | pageUrl(l) }}">{{ ui | t(l, "nav.work") }}</a>{% endif %}<a class="btn btn--primary" href="{{ 'contact' | pageUrl(l) }}">{{ ui | t(l, "nav.contact") }}</a></p>
+    <p class="cluster" style="margin-top:24px"><a class="btn btn--secondary" href="{{ 'home' | pageUrl(l) }}">{{ ui | t(l, "cta.backHome") }}</a><a class="btn btn--primary" href="{{ 'contact' | pageUrl(l) }}">{{ ui | t(l, "nav.contact") }}</a></p>
   </section>
   {% endfor %}
 </main>

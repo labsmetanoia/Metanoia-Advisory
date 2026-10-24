@@ -3,28 +3,28 @@ pagination: { data: hubPages, size: 1, alias: p }
 pageKey: hub
 ---
 {% set pr = p.practice %}{% set hub = pages.hubs[pr.key] %}{% set name = site.practiceNames[pr.key] | L(lang) %}
-<section class="page-hero">
-  <div class="wrap grid">
-    <div class="col-8">
-      <span class="kicker">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span>
-      <h1>{{ hub.hero.title | L(lang) | mdInline | safe }}</h1>
-      <p class="lede">{{ hub.hero.text | L(lang) }}</p>
-      <div class="page-hero__actions">
-        <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hub-hero">{{ ui | t(lang, "cta.talk") }}</a>
-        {% if pr.key == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="hub-hero-secondary">{{ ui | t(lang, "cta.deckReview") }}</a>
-        {% else %}{% set note = insights | where("type", "flagship") | where("practice", pr.key) | first %}{% if note and note.pdf and not note.forthcoming %}<a class="btn btn--secondary" href="{{ note.pdf }}" data-event="download" data-asset="{{ note.key }}">{{ ui | t(lang, "cta.entryNote") }}</a>{% endif %}{% endif %}
-      </div>
-      {% if site.engagementsFromLine and hub.engagementsFrom %}<p class="meta" style="margin-top:16px">{{ ui | t(lang, "labels.engagementsFrom") }} {{ hub.engagementsFrom | L(lang) }}</p>{% endif %}
+<section class="hub-hero" aria-labelledby="hub-title">
+  <div class="hub-hero__media" aria-hidden="true">{% if hub.hero.photo %}<img src="{{ hub.hero.photo }}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">{% endif %}</div>
+  <div class="wrap hub-hero__inner">
+    <span class="kicker hub-hero__kicker">{{ name }}</span>
+    <h1 id="hub-title">{{ hub.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ hub.hero.text | L(lang) }}</p>
+    <div class="page-hero__actions">
+      <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hub-hero">{{ ui | t(lang, "cta.talk") }}</a>
+      {% if pr.key == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="hub-hero-secondary">{{ ui | t(lang, "cta.deckReview") }}</a>
+      {% else %}{% set note = insights | where("type", "flagship") | where("practice", pr.key) | first %}{% if note and note.pdf and not note.forthcoming %}<a class="btn btn--secondary" href="{{ note.pdf }}" data-event="download" data-asset="{{ note.key }}">{{ ui | t(lang, "cta.entryNote") }}</a>{% endif %}{% endif %}
     </div>
+    {% if site.engagementsFromLine and hub.engagementsFrom %}<p class="meta" style="margin-top:16px">{{ ui | t(lang, "labels.engagementsFrom") }} {{ hub.engagementsFrom | L(lang) }}</p>{% endif %}
   </div>
 </section>
 
-<section class="section fade-up" aria-labelledby="services-title">
+<section class="section fade-up{% if not pr.flagship %} svc4-section{% endif %}" aria-labelledby="services-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) }}</p></div>
     {% set list = services | where("practice", pr.key) %}
-    {% if pr.flagship %}<div class="svc-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
-    {% else %}<div class="{{ 'grid-4' if list | length == 4 else 'grid-3' }}">{% for s in list %}{% include "components/service-block.njk" %}{% endfor %}</div>{% endif %}
+    {% if pr.flagship %}<div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) }}</p></div>
+    <div class="svc-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
+    {% else %}<div class="svc4-head"><h2 id="services-title" class="gold-em">{{ hub.servicesTitle | L(lang) | mdInline | safe }}</h2><p>{{ hub.servicesText | L(lang) }}</p></div>
+    <div class="svc4-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-card.njk" %}{% endfor %}</div>{% endif %}
   </div>
 </section>
 
@@ -37,6 +37,7 @@ pageKey: hub
   </div>
 </section>
 
+{% if hub.proof %}
 <section class="section fade-up" aria-labelledby="proof-title">
   <div class="wrap grid">
     <div class="col-4"><h2 id="proof-title">{{ hub.proof.title | L(lang) }}</h2><p class="muted">{{ hub.proof.text | L(lang) }}</p>{% if hub.proof.illustrative %}<p class="meta"><span class="tag tag--draft">{{ ui | t(lang, "labels.illustrative") }}</span></p>{% endif %}</div>
@@ -46,16 +47,9 @@ pageKey: hub
     </div>
   </div>
 </section>
-
-{% set hubCases = cases | whereIncludes("practices", pr.key) | where("featuredHub", true) | limit(2) %}
-{% if hubCases | length %}
-<section class="section fade-up" aria-labelledby="cases-title">
-  <div class="wrap">
-    <div class="section-head"><h2 id="cases-title">{{ ui | t(lang, "labels.relatedCases") }}</h2><a class="arrow-link" href="{{ 'work' | pageUrl(lang) }}?practice={{ pr.key }}">{{ ui | t(lang, "cta.allWork") }}</a></div>
-    <div class="grid-2">{% for c in hubCases %}{% include "components/case-card.njk" %}{% endfor %}</div>
-  </div>
-</section>
 {% endif %}
+
+
 
 {% if pr.flagship %}
 <section class="section fade-up" aria-labelledby="comp-title">

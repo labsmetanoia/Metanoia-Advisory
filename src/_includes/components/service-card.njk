@@ -1,0 +1,14 @@
+{# Four-services card: numbered photograph, icon and title, four labelled rows, outline link. expects `s`, `num`, `lang` #}
+<article class="svc4">
+  <div class="svc4__photo">{% if s.photo %}<img src="{{ s.photo }}" alt="" width="1200" height="530" loading="lazy" decoding="async">{% endif %}<span class="svc4__num" aria-hidden="true">{{ num | pad2 }}</span></div>
+  <div class="svc4__body">
+    <div class="svc4__head"><span class="svc4__icon">{% set icon = s.icon or "doc" %}{% include "components/icon.njk" %}</span><h3>{{ s.title | L(lang) }}</h3></div>
+    <ul class="svc4__rows">
+      <li><span class="svc4__ri">{% set icon = "people" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.who") }}</span><span class="svc4__text">{{ (s.who | first) | L(lang) }}</span></div></li>
+      <li><span class="svc4__ri">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.get") }}</span><span class="svc4__text">{{ s.getSummary | L(lang) }}</span></div></li>
+      <li><span class="svc4__ri">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.duration") }}</span><span class="svc4__text">{{ s.duration | L(lang) }}</span></div></li>
+      <li><span class="svc4__ri">{% set icon = "arrow" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.next") }}</span><span class="svc4__text">{{ s.next | L(lang) }}</span></div></li>
+    </ul>
+    <a class="svc4__btn" href="{{ s | serviceUrl(lang) }}"><span>{{ s.title | L(lang) }}</span><span class="svc4__arrow" aria-hidden="true">→</span></a>
+  </div>
+</article>

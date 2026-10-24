@@ -7,6 +7,6 @@ showCta: false
   <div class="wrap">
     <h1>{{ ui | t(lang, "notFound.title") }}</h1>
     <p class="lede">{{ ui | t(lang, "notFound.text") }}</p>
-    <p class="cluster" style="margin-top:24px"><a class="btn btn--secondary" href="{{ 'home' | pageUrl(lang) }}">{{ ui | t(lang, "cta.backHome") }}</a>{% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a>{% endif %}<a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></p>
+    <p class="cluster" style="margin-top:24px"><a class="btn btn--secondary" href="{{ 'home' | pageUrl(lang) }}">{{ ui | t(lang, "cta.backHome") }}</a><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></p>
   </div>
 </section>

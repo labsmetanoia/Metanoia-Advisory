@@ -63,8 +63,10 @@
     "id": "Enam hingga sepuluh minggu"
   },
   "next": {
-    "en": "The Presentation practice carries the plan into the equity story and the next annual report; an implementation retainer runs the transformation office if you want one.",
-    "id": "Praktik Presentasi membawa rencana ke equity story dan laporan tahunan berikutnya; retainer implementasi menjalankan kantor transformasi jika Anda menghendaki."
+    "en": "The Strategic Storytelling practice carries the plan into the equity story and the next annual report; an implementation retainer runs the transformation office if you want one.",
+    "id": "Praktik Strategic Storytelling membawa rencana ke equity story dan laporan tahunan berikutnya; retainer implementasi menjalankan kantor transformasi jika Anda menghendaki."
   },
-  "relatedService": "pres-board-decks"
+  "relatedService": "pres-board-decks",
+  "photo": "/assets/img/photos/adv-3.webp",
+  "icon": "gear"
 }

@@ -63,8 +63,8 @@
     "id": "Enam hingga sepuluh minggu"
   },
   "how": {
-    "en": "One lead partner, one lead from the Presentation practice, one shared engagement manager. The partner presents to your board and your investors.",
-    "id": "Satu partner utama, satu pemimpin dari praktik Presentasi, satu engagement manager bersama. Partner memaparkan kepada dewan dan investor Anda."
+    "en": "One lead partner, one lead from the Strategic Storytelling practice, one shared engagement manager. The partner presents to your board and your investors.",
+    "id": "Satu partner utama, satu pemimpin dari praktik Strategic Storytelling, satu engagement manager bersama. Partner memaparkan kepada dewan dan investor Anda."
   },
   "next": {
     "en": "Investment-grade documentation for the raise, or an implementation retainer while the capital is deployed.",
@@ -86,5 +86,7 @@
       "id": "Halaman dek ilustratif dengan angka sintetis."
     }
   },
-  "relatedService": "pres-board-decks"
+  "relatedService": "pres-board-decks",
+  "photo": "/assets/img/photos/adv-2.webp",
+  "icon": "people"
 }
