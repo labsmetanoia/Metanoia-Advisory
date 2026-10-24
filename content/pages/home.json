@@ -238,7 +238,12 @@
         }
       }
     ],
-    "photo": "/assets/img/photos/svc-ai.webp"
+    "photo": "/assets/img/photos/svc-ai.webp",
+    "photos": [
+      "/assets/img/photos/ai-1.webp",
+      "/assets/img/photos/ai-2.webp",
+      "/assets/img/photos/ai-3.webp"
+    ]
   },
   "complementary": {
     "title": {
@@ -337,16 +342,25 @@
       },
       "items": [
         {
-          "en": "Requirements gathering and source collection",
-          "id": "Penggalian kebutuhan dan pengumpulan sumber"
+          "icon": "doc",
+          "text": {
+            "en": "Requirements gathering and source collection",
+            "id": "Penggalian kebutuhan dan pengumpulan sumber"
+          }
         },
         {
-          "en": "Weekly review and mid-point storyboard sign-off",
-          "id": "Tinjauan mingguan dan persetujuan storyboard di tengah jalan"
+          "icon": "chat",
+          "text": {
+            "en": "Weekly review and mid-point storyboard sign-off",
+            "id": "Tinjauan mingguan dan persetujuan storyboard di tengah jalan"
+          }
         },
         {
-          "en": "Alignment with your counsel, auditor or underwriter where needed",
-          "id": "Penyelarasan dengan penasihat hukum, auditor, atau penjamin emisi Anda bila diperlukan"
+          "icon": "people",
+          "text": {
+            "en": "Alignment with your counsel, auditor or underwriter where needed",
+            "id": "Penyelarasan dengan penasihat hukum, auditor, atau penjamin emisi Anda bila diperlukan"
+          }
         }
       ],
       "clientPhoto": "/assets/img/photos/approach-client.webp",

@@ -11,9 +11,10 @@
       <div class="guard"><strong>{{ ai.guardTitle | L(lang) }}</strong><ul>{% for g in ai.guards %}<li>{% set icon = g.icon %}{% include "components/icon.njk" %}<span>{{ g.text | L(lang) }}</span></li>{% endfor %}</ul></div>
       <div class="cluster" style="margin-top:32px">{% if aiService %}<a class="btn btn--primary" href="{{ aiService | serviceUrl(lang) }}" data-event="cta_click" data-location="ai-band">{{ ui | t(lang, "cta.express") }} →</a>{% endif %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="ai-band-secondary">{{ ui | t(lang, "cta.deckReview") }}</a></div>
       <div class="ai-stack" aria-hidden="true">
+        {% if ai.photos %}{% for ph in ai.photos %}<div class="ai-stack__card ai-stack__card--photo"><img src="{{ ph }}" alt="" loading="lazy" decoding="async"></div>{% endfor %}{% else %}
         <div class="ai-stack__card">{% include "charts/slide-after.njk" %}</div>
         <div class="ai-stack__card">{% include "charts/artefact-report-spread.njk" %}</div>
-        <div class="ai-stack__card ai-stack__card--photo">{% if ai.photo %}<img src="{{ ai.photo }}" alt="" loading="lazy" decoding="async">{% else %}{% include "charts/artefact-cover.njk" %}{% endif %}</div>
+        <div class="ai-stack__card ai-stack__card--photo">{% if ai.photo %}<img src="{{ ai.photo }}" alt="" loading="lazy" decoding="async">{% else %}{% include "charts/artefact-cover.njk" %}{% endif %}</div>{% endif %}
       </div>
     </div>
   </div>
