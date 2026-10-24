@@ -1061,7 +1061,8 @@ body.menu-open { overflow: hidden; }
 .svc4-head { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); align-items: center; margin-bottom: var(--s-5); }
 .svc4-head::before { content: ""; grid-column: 1 / -1; width: 72px; height: 2px; background: var(--gold); }
 .svc4-head h2 { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; }
-.svc4-head p { margin: 0; padding-left: var(--s-3); border-left: 1px solid var(--grey-2); color: var(--grey-1); font-size: 16px; line-height: 25px; max-width: 560px; }
+.svc4-head p { margin: 0; padding-left: var(--s-3); border-left: 1px solid var(--grey-2); color: var(--grey-1); font-size: 16px; line-height: 25px; max-width: 560px; min-width: 260px; }
+.svc4-head h2 { max-width: 18ch; }
 @media (max-width: 1100px) { .svc4-head { grid-template-columns: 1fr; gap: var(--s-2); } .svc4-head p { padding-left: 0; border-left: 0; } }
 
 /* Four-services cards */
@@ -1153,10 +1154,11 @@ body.menu-open { overflow: hidden; }
 .practice-card:hover { transform: translateY(-2px); box-shadow: 0 20px 34px -26px rgba(0,0,0,.4); border-color: var(--gold); }
 .practice-card__icon { grid-row: 1 / span 3; width: 60px; height: 60px; border-radius: 50%; background: var(--tint-2); display: grid; place-items: center; }
 .practice-card__icon .tile__icon { width: 28px; height: 28px; color: var(--gold-dark); } .practice-card__icon .tile__icon svg { width: 28px; height: 28px; stroke-width: 2; } .practice-card__icon .tile__icon .g { stroke: var(--gold-dark); }
+.practice-card__num, .practice-card__name, .practice-card__line { grid-column: 2; }
 .practice-card__num { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1; color: var(--gold-text); }
 .practice-card__name { font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 22px; margin-top: 4px; }
 .practice-card__line { font-size: 14px; line-height: 20px; color: var(--grey-1); margin-top: 4px; }
-.practice-card__arrow { grid-column: 3; grid-row: 2 / span 2; align-self: end; color: var(--gold-dark); font-size: 20px; transition: transform 200ms ease; }
+.practice-card__arrow { grid-column: 3; grid-row: 1 / span 3; align-self: end; color: var(--gold-dark); font-size: 20px; transition: transform 200ms ease; }
 .practice-card:hover .practice-card__arrow { transform: translateX(4px); }
 @media (max-width: 1100px) { .about-story__grid { grid-template-columns: 1fr 1fr; } .about-story__cards { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 768px) { .about-story__grid { grid-template-columns: 1fr; } .about-story__cards { grid-template-columns: 1fr; } .about-story__photo { max-height: 220px; object-fit: cover; } }
