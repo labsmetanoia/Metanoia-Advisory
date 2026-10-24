@@ -395,3 +395,15 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 | 4 | Dark closing call to action | The band is now near-black with the gold rule, white headline with "45-minute" in gold, muted supporting copy, three pillars with gold-ringed icons and hairline dividers, and a wide gold button with the arrow set to the right. The photograph fills the right half behind a gold diagonal with a soft gold glow fading into the dark. On phones the photograph becomes a band above the copy and the button spans the width | Contrast: white and gold on near-black exceed 10:1; the muted copy exceeds 7:1 |
 
 **Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues of any severity on the fourteen tested templates, no horizontal overflow at 1,600 / 1,440 / 1,366 / 1,280 / 1,024 / 390 px.
+
+---
+
+## 21. Revision 1.7 — header button, hero landmarks, dark-band icons (24 October 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Header navigation and button | The header button now reads "Contact Us" / "Hubungi Kami" (new `cta.contact` string; the hero and closing-band buttons keep "Talk to a partner"). The Indonesian label had still been 7 px too wide for the pill in revision 1.6; the shorter label leaves 13 px of clearance in both languages at 1,600 / 1,440 / 1,366 / 1,280 px, the button no longer shrinks, and the pill clips anything that would ever overflow it. The same label is used in the mobile menu | — |
+| 2 | Hero landmarks | The hero stage is much taller than the background's aspect ratio, so cover-fitting stretched the image to the full stage and pushed the skyline beneath the slides and the next section. The background now occupies only the upper 820 px of the stage (800 / 740 / 700 px on smaller screens), anchored to the bottom, so the Eiffel Tower, Mount Fuji, Marina Bay Sands and the Statue of Liberty sit between the buttons and the slide fan. The veil is heavier over the headline and copy, fades out over the landmarks and returns to paper at the image's foot; the hero copy carries a soft paper halo so it stays legible where a landmark rises behind it | Verified at 1,440 / 1,024 / 390 px in both languages |
+| 3 | "How we work" icons | The badge and strip icons were drawn in black on the near-black circles (the icon component's default colour won over the circle's), so only each glyph's single gold accent path was visible, which read as broken or blurred icons. All line work in that band is now gold with the accent path in paper, the stroke is heavier (2.25 units) so 26–28 px renders crisp, and the badges and strip icons are a size larger | Same vector icon set as the rest of the site; no raster assets |
+
+**Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues of any severity on the fourteen tested templates, header button inside its pill in both languages at every desktop width tested.

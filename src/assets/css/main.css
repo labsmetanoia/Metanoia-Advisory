@@ -1016,3 +1016,25 @@ body.menu-open { overflow: hidden; }
   .cta-band__inner { padding-top: var(--s-4); }
   .cta-band .btn--primary { width: 100%; }
 }
+
+/* ---------- Revision 1.7: landmarks in the hero, gold icons in the dark band, header CTA ---------- */
+/* The hero stage is taller than the background's aspect ratio, so cover-fitting pushed the skyline under the slides.
+   The image now occupies only the upper part of the stage, bottom-anchored, so the landmarks sit between the buttons and the slide fan. */
+.hero-bg { inset: 0 0 auto 0; height: 820px; }
+.hero-bg__img { object-position: center bottom; }
+.hero-bg__veil { background: linear-gradient(180deg, rgba(250,248,244,.94) 0%, rgba(250,248,244,.78) 26%, rgba(250,248,244,.5) 42%, rgba(250,248,244,.16) 54%, rgba(250,248,244,0) 64%, rgba(250,248,244,0) 82%, rgba(250,248,244,1) 100%); }
+/* Copy over the skyline keeps a soft paper halo so it stays readable where a landmark rises behind it */
+.hero-stage > .wrap :is(h1, h2, h3, p) { text-shadow: 0 0 10px var(--paper), 0 0 22px var(--paper), 0 0 2px var(--paper); }
+.hero-stage > .wrap p { color: color-mix(in srgb, var(--ink) 78%, var(--paper)); }
+@media (max-width: 1024px) { .hero-bg { height: 800px; } }
+@media (max-width: 768px) { .hero-bg { height: 740px; } .hero-bg__img { object-position: 42% bottom; } }
+@media (max-width: 480px) { .hero-bg { height: 700px; } }
+/* Icons on the dark band: full gold line work, slightly heavier stroke so 24-28 px renders crisp */
+.pcard__badge .tile__icon, .strip__icon .tile__icon, .approach2__list .tile__icon { color: var(--gold); }
+.pcard__badge .tile__icon svg, .strip__icon .tile__icon svg, .approach2__list .tile__icon svg { stroke-width: 2.25; }
+.pcard__badge .tile__icon .g, .strip__icon .tile__icon .g, .approach2__list .tile__icon .g { stroke: var(--paper); }
+.pcard__badge .tile__icon { width: 28px; height: 28px; } .pcard__badge .tile__icon svg { width: 28px; height: 28px; }
+.strip__icon .tile__icon { width: 26px; height: 26px; } .strip__icon .tile__icon svg { width: 26px; height: 26px; }
+/* Header: the pill never lets its contents escape */
+.header__pill { overflow: hidden; }
+.nav__cta--desktop { flex: none; }
