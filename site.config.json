@@ -2,7 +2,7 @@
   "_comment": "Firm-owned configuration. Fill these before launch. Empty values hide the related element and print a build warning. Never commit secrets here; everything in this file is public in the built site.",
   "name": "Metanoia Advisory",
   "legalName": "",
-  "domain": "",
+  "domain": "https://www.metanoiaadvisors.com",
   "defaultLang": "id",
   "route": "journal",
   "email": "",
@@ -12,7 +12,12 @@
   "addressSingapore": "",
   "calendarUrl": "",
   "credentialsPdf": "",
-  "hubspot": { "portalId": "", "contactFormGuid": "", "deckReviewFormGuid": "", "newsletterFormGuid": "" },
+  "hubspot": {
+    "portalId": "",
+    "contactFormGuid": "",
+    "deckReviewFormGuid": "",
+    "newsletterFormGuid": ""
+  },
   "ga4MeasurementId": "",
   "linkedinPartnerId": "",
   "engagementsFromLine": false

@@ -29,8 +29,8 @@ Open `site.config.json` and fill every value you have. Empty values do not break
 | Key | What to enter | What it switches on |
 | --- | --- | --- |
 | `legalName` | The registered entity name, e.g. `PT Metanoia Advisory Indonesia` | The © line in the footer and the privacy notice |
-| `domain` | The final address with scheme and no trailing slash, e.g. `https://www.metanoiaadvisory.com` | Canonical tags, hreflang links, sitemap, Open Graph URLs. **Required**; search engines index duplicates without it |
-| `email` | The firm's real address, e.g. `hello@metanoiaadvisory.com` | Contact page email links |
+| `domain` | The final address with scheme and no trailing slash, e.g. `https://www.metanoiaadvisors.com` | Canonical tags, hreflang links, sitemap, Open Graph URLs. **Required**; search engines index duplicates without it |
+| `email` | The firm's real address, e.g. `hello@metanoiaadvisors.com` | Contact page email links |
 | `linkedin` | The company page URL | LinkedIn link in the footer |
 | `calendarUrl` | A booking link (Calendly, HubSpot Meetings, Google appointment page) | "Book a working session" buttons |
 | `credentialsPdf` | `/assets/downloads/metanoia-credentials.pdf` once you have placed the real PDF at `src/assets/downloads/metanoia-credentials.pdf` | Credentials download links on About and in the footer |
@@ -110,12 +110,12 @@ Every later push to `main` redeploys automatically. Every pull request gets its 
 
 ## 5. Connect your domain
 
-Decide the **primary** address first. The recommendation is `www.metanoiaadvisory.com` as primary with the bare domain `metanoiaadvisory.com` redirecting to it. The `www` form works with every DNS provider and CDN; the bare domain cannot carry a CNAME record at most registrars. Whichever you choose, put exactly that in `domain` in `site.config.json`.
+Decide the **primary** address first. The recommendation is `www.metanoiaadvisors.com` as primary with the bare domain `metanoiaadvisors.com` redirecting to it. The `www` form works with every DNS provider and CDN; the bare domain cannot carry a CNAME record at most registrars. Whichever you choose, put exactly that in `domain` in `site.config.json`.
 
 ### 5a. Add the domain in Netlify
 
-1. **Domain management → Add a domain.** Enter the bare domain `metanoiaadvisory.com`. Netlify adds both the bare domain and `www`.
-2. Set `www.metanoiaadvisory.com` as the **primary domain**. Netlify then redirects the bare domain to it automatically.
+1. **Domain management → Add a domain.** Enter the bare domain `metanoiaadvisors.com`. Netlify adds both the bare domain and `www`.
+2. Set `www.metanoiaadvisors.com` as the **primary domain**. Netlify then redirects the bare domain to it automatically.
 
 ### 5b. Point the domain at Netlify
 
@@ -138,7 +138,7 @@ Netlify gives you four nameservers (e.g. `dns1.p01.nsone.net`). Enter them at th
 
 ### 5c. Wait for propagation
 
-DNS changes take from a few minutes to 24 hours to be visible everywhere. Check with `https://dnschecker.org` by entering `www.metanoiaadvisory.com` and selecting CNAME. When most locations show the Netlify value, continue.
+DNS changes take from a few minutes to 24 hours to be visible everywhere. Check with `https://dnschecker.org` by entering `www.metanoiaadvisors.com` and selecting CNAME. When most locations show the Netlify value, continue.
 
 ---
 
@@ -155,7 +155,7 @@ DNS changes take from a few minutes to 24 hours to be visible everywhere. Check 
 
 Run through these on the live domain, on a laptop and a phone.
 
-- [ ] `https://metanoiaadvisory.com` redirects to `https://www.metanoiaadvisory.com/` and then to `/en/` (or `/id/` on an Indonesian-language browser).
+- [ ] `https://metanoiaadvisors.com` redirects to `https://www.metanoiaadvisors.com/` and then to `/en/` (or `/id/` on an Indonesian-language browser).
 - [ ] Padlock shows in the browser; `https://www.ssllabs.com/ssltest/` grades the site A or A+.
 - [ ] Both languages load; the flag selector switches between them on the same page.
 - [ ] Header dropdowns open on hover and on keyboard focus; the phone menu opens and the practice accordions expand.
@@ -163,7 +163,7 @@ Run through these on the live domain, on a laptop and a phone.
 - [ ] Cookie banner appears on first visit; after accepting, GA4's real-time report shows your visit; after declining, it does not.
 - [ ] Credentials PDF downloads.
 - [ ] Old addresses redirect: `/en/presentation/board-and-executive-decks/`, `/id/presentasi/`, `/en/work/`.
-- [ ] `https://www.metanoiaadvisory.com/sitemap.xml` lists absolute URLs on your domain (this confirms `domain` was set).
+- [ ] `https://www.metanoiaadvisors.com/sitemap.xml` lists absolute URLs on your domain (this confirms `domain` was set).
 - [ ] Headers present: open `https://securityheaders.com`, enter the domain, expect an A grade.
 - [ ] Performance: run `https://pagespeed.web.dev` on the home page; expect 90+ on desktop and 80+ on mobile. The hero photographs are the main weight.
 
@@ -173,7 +173,7 @@ Run through these on the live domain, on a laptop and a phone.
 
 **Search engines.**
 1. Google Search Console → Add property → Domain → verify by adding the TXT record Google gives you at the registrar (same place as the records in step 5b).
-2. Submit `https://www.metanoiaadvisory.com/sitemap.xml`.
+2. Submit `https://www.metanoiaadvisors.com/sitemap.xml`.
 3. Repeat at Bing Webmaster Tools (it can import the Google verification).
 4. Expect indexing over one to three weeks. The site's hreflang tags tell Google which page serves which language.
 
@@ -181,7 +181,7 @@ Run through these on the live domain, on a laptop and a phone.
 
 **Email and the domain.** If the firm's email is not yet on the domain, set it up at Google Workspace or Microsoft 365 before announcing the site; the records (MX, SPF, DKIM, DMARC) go in the same DNS panel as step 5b and do not interfere with the website records.
 
-**Monitoring.** Netlify emails you on failed builds. For uptime alerts, a free monitor such as UptimeRobot checking `https://www.metanoiaadvisory.com/en/` every five minutes is enough.
+**Monitoring.** Netlify emails you on failed builds. For uptime alerts, a free monitor such as UptimeRobot checking `https://www.metanoiaadvisors.com/en/` every five minutes is enough.
 
 **Making changes.** Edit the content JSON files or the templates, open a pull request, review the Netlify preview link, merge. Netlify keeps every past deploy; **Deploys → pick a previous one → Publish deploy** rolls the site back in seconds if something goes wrong.
 
