@@ -12,7 +12,8 @@
     "clean": "rm -rf _site",
     "test": "npm run build:preview && node scripts/check-links.mjs && SITE_PREVIEW=1 node scripts/check-parity.mjs && npm run build && node scripts/check-links.mjs && node scripts/check-parity.mjs",
     "test:a11y": "node scripts/check-a11y.mjs",
-    "screenshots": "node scripts/screenshots.mjs"
+    "screenshots": "node scripts/screenshots.mjs",
+    "export:preview": "npm run build:preview --silent && node scripts/export-artifact.mjs artifact-export"
   },
   "engines": {
     "node": ">=20"
