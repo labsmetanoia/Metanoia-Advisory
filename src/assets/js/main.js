@@ -43,7 +43,7 @@
         else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
-    w.matchMedia("(min-width: 1200px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+    w.matchMedia("(min-width: 1280px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
   }
 
   /* ---- Fade-up (once, 200 ms, 8 px) ---- */

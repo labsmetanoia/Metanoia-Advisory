@@ -6,7 +6,7 @@
       <h2 id="cta-title" class="gold-em">{{ cta.title | L(lang) | mdInline | safe }}</h2>
       <p>{{ ui | t(lang, "closing.text") }}</p>
       <div class="cta-pillars">{% for pl in cta.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
-      <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="closing-band">{{ ui | t(lang, "cta.talk") }} →</a>
+      <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="closing-band"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

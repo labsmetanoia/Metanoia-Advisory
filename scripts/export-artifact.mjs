@@ -21,6 +21,7 @@ for (const f of files) {
       let p = path.replace(/^\//, ""); if (p === "" || p.endsWith("/")) p += "index.html";
       return ` ${attr}="${prefix}${p}${qh}"`;
     });
+    html = html.replace(/\ssrcset="([^"]*)"/g, (m, val) => ` srcset="${val.split(",").map(part => part.trim().replace(/^\/(?!\/)/, prefix)).join(", ")}"`);
     // 404 pages link home via "/": handled above. Root-chooser redirects do not exist in these pages.
     writeFileSync(dest, html);
   } else if (rel.endsWith(".css")) {

@@ -381,3 +381,17 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 | 6 | Cross-device testing | Fixed three defects found in testing: the mobile menu collapsed to the header height on all phones and tablets (the header's blur made it the containing block for the fixed menu; the blur now lives on a pseudo-element); the "How we work" band rendered as two cramped columns on phones because a tablet rule overrode the phone rule; and the strips' entry animation caused a 2 px horizontal scroll on phones | Tested at 1440, 1024, 768 and 390 px in both languages |
 
 **Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero critical, serious, moderate or minor issues on the fourteen tested templates, no horizontal overflow at any tested width.
+
+---
+
+## 20. Revision 1.6 — header fit, hero background, tile layout, dark closing band (24 October 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1a | Header alignment | The pill's content (wordmark, seven links, selector, button) needed about 1,290 px but the pill was capped at 1,200 px, so the button overflowed on every desktop. The header may now span up to 1,320 px, the desktop navigation is set tighter (14 px gaps, 14.5 px links, a 40 px button) and the full navigation collapses into the menu below 1,280 px instead of 1,200 px. Measured in both languages at 1,600 / 1,440 / 1,366 / 1,280 px: the button ends inside the pill in every case | Indonesian labels are about 25 px wider than English, so the fit is checked in both |
+| 1b | Circular flags | The two flag glyphs are now drawn inside a 20 px circle with a hairline ring, in the header pill, the dropdown, the mobile menu and the footer | Same inline SVG, no image requests |
+| 2 | Hero background missing | The site build was correct; the preview export left the responsive `srcset` attribute with absolute paths, so the hosted preview could not find the image. The exporter now rewrites `srcset` as it does `src`, and the background renders on the preview link. Positioning, bottom anchoring and the contrast veil are unchanged | Verified at 1,440 / 1,024 / 390 px |
+| 3 | "Services We Offer" layout | The tilted-card treatment from 1.5 is removed; the cards are back to the 1.4 layout with the photograph filling the diagonal panel edge to edge. To make that layout sharp from 254–355 px sources, every tile and complementary photo is now upscaled 4× with Real-ESRGAN (a learned super-resolution model) and delivered at 1,000 px (tiles) and 720 px (complementary), so the browser scales down rather than up | Upscaled images reconstruct detail plausibly rather than exactly; for product photographs the firm should still prefer true high-resolution originals when it has them |
+| 4 | Dark closing call to action | The band is now near-black with the gold rule, white headline with "45-minute" in gold, muted supporting copy, three pillars with gold-ringed icons and hairline dividers, and a wide gold button with the arrow set to the right. The photograph fills the right half behind a gold diagonal with a soft gold glow fading into the dark. On phones the photograph becomes a band above the copy and the button spans the width | Contrast: white and gold on near-black exceed 10:1; the muted copy exceeds 7:1 |
+
+**Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues of any severity on the fourteen tested templates, no horizontal overflow at 1,600 / 1,440 / 1,366 / 1,280 / 1,024 / 390 px.
