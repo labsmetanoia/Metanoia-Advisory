@@ -1,5 +1,5 @@
 ---
-pagination: { data: hubPages, size: 1, alias: p }
+pagination: { data: hubPages, size: 1, alias: p, addAllPagesToCollections: true }
 pageKey: hub
 ---
 {% set pr = p.practice %}{% set hub = pages.hubs[pr.key] %}{% set name = site.practiceNames[pr.key] | L(lang) %}

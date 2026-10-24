@@ -1,5 +1,5 @@
 ---
-pagination: { data: servicePages, size: 1, alias: p }
+pagination: { data: servicePages, size: 1, alias: p, addAllPagesToCollections: true }
 pageKey: service
 ---
 {% set s = p.service %}{% set prName = site.practiceNames[s.practice] | L(lang) %}
