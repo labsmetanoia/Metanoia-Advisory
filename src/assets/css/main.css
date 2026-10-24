@@ -828,3 +828,8 @@ body.menu-open { overflow: hidden; }
 .stage:last-child::after { display: none; }
 @media (max-width: 1024px) { .stages { grid-template-columns: repeat(3, minmax(0, 1fr)); } .stage::after { display: none; } }
 @media (max-width: 768px) { .stages { grid-template-columns: 1fr; } .stage { grid-template-rows: 140px 1fr; } .approach__box--strip { grid-template-columns: 36px 1fr; } .approach__box--strip img { display: none; } }
+/* Dark AI tile: keep the text column clear of the photo panel */
+.tile--dark > :not(.cut) { max-width: 54%; }
+.tile--dark .cut { width: 44%; }
+.tile--dark p { color: color-mix(in srgb, var(--paper) 88%, var(--ink)); }
+@media (max-width: 768px) { .tile--dark > :not(.cut) { max-width: 60%; } .tile--dark .cut { width: 40%; } }
