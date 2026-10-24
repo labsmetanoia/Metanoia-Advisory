@@ -73,7 +73,7 @@ pageKey: home
         <h3>{{ site.practiceNames[pr.key] | L(lang) }}</h3>
         <p class="lede">{{ hub.situationLine | L(lang) }}</p>
         <ul class="adv-list">{% for b in hub.doorBullets %}<li>{% set icon = hub.doorIcons[loop.index0] %}{% include "components/icon.njk" %}<span>{{ b | L(lang) }}</span></li>{% endfor %}</ul>
-        <a class="btn btn--primary" href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }} →</a>
+        <a class="btn btn--primary" href="{{ pr.key | pageUrl(lang) }}" aria-label="{{ site.practiceNames[pr.key] | L(lang) }}">{{ ui | t(lang, "cta.explore") }} →</a>
         <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__tag">{{ hub.tagline | L(lang) }}</div><div class="cut__art">{% include "charts/" + hub.art + ".njk" %}</div></div>
       </div>
       {% endif %}{% endfor %}

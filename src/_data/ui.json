@@ -34,7 +34,8 @@
       "allPeople": "All people",
       "backHome": "Home",
       "express": "Start an express brief",
-      "allServices": "All presentation services"
+      "allServices": "All presentation services",
+      "explore": "Explore the practice"
     },
     "closing": {
       "title": "Start with a 45-minute working session with a partner.",
@@ -214,7 +215,8 @@
       "allPeople": "Semua anggota tim",
       "backHome": "Beranda",
       "express": "Mulai brief ekspres",
-      "allServices": "Semua layanan presentasi"
+      "allServices": "Semua layanan presentasi",
+      "explore": "Jelajahi praktik ini"
     },
     "closing": {
       "title": "Mulai dengan sesi kerja 45 menit bersama partner kami.",
