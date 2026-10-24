@@ -354,3 +354,15 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 | 3 | How we work with you | Photo boxes for "Your team", "Metanoia engagement lead" and "Engagement manager", photo strips on the four background teams, and five stage cards with photographs, all cut from the supplied reference composite; section intros added as in the reference | The crops come from a 1536 × 1024 composite, so they are low resolution; replace with the originals when available |
 
 **Licensing note.** The Jakarta skyline and LRT photographs supplied for the advisory cards are used as directed; their licences are the firm's responsibility to confirm before launch.
+
+---
+
+## 18. Revision 1.4 — visual defects and "How we work" (24 October 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Slides obscured; video position | The hero's content layer now sits above the curved band, so the five cycling slides render in front of everything; the band gained headroom so the slides never cover its kicker. The video frame is shifted up by 18% (10% on phones) so the landmarks in the lower part of the footage show behind the slides; the readability veil fades towards the bottom | No scaling is applied to the video, so the uncovered strip at the bottom sits under the sand band |
+| 2 | Blurry images | Every source under 700 px wide is re-exported at 2× with Lanczos resampling and an unsharp mask, so the browser scales from a cleaner image. Phones show tile photos as a top band instead of a cropped diagonal | The uploads are still small (about 255 × 150 px); the only full fix is higher-resolution originals |
+| 3 | AI-section images | The three "v2" uploads replace the artefact stack in the AI-powered band, in the order supplied, as floating cards with cover fit | They remain third-party published materials (an stc/MAGNiTT report cover and Grab ESG report pages). The firm must hold the right to display them, or credit the owners, before launch |
+| 4 | How we work | Rebuilt on the reference: photo cards with an icon badge overlapping the photograph for "Your team", the engagement lead (gold outline and glow) and the engagement manager; a gold spine with connector ticks and dots linking the manager to four photo strips; icon bullets; five stage cards with photographs. Motion: cards rise in sequence, the spine draws top to bottom and the ticks and strips follow, the arrow between client and lead nudges, cards lift on hover; all disabled under reduced motion | — |
+| 5 | Text visibility | Text columns in every cut-panel card now stop at 56% of the card and sit above the gold stripe; long words wrap; advisory bullets no longer run under the panel. The navigation collapses into the menu below 1200 px, which removes a 190 px overflow on 1024 px tablets. An automated check now measures elements wider than the viewport at 1440, 1024 and 390 px | Zero overflow on all three widths; axe-core zero critical or serious on 14 templates |
