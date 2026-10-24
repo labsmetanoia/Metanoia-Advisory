@@ -13,7 +13,13 @@
       "presentation": "Strategic Storytelling",
       "work": "Work",
       "insights": "Insights",
-      "contact": "Contact"
+      "contact": "Contact",
+      "allServices": "All services",
+      "learnMore": "Learn more",
+      "featuredInsight": "Featured insight",
+      "readMore": "Read more",
+      "subToggle": "Show services",
+      "whyUs": "Why Metanoia"
     },
     "cta": {
       "talk": "Talk to Our Team",
@@ -171,7 +177,9 @@
       "conflicts": "Conflicts and confidentiality statement",
       "privacy": "Privacy",
       "terms": "Terms",
-      "statement": "Metanoia Advisory does not practise law, tax or audit, takes no success fees on disclosure work, and runs a conflict check before every engagement that touches a listed company's market-facing materials."
+      "statement": "Metanoia Advisory does not practise law, tax or audit, takes no success fees on disclosure work, and runs a conflict check before every engagement that touches a listed company's market-facing materials.",
+      "tagline": "Turning complex ideas into compelling business outcomes.",
+      "office": "Jakarta, Indonesia"
     },
     "notFound": {
       "title": "That page is not here.",
@@ -196,7 +204,13 @@
       "presentation": "Strategic Storytelling",
       "work": "Karya",
       "insights": "Wawasan",
-      "contact": "Kontak"
+      "contact": "Kontak",
+      "allServices": "Semua layanan",
+      "learnMore": "Pelajari lebih lanjut",
+      "featuredInsight": "Wawasan pilihan",
+      "readMore": "Baca selengkapnya",
+      "subToggle": "Tampilkan layanan",
+      "whyUs": "Mengapa Metanoia"
     },
     "cta": {
       "talk": "Bicara dengan Tim Kami",
@@ -354,7 +368,9 @@
       "conflicts": "Pernyataan konflik dan kerahasiaan",
       "privacy": "Privasi",
       "terms": "Ketentuan",
-      "statement": "Metanoia Advisory tidak memberikan jasa hukum, perpajakan, atau audit; tidak menerima success fee atas pekerjaan keterbukaan informasi; dan menjalankan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat."
+      "statement": "Metanoia Advisory tidak memberikan jasa hukum, perpajakan, atau audit; tidak menerima success fee atas pekerjaan keterbukaan informasi; dan menjalankan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat.",
+      "tagline": "Mengubah gagasan kompleks menjadi hasil bisnis yang berdampak.",
+      "office": "Jakarta, Indonesia"
     },
     "notFound": {
       "title": "Halaman itu tidak ada di sini.",

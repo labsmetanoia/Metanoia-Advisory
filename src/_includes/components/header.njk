@@ -9,10 +9,35 @@
         <ul class="nav__list">
           {% for pr in practices %}
           <li class="practice-menu">
-            <a class="nav__link{% if activeNav == pr.key %} is-active{% endif %}" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "nav." + pr.key) }}</a>
+            <a class="nav__link nav__link--menu{% if activeNav == pr.key %} is-active{% endif %}" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "nav." + pr.key) }}<svg class="nav__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             {% if site.phase == 2 %}
-            <div class="practice-menu__panel">
-              {% for s in services | where("practice", pr.key) %}<a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a>{% endfor %}
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-{{ pr.key }}"><span class="visually-hidden">{{ ui | t(lang, "nav.subToggle") }}: {{ ui | t(lang, "nav." + pr.key) }}</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            {% set hub = pages.hubs[pr.key] %}{% set list = services | where("practice", pr.key) %}
+            <div class="mm" id="sub-{{ pr.key }}" data-mm>
+              <div class="mm__inner">
+                <div class="mm__col mm__col--list">
+                  <div class="mm__head"><span class="mm__title">{{ ui | t(lang, "nav." + pr.key) }}</span><a class="mm__all" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "nav.allServices") }} <span aria-hidden="true">→</span></a></div>
+                  <ul class="mm__list{% if list | length > 6 %} mm__list--2col{% endif %}">
+                    {% for s in list %}<li><a href="{{ s | serviceUrl(lang) }}" data-mm-item="{{ s.key }}"{% if loop.first %} class="is-active"{% endif %}>{{ s.title | L(lang) }}</a></li>{% endfor %}
+                  </ul>
+                </div>
+                <div class="mm__col mm__col--detail">
+                  {% for s in list %}<div class="mm__desc{% if loop.first %} is-active{% endif %}" data-mm-desc="{{ s.key }}"><span class="mm__desc-title">{{ s.title | L(lang) }}</span><p>{{ (s.tileLine or s.promise) | L(lang) }}</p><a class="mm__more" href="{{ s | serviceUrl(lang) }}">{{ ui | t(lang, "nav.learnMore") }} <span aria-hidden="true">→</span></a></div>{% endfor %}
+                </div>
+                <div class="mm__col mm__col--aside">
+                  {% set notes = insights | where("practice", pr.key) | limit(2) %}
+                  {% if notes | length %}
+                  <span class="mm__title">{{ ui | t(lang, "nav.featuredInsight") }}</span>
+                  <ul class="mm__notes">{% for n in notes %}<li><a href="{{ 'insights' | itemUrl(n, lang) }}">{{ n.title | L(lang) }}</a><span class="mm__date">{{ n.date | date(lang) }}</span></li>{% endfor %}</ul>
+                  <a class="mm__more" href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.readMore") }} <span aria-hidden="true">→</span></a>
+                  {% else %}
+                  <span class="mm__title">{{ ui | t(lang, "nav.whyUs") }}</span>
+                  <p class="mm__tagline">{{ hub.tagline | L(lang) }}</p>
+                  <p>{{ hub.situationLine | L(lang) }}</p>
+                  <a class="mm__more" href="{{ 'contact' | pageUrl(lang) }}#book">{{ ui | t(lang, "cta.talk") }} <span aria-hidden="true">→</span></a>
+                  {% endif %}
+                </div>
+              </div>
             </div>
             {% endif %}
           </li>

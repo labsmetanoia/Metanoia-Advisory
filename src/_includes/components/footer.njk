@@ -1,7 +1,15 @@
 {% set otherLang = "en" if lang == "id" else "id" %}
 <footer class="footer">
-  <div class="wrap">
-    <p class="footer__statement">{{ ui | t(lang, "footer.statement") }}</p>
+  <div class="footer__bg" aria-hidden="true"><img src="/assets/img/photos/footer-panorama-2048.webp" srcset="/assets/img/photos/footer-panorama-1280.webp 1280w, /assets/img/photos/footer-panorama-2048.webp 2048w" sizes="100vw" alt="" width="2048" height="768" loading="lazy" decoding="async"></div>
+  <div class="wrap footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="wordmark wordmark--footer" href="{{ 'home' | pageUrl(lang) }}">Metanoia<span class="visually-hidden"> </span><span class="wordmark__sub">Advisory</span></a>
+        <p class="footer__tagline">{{ ui | t(lang, "footer.tagline") }}</p>
+        <p class="footer__office">{{ ui | t(lang, "footer.office") }}{% if site.email %} · <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+      </div>
+      <a class="btn btn--primary footer__cta" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="footer"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
     <div class="footer__grid">
       <div>
         <p class="footer__heading">{{ ui | t(lang, "footer.practices") }}</p>
@@ -12,9 +20,7 @@
       <div>
         <p class="footer__heading">{{ ui | t(lang, "footer.workInsights") }}</p>
         <ul>
-          {% if site.phase == 2 %}
-          <li><a href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
-          {% endif %}
+          {% if site.phase == 2 %}<li><a href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>{% endif %}
           {% if site.credentialsPdf %}<li><a href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf">{{ ui | t(lang, "cta.credentials") }}</a></li>{% endif %}
           {% if site.linkedin %}<li><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a></li>{% endif %}
         </ul>
@@ -25,7 +31,6 @@
           <li><a href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>
           {% for person in people | where("seniority", "partner") %}<li><a href="{{ 'people' | itemUrl(person, lang) }}">{{ person.name }}</a></li>{% endfor %}
           <li><a href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
-          {% if site.email %}<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
         </ul>
       </div>
       <div>
@@ -38,6 +43,7 @@
         </ul>
       </div>
     </div>
+    <p class="footer__statement">{{ ui | t(lang, "footer.statement") }}</p>
     <div class="footer__bottom">
       <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }}</span>
       {% set variant = "footer" %}{% include "components/lang-select.njk" %}{% set variant = "" %}

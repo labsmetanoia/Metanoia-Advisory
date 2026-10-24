@@ -4,7 +4,7 @@ pageKey: hub
 ---
 {% set pr = p.practice %}{% set hub = pages.hubs[pr.key] %}{% set name = site.practiceNames[pr.key] | L(lang) %}
 <section class="hub-hero" aria-labelledby="hub-title">
-  <div class="hub-hero__media" aria-hidden="true">{% if hub.hero.photo %}<img src="{{ hub.hero.photo }}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">{% endif %}</div>
+  <div class="hub-hero__media" aria-hidden="true">{% if hub.hero.photo %}<img src="{{ hub.hero.photo }}"{% if hub.hero.photoSmall %} srcset="{{ hub.hero.photoSmall }} 1600w, {{ hub.hero.photo }} 2560w" sizes="100vw"{% endif %} alt="" width="1920" height="1080" fetchpriority="high" decoding="async"{% if hub.hero.focus %} style="object-position: {{ hub.hero.focus }}"{% endif %}>{% endif %}</div>
   <div class="wrap hub-hero__inner">
     <span class="kicker hub-hero__kicker">{{ name }}</span>
     <h1 id="hub-title">{{ hub.hero.title | L(lang) | mdInline | safe }}</h1>

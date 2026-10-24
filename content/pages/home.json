@@ -558,5 +558,34 @@
       }
     ],
     "photo": "/assets/img/photos/cta-session.webp"
+  },
+  "indonesia": {
+    "kicker": {
+      "en": "Indonesia market entry & localization",
+      "id": "Masuk pasar & lokalisasi Indonesia"
+    },
+    "title": {
+      "en": "Expand Beyond Borders. *Succeed in Indonesia* with Local Market Expertise.",
+      "id": "Melampaui Batas. *Sukses di Indonesia* dengan Keahlian Pasar Lokal."
+    },
+    "text": {
+      "en": "Leverage our deep understanding of Indonesia's diverse markets to localize your products and services, navigate market complexities, and unlock the right opportunities for successful market entry and sustainable growth.",
+      "id": "Manfaatkan pemahaman mendalam kami tentang pasar Indonesia yang beragam untuk melokalkan produk dan layanan Anda, menavigasi kompleksitas pasar, dan membuka peluang yang tepat demi masuk pasar yang berhasil dan pertumbuhan berkelanjutan."
+    },
+    "photo": "/assets/img/photos/hero-market-entry.webp",
+    "points": [
+      {
+        "en": "Market assessment and entry strategy",
+        "id": "Penilaian pasar dan strategi masuk"
+      },
+      {
+        "en": "Partner, distributor and site search",
+        "id": "Pencarian mitra, distributor, dan lokasi"
+      },
+      {
+        "en": "Localisation, go-to-market and market representation",
+        "id": "Lokalisasi, go-to-market, dan representasi pasar"
+      }
+    ]
   }
 }

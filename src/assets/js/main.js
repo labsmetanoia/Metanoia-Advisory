@@ -259,3 +259,28 @@
   });
   document.addEventListener("click", function (e) { if (!e.target.closest("[data-langsel]")) sels.forEach(close); });
 })();
+
+// Dropdown navigation: hover/focus reveals the practice panel (CSS); hovering a service swaps the description; phones use an accordion.
+(function () {
+  var d = document;
+  d.querySelectorAll("[data-mm]").forEach(function (panel) {
+    var items = panel.querySelectorAll("[data-mm-item]"), descs = panel.querySelectorAll("[data-mm-desc]");
+    function activate(key) {
+      items.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("data-mm-item") === key); });
+      descs.forEach(function (el) { el.classList.toggle("is-active", el.getAttribute("data-mm-desc") === key); });
+    }
+    items.forEach(function (a) {
+      ["mouseenter", "focus"].forEach(function (ev) { a.addEventListener(ev, function () { activate(a.getAttribute("data-mm-item")); }); });
+    });
+  });
+  d.querySelectorAll(".nav__sub-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      btn.closest(".practice-menu").classList.toggle("is-open", !open);
+    });
+  });
+  d.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { var a = d.activeElement; if (a && a.closest(".practice-menu")) { a.closest(".practice-menu").querySelector(".nav__link").focus(); } }
+  });
+})();

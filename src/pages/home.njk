@@ -78,6 +78,19 @@ pageKey: home
   </div>
 </section>
 
+<section class="id-band fade-up" aria-labelledby="id-title">
+  <div class="wrap id-band__grid">
+    <div class="id-band__copy">
+      <span class="kicker kicker--rule">{{ c.indonesia.kicker | L(lang) }}</span>
+      <h2 id="id-title" class="gold-em">{{ c.indonesia.title | L(lang) | mdInline | safe }}</h2>
+      <p class="id-band__text">{{ c.indonesia.text | L(lang) }}</p>
+      <ul class="id-band__points">{% for pt in c.indonesia.points %}<li><span class="id-band__tick" aria-hidden="true">✓</span>{{ pt | L(lang) }}</li>{% endfor %}</ul>
+      <div class="cluster"><a class="btn btn--primary" href="{{ 'marketEntry' | pageUrl(lang) }}" data-event="cta_click" data-location="indonesia-band">{{ ui | t(lang, "cta.explore") }} <span aria-hidden="true">→</span></a><a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="indonesia-band-secondary">{{ ui | t(lang, "cta.talk") }}</a></div>
+    </div>
+    <div class="id-band__visual" aria-hidden="true"><div class="id-band__frame"><img src="{{ c.indonesia.photo }}" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div></div>
+  </div>
+</section>
+
 <section class="section fade-up" aria-labelledby="insight-title" style="padding-top:var(--section)">
   <div class="wrap grid">
     <div class="col-6">
