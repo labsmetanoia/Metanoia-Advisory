@@ -1051,7 +1051,7 @@ body.menu-open { overflow: hidden; }
 .hub-hero__inner > * { max-width: 680px; }
 .hub-hero__kicker { color: var(--gold); }
 .hub-hero__kicker::before { content: ""; display: block; width: 72px; height: 2px; background: var(--gold); margin-bottom: var(--s-3); }
-.hub-hero h1 { color: var(--paper); font-size: clamp(36px, 4.6vw, 60px); line-height: 1.06; margin-top: var(--s-2); max-width: 15ch; }
+.hub-hero h1 { color: var(--paper); font-size: clamp(34px, 4.1vw, 54px); line-height: 1.06; margin-top: var(--s-2); max-width: 16ch; }
 .hub-hero .lede { color: color-mix(in srgb, var(--paper) 84%, #000); margin-top: var(--s-3); font-size: 18px; line-height: 29px; }
 .hub-hero .btn--secondary { color: var(--paper); border-color: var(--paper); }
 .hub-hero .btn--secondary:hover { background: var(--paper); color: var(--ink); }
