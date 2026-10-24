@@ -1,0 +1,70 @@
+{
+  "key": "me-localisation",
+  "order": 3,
+  "practice": "marketEntry",
+  "slug": {
+    "en": "localisation-and-go-to-market",
+    "id": "lokalisasi-dan-go-to-market"
+  },
+  "title": {
+    "en": "Localisation and go-to-market",
+    "id": "Lokalisasi dan go-to-market"
+  },
+  "promise": {
+    "en": "Pricing, positioning, channels and certification planned for Indonesia as it is, not as the regional plan assumed.",
+    "id": "Harga, pemosisian, saluran, dan sertifikasi yang direncanakan untuk Indonesia sebagaimana adanya, bukan seperti asumsi rencana regional."
+  },
+  "metaDescription": {
+    "en": "Localisation and go-to-market for Indonesia: pricing, Bahasa and halal positioning, Tier-2 channels, and BPOM, halal, SNI and PSE coordination.",
+    "id": "Lokalisasi dan go-to-market untuk Indonesia: harga, pemosisian Bahasa dan halal, saluran kota lapis kedua, koordinasi BPOM, halal, SNI, dan PSE."
+  },
+  "who": [
+    {
+      "en": "Consumer, F&B and healthcare brands entering distributor-led markets",
+      "id": "Merek konsumen, F&B, dan kesehatan yang memasuki pasar berbasis distributor"
+    },
+    {
+      "en": "B2B and digital businesses that must register, localise data or certify before selling",
+      "id": "Bisnis B2B dan digital yang harus mendaftar, melokalisasi data, atau bersertifikasi sebelum menjual"
+    },
+    {
+      "en": "Entrants whose first year under-performed the regional plan",
+      "id": "Pendatang yang tahun pertamanya di bawah rencana regional"
+    }
+  ],
+  "get": [
+    {
+      "en": "Pricing architecture and tier structure for Indonesian channels",
+      "id": "Arsitektur harga dan struktur tingkatan untuk saluran Indonesia"
+    },
+    {
+      "en": "Positioning in Bahasa Indonesia; halal and local-content requirements mapped",
+      "id": "Pemosisian dalam Bahasa Indonesia; persyaratan halal dan konten lokal dipetakan"
+    },
+    {
+      "en": "Channel plan: modern trade, general trade, e-commerce, Tier-2 cities",
+      "id": "Rencana saluran: modern trade, general trade, e-commerce, kota lapis kedua"
+    },
+    {
+      "en": "Certification and registration coordinated through specialists: BPOM, halal, SNI, PSE",
+      "id": "Sertifikasi dan pendaftaran dikoordinasikan melalui spesialis: BPOM, halal, SNI, PSE"
+    },
+    {
+      "en": "Key-account introductions and a 12-month commercial calendar",
+      "id": "Perkenalan key account dan kalender komersial 12 bulan"
+    }
+  ],
+  "getSummary": {
+    "en": "Pricing, positioning, channel plan, certification coordination",
+    "id": "Harga, pemosisian, rencana saluran, koordinasi sertifikasi"
+  },
+  "duration": {
+    "en": "Four to six weeks",
+    "id": "Empat hingga enam minggu"
+  },
+  "next": {
+    "en": "Market representation: a senior local lead runs the plan until your own general manager is hired.",
+    "id": "Representasi pasar: pemimpin lokal senior menjalankan rencana hingga general manager Anda direkrut."
+  },
+  "relatedService": "pres-equity-story"
+}

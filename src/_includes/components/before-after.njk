@@ -1,0 +1,12 @@
+{# expects `pair`: {before: component, after: component, altBefore, altAfter, caption}, `lang`, `uid` #}
+<figure>
+  <div class="ba" style="--ba:50%">
+    <div class="ba__pane ba__before" role="img" aria-label="{{ pair.altBefore | L(lang) }}">{% include "charts/" + pair.before + ".njk" %}</div>
+    <div class="ba__pane ba__after" role="img" aria-label="{{ pair.altAfter | L(lang) }}">{% include "charts/" + pair.after + ".njk" %}</div>
+    <input class="ba__range" type="range" min="0" max="100" value="50" step="1" aria-label="{{ ui | t(lang, 'labels.before') }} / {{ ui | t(lang, 'labels.after') }}" id="{{ uid }}">
+    <div class="ba__divider" aria-hidden="true"></div>
+    <span class="ba__label ba__label--before" aria-hidden="true">{{ ui | t(lang, "labels.before") }}</span>
+    <span class="ba__label ba__label--after" aria-hidden="true">{{ ui | t(lang, "labels.after") }}</span>
+  </div>
+  <figcaption>{{ pair.caption | L(lang) }}</figcaption>
+</figure>

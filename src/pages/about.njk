@@ -1,0 +1,62 @@
+---
+pagination: { data: langPages, size: 1, alias: p }
+pageKey: about
+---
+{% set c = pages.about %}
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker">{{ ui | t(lang, "nav.about") }}</span>
+    <h1>{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ c.hero.text | L(lang) }}</p>
+  </div>
+</section>
+
+<section class="section fade-up" aria-labelledby="story-title">
+  <div class="wrap grid">
+    <div class="col-4"><h2 id="story-title">{{ c.story.title | L(lang) }}</h2></div>
+    <div class="col-8 measure">{{ c.story.body | L(lang) | md | safe }}</div>
+  </div>
+</section>
+
+<section class="section fade-up" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="how-title">{{ c.how.title | L(lang) }}</h2></div>
+    <div class="grid-3">
+      {% for st in c.how.items %}<div class="service-block"><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band fade-up" aria-labelledby="ladder-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="ladder-title">{{ c.ladder.title | L(lang) }}</h2><p class="meta measure">{{ c.ladder.text | L(lang) }}</p></div>
+    <ol class="ladder">
+      {% for st in c.ladder.steps %}<li><span class="kicker">{{ loop.index }}</span><h3>{{ st.title | L(lang) }}</h3><p class="meta">{{ st.duration | L(lang) }}</p><p>{{ st.text | L(lang) }}</p></li>{% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section fade-up" aria-labelledby="people-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="people-title">{{ c.people.title | L(lang) }}</h2><p class="meta measure">{{ c.people.text | L(lang) }}</p></div>
+    {% set partners = people | where("seniority", "partner") %}
+    {% set others = people | where("seniority", "associate") %}
+    {% if partners | length %}<div class="grid-4">{% for person in partners %}{% include "components/person-card.njk" %}{% endfor %}</div>{% else %}<p class="empty">{{ ui | t(lang, "labels.emptyPeople") }}</p>{% endif %}
+    {% if others | length %}<h3 style="margin-top:48px">{{ ui | t(lang, "labels.seniority.associate") }}</h3><div class="grid-4">{% for person in others %}{% include "components/person-card.njk" %}{% endfor %}</div>{% endif %}
+  </div>
+</section>
+
+<section class="section fade-up" aria-labelledby="eco-title">
+  <div class="wrap grid">
+    <div class="col-4"><h2 id="eco-title">{{ c.ecosystem.title | L(lang) }}</h2><p class="muted">{{ c.ecosystem.text | L(lang) }}</p></div>
+    <div class="col-8"><ul class="grid-2" style="list-style:none;padding:0;margin:0">{% for e in c.ecosystem.items %}<li class="service-block" style="padding-top:16px"><h4>{{ e.title | L(lang) }}</h4><p class="meta">{{ e.text | L(lang) }}</p></li>{% endfor %}</ul></div>
+  </div>
+</section>
+
+{% if site.credentialsPdf %}
+<section class="section fade-up">
+  <div class="wrap"><div class="statement"><h3>{{ c.credentials.title | L(lang) }}</h3><p class="muted">{{ c.credentials.text | L(lang) }}</p><a class="btn btn--secondary" href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf">{{ ui | t(lang, "cta.credentials") }}</a></div></div>
+</section>
+{% endif %}
+
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "AboutPage", "name": pageTitle, "description": pageDescription, "about": { "@type": "Organization", "name": site.name } } | json | safe }}</script>

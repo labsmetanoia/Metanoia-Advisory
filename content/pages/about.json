@@ -1,0 +1,204 @@
+{
+  "seoTitle": {
+    "en": "About the firm",
+    "id": "Tentang firma"
+  },
+  "metaDescription": {
+    "en": "Metanoia Advisory is a Jakarta advisory firm with three practices: market-entry consulting, strategy and investment advisory, and presentation design.",
+    "id": "Metanoia Advisory adalah firma advisory di Jakarta dengan tiga praktik: konsultansi masuk pasar, advisory strategi dan investasi, serta desain presentasi."
+  },
+  "hero": {
+    "title": {
+      "en": "A decision in Indonesia is made twice: in the analysis, and in the room where it is presented.",
+      "id": "Keputusan di Indonesia diambil dua kali: dalam analisis, dan di ruang tempat ia dipaparkan."
+    },
+    "text": {
+      "en": "Most advisors own the first and hand off the second. Most design studios own the second and never see the first. We built one firm to own both, and to stay accountable through implementation.",
+      "id": "Sebagian besar penasihat menguasai yang pertama lalu menyerahkan yang kedua. Sebagian besar studio desain menguasai yang kedua tanpa pernah melihat yang pertama. Kami membangun satu firma untuk menguasai keduanya, dan tetap bertanggung jawab hingga implementasi."
+    }
+  },
+  "story": {
+    "title": {
+      "en": "One firm, three practices",
+      "id": "Satu firma, tiga praktik"
+    },
+    "body": {
+      "en": "Metanoia Advisory is a Jakarta advisory firm for CFOs, boards, fund operating partners and regional headquarters making high-stakes decisions in Indonesia: entering or expanding, raising or investing, and reporting to the market.\n\nThe firm has three practices. **Market-Entry Consulting** takes an international company from \"should we enter Indonesia?\" to first local revenue. **Strategy & Investment Advisory** builds the feasibility studies, financial models, business cases and investment-grade documents that boards and investors act on. **Presentation Design & Corporate Communications** turns that analysis into results decks, equity stories, board packs and annual reports that say what the numbers mean.\n\nThey share one bench, one quality gate and one confidentiality regime. The partner who builds the business case presents it to the board and, if you keep us, runs the implementation. The designer who builds the equity story produces the quarterly deck. Nothing is handed across a wall.\n\nWe do not practise law, tax or audit, and we do not compete with incorporation agents on price. Licensed and specialist work is delivered through named partners under our project management.",
+      "id": "Metanoia Advisory adalah firma advisory di Jakarta untuk CFO, dewan, operating partner dana investasi, dan kantor pusat regional yang mengambil keputusan berisiko tinggi di Indonesia: memasuki atau memperluas pasar, menggalang dana atau berinvestasi, dan melapor kepada pasar.\n\nFirma ini memiliki tiga praktik. **Konsultansi Masuk Pasar** mendampingi perusahaan internasional dari pertanyaan \"perlukah kami masuk ke Indonesia?\" hingga pendapatan lokal pertama. **Advisory Strategi & Investasi** menyusun studi kelayakan, model keuangan, kajian bisnis, dan dokumen berstandar investor yang menjadi dasar tindakan dewan dan investor. **Desain Presentasi & Komunikasi Korporat** mengubah analisis itu menjadi dek kinerja, equity story, materi dewan, dan laporan tahunan yang menjelaskan makna di balik angka.\n\nKetiganya berbagi satu tim, satu gerbang mutu, dan satu rezim kerahasiaan. Partner yang menyusun kajian bisnis adalah yang memaparkannya di hadapan dewan dan, jika Anda menghendaki, menjalankan implementasinya. Desainer yang membangun equity story adalah yang memproduksi dek kuartalan. Tidak ada yang diserahkan melewati tembok.\n\nKami tidak memberikan jasa hukum, perpajakan, atau audit, dan tidak bersaing harga dengan agen pendirian perusahaan. Pekerjaan berizin dan spesialis dikerjakan melalui mitra bernama di bawah manajemen proyek kami."
+    }
+  },
+  "how": {
+    "title": {
+      "en": "How we work",
+      "id": "Cara kami bekerja"
+    },
+    "items": [
+      {
+        "title": {
+          "en": "Senior through implementation",
+          "id": "Senior hingga implementasi"
+        },
+        "text": {
+          "en": "A partner leads scoping, synthesis and the board presentation, and carries no more than two projects and two implementation retainers at a time. We stay if you keep us; senior days are priced in, not given away.",
+          "id": "Seorang partner memimpin penyusunan ruang lingkup, sintesis, dan paparan dewan, serta menangani paling banyak dua proyek dan dua retainer implementasi sekaligus. Kami tetap mendampingi jika Anda menghendaki; hari kerja senior diperhitungkan, bukan diberikan gratis."
+        }
+      },
+      {
+        "title": {
+          "en": "The numbers match",
+          "id": "Angkanya sama"
+        },
+        "text": {
+          "en": "Model, deck and report come from one data set and one team. Every deliverable carries a reconciliation log and passes a four-eyes check before it leaves the firm.",
+          "id": "Model, dek, dan laporan berasal dari satu set data dan satu tim. Setiap keluaran disertai log rekonsiliasi dan melewati pemeriksaan empat mata sebelum keluar dari firma."
+        }
+      },
+      {
+        "title": {
+          "en": "Confidential by design",
+          "id": "Rahasia sejak awal"
+        },
+        "text": {
+          "en": "Insider lists per engagement, segregated project folders, no consumer AI tools for client files, and a conflict check before any engagement that touches a listed company's market-facing materials. The design practice takes no success fees.",
+          "id": "Daftar orang dalam per penugasan, folder proyek terpisah, tanpa alat AI konsumen untuk berkas klien, dan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat. Praktik desain tidak menerima success fee."
+        }
+      }
+    ]
+  },
+  "ladder": {
+    "title": {
+      "en": "How an engagement starts, and how it can continue",
+      "id": "Bagaimana penugasan dimulai, dan bagaimana ia dapat berlanjut"
+    },
+    "text": {
+      "en": "Three steps, each with a clear end. You can stop after any of them.",
+      "id": "Tiga langkah, masing-masing dengan akhir yang jelas. Anda dapat berhenti setelah langkah mana pun."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Working session",
+          "id": "Sesi kerja"
+        },
+        "duration": {
+          "en": "45 minutes, with a partner",
+          "id": "45 menit, bersama partner"
+        },
+        "text": {
+          "en": "You bring the decision. You leave with a view on what it would take, who would do it and how long it would run. A proposal follows only if you ask for one.",
+          "id": "Anda membawa keputusan yang dihadapi. Anda pulang dengan gambaran tentang apa yang dibutuhkan, siapa yang mengerjakannya, dan berapa lama. Proposal menyusul hanya jika Anda memintanya."
+        }
+      },
+      {
+        "title": {
+          "en": "Project",
+          "id": "Proyek"
+        },
+        "duration": {
+          "en": "Four to ten weeks, fixed fee",
+          "id": "Empat hingga sepuluh minggu, biaya tetap"
+        },
+        "text": {
+          "en": "A scoped piece of work with a board-ready deliverable: an assessment, a business case, a feasibility study, an equity story, a report. Weekly reviews; a mid-point storyboard sign-off; the partner presents the result.",
+          "id": "Pekerjaan berlingkup jelas dengan keluaran siap dewan: penilaian pasar, kajian bisnis, studi kelayakan, equity story, laporan. Tinjauan mingguan; persetujuan storyboard di tengah jalan; partner memaparkan hasilnya."
+        }
+      },
+      {
+        "title": {
+          "en": "Implementation",
+          "id": "Implementasi"
+        },
+        "duration": {
+          "en": "Six months or more, monthly retainer",
+          "id": "Enam bulan atau lebih, retainer bulanan"
+        },
+        "text": {
+          "en": "The same senior people stay on: a partner one day a week and an engagement manager two, or a 12-month investor-communication calendar. Priced explicitly in every proposal.",
+          "id": "Orang-orang senior yang sama tetap mendampingi: seorang partner satu hari seminggu dan seorang engagement manager dua hari, atau kalender komunikasi investor 12 bulan. Harganya dinyatakan secara eksplisit dalam setiap proposal."
+        }
+      }
+    ]
+  },
+  "people": {
+    "title": {
+      "en": "People",
+      "id": "Tim"
+    },
+    "text": {
+      "en": "Partners first, then the associates who run the weekly cadence. Every profile lists real engagements.",
+      "id": "Partner terlebih dahulu, lalu para associate yang menjalankan ritme mingguan. Setiap profil mencantumkan penugasan nyata."
+    }
+  },
+  "ecosystem": {
+    "title": {
+      "en": "Partner ecosystem",
+      "id": "Ekosistem mitra"
+    },
+    "text": {
+      "en": "Licensed and specialist work is delivered by named partners under our project management. Firms are named here once agreements are signed and permission is given.",
+      "id": "Pekerjaan berizin dan spesialis dikerjakan oleh mitra bernama di bawah manajemen proyek kami. Nama firma dicantumkan setelah perjanjian ditandatangani dan izin diberikan."
+    },
+    "items": [
+      {
+        "title": {
+          "en": "Law firm and notary",
+          "id": "Firma hukum dan notaris"
+        },
+        "text": {
+          "en": "Entity structuring, licensing, contracts, regulatory opinions.",
+          "id": "Struktur badan usaha, perizinan, kontrak, pendapat hukum."
+        }
+      },
+      {
+        "title": {
+          "en": "Corporate-services provider",
+          "id": "Penyedia jasa korporasi"
+        },
+        "text": {
+          "en": "Incorporation, LKPM, tax and payroll, white-labelled.",
+          "id": "Pendirian perusahaan, LKPM, pajak dan penggajian, berlabel putih."
+        }
+      },
+      {
+        "title": {
+          "en": "Securities house",
+          "id": "Perusahaan sekuritas"
+        },
+        "text": {
+          "en": "Pre-mandate and post-listing positioning for issuers.",
+          "id": "Pemosisian pra-mandat dan pasca-pencatatan bagi emiten."
+        }
+      },
+      {
+        "title": {
+          "en": "Production house",
+          "id": "Rumah produksi"
+        },
+        "text": {
+          "en": "Print and production overflow for reports.",
+          "id": "Cetak dan kapasitas produksi tambahan untuk laporan."
+        }
+      },
+      {
+        "title": {
+          "en": "Sector specialists",
+          "id": "Spesialis sektor"
+        },
+        "text": {
+          "en": "BPOM and halal certification, PSE and data localisation, HR and labour law, industrial estates.",
+          "id": "Sertifikasi BPOM dan halal, PSE dan lokalisasi data, SDM dan hukum ketenagakerjaan, kawasan industri."
+        }
+      }
+    ]
+  },
+  "credentials": {
+    "title": {
+      "en": "Credentials",
+      "id": "Kredensial"
+    },
+    "text": {
+      "en": "Eight pages, both languages, updated quarterly: the three practices, the joint products and the people. The same design system as this site.",
+      "id": "Delapan halaman, dua bahasa, diperbarui setiap kuartal: tiga praktik, produk gabungan, dan tim. Sistem desain yang sama dengan situs ini."
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{# expects `s` (service), `lang` #}
+<article class="service-block">
+  <h3>{{ s.title | L(lang) }}</h3>
+  <dl>
+    <dt>{{ ui | t(lang, "labels.who") }}</dt><dd>{{ (s.who | first) | L(lang) }}</dd>
+    <dt>{{ ui | t(lang, "labels.get") }}</dt><dd>{{ s.getSummary | L(lang) }}</dd>
+    <dt>{{ ui | t(lang, "labels.duration") }}</dt><dd>{{ s.duration | L(lang) }}</dd>
+    <dt>{{ ui | t(lang, "labels.next") }}</dt><dd>{{ s.next | L(lang) | truncate(110) }}</dd>
+  </dl>
+  <a class="arrow-link" href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a>
+</article>

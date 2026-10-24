@@ -1,0 +1,36 @@
+---
+pagination: { data: insightPages, size: 1, alias: p }
+pageKey: article
+---
+{% set a = p.item %}
+<article class="section">
+  <div class="wrap">
+    {% set crumbs = [{ name: ui | t(lang, "nav.insights"), url: 'insights' | pageUrl(lang) }, { name: a.title | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <div class="article">
+      {% if a.draft %}<div class="notice"><strong>Draft.</strong> {{ "Prepared from the firm’s research files for the founder’s review; not yet published." if lang == "en" else "Disusun dari berkas riset firma untuk ditinjau pendiri; belum dipublikasikan." }}</div>{% endif %}
+      <span class="kicker">{{ ui | t(lang, "labels." + ("flagship" if a.type == "flagship" else ("newsletterIssue" if a.type == "newsletter" else "note"))) }}</span>
+      <h1>{{ a.title | L(lang) }}</h1>
+      <p class="lede">{{ a.summary | L(lang) }}</p>
+      <div class="article__meta meta">
+        {% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}"><span class="avatar" aria-hidden="true">{{ au.name | initials }}</span>{{ au.name }}</a>{% endif %}{% endfor %}
+        <time datetime="{{ a.date | isoDate }}">{{ a.date | date(lang) }}</time><span>{{ a.readingTime }} {{ ui | t(lang, "labels.readingTime") }}</span>
+      </div>
+      {% if a.type == "flagship" and a.findings %}
+      <section class="statement" style="margin-bottom:48px"><h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3)">{{ "Three findings" if lang == "en" else "Tiga temuan" }}</h2><ol>{% for f in a.findings %}<li>{{ f | L(lang) }}</li>{% endfor %}</ol>
+        {% if a.pdf and not a.forthcoming %}<a class="btn btn--primary" href="{{ a.pdf }}" data-event="download" data-asset="{{ a.key }}">{{ ui | t(lang, "cta.download") }}</a>{% elif a.forthcoming %}<p class="meta">{{ ui | t(lang, "labels.forthcoming") }}. {{ "Subscribe below to receive it on publication." if lang == "en" else "Berlangganan di bawah untuk menerimanya saat terbit." }}</p>{% endif %}</section>
+      {% endif %}
+      {% if a.chart %}<figure style="margin:32px 0">{% include "charts/" + a.chart + ".njk" %}</figure>{% endif %}
+      <div class="article__body">{{ a.body | L(lang) | md | safe }}</div>
+      {% if a.sources %}<h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:48px">{{ "Sources" if lang == "en" else "Sumber" }}</h2><ul class="meta">{% for s in a.sources %}<li>{{ s | mdInline | safe }}</li>{% endfor %}</ul>{% endif %}
+      {% set rs = [] %}{% for sk in a.relatedServices or [] %}{% set s = services | find("key", sk) %}{% if s %}{% set rs = (rs.push(s), rs) %}{% endif %}{% endfor %}
+      {% if rs | length %}<h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:48px">{{ ui | t(lang, "labels.relatedServices") }}</h2><ul>{% for s in rs %}<li><a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a></li>{% endfor %}</ul>{% endif %}
+      <div class="share meta"><span>{{ ui | t(lang, "labels.share") }}:</span>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ (site.baseUrl + page.url) | urlencode }}" rel="noopener">LinkedIn</a>
+        <a href="mailto:?subject={{ (a.title | L(lang)) | urlencode }}&body={{ (site.baseUrl + page.url) | urlencode }}">{{ ui | t(lang, "cta.email") }}</a>
+        <button type="button" class="chip" data-copy-link data-copied="{{ ui | t(lang, 'labels.copied') }}">{{ ui | t(lang, "labels.copyLink") }}</button></div>
+    </div>
+    <div class="col-8" style="margin-top:64px;max-width:720px"><span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span>{% set uid = "nl-article" %}{% include "components/newsletter.njk" %}</div>
+  </div>
+</article>
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "Article", "headline": a.title | L(lang), "description": a.summary | L(lang), "datePublished": a.date, "inLanguage": lang, "author": { "@type": "Organization", "name": site.name }, "publisher": { "@type": "Organization", "name": site.name }, "mainEntityOfPage": site.baseUrl + page.url } | json | safe }}</script>

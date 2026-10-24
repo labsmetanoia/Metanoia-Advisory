@@ -1,0 +1,9 @@
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-band__inner">
+    <div>
+      <h2 id="cta-title">{{ ui | t(lang, "closing.title") }}</h2>
+      <p>{{ ui | t(lang, "closing.text") }}</p>
+    </div>
+    <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="closing-band">{{ ui | t(lang, "cta.talk") }}</a>
+  </div>
+</section>

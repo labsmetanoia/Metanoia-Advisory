@@ -1,0 +1,4 @@
+{# expects `steps`: array of {title, text} localised, `lang` #}
+<ol class="process">
+  {% for st in steps %}<li><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></li>{% endfor %}
+</ol>

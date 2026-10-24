@@ -1,0 +1,89 @@
+{
+  "key": "pres-investor-decks",
+  "order": 9,
+  "practice": "presentation",
+  "slug": {
+    "en": "investor-and-results-decks",
+    "id": "dek-investor-dan-paparan-kinerja"
+  },
+  "title": {
+    "en": "Investor and results decks",
+    "id": "Dek investor dan paparan kinerja"
+  },
+  "promise": {
+    "en": "Four results decks, the public expose and a template system a year, from a team that knows your numbers and turns a results deck in 48 hours.",
+    "id": "Empat dek kinerja, public expose, dan sistem templat setiap tahun, dari tim yang memahami angka Anda dan menyelesaikan dek kinerja dalam 48 jam."
+  },
+  "metaDescription": {
+    "en": "Investor and results decks for IDX-listed companies on a 12-month retainer: quarterly decks, the public expose, a template system, 48-hour turnaround.",
+    "id": "Dek investor dan kinerja untuk emiten BEI dalam retainer 12 bulan: dek kuartalan, public expose, sistem templat, penyelesaian 48 jam."
+  },
+  "who": [
+    {
+      "en": "Heads of investor relations and corporate secretaries of listed mid-caps",
+      "id": "Kepala hubungan investor dan sekretaris perusahaan di perusahaan menengah tercatat"
+    },
+    {
+      "en": "CFOs who present results four times a year and want each deck to say what changed",
+      "id": "CFO yang memaparkan kinerja empat kali setahun dan ingin setiap dek menjelaskan apa yang berubah"
+    },
+    {
+      "en": "Newly listed companies building their first investor calendar",
+      "id": "Perusahaan yang baru tercatat dan sedang membangun kalender investor pertamanya"
+    }
+  ],
+  "get": [
+    {
+      "en": "Four quarterly results decks with action titles and reconciled figures",
+      "id": "Empat dek kinerja kuartalan dengan judul tindakan dan angka yang direkonsiliasi"
+    },
+    {
+      "en": "The annual public-expose deck",
+      "id": "Dek public expose tahunan"
+    },
+    {
+      "en": "A template and chart system your team can use between cycles",
+      "id": "Sistem templat dan grafik yang dapat dipakai tim Anda di antara siklus"
+    },
+    {
+      "en": "Two ad-hoc decks a year (investor meetings, analyst briefings)",
+      "id": "Dua dek ad hoc setahun (pertemuan investor, briefing analis)"
+    },
+    {
+      "en": "48-hour turnaround at results; a disclosure checklist on every release",
+      "id": "Penyelesaian 48 jam saat kinerja dirilis; daftar periksa keterbukaan pada setiap rilis"
+    }
+  ],
+  "getSummary": {
+    "en": "4 results decks, public expose, template system, 2 ad-hoc decks",
+    "id": "4 dek kinerja, public expose, sistem templat, 2 dek ad hoc"
+  },
+  "duration": {
+    "en": "Twelve-month retainer, renewed annually",
+    "id": "Retainer dua belas bulan, diperbarui setiap tahun"
+  },
+  "how": {
+    "en": "Monthly in advance; no per-slide pricing. Storyboard sign-off before layout on every deck.",
+    "id": "Bulanan di muka; tanpa harga per slide. Persetujuan storyboard sebelum tata letak pada setiap dek."
+  },
+  "next": {
+    "en": "An equity-story workshop when the strategy changes, and the annual report from the same team.",
+    "id": "Lokakarya equity story saat strategi berubah, dan laporan tahunan dari tim yang sama."
+  },
+  "artefact": {
+    "title": {
+      "en": "The year, planned",
+      "id": "Setahun, direncanakan"
+    },
+    "text": {
+      "en": "The retainer follows the issuer's calendar. Two moments carry the most weight: the full-year results and the public expose.",
+      "id": "Retainer mengikuti kalender emiten. Dua momen paling menentukan: kinerja tahunan dan public expose."
+    },
+    "component": "artefact-calendar",
+    "caption": {
+      "en": "Indicative investor-communication calendar; exact deadlines depend on the issuer's financial year.",
+      "id": "Kalender komunikasi investor indikatif; tenggat pasti bergantung pada tahun buku emiten."
+    }
+  },
+  "relatedService": "adv-strategy"
+}

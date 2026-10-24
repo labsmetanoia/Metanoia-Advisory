@@ -1,0 +1,37 @@
+---
+pagination: { data: langPages, size: 1, alias: p }
+pageKey: insights
+---
+{% set c = pages.insights %}
+<section class="page-hero">
+  <div class="wrap"><span class="kicker">{{ ui | t(lang, "nav.insights") }}</span><h1>{{ c.hero.title | L(lang) }}</h1><p class="lede">{{ c.hero.text | L(lang) }}</p></div>
+</section>
+{% set flagship = insights | where("type", "flagship") | first %}
+{% if flagship %}
+<section class="band fade-up">
+  <div class="wrap grid">
+    <div class="col-7"><span class="kicker">{{ ui | t(lang, "labels.flagship") }}{% if flagship.draft %} · {{ ui | t(lang, "labels.forthcoming") }}{% endif %}</span>
+      <h2><a class="link-ink" href="{{ 'insights' | itemUrl(flagship, lang) }}">{{ flagship.title | L(lang) }}</a></h2><p>{{ flagship.summary | L(lang) }}</p>
+      {% if flagship.pdf and not flagship.forthcoming %}<a class="btn btn--secondary" href="{{ flagship.pdf }}" data-event="download" data-asset="{{ flagship.key }}">{{ ui | t(lang, "cta.download") }}</a>{% else %}<a class="arrow-link" href="{{ 'insights' | itemUrl(flagship, lang) }}">{{ "Read the outline" if lang == "en" else "Baca garis besarnya" }}</a>{% endif %}</div>
+    {% if flagship.chart %}<div class="col-5">{% include "charts/" + flagship.chart + ".njk" %}</div>{% endif %}
+  </div>
+</section>
+{% endif %}
+<section class="section fade-up">
+  <div class="wrap grid">
+    <div class="col-8">
+      {% set notes = insights | where("type", "note") %}
+      {% if notes | length %}
+      <div class="section-head"><h2>{{ ui | t(lang, "labels.note") }}</h2></div>
+      {% for a in notes %}
+      <div class="insight-row">
+        <div><h3><a href="{{ 'insights' | itemUrl(a, lang) }}">{{ a.title | L(lang) }}</a></h3><p>{{ a.summary | L(lang) }}</p>
+        <p class="meta" style="margin-top:8px">{% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}">{{ au.name }}</a>{% endif %}{% endfor %} · {{ a.readingTime }} {{ ui | t(lang, "labels.readingTime") }}{% if a.draft %} · <span class="tag tag--draft">Draft</span>{% endif %}</p></div>
+        <time class="meta" datetime="{{ a.date | isoDate }}">{{ a.date | date(lang) }}</time>
+      </div>
+      {% endfor %}
+      {% elif not flagship %}<div class="empty"><p>{{ ui | t(lang, "labels.emptyInsights") }}</p></div>{% endif %}
+    </div>
+    <div class="col-4"><span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span><h3>{{ c.newsletter.title | L(lang) }}</h3><p class="muted">{{ c.newsletter.text | L(lang) }}</p>{% set uid = "nl-insights" %}{% include "components/newsletter.njk" %}</div>
+  </div>
+</section>

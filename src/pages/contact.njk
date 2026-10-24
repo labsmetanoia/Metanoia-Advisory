@@ -1,0 +1,83 @@
+---
+pagination: { data: langPages, size: 1, alias: p }
+pageKey: contact
+showCta: false
+---
+{% set c = pages.contact %}
+<section class="page-hero">
+  <div class="wrap"><span class="kicker">{{ ui | t(lang, "nav.contact") }}</span><h1>{{ c.hero.title | L(lang) }}</h1><p class="lede">{{ c.hero.text | L(lang) }}</p></div>
+</section>
+
+<section class="section" id="book" aria-labelledby="book-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="book-title">{{ c.book.title | L(lang) }}</h2><p class="meta measure">{{ c.book.text | L(lang) }}</p></div>
+    {% set partners = people | where("seniority", "partner") %}
+    {% if partners | length %}
+    <div class="grid-2">
+      {% for person in partners %}
+      <div class="contact-card">
+        <div class="avatar" aria-hidden="true">{% if person.portrait %}<img src="{{ person.portrait }}" alt="" width="96" height="120" loading="lazy">{% else %}{{ person.name | initials }}{% endif %}</div>
+        <div><h3><a class="link-ink" href="{{ 'people' | itemUrl(person, lang) }}">{{ person.name }}</a></h3><p class="muted">{{ person.role | L(lang) }}</p><p class="meta">{% for pk in person.practices %}{{ site.practiceNames[pk] | L(lang) }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+        <div class="cluster">{% set cal = person.calendarUrl or site.calendarUrl %}{% if cal %}<a class="btn btn--primary" href="{{ cal }}" rel="noopener" data-event="outbound_calendar" data-location="contact">{{ ui | t(lang, "cta.book") }}</a>{% endif %}<a class="btn btn--secondary" href="mailto:{{ person.email }}">{{ ui | t(lang, "cta.email") }}</a></div></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% elif site.calendarUrl %}
+    <div class="cluster"><a class="btn btn--primary" href="{{ site.calendarUrl }}" rel="noopener" data-event="outbound_calendar" data-location="contact">{{ ui | t(lang, "cta.book") }}</a>{% if site.email %}<a class="btn btn--secondary" href="mailto:{{ site.email }}">{{ ui | t(lang, "cta.email") }}</a>{% endif %}</div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section fade-up" id="form" aria-labelledby="form-title">
+  <div class="wrap grid">
+    <div class="col-5"><h2 id="form-title">{{ c.form.title | L(lang) }}</h2><p class="muted">{{ c.form.text | L(lang) }}</p></div>
+    <div class="col-7">
+      {% if site.hubspot.portalId and site.hubspot.contactFormGuid %}
+      <form class="form" data-hubspot="{{ site.hubspot.contactFormGuid }}" data-form-type="contact" novalidate>
+        <div class="field"><label for="f-name">{{ ui | t(lang, "form.name") }}</label><input id="f-name" name="firstname" type="text" required autocomplete="name"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+        <div class="field"><label for="f-company">{{ ui | t(lang, "form.company") }}</label><input id="f-company" name="company" type="text" required autocomplete="organization"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
+        <div class="field"><label for="f-email">{{ ui | t(lang, "form.email") }}</label><input id="f-email" name="email" type="email" required autocomplete="email"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
+        <div class="field"><label for="f-situation">{{ ui | t(lang, "form.situation") }}</label>
+          <select id="f-situation" name="situation" required><option value="">{{ ui | t(lang, "form.situationPlaceholder") }}</option>{% for k in ["entering", "raising", "reporting"] %}<option value="{{ k }}">{{ ui | t(lang, "labels.situations." + k) }}</option>{% endfor %}<option value="other">{{ ui | t(lang, "form.other") }}</option></select>
+          <span class="field__error" role="alert">{{ ui | t(lang, "form.errors.situation") }}</span></div>
+        <div class="field"><label for="f-message">{{ ui | t(lang, "form.message") }}</label><textarea id="f-message" name="message"></textarea></div>
+        <div class="field field--check"><input id="f-consent" name="consent" type="checkbox" required><label for="f-consent">{{ ui | t(lang, "form.consent") }} <a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "consent.privacy") }}</a></label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
+        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div><button class="btn btn--primary" type="submit" data-label="{{ ui | t(lang, 'form.submit') }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ ui | t(lang, "form.submit") }}</button></div>
+        <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+      </form>
+      <div class="form__success" data-success hidden><h3>{{ ui | t(lang, "form.success.title") }}</h3><p>{{ ui | t(lang, "form.success.text") }}</p>{% if site.calendarUrl %}<a class="btn btn--primary" href="{{ site.calendarUrl }}" rel="noopener" data-event="outbound_calendar" data-location="form-success">{{ ui | t(lang, "cta.book") }}</a>{% endif %}</div>
+      {% else %}<p class="muted">{{ ui | t(lang, "form.unavailable") }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="band fade-up" id="deck-review" aria-labelledby="deck-title">
+  <div class="wrap grid">
+    <div class="col-5"><span class="kicker">{{ site.practiceNames.presentation | L(lang) }}</span><h2 id="deck-title">{{ c.deckReview.title | L(lang) }}</h2><p class="muted">{{ c.deckReview.text | L(lang) }}</p></div>
+    <div class="col-7">
+      {% if site.hubspot.portalId and site.hubspot.deckReviewFormGuid %}
+      <form class="form" data-hubspot="{{ site.hubspot.deckReviewFormGuid }}" data-form-type="deck_review" novalidate>
+        <div class="field"><label for="d-name">{{ ui | t(lang, "form.name") }}</label><input id="d-name" name="firstname" type="text" required autocomplete="name"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+        <div class="field"><label for="d-company">{{ ui | t(lang, "form.company") }}</label><input id="d-company" name="company" type="text" required autocomplete="organization"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
+        <div class="field"><label for="d-email">{{ ui | t(lang, "form.email") }}</label><input id="d-email" name="email" type="email" required autocomplete="email"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
+        <div class="field"><label for="d-link">{{ ui | t(lang, "form.deckLink") }}</label><input id="d-link" name="deck_link" type="url"></div>
+        <div class="field field--check"><input id="d-consent" name="consent" type="checkbox" required><label for="d-consent">{{ ui | t(lang, "form.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
+        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div><button class="btn btn--primary" type="submit" data-label="{{ ui | t(lang, 'form.submit') }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ ui | t(lang, "form.submit") }}</button></div>
+        <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+      </form>
+      <div class="form__success" data-success hidden><h3>{{ ui | t(lang, "form.success.title") }}</h3><p>{{ c.deckReview.success | L(lang) }}</p></div>
+      {% else %}<p class="muted">{{ ui | t(lang, "form.unavailable") }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section fade-up">
+  <div class="wrap grid">
+    <div class="col-4"><h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3)">{{ ui | t(lang, "labels.office") }}</h2><p>{{ site.addressJakarta }}</p>{% if site.addressSingapore %}<p class="muted">{{ ui | t(lang, "labels.singapore") }}: {{ site.addressSingapore }}</p>{% endif %}{% if site.email %}<p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>{% endif %}</div>
+    <div class="col-8"><div class="statement"><h3>{{ ui | t(lang, "labels.confidentiality") }}</h3><p class="muted">{{ c.confidentiality | L(lang) }}</p><a class="arrow-link" href="{{ 'conflicts' | legalUrl(lang) }}">{{ ui | t(lang, "footer.conflicts") }}</a></div></div>
+  </div>
+</section>
+<script>document.addEventListener("DOMContentLoaded",function(){var s=new URLSearchParams(location.search).get("situation"),el=document.getElementById("f-situation");if(s&&el)el.value=s;});</script>
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "ContactPage", "name": pageTitle, "url": site.baseUrl + page.url } | json | safe }}</script>

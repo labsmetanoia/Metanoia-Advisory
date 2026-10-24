@@ -1,0 +1,16 @@
+{% set t = { "en": { "title": "Singapore was Indonesia's largest source of foreign direct investment in January–September 2025", "src": "Source: BKPM realisation data via Bisnis, 17 Oct 2025. USD billion, Jan–Sep 2025.", "bars": ["Singapore", "Hong Kong", "China", "Malaysia"] },
+             "id": { "title": "Singapura adalah sumber penanaman modal asing terbesar bagi Indonesia pada Januari–September 2025", "src": "Sumber: data realisasi BKPM via Bisnis, 17 Okt 2025. Miliar USD, Jan–Sep 2025.", "bars": ["Singapura", "Hong Kong", "Tiongkok", "Malaysia"] } } %}
+{% set tt = t[lang] %}
+<figure class="chart">
+  <p class="chart__title">{{ tt.title }}</p>
+  <svg viewBox="0 0 560 190" role="img" aria-label="{{ tt.title }}. {{ tt.bars[0] }} 12.6; {{ tt.bars[1] }} 7.3; {{ tt.bars[2] }} 5.4; {{ tt.bars[3] }} 2.7.">
+    {% set vals = [12.6, 7.3, 5.4, 2.7] %}
+    {% for v in vals %}{% set y = loop.index0 * 44 + 8 %}{% set wdt = (v / 12.6) * 380 %}
+    <text x="0" y="{{ y + 20 }}" class="{{ 'lbl' if loop.first else 'ctxlbl' }}">{{ tt.bars[loop.index0] }}</text>
+    <rect x="120" y="{{ y }}" width="{{ wdt | round(1) }}" height="28" class="{{ 'acc' if loop.first else 'ctx' }}"></rect>
+    <text x="{{ (120 + wdt + 8) | round(1) }}" y="{{ y + 20 }}" class="lbl">{{ v }}</text>
+    {% endfor %}
+    <line x1="120" y1="0" x2="120" y2="184" class="axis"></line>
+  </svg>
+  <p class="chart__source">{{ tt.src }}</p>
+</figure>

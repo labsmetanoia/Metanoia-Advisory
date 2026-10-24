@@ -1,0 +1,22 @@
+---
+permalink: /index.html
+layout: false
+---
+<!doctype html>
+<html lang="id" data-route="{{ site.route }}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.name }}</title>
+<meta name="robots" content="noindex">
+{% if site.baseUrl %}<link rel="alternate" hreflang="id-ID" href="{{ site.baseUrl }}/id/"><link rel="alternate" hreflang="en" href="{{ site.baseUrl }}/en/"><link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}/">{% endif %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css">
+<script>(function(){try{var p=localStorage.getItem("lang");if(!p){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();p=/(^|,)(id|in)(-|,|$)/.test(n)?"id":"en";}location.replace("/"+p+"/");}catch(e){location.replace("/id/");}})();</script>
+</head>
+<body>
+<main class="wrap" style="padding-top:96px">
+  <p class="wordmark" style="font-size:28px">Metanoia<span class="wordmark__sub">Advisory</span></p>
+  <h1 style="margin-top:48px">Pilih bahasa Anda <span class="muted" style="font-weight:400">/ Choose your language</span></h1>
+  <p class="cluster" style="margin-top:24px"><a class="btn btn--primary" href="/id/" lang="id">Bahasa Indonesia</a><a class="btn btn--secondary" href="/en/" lang="en">English</a></p>
+</main>
+</body></html>

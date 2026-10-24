@@ -1,0 +1,16 @@
+{# Synthetic "after" slide: action title states the finding, one accent, labelled values, source line. Figures are invented for illustration only. #}
+<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="background:#fff">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <text x="40" y="48" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#14161A">{% if lang == "en" %}<tspan x="40" dy="0">EBITDA margin recovered to 14% in Q3</tspan><tspan x="40" dy="26">as logistics costs normalised</tspan>{% else %}<tspan x="40" dy="0">Margin EBITDA pulih ke 14% di Q3</tspan><tspan x="40" dy="26">setelah biaya logistik kembali normal</tspan>{% endif %}</text>
+  <text x="40" y="98" font-family="Arial, sans-serif" font-size="12" fill="#5E6166">{{ "EBITDA margin, %, by quarter" if lang == "en" else "Margin EBITDA, %, per kuartal" }}</text>
+  <line x1="40" y1="290" x2="600" y2="290" stroke="#A5A7AA" stroke-width="1"/>
+  {% set vals = [11, 12, 9, 10, 13, 14] %}{% set lbls = ["Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25"] %}
+  {% for v in vals %}{% set x = 60 + loop.index0 * 90 %}{% set h = v * 12 %}
+  <rect x="{{ x }}" y="{{ 290 - h }}" width="56" height="{{ h }}" fill="{{ '#1F3A5F' if loop.last else '#D9D8D3' }}"/>
+  <text x="{{ x + 28 }}" y="{{ 282 - h }}" text-anchor="middle" font-family="Arial" font-size="13" font-weight="600" fill="#14161A">{{ v }}%</text>
+  <text x="{{ x + 28 }}" y="310" text-anchor="middle" font-family="Arial" font-size="11" fill="#5E6166">{{ lbls[loop.index0] }}</text>
+  {% endfor %}
+  <line x1="40" y1="{{ 290 - 12*12 }}" x2="600" y2="{{ 290 - 12*12 }}" stroke="#14161A" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="600" y="{{ 286 - 12*12 }}" text-anchor="end" font-family="Arial" font-size="10" fill="#14161A">{{ "FY24 average 12%" if lang == "en" else "Rata-rata FY24 12%" }}</text>
+  <text x="40" y="344" font-family="Arial" font-size="9" fill="#5E6166">{{ "Source: company management accounts (illustrative figures). As of Q3 2025." if lang == "en" else "Sumber: laporan manajemen perusahaan (angka ilustratif). Per Q3 2025." }}</text>
+</svg>

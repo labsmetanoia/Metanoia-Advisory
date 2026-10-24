@@ -1,0 +1,15 @@
+{# expects `lang`, `uid` #}
+<div>
+  <form class="newsletter" data-hubspot="{{ site.hubspot.newsletterFormGuid }}" data-form-type="newsletter" data-event-name="newsletter_signup" novalidate>
+    <div class="field" style="flex:1">
+      <label for="{{ uid }}-email" class="visually-hidden">{{ ui | t(lang, "form.email") }}</label>
+      <input id="{{ uid }}-email" name="email" type="email" required autocomplete="email" placeholder="{{ ui | t(lang, 'form.emailPlaceholder') }}">
+      <span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span>
+    </div>
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn btn--secondary" type="submit" data-label="{{ ui | t(lang, 'form.subscribe') }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ ui | t(lang, "form.subscribe") }}</button>
+    <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+  </form>
+  <p class="form__success meta" data-success hidden>{{ ui | t(lang, "form.success.newsletter") }}</p>
+  <p class="meta" style="margin-top:8px">{{ ui | t(lang, "form.newsletterConsent") }}</p>
+</div>

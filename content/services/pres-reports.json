@@ -1,0 +1,74 @@
+{
+  "key": "pres-reports",
+  "order": 11,
+  "practice": "presentation",
+  "slug": {
+    "en": "annual-and-sustainability-reports",
+    "id": "laporan-tahunan-dan-keberlanjutan"
+  },
+  "title": {
+    "en": "Annual and sustainability reports",
+    "id": "Laporan tahunan dan keberlanjutan"
+  },
+  "promise": {
+    "en": "An integrated annual and sustainability report that reads as one narrative, complies with SEOJK 16/2021 and POJK 51/2017, and is ready for PSPK 1/2 from FY2027.",
+    "id": "Laporan tahunan dan keberlanjutan terpadu yang terbaca sebagai satu narasi, memenuhi SEOJK 16/2021 dan POJK 51/2017, dan siap PSPK 1/2 mulai tahun buku 2027."
+  },
+  "metaDescription": {
+    "en": "Integrated annual and sustainability reports for IDX issuers: SEOJK 16/2021 and POJK 51/2017 compliance, PSPK 1/2 readiness, bilingual, filing-ready.",
+    "id": "Laporan tahunan dan keberlanjutan terpadu untuk emiten BEI: kepatuhan SEOJK 16/2021 dan POJK 51/2017, kesiapan PSPK 1/2, dwibahasa, siap disampaikan."
+  },
+  "who": [
+    {
+      "en": "Corporate secretaries and sustainability leads of listed companies",
+      "id": "Sekretaris perusahaan dan pimpinan keberlanjutan di perusahaan tercatat"
+    },
+    {
+      "en": "CFOs who want the annual report to carry the strategy, not just the disclosures",
+      "id": "CFO yang ingin laporan tahunan memuat strategi, bukan hanya pengungkapan"
+    },
+    {
+      "en": "Issuers preparing for the first PSPK-aligned reporting season",
+      "id": "Emiten yang menyiapkan musim pelaporan pertama yang selaras PSPK"
+    }
+  ],
+  "get": [
+    {
+      "en": "Narrative built from the strategy and the year's results, in one voice",
+      "id": "Narasi yang dibangun dari strategi dan kinerja tahun berjalan, dalam satu suara"
+    },
+    {
+      "en": "Disclosure checklist applied: SEOJK 16/2021, POJK 51/2017, IDX rules, PSPK 1/2",
+      "id": "Daftar periksa keterbukaan diterapkan: SEOJK 16/2021, POJK 51/2017, aturan BEI, PSPK 1/2"
+    },
+    {
+      "en": "Design, data visualisation and bilingual production, filing-ready",
+      "id": "Desain, visualisasi data, dan produksi dwibahasa, siap disampaikan"
+    },
+    {
+      "en": "ARA readiness review against the assessment criteria",
+      "id": "Tinjauan kesiapan ARA terhadap kriteria penilaian"
+    },
+    {
+      "en": "Print and web versions through a production partner under our management",
+      "id": "Versi cetak dan web melalui mitra produksi di bawah manajemen kami"
+    }
+  ],
+  "getSummary": {
+    "en": "Integrated narrative, compliance checklist, bilingual design and production",
+    "id": "Narasi terpadu, daftar periksa kepatuhan, desain dan produksi dwibahasa"
+  },
+  "duration": {
+    "en": "November to April; kick-off before the financial year closes",
+    "id": "November hingga April; dimulai sebelum tahun buku berakhir"
+  },
+  "how": {
+    "en": "Fixed fee, milestone-billed. We take at most two reports a season at launch so that the lead reviews every page.",
+    "id": "Biaya tetap, ditagih per tonggak. Pada peluncuran kami menerima paling banyak dua laporan per musim agar pemimpin praktik meninjau setiap halaman."
+  },
+  "next": {
+    "en": "The investor-communication retainer for the year ahead, built on the report's template system.",
+    "id": "Retainer komunikasi investor untuk tahun mendatang, dibangun di atas sistem templat laporan."
+  },
+  "relatedService": "adv-strategy"
+}

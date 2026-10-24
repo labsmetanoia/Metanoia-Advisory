@@ -1,0 +1,18 @@
+---
+pagination: { data: legalPages, size: 1, alias: p }
+pageKey: legal
+showCta: false
+---
+{% set doc = pages.legal[p.key] %}
+<section class="section">
+  <div class="wrap">
+    {% set crumbs = [{ name: ui | t(lang, "footer.legal"), url: 'conflicts' | legalUrl(lang) }, { name: doc.title | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <div class="article">
+      <h1>{{ doc.title | L(lang) }}</h1>
+      <p class="meta">{{ ui | t(lang, "labels.lastUpdated") }}: <time datetime="{{ doc.updated }}">{{ doc.updated | date(lang) }}</time></p>
+      {% if doc.reviewNote %}<div class="notice"><strong>{{ "For counsel review." if lang == "en" else "Untuk ditinjau penasihat hukum." }}</strong> {{ doc.reviewNote | L(lang) }}</div>{% endif %}
+      <div class="article__body">{{ doc.body | L(lang) | md | safe }}</div>
+    </div>
+  </div>
+</section>

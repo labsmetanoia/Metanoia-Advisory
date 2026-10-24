@@ -1,0 +1,14 @@
+<div class="consent" role="dialog" aria-label="{{ ui | t(lang, 'consent.settings') }}" aria-live="polite">
+  <p>{{ ui | t(lang, "consent.text") }} <a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "consent.privacy") }}</a></p>
+  <div class="consent__options">
+    <label><input type="checkbox" checked disabled> {{ "Strictly necessary" if lang == "en" else "Diperlukan" }}</label>
+    <label><input type="checkbox" id="consent-analytics"> {{ ui | t(lang, "consent.analytics") }}</label>
+    <label><input type="checkbox" id="consent-marketing"> {{ ui | t(lang, "consent.marketing") }}</label>
+    <button type="button" class="btn btn--secondary" data-consent="save">{{ ui | t(lang, "consent.save") }}</button>
+  </div>
+  <div class="consent__actions">
+    <button type="button" class="btn btn--secondary" data-consent="accept">{{ ui | t(lang, "consent.accept") }}</button>
+    <button type="button" class="btn btn--secondary" data-consent="decline">{{ ui | t(lang, "consent.decline") }}</button>
+    <button type="button" class="link-ink" style="background:none;border:0;cursor:pointer;font:inherit;text-decoration:underline" data-consent="settings">{{ ui | t(lang, "consent.settings") }}</button>
+  </div>
+</div>

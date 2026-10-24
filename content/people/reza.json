@@ -1,0 +1,23 @@
+{
+  "key": "reza", "order": 1, "draft": true, "showOnHome": true,
+  "slug": { "en": "reza", "id": "reza" },
+  "name": "Reza",
+  "role": { "en": "Founder and Managing Partner", "id": "Pendiri dan Managing Partner" },
+  "practices": ["marketEntry", "advisory"],
+  "seniority": "partner",
+  "portrait": "",
+  "summary": { "en": "Leads the market-entry and advisory practices. Background in investment, commercial partnerships and property.", "id": "Memimpin praktik masuk pasar dan advisory. Berlatar investasi, kemitraan komersial, dan properti." },
+  "trackRecord": {
+    "en": "Reza founded Metanoia Advisory to close the gap between the analysis that supports a decision and the room where it is made. Reza's background spans investment, commercial partnerships and property in Indonesia, with exposure to the capital markets. [Track record to be confirmed and completed by Reza: years, sectors, roles.]",
+    "id": "Reza mendirikan Metanoia Advisory untuk menutup jarak antara analisis yang mendasari keputusan dan ruang tempat keputusan itu diambil. Latar belakang Reza mencakup investasi, kemitraan komersial, dan properti di Indonesia, dengan paparan ke pasar modal. [Rekam jejak harus dikonfirmasi dan dilengkapi oleh Reza: tahun, sektor, peran.]"
+  },
+  "engagements": [
+    { "en": "[Representative engagement 1: situation, role, outcome. To be supplied.]", "id": "[Penugasan representatif 1: situasi, peran, hasil. Harus dilengkapi.]" },
+    { "en": "[Representative engagement 2. To be supplied.]", "id": "[Penugasan representatif 2. Harus dilengkapi.]" },
+    { "en": "[Representative engagement 3. To be supplied.]", "id": "[Penugasan representatif 3. Harus dilengkapi.]" }
+  ],
+  "languages": ["Bahasa Indonesia", "English"],
+  "email": "partner@example.com",
+  "calendarUrl": "",
+  "linkedin": ""
+}

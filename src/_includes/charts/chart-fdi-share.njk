@@ -1,0 +1,14 @@
+{% set t = { "en": { "title": "Foreign direct investment was 46.6% of Indonesia's Rp1,931 trillion investment realisation in 2025", "src": "Source: BKPM 2025 realisation via Jawa Pos, 16 Jan 2026. IDR trillion.", "a": "Foreign (PMA)", "b": "Domestic (PMDN)" },
+             "id": { "title": "Penanaman modal asing menyumbang 46,6% dari realisasi investasi Indonesia sebesar Rp1.931 triliun pada 2025", "src": "Sumber: realisasi BKPM 2025 via Jawa Pos, 16 Jan 2026. Triliun rupiah.", "a": "Asing (PMA)", "b": "Dalam negeri (PMDN)" } } %}
+{% set tt = t[lang] %}
+<figure class="chart">
+  <p class="chart__title">{{ tt.title }}</p>
+  <svg viewBox="0 0 560 120" role="img" aria-label="{{ tt.title }}. {{ tt.a }} 900.9; {{ tt.b }} 1,030.3.">
+    <rect x="0" y="20" width="{{ (900.9/1931.2*560) | round(1) }}" height="40" class="acc"></rect>
+    <rect x="{{ (900.9/1931.2*560) | round(1) }}" y="20" width="{{ (1030.3/1931.2*560) | round(1) }}" height="40" class="ctx"></rect>
+    <text x="8" y="46" class="lbl" style="fill:#fff">{{ tt.a }} · Rp900,9 T · 46,6%</text>
+    <text x="{{ (900.9/1931.2*560 + 10) | round(1) }}" y="46" class="lbl">{{ tt.b }} · Rp1.030,3 T</text>
+    <text x="0" y="100" class="ctxlbl" style="font-size:11px">{{ "Total Rp1,931.2 trillion" if lang == "en" else "Total Rp1.931,2 triliun" }}</text>
+  </svg>
+  <p class="chart__source">{{ tt.src }}</p>
+</figure>

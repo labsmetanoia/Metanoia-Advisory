@@ -1,0 +1,367 @@
+{
+  "marketEntry": {
+    "metaDescription": {
+      "en": "Market-entry consulting for Indonesia: market assessment, entry strategy, partner and site search, localisation and market representation.",
+      "id": "Konsultansi masuk pasar Indonesia: penilaian pasar, strategi masuk, pencarian mitra dan lokasi, lokalisasi, dan representasi pasar."
+    },
+    "situationLine": {
+      "en": "From \"should we?\" to first local revenue, with a partner and a site you have vetted.",
+      "id": "Dari \"perlukah kami?\" hingga pendapatan lokal pertama, dengan mitra dan lokasi yang telah Anda uji."
+    },
+    "doorBullets": [
+      {
+        "en": "Market assessment and entry strategy",
+        "id": "Penilaian pasar dan strategi masuk"
+      },
+      {
+        "en": "Partner, distributor and site search with diligence",
+        "id": "Pencarian mitra, distributor, dan lokasi dengan uji tuntas"
+      },
+      {
+        "en": "Market representation until your own team is in place",
+        "id": "Representasi pasar hingga tim Anda sendiri siap"
+      }
+    ],
+    "hero": {
+      "title": {
+        "en": "Enter Indonesia on a decision your board can defend.",
+        "id": "Masuk ke Indonesia dengan keputusan yang dapat dipertanggungjawabkan di hadapan dewan."
+      },
+      "text": {
+        "en": "For regional headquarters, fund operating partners and leadership teams deciding whether, how and with whom to enter or expand in Indonesia. We assess the market, build the entry case, find and vet the partner or site, and stay as your senior local presence until your own team is in place.",
+        "id": "Untuk kantor pusat regional, operating partner dana investasi, dan tim kepemimpinan yang memutuskan apakah, bagaimana, dan dengan siapa memasuki atau memperluas bisnis di Indonesia. Kami menilai pasar, menyusun kajian masuk, mencari dan menguji mitra atau lokasi, dan menjadi kehadiran senior lokal Anda hingga tim Anda sendiri siap."
+      }
+    },
+    "servicesTitle": {
+      "en": "Four services, one entry path",
+      "id": "Empat layanan, satu jalur masuk"
+    },
+    "servicesText": {
+      "en": "Buy one phase and roll into the next. Entity formation, licensing and compliance are coordinated through partners, never the headline.",
+      "id": "Ambil satu tahap lalu lanjut ke tahap berikutnya. Pendirian badan usaha, perizinan, dan kepatuhan dikoordinasikan melalui mitra, tidak pernah menjadi tajuk utama."
+    },
+    "processText": {
+      "en": "The same five steps whether the decision is a USD 5 million distributor agreement or a USD 50 million plant.",
+      "id": "Lima langkah yang sama, baik keputusannya berupa perjanjian distributor USD 5 juta maupun pabrik USD 50 juta."
+    },
+    "process": [
+      {
+        "title": {
+          "en": "Frame the decision",
+          "id": "Merumuskan keputusan"
+        },
+        "text": {
+          "en": "One page: the question, the options, who decides and by when.",
+          "id": "Satu halaman: pertanyaannya, pilihannya, siapa yang memutuskan, dan kapan."
+        }
+      },
+      {
+        "title": {
+          "en": "Build the evidence",
+          "id": "Membangun bukti"
+        },
+        "text": {
+          "en": "Demand, competitors, prices, the KBLI and licence stack, the partner longlist. Every number logged to a source.",
+          "id": "Permintaan, pesaing, harga, susunan KBLI dan izin, daftar panjang mitra. Setiap angka dicatat ke sumbernya."
+        }
+      },
+      {
+        "title": {
+          "en": "Make the case",
+          "id": "Menyusun kajian"
+        },
+        "text": {
+          "en": "Entry mode, structure, three-year model and a recommendation written for your board.",
+          "id": "Moda masuk, struktur, model tiga tahun, dan rekomendasi yang ditulis untuk dewan Anda."
+        }
+      },
+      {
+        "title": {
+          "en": "Win the room",
+          "id": "Memenangkan ruang"
+        },
+        "text": {
+          "en": "The HQ approval deck and the partner pitch, presented by the partner who built the case.",
+          "id": "Dek persetujuan kantor pusat dan pitch untuk mitra, dipaparkan oleh partner yang menyusun kajiannya."
+        }
+      },
+      {
+        "title": {
+          "en": "Stay through delivery",
+          "id": "Mendampingi pelaksanaan"
+        },
+        "text": {
+          "en": "Licensing coordination, partner negotiation and a fractional country manager until your general manager is hired.",
+          "id": "Koordinasi perizinan, negosiasi mitra, dan country manager paruh waktu hingga general manager Anda direkrut."
+        }
+      }
+    ],
+    "proof": {
+      "title": {
+        "en": "What a market assessment page looks like",
+        "id": "Seperti apa halaman penilaian pasar"
+      },
+      "text": {
+        "en": "Every chart we deliver states its finding in the title, uses one accent for the series that matters, labels the values and cites the source. This one is from our own research files.",
+        "id": "Setiap grafik yang kami serahkan menyatakan temuannya di judul, menggunakan satu aksen untuk seri yang penting, memberi label nilai, dan mencantumkan sumbernya. Grafik ini berasal dari berkas riset kami sendiri."
+      },
+      "component": "chart-fdi-sources",
+      "caption": {
+        "en": "Realised foreign direct investment by source country, January–September 2025.",
+        "id": "Realisasi penanaman modal asing menurut negara asal, Januari–September 2025."
+      }
+    },
+    "engagementsFrom": {
+      "en": "USD 20,000",
+      "id": "USD 20.000"
+    }
+  },
+  "advisory": {
+    "metaDescription": {
+      "en": "Strategy and investment advisory in Indonesia: feasibility studies, financial modelling, business cases, strategic planning, investment-grade documents.",
+      "id": "Advisory strategi dan investasi di Indonesia: studi kelayakan, pemodelan keuangan, kajian bisnis, perencanaan strategis, dokumen berstandar investor."
+    },
+    "situationLine": {
+      "en": "Feasibility, models and business cases built by the people who will present them.",
+      "id": "Kelayakan, model, dan kajian bisnis yang disusun oleh orang-orang yang akan memaparkannya."
+    },
+    "doorBullets": [
+      {
+        "en": "Feasibility studies and financial modelling",
+        "id": "Studi kelayakan dan pemodelan keuangan"
+      },
+      {
+        "en": "Investor-ready business cases and investment analysis",
+        "id": "Kajian bisnis siap investor dan analisis investasi"
+      },
+      {
+        "en": "Strategic planning and investment-grade documentation",
+        "id": "Perencanaan strategis dan dokumentasi berstandar investor"
+      }
+    ],
+    "hero": {
+      "title": {
+        "en": "Decision-grade analysis for the decisions that carry the most money.",
+        "id": "Analisis berkualitas keputusan untuk keputusan yang mempertaruhkan dana terbesar."
+      },
+      "text": {
+        "en": "For CFOs, boards and investors weighing an investment, a capital raise, a restructuring or a new strategic direction. Feasibility studies, financial models, business cases and investment-grade documents, built by the people who will present them, so the numbers in the model are the numbers in the room.",
+        "id": "Untuk CFO, dewan, dan investor yang menimbang investasi, penggalangan dana, restrukturisasi, atau arah strategis baru. Studi kelayakan, model keuangan, kajian bisnis, dan dokumen berstandar investor, disusun oleh orang-orang yang akan memaparkannya, sehingga angka dalam model adalah angka yang dipaparkan di ruang rapat."
+      }
+    },
+    "servicesTitle": {
+      "en": "Four services for one decision cycle",
+      "id": "Empat layanan untuk satu siklus keputusan"
+    },
+    "servicesText": {
+      "en": "From the first feasibility question to the document an investor signs on. Each service ends in something a board can act on.",
+      "id": "Dari pertanyaan kelayakan pertama hingga dokumen yang ditandatangani investor. Setiap layanan berakhir dengan sesuatu yang dapat ditindaklanjuti dewan."
+    },
+    "processText": {
+      "en": "A strategy firm hands over a model; an agency cannot build one. We build the model and the document that carries it, in the same weeks.",
+      "id": "Firma strategi menyerahkan model; agensi tidak mampu membuatnya. Kami membangun model dan dokumen yang membawanya, dalam minggu-minggu yang sama."
+    },
+    "process": [
+      {
+        "title": {
+          "en": "Frame the decision",
+          "id": "Merumuskan keputusan"
+        },
+        "text": {
+          "en": "The investment thesis in one page: what has to be true for this to work.",
+          "id": "Tesis investasi dalam satu halaman: apa yang harus benar agar ini berhasil."
+        }
+      },
+      {
+        "title": {
+          "en": "Build the evidence",
+          "id": "Membangun bukti"
+        },
+        "text": {
+          "en": "Market, operations, regulation and a three-statement model with scenarios. A reconciliation log on every number.",
+          "id": "Pasar, operasi, regulasi, dan model tiga laporan dengan skenario. Log rekonsiliasi pada setiap angka."
+        }
+      },
+      {
+        "title": {
+          "en": "Make the case",
+          "id": "Menyusun kajian"
+        },
+        "text": {
+          "en": "The recommendation, the risks and what would change our mind, written for the people who decide.",
+          "id": "Rekomendasi, risiko, dan apa yang akan mengubah pandangan kami, ditulis untuk orang-orang yang memutuskan."
+        }
+      },
+      {
+        "title": {
+          "en": "Win the room",
+          "id": "Memenangkan ruang"
+        },
+        "text": {
+          "en": "Board paper, investor deck, teaser and data-room narrative from the same numbers, presented by the partner who built them.",
+          "id": "Materi dewan, dek investor, teaser, dan narasi data room dari angka yang sama, dipaparkan oleh partner yang menyusunnya."
+        }
+      },
+      {
+        "title": {
+          "en": "Stay through delivery",
+          "id": "Mendampingi pelaksanaan"
+        },
+        "text": {
+          "en": "An implementation retainer with partner days priced in: the transformation office, the raise, the integration.",
+          "id": "Retainer implementasi dengan hari kerja partner yang diperhitungkan: kantor transformasi, penggalangan dana, integrasi."
+        }
+      }
+    ],
+    "proof": {
+      "title": {
+        "en": "What the board receives",
+        "id": "Yang diterima dewan"
+      },
+      "text": {
+        "en": "A page from a board pack in our standard: an action title that states the finding, one accent on the series it is about, a reference line for what it is measured against, labelled values and a source line. Figures here are synthetic.",
+        "id": "Satu halaman dari materi dewan dalam standar kami: judul tindakan yang menyatakan temuan, satu aksen pada seri yang dibahas, garis acuan untuk pembandingnya, nilai berlabel, dan baris sumber. Angka di sini bersifat sintetis."
+      },
+      "component": "slide-after",
+      "frame": true,
+      "illustrative": true,
+      "caption": {
+        "en": "Illustrative board-pack page with synthetic figures. Real artefacts are published only with client permission.",
+        "id": "Halaman materi dewan ilustratif dengan angka sintetis. Artefak nyata dipublikasikan hanya dengan izin klien."
+      }
+    },
+    "engagementsFrom": {
+      "en": "USD 30,000",
+      "id": "USD 30.000"
+    }
+  },
+  "presentation": {
+    "metaDescription": {
+      "en": "Presentation design and corporate communications for listed companies in Indonesia: results decks, equity stories, board packs, annual reports.",
+      "id": "Desain presentasi dan komunikasi korporat untuk perusahaan tercatat di Indonesia: dek kinerja, equity story, materi dewan, laporan tahunan."
+    },
+    "situationLine": {
+      "en": "Results decks, equity stories and annual reports that say what the numbers mean.",
+      "id": "Dek kinerja, equity story, dan laporan tahunan yang menjelaskan makna di balik angka."
+    },
+    "doorBullets": [
+      {
+        "en": "Investor and results decks on a 12-month calendar",
+        "id": "Dek investor dan kinerja dalam kalender 12 bulan"
+      },
+      {
+        "en": "Equity story, strategy and board decks",
+        "id": "Equity story, dek strategi, dan materi dewan"
+      },
+      {
+        "en": "Annual and sustainability reports, PSPK-ready",
+        "id": "Laporan tahunan dan keberlanjutan, siap PSPK"
+      }
+    ],
+    "hero": {
+      "title": {
+        "en": "Investor materials that say what the numbers mean.",
+        "id": "Materi investor yang menjelaskan makna di balik angka."
+      },
+      "text": {
+        "en": "For CFOs, heads of investor relations and corporate secretaries of listed and pre-IPO companies. Results decks, public exposes, equity stories, board packs and annual reports, built to one chart and storytelling standard and reconciled to your model, by a team that understands the disclosure rules it is working within.",
+        "id": "Untuk CFO, kepala hubungan investor, dan sekretaris perusahaan di perusahaan tercatat dan pra-IPO. Dek kinerja, public expose, equity story, materi dewan, dan laporan tahunan, dibangun dengan satu standar grafik dan penuturan serta direkonsiliasi dengan model Anda, oleh tim yang memahami aturan keterbukaan yang menjadi kerangkanya."
+      }
+    },
+    "servicesTitle": {
+      "en": "Three services on the issuer's calendar",
+      "id": "Tiga layanan dalam kalender emiten"
+    },
+    "servicesText": {
+      "en": "The results cycle, the strategic layer and the annual report. No per-slide pricing; retainers and fixed fees only.",
+      "id": "Siklus kinerja, lapisan strategis, dan laporan tahunan. Tanpa harga per slide; hanya retainer dan biaya tetap."
+    },
+    "processText": {
+      "en": "Storyboard before layout, numbers before design, a four-eyes check before anything reaches an investor.",
+      "id": "Storyboard sebelum tata letak, angka sebelum desain, pemeriksaan empat mata sebelum apa pun sampai ke investor."
+    },
+    "process": [
+      {
+        "title": {
+          "en": "Frame the message",
+          "id": "Merumuskan pesan"
+        },
+        "text": {
+          "en": "What must the board, the analyst or the regulator believe after the last page?",
+          "id": "Apa yang harus diyakini dewan, analis, atau regulator setelah halaman terakhir?"
+        }
+      },
+      {
+        "title": {
+          "en": "Build the evidence",
+          "id": "Membangun bukti"
+        },
+        "text": {
+          "en": "Figures from your model, reconciled; disclosure checklist (POJK, SEOJK, IDX, PSPK) applied.",
+          "id": "Angka dari model Anda, direkonsiliasi; daftar periksa keterbukaan (POJK, SEOJK, BEI, PSPK) diterapkan."
+        }
+      },
+      {
+        "title": {
+          "en": "Storyboard",
+          "id": "Storyboard"
+        },
+        "text": {
+          "en": "Action titles on every page, signed off at the mid-point before any layout work begins.",
+          "id": "Judul tindakan pada setiap halaman, disetujui di tengah jalan sebelum pekerjaan tata letak dimulai."
+        }
+      },
+      {
+        "title": {
+          "en": "Design and rehearse",
+          "id": "Mendesain dan berlatih"
+        },
+        "text": {
+          "en": "One accent, labelled charts, your template system. A rehearsal with the presenter.",
+          "id": "Satu aksen, grafik berlabel, sistem templat Anda. Latihan bersama presenter."
+        }
+      },
+      {
+        "title": {
+          "en": "Stay on the calendar",
+          "id": "Mengikuti kalender"
+        },
+        "text": {
+          "en": "Four results decks a year, the public expose and the annual report, from one team that knows your numbers.",
+          "id": "Empat dek kinerja setahun, public expose, dan laporan tahunan, dari satu tim yang memahami angka Anda."
+        }
+      }
+    ],
+    "proof": {
+      "title": {
+        "en": "Before and after",
+        "id": "Sebelum dan sesudah"
+      },
+      "text": {
+        "en": "Drag the handle. The same quarter, told twice: once as a dense overview, once with the finding in the title and one accent on the series it is about. The figures on both sides are synthetic; real pairs are published with client permission.",
+        "id": "Geser pegangannya. Kuartal yang sama, diceritakan dua kali: sekali sebagai ikhtisar padat, sekali dengan temuan di judul dan satu aksen pada seri yang dibahas. Angka di kedua sisi bersifat sintetis; pasangan nyata dipublikasikan dengan izin klien."
+      },
+      "illustrative": true,
+      "pair": {
+        "before": "slide-before",
+        "after": "slide-after",
+        "altBefore": {
+          "en": "Before: a dense results slide titled Financial Performance Overview with four bullet points, three small charts in six colours and a footer.",
+          "id": "Sebelum: slide kinerja padat berjudul Financial Performance Overview dengan empat butir, tiga grafik kecil dalam enam warna, dan catatan kaki."
+        },
+        "altAfter": {
+          "en": "After: one chart with the title EBITDA margin recovered to 14% in Q3 as logistics costs normalised, one accent bar, labelled values and a source line.",
+          "id": "Sesudah: satu grafik berjudul Margin EBITDA pulih ke 14% di Q3 setelah biaya logistik kembali normal, satu batang beraksen, nilai berlabel, dan baris sumber."
+        },
+        "caption": {
+          "en": "Illustrative before/after with synthetic figures.",
+          "id": "Ilustrasi sebelum/sesudah dengan angka sintetis."
+        }
+      }
+    },
+    "engagementsFrom": {
+      "en": "Rp20 million a month",
+      "id": "Rp20 juta per bulan"
+    }
+  }
+}

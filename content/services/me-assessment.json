@@ -1,0 +1,141 @@
+{
+  "key": "me-assessment",
+  "order": 1,
+  "practice": "marketEntry",
+  "slug": {
+    "en": "market-assessment-and-entry-strategy",
+    "id": "penilaian-pasar-dan-strategi-masuk"
+  },
+  "title": {
+    "en": "Market assessment and entry strategy",
+    "id": "Penilaian pasar dan strategi masuk"
+  },
+  "promise": {
+    "en": "A go/no-go recommendation and an entry case your board can defend, in four to eight weeks.",
+    "id": "Rekomendasi lanjut/tidak dan kajian masuk yang dapat dipertanggungjawabkan dewan Anda, dalam empat hingga delapan minggu."
+  },
+  "metaDescription": {
+    "en": "Indonesia market assessment and entry strategy: demand, competitors, KBLI and ownership rules, entry modes, a three-year model, a board recommendation.",
+    "id": "Penilaian pasar dan strategi masuk Indonesia: permintaan, pesaing, aturan KBLI dan kepemilikan, moda masuk, model tiga tahun, rekomendasi dewan."
+  },
+  "who": [
+    {
+      "en": "Regional headquarters in Singapore, Europe, Japan or Korea with Indonesia on next year's plan",
+      "id": "Kantor pusat regional di Singapura, Eropa, Jepang, atau Korea dengan Indonesia dalam rencana tahun depan"
+    },
+    {
+      "en": "Fund operating partners taking a portfolio company into its next market",
+      "id": "Operating partner dana investasi yang membawa perusahaan portofolio ke pasar berikutnya"
+    },
+    {
+      "en": "Indonesian groups weighing a new segment or a foreign partner",
+      "id": "Grup Indonesia yang menimbang segmen baru atau mitra asing"
+    }
+  ],
+  "get": [
+    {
+      "en": "Demand sizing, competitor and price mapping, channel structure",
+      "id": "Ukuran permintaan, pemetaan pesaing dan harga, struktur saluran"
+    },
+    {
+      "en": "Regulatory map: KBLI, foreign-ownership limits, licence stack, incentives",
+      "id": "Peta regulasi: KBLI, batas kepemilikan asing, susunan izin, insentif"
+    },
+    {
+      "en": "Entry-mode options compared: distributor, joint venture, PT PMA, representative office",
+      "id": "Perbandingan moda masuk: distributor, usaha patungan, PT PMA, kantor perwakilan"
+    },
+    {
+      "en": "Three-year P&L, capital and incentive plan, risk register",
+      "id": "Laba rugi tiga tahun, rencana modal dan insentif, daftar risiko"
+    },
+    {
+      "en": "A board recommendation and a 90-day plan",
+      "id": "Rekomendasi dewan dan rencana 90 hari"
+    }
+  ],
+  "getSummary": {
+    "en": "Market and regulatory map, entry-mode comparison, three-year model, board recommendation",
+    "id": "Peta pasar dan regulasi, perbandingan moda masuk, model tiga tahun, rekomendasi dewan"
+  },
+  "duration": {
+    "en": "Four weeks for the assessment; four to eight for the full entry case",
+    "id": "Empat minggu untuk penilaian; empat hingga delapan untuk kajian masuk lengkap"
+  },
+  "how": {
+    "en": "Weekly reviews with your sponsor; a mid-point read-out; the partner presents to your board.",
+    "id": "Tinjauan mingguan dengan sponsor Anda; pemaparan tengah jalan; partner memaparkan kepada dewan Anda."
+  },
+  "next": {
+    "en": "Most clients move to the partner and site search; the HQ approval deck is built with the Presentation practice from the same numbers.",
+    "id": "Sebagian besar klien melanjutkan ke pencarian mitra dan lokasi; dek persetujuan kantor pusat disusun bersama praktik Presentasi dari angka yang sama."
+  },
+  "timeline": [
+    {
+      "title": {
+        "en": "Week 1",
+        "id": "Minggu 1"
+      },
+      "text": {
+        "en": "Decision framed; data requests; interviews scheduled.",
+        "id": "Keputusan dirumuskan; permintaan data; wawancara dijadwalkan."
+      }
+    },
+    {
+      "title": {
+        "en": "Weeks 2–3",
+        "id": "Minggu 2–3"
+      },
+      "text": {
+        "en": "Market, competitor and regulatory evidence; 15–25 expert and channel interviews.",
+        "id": "Bukti pasar, pesaing, dan regulasi; 15–25 wawancara pakar dan saluran."
+      }
+    },
+    {
+      "title": {
+        "en": "Week 4",
+        "id": "Minggu 4"
+      },
+      "text": {
+        "en": "Mid-point read-out: what we have found and what it implies.",
+        "id": "Pemaparan tengah jalan: temuan dan implikasinya."
+      }
+    },
+    {
+      "title": {
+        "en": "Weeks 5–7",
+        "id": "Minggu 5–7"
+      },
+      "text": {
+        "en": "Entry modes, model, incentives, risks; draft recommendation.",
+        "id": "Moda masuk, model, insentif, risiko; draf rekomendasi."
+      }
+    },
+    {
+      "title": {
+        "en": "Week 8",
+        "id": "Minggu 8"
+      },
+      "text": {
+        "en": "Board presentation by the partner; 90-day plan handed over.",
+        "id": "Paparan dewan oleh partner; rencana 90 hari diserahkan."
+      }
+    }
+  ],
+  "artefact": {
+    "title": {
+      "en": "A page from the evidence",
+      "id": "Satu halaman dari bukti"
+    },
+    "text": {
+      "en": "Our market assessments use the same chart standard as our decks: the finding in the title, one accent, labelled values, a source line.",
+      "id": "Penilaian pasar kami memakai standar grafik yang sama dengan dek kami: temuan di judul, satu aksen, nilai berlabel, baris sumber."
+    },
+    "component": "chart-fdi-sources",
+    "caption": {
+      "en": "Realised FDI into Indonesia by source country, January–September 2025.",
+      "id": "Realisasi PMA ke Indonesia menurut negara asal, Januari–September 2025."
+    }
+  },
+  "relatedService": "adv-feasibility"
+}

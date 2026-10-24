@@ -1,0 +1,74 @@
+{
+  "key": "adv-documentation",
+  "order": 8,
+  "practice": "advisory",
+  "slug": {
+    "en": "investment-grade-documentation-and-capital-raise-readiness",
+    "id": "dokumentasi-berstandar-investor-dan-kesiapan-penggalangan-dana"
+  },
+  "title": {
+    "en": "Investment-grade documentation and capital-raise readiness",
+    "id": "Dokumentasi berstandar investor dan kesiapan penggalangan dana"
+  },
+  "promise": {
+    "en": "Information memoranda, equity stories and business plans that stand up to investor and underwriter diligence, and a readiness programme that gets you there in time.",
+    "id": "Memorandum informasi, equity story, dan rencana bisnis yang tahan uji tuntas investor atau penjamin emisi, serta program kesiapan yang membawa Anda ke sana sebelum jendela terbuka."
+  },
+  "metaDescription": {
+    "en": "Investment-grade documentation and capital-raise readiness in Indonesia: information memorandum, equity story, prospectus-grade business plan.",
+    "id": "Dokumentasi berstandar investor dan kesiapan penggalangan dana di Indonesia: memorandum informasi, equity story, rencana bisnis setara prospektus."
+  },
+  "who": [
+    {
+      "en": "Companies preparing an equity raise, bond issue or strategic sale",
+      "id": "Perusahaan yang menyiapkan penggalangan ekuitas, penerbitan obligasi, atau penjualan strategis"
+    },
+    {
+      "en": "Pre-IPO companies six to eighteen months from a listing decision",
+      "id": "Perusahaan pra-IPO enam hingga delapan belas bulan sebelum keputusan pencatatan"
+    },
+    {
+      "en": "Sponsors who need documents an international investor will read without a translator",
+      "id": "Sponsor yang membutuhkan dokumen yang dapat dibaca investor internasional tanpa penerjemah"
+    }
+  ],
+  "get": [
+    {
+      "en": "Information memorandum and data-room narrative reconciled to the model",
+      "id": "Memorandum informasi dan narasi data room yang direkonsiliasi dengan model"
+    },
+    {
+      "en": "Equity story and management presentation",
+      "id": "Equity story dan presentasi manajemen"
+    },
+    {
+      "en": "Business plan written to the standard a prospectus requires",
+      "id": "Rencana bisnis yang ditulis sesuai standar yang disyaratkan prospektus"
+    },
+    {
+      "en": "Readiness assessment: governance, reporting, investor-relations function",
+      "id": "Penilaian kesiapan: tata kelola, pelaporan, fungsi hubungan investor"
+    },
+    {
+      "en": "Bilingual materials, with regulatory terms kept in their official form",
+      "id": "Materi dwibahasa, dengan istilah regulasi dipertahankan dalam bentuk resminya"
+    }
+  ],
+  "getSummary": {
+    "en": "IM, data-room narrative, equity story, prospectus-grade plan, readiness",
+    "id": "IM, narasi data room, equity story, rencana setara prospektus, kesiapan"
+  },
+  "duration": {
+    "en": "Six to eight weeks for documentation; six to nine months for a readiness programme",
+    "id": "Enam hingga delapan minggu untuk dokumentasi; enam hingga sembilan bulan untuk program kesiapan"
+  },
+  "how": {
+    "en": "We work alongside your underwriter, counsel and auditor, and never in place of them.",
+    "id": "Kami bekerja berdampingan dengan penjamin emisi, penasihat hukum, dan auditor Anda, tidak pernah menggantikan mereka."
+  },
+  "next": {
+    "en": "After the raise or listing: the investor-communication retainer, so the story told in the roadshow is the story told every quarter.",
+    "id": "Setelah penggalangan dana atau pencatatan: retainer komunikasi investor, agar kisah yang dituturkan dalam roadshow adalah kisah yang dituturkan setiap kuartal."
+  },
+  "relatedService": "pres-investor-decks"
+}

@@ -1,0 +1,19 @@
+{% set t = { "en": { "title": "Indicative investor-communication calendar for an IDX-listed issuer", "src": "Indicative timing based on IDX and OJK periodic-reporting rules; exact deadlines depend on the issuer's financial year and filings.",
+  "items": [["Jan–Feb","FY results deck"],["Mar","Audited statements"],["Apr","Annual report"],["Apr–May","Q1 results deck"],["May–Jun","AGM · public expose"],["Jul–Aug","H1 results deck"],["Oct–Nov","Q3 results deck"],["Nov–Dec","Next-year equity story"]] },
+  "id": { "title": "Kalender komunikasi investor indikatif untuk emiten tercatat di BEI", "src": "Waktu indikatif berdasarkan ketentuan pelaporan berkala BEI dan OJK; tenggat pasti bergantung pada tahun buku dan pelaporan emiten.",
+  "items": [["Jan–Feb","Dek kinerja tahunan"],["Mar","Laporan keuangan audit"],["Apr","Laporan tahunan"],["Apr–Mei","Dek kinerja Q1"],["Mei–Jun","RUPS · public expose"],["Jul–Agu","Dek kinerja H1"],["Okt–Nov","Dek kinerja Q3"],["Nov–Des","Equity story tahun depan"]] } } %}
+{% set tt = t[lang] %}
+<figure class="chart">
+  <p class="chart__title">{{ tt.title }}</p>
+  <svg viewBox="0 0 560 230" role="img" aria-label="{{ tt.title }}: {% for it in tt.items %}{{ it[0] }} {{ it[1] }}; {% endfor %}">
+    <line x1="0" y1="24" x2="560" y2="24" class="axis"></line>
+    {% for it in tt.items %}{% set x = loop.index0 * 70 %}
+    <circle cx="{{ x + 6 }}" cy="24" r="5" class="{{ 'acc' if loop.index0 in [0, 4] else 'ctx' }}"></circle>
+    <line x1="{{ x + 6 }}" y1="30" x2="{{ x + 6 }}" y2="{{ 50 + (loop.index0 % 2) * 60 }}" class="axis"></line>
+    <text x="{{ x }}" y="{{ 66 + (loop.index0 % 2) * 60 }}" class="lbl" style="font-size:11px">{{ it[0] }}</text>
+    <text x="{{ x }}" y="{{ 82 + (loop.index0 % 2) * 60 }}" class="ctxlbl" style="font-size:10.5px">{{ it[1] | truncate(16) }}</text>
+    {% endfor %}
+    <text x="0" y="215" class="ctxlbl" style="font-size:11px">{{ "Accent marks the two highest-stakes moments: the FY results and the AGM public expose." if lang == "en" else "Aksen menandai dua momen paling menentukan: kinerja tahunan dan public expose RUPS." }}</text>
+  </svg>
+  <p class="chart__source">{{ tt.src }}</p>
+</figure>

@@ -1,0 +1,70 @@
+{
+  "key": "adv-strategy",
+  "order": 7,
+  "practice": "advisory",
+  "slug": {
+    "en": "strategic-planning-and-strategy-refresh",
+    "id": "perencanaan-strategis-dan-pembaruan-strategi"
+  },
+  "title": {
+    "en": "Strategic planning and strategy refresh",
+    "id": "Perencanaan strategis dan pembaruan strategi"
+  },
+  "promise": {
+    "en": "A three-year plan the board approves and the market can hear, because the equity story is written with it, not after it.",
+    "id": "Rencana tiga tahun yang disetujui dewan dan dapat didengar pasar, karena equity story ditulis bersamanya, bukan sesudahnya."
+  },
+  "metaDescription": {
+    "en": "Strategic planning and strategy refresh for Indonesian mid-caps: strategy review, options, three-year plan and board paper, carried into the equity story.",
+    "id": "Perencanaan strategis dan pembaruan strategi untuk emiten menengah: tinjauan strategi, pilihan, rencana tiga tahun, materi dewan, hingga equity story."
+  },
+  "who": [
+    {
+      "en": "Listed mid-caps after a leadership change, index inclusion or an ambitious new target",
+      "id": "Perusahaan menengah tercatat setelah pergantian kepemimpinan, masuk indeks, atau target baru yang ambisius"
+    },
+    {
+      "en": "Conglomerate subsidiaries asked by the group for a credible plan",
+      "id": "Anak usaha konglomerasi yang diminta grup menyusun rencana yang kredibel"
+    },
+    {
+      "en": "Boards that want options appraised, not a single answer sold",
+      "id": "Dewan yang ingin pilihan dinilai, bukan satu jawaban yang dijual"
+    }
+  ],
+  "get": [
+    {
+      "en": "Strategy review: where the business wins, where it does not, and why",
+      "id": "Tinjauan strategi: di mana bisnis unggul, di mana tidak, dan mengapa"
+    },
+    {
+      "en": "Strategic options appraised against capital, capability and risk",
+      "id": "Pilihan strategis dinilai terhadap modal, kapabilitas, dan risiko"
+    },
+    {
+      "en": "Three-year plan with targets, initiatives, owners and a financial bridge",
+      "id": "Rencana tiga tahun dengan target, inisiatif, penanggung jawab, dan jembatan keuangan"
+    },
+    {
+      "en": "Board paper and CEO strategy deck",
+      "id": "Materi dewan dan dek strategi CEO"
+    },
+    {
+      "en": "Hand-over into the equity story, investor day and annual-report narrative",
+      "id": "Serah terima ke equity story, investor day, dan narasi laporan tahunan"
+    }
+  ],
+  "getSummary": {
+    "en": "Strategy review, options, three-year plan, board paper",
+    "id": "Tinjauan strategi, pilihan, rencana tiga tahun, materi dewan"
+  },
+  "duration": {
+    "en": "Six to ten weeks",
+    "id": "Enam hingga sepuluh minggu"
+  },
+  "next": {
+    "en": "The Presentation practice carries the plan into the equity story and the next annual report; an implementation retainer runs the transformation office if you want one.",
+    "id": "Praktik Presentasi membawa rencana ke equity story dan laporan tahunan berikutnya; retainer implementasi menjalankan kantor transformasi jika Anda menghendaki."
+  },
+  "relatedService": "pres-equity-story"
+}

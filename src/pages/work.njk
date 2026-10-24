@@ -1,0 +1,27 @@
+---
+pagination: { data: langPages, size: 1, alias: p }
+pageKey: work
+---
+{% set c = pages.work %}
+<section class="page-hero">
+  <div class="wrap"><span class="kicker">{{ ui | t(lang, "nav.work") }}</span><h1>{{ c.hero.title | L(lang) }}</h1><p class="lede">{{ c.hero.text | L(lang) }}</p></div>
+</section>
+<section class="section">
+  <div class="wrap">
+    {% if cases | length %}
+    {% set sectors = [] %}{% for cs in cases %}{% if cs.sectorKey not in sectors %}{% set sectors = (sectors.push(cs.sectorKey), sectors) %}{% endif %}{% endfor %}
+    <div class="filters" role="group" aria-label="{{ 'Filters' if lang == 'en' else 'Filter' }}">
+      <div class="filters__group"><span class="filters__label">{{ ui | t(lang, "labels.filterPractice") }}</span>{% for pr in practices %}<button type="button" class="chip" data-filter="practice" data-value="{{ pr.key }}" aria-pressed="false">{{ ui | t(lang, "nav." + pr.key) }}</button>{% endfor %}</div>
+      <div class="filters__group"><span class="filters__label">{{ ui | t(lang, "labels.filterSituation") }}</span>{% for k in ["entering", "raising", "reporting"] %}<button type="button" class="chip" data-filter="situation" data-value="{{ k }}" aria-pressed="false">{{ ui | t(lang, "labels.situations." + k) }}</button>{% endfor %}</div>
+      <div class="filters__group"><span class="filters__label">{{ ui | t(lang, "labels.filterSector") }}</span>{% for sk in sectors %}{% set cs = cases | find("sectorKey", sk) %}<button type="button" class="chip" data-filter="sector" data-value="{{ sk }}" aria-pressed="false">{{ cs.sector | L(lang) }}</button>{% endfor %}</div>
+      <button type="button" class="chip" data-filter-clear>{{ ui | t(lang, "labels.clearFilters") }}</button>
+    </div>
+    <p class="meta" style="margin-bottom:24px"><span data-filter-count>{{ cases | length }}</span> {{ ui | t(lang, "labels.results") }}</p>
+    <h2 class="visually-hidden">{{ ui | t(lang, "nav.work") }}</h2>
+    <div class="grid-3" data-filter-grid>{% for c in cases %}{% include "components/case-card.njk" %}{% endfor %}</div>
+    <div class="empty" data-filter-empty hidden><p>{{ ui | t(lang, "labels.noResults") }}</p><p><button type="button" class="chip" data-filter-clear>{{ ui | t(lang, "labels.clearFilters") }}</button> <a class="arrow-link" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "cta.similar") }}</a></p></div>
+    {% else %}
+    <div class="empty"><p>{{ ui | t(lang, "labels.emptyWork") }}</p><p><a class="arrow-link" href="{{ 'contact' | pageUrl(lang) }}#book">{{ ui | t(lang, "cta.talk") }}</a></p></div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,7 @@
+{# expects `person`, `lang` #}
+<a class="person-card" href="{{ 'people' | itemUrl(person, lang) }}">
+  <div class="avatar" aria-hidden="true">{% if person.portrait %}<img src="{{ person.portrait }}" alt="" width="480" height="600" loading="lazy">{% else %}{{ person.name | initials }}{% endif %}</div>
+  <h3>{{ person.name }}</h3>
+  <p class="role">{{ person.role | L(lang) }}</p>
+  <p class="meta">{{ person.summary | L(lang) }}</p>
+</a>

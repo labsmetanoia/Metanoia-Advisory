@@ -1,0 +1,8 @@
+{# expects `c` (case), `lang` #}
+<article class="case-card" data-practices="{{ c.practices | join(' ') }}" data-situation="{{ c.situation }}" data-sector="{{ c.sectorKey }}">
+  <div class="case-card__media" aria-hidden="true">{% include "charts/" + (c.thumbnail or c.artefacts[0].component) + ".njk" %}</div>
+  <div class="tags"><span class="tag">{{ c.sector | L(lang) }}</span>{% if c.illustrative %}<span class="tag tag--draft">{{ ui | t(lang, "labels.illustrative") }}</span>{% endif %}</div>
+  <h3><a class="link-ink stretched" href="{{ 'work' | itemUrl(c, lang) }}">{{ c.title | L(lang) }}</a></h3>
+  <p>{{ c.situationText | L(lang) | truncate(120) }}</p>
+  <span class="case-card__read" aria-hidden="true">{{ ui | t(lang, "cta.readCase") }} →</span>
+</article>

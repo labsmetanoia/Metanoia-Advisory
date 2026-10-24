@@ -1,0 +1,51 @@
+---
+pagination: { data: servicePages, size: 1, alias: p }
+pageKey: service
+---
+{% set s = p.service %}{% set prName = site.practiceNames[s.practice] | L(lang) %}
+<section class="page-hero" style="margin-bottom:64px">
+  <div class="wrap">
+    {% set crumbs = [{ name: prName, url: s.practice | pageUrl(lang) }, { name: s.title | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <div class="grid">
+      <div class="col-8"><h1>{{ s.title | L(lang) }}</h1><p class="lede">{{ s.promise | L(lang) }}</p>
+      <div class="page-hero__actions"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="service-hero">{{ ui | t(lang, "cta.talk") }}</a>{% if s.practice == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="service-secondary">{{ ui | t(lang, "cta.deckReview") }}</a>{% endif %}</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section fade-up">
+  <div class="wrap grid">
+    <div class="col-4"><h2>{{ ui | t(lang, "labels.who") }}</h2><ul>{% for w in s.who %}<li>{{ w | L(lang) }}</li>{% endfor %}</ul></div>
+    <div class="col-4"><h2>{{ ui | t(lang, "labels.get") }}</h2><ul>{% for g in s.get %}<li>{{ g | L(lang) }}</li>{% endfor %}</ul></div>
+    <div class="col-4"><h2>{{ ui | t(lang, "labels.duration") }}</h2><p>{{ s.duration | L(lang) }}</p>{% if s.how %}<p class="muted">{{ s.how | L(lang) }}</p>{% endif %}<h2 style="margin-top:24px">{{ ui | t(lang, "labels.next") }}</h2><p>{{ s.next | L(lang) }}</p></div>
+  </div>
+</section>
+
+{% if s.timeline %}
+<section class="band fade-up" aria-labelledby="timeline-title">
+  <div class="wrap"><div class="section-head"><h2 id="timeline-title">{{ "How the weeks run" if lang == "en" else "Bagaimana minggu demi minggu berjalan" }}</h2></div>
+  {% set steps = s.timeline %}{% include "components/process-strip.njk" %}</div>
+</section>
+{% endif %}
+
+{% if s.artefact %}
+<section class="section fade-up">
+  <div class="wrap grid">
+    <div class="col-4"><h2>{{ s.artefact.title | L(lang) }}</h2><p class="muted">{{ s.artefact.text | L(lang) }}</p></div>
+    <div class="col-8"><figure><div class="{{ "artefact" if s.artefact.frame }}">{% include "charts/" + s.artefact.component + ".njk" %}</div><figcaption>{{ s.artefact.caption | L(lang) }}</figcaption></figure></div>
+  </div>
+</section>
+{% endif %}
+
+{% set relCase = cases | whereIncludes("relatedServices", s.key) | first %}
+{% set relService = services | find("key", s.relatedService) %}
+{% if relCase or relService %}
+<section class="section fade-up">
+  <div class="wrap grid">
+    {% if relCase %}<div class="col-6"><h2 class="kicker">{{ ui | t(lang, "labels.relatedCase") }}</h2>{% set c = relCase %}{% include "components/case-card.njk" %}</div>{% endif %}
+    {% if relService %}<div class="col-6"><h2 class="kicker">{{ ui | t(lang, "labels.relatedService") }}</h2><div class="service-block"><h3><a class="link-ink" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a></h3><p class="muted">{{ site.practiceNames[relService.practice] | L(lang) }}</p><p>{{ relService.promise | L(lang) }}</p><a class="arrow-link" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a></div></div>{% endif %}
+  </div>
+</section>
+{% endif %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "Service", "name": s.title | L(lang), "serviceType": prName, "description": s.promise | L(lang), "provider": { "@type": "Organization", "name": site.name }, "areaServed": "ID", "url": site.baseUrl + page.url } | json | safe }}</script>

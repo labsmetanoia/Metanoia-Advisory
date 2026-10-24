@@ -1,0 +1,12 @@
+{
+  "seoTitle": { "en": "Insights", "id": "Wawasan" },
+  "metaDescription": { "en": "Notes and flagship reports on Indonesian market entry, capital markets and investor communication, written from live client work.", "id": "Catatan dan laporan utama tentang masuk pasar Indonesia, pasar modal, dan komunikasi investor, ditulis dari pekerjaan klien nyata." },
+  "hero": {
+    "title": { "en": "Insights", "id": "Wawasan" },
+    "text": { "en": "Short notes from live client questions, a flagship report per practice each year, and one newsletter a month. Finding first, then evidence, with a source under every chart.", "id": "Catatan singkat dari pertanyaan klien nyata, satu laporan utama per praktik setiap tahun, dan satu nawala setiap bulan. Temuan dahulu, lalu bukti, dengan sumber di bawah setiap grafik." }
+  },
+  "newsletter": {
+    "title": { "en": "One note a month", "id": "Satu catatan setiap bulan" },
+    "text": { "en": "Regulatory changes, entry decisions and one artefact from recent work. Double opt-in; unsubscribe in one click.", "id": "Perubahan regulasi, keputusan masuk pasar, dan satu artefak dari pekerjaan terkini. Konfirmasi ganda; berhenti berlangganan dengan satu klik." }
+  }
+}

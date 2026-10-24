@@ -1,0 +1,123 @@
+---
+pagination: { data: langPages, size: 1, alias: p }
+pageKey: home
+---
+{% set c = pages.home %}
+<section class="hero">
+  <div class="wrap grid">
+    <div class="col-7 hero__text">
+      <h1 class="display">{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
+      <p class="lede">{{ c.hero.text | L(lang) }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hero">{{ ui | t(lang, "cta.talk") }}</a>
+        {% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'work' | pageUrl(lang) }}" data-event="cta_click" data-location="hero-secondary">{{ ui | t(lang, "cta.seeWork") }}</a>{% endif %}
+      </div>
+    </div>
+    <div class="col-5 hero__artefact">
+      <figure>
+        <div class="artefact">{% include "charts/artefact-deck-page.njk" %}</div>
+        <figcaption>{{ c.hero.artefactCaption | L(lang) }}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+{% if site.phase == 2 %}
+<section class="section fade-up" aria-labelledby="situations-title">
+  <div class="wrap">
+    <h2 id="situations-title" class="visually-hidden">{{ c.situations.title | L(lang) }}</h2>
+    <div class="grid-3">
+      {% for pr in practices %}{% set hub = pages.hubs[pr.key] %}
+      <a class="situation-card" href="{{ pr.key | pageUrl(lang) }}">
+        <div><h3>{{ ui | t(lang, "labels.situations." + pr.situation) }}</h3><p>{{ hub.situationLine | L(lang) }}</p></div>
+        <span class="situation-card__arrow" aria-hidden="true">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section fade-up" aria-labelledby="practices-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="practices-title">{{ c.practices.title | L(lang) }}</h2><p class="meta measure">{{ c.practices.text | L(lang) }}</p></div>
+    <div class="grid-3">
+      {% for pr in practices %}{% set hub = pages.hubs[pr.key] %}
+      <div class="practice-door">
+        <h3>{{ site.practiceNames[pr.key] | L(lang) }}</h3>
+        <ul>{% for b in hub.doorBullets %}<li>{{ b | L(lang) }}</li>{% endfor %}</ul>
+        {% set lead = people | whereIncludes("practices", pr.key) | where("seniority", "partner") | first %}
+        {% if lead %}<div class="practice-door__lead"><div class="avatar" aria-hidden="true">{% if lead.portrait %}<img src="{{ lead.portrait }}" alt="" width="40" height="50" loading="lazy">{% else %}<span style="font-size:14px">{{ lead.name | initials }}</span>{% endif %}</div><span>{{ ui | t(lang, "labels.lead") }}: <a class="link-ink" href="{{ 'people' | itemUrl(lead, lang) }}">{{ lead.name }}</a></span></div>{% endif %}
+        <a class="arrow-link" href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if site.phase == 2 %}
+{% set featured = cases | where("featuredHome", true) | first %}
+{% if featured %}
+<section class="band fade-up" aria-labelledby="featured-title">
+  <div class="wrap grid">
+    <div class="col-6">
+      <span class="kicker">{{ ui | t(lang, "labels.featured") }} · {{ featured.sector | L(lang) }}{% if featured.illustrative %} · {{ ui | t(lang, "labels.illustrative") }}{% endif %}</span>
+      <h2 id="featured-title"><a class="link-ink" href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a></h2>
+      <p>{{ featured.situationText | L(lang) }}</p>
+      <p class="muted">{{ featured.built | L(lang) | truncate(220) }}</p>
+      {% set o = featured.outcome %}{% include "components/outcome-figure.njk" %}
+      <p style="margin-top:24px"><a class="arrow-link" href="{{ 'work' | itemUrl(featured, lang) }}">{{ ui | t(lang, "cta.readCase") }}</a></p>
+    </div>
+    <div class="col-6"><div class="artefact">{% include "charts/" + featured.artefacts[0].component + ".njk" %}</div></div>
+  </div>
+</section>
+{% endif %}
+
+{% set homePeople = people | where("showOnHome", true) | limit(4) %}
+{% if homePeople | length %}
+<section class="section fade-up" aria-labelledby="people-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="people-title">{{ c.people.title | L(lang) }}</h2><a class="arrow-link" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "cta.allPeople") }}</a></div>
+    <div class="grid-4">{% for person in homePeople %}{% include "components/person-card.njk" %}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section fade-up" aria-labelledby="insight-title">
+  <div class="wrap grid">
+    <div class="col-6">
+      {% set flagship = insights | where("type", "flagship") | first %}
+      <span class="kicker">{{ ui | t(lang, "labels.flagship") }}</span>
+      {% if flagship %}
+      <h2 id="insight-title"><a class="link-ink" href="{{ 'insights' | itemUrl(flagship, lang) }}">{{ flagship.title | L(lang) }}</a></h2>
+      <p>{{ flagship.summary | L(lang) }}</p>
+      {% if flagship.forthcoming %}<p class="meta">{{ ui | t(lang, "labels.forthcoming") }}</p>{% elif flagship.pdf %}<a class="btn btn--secondary" href="{{ flagship.pdf }}" data-event="download" data-asset="{{ flagship.key }}">{{ ui | t(lang, "cta.download") }}</a>{% endif %}
+      {% else %}
+      <h2 id="insight-title">{{ c.insight.title | L(lang) }}</h2>
+      <p>{{ c.insight.text | L(lang) }}</p>
+      {% endif %}
+    </div>
+    <div class="col-6">
+      <span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span>
+      <h3>{{ c.newsletter.title | L(lang) }}</h3>
+      <p class="muted">{{ c.newsletter.text | L(lang) }}</p>
+      {% set uid = "nl-home" %}{% include "components/newsletter.njk" %}
+    </div>
+  </div>
+</section>
+{% else %}
+{# Phase 1 interim one-pager: founder card(s) and contact in place of the full sections #}
+<section class="section fade-up">
+  <div class="wrap grid">
+    {% for person in people | where("seniority", "partner") %}<div class="col-6"><div class="contact-card"><div class="avatar" aria-hidden="true">{% if person.portrait %}<img src="{{ person.portrait }}" alt="" width="96" height="120">{% else %}{{ person.name | initials }}{% endif %}</div><div><h3>{{ person.name }}</h3><p class="role muted">{{ person.role | L(lang) }}</p><p>{{ person.summary | L(lang) }}</p><div class="cluster">{% if site.calendarUrl %}<a class="btn btn--primary" href="{{ site.calendarUrl }}" data-event="outbound_calendar" rel="noopener">{{ ui | t(lang, "cta.talk") }}</a>{% endif %}<a class="btn btn--secondary" href="mailto:{{ person.email }}">{{ ui | t(lang, "cta.email") }}</a></div></div></div></div>{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "ProfessionalService", "name": site.name,
+  "url": site.baseUrl + ('home' | pageUrl(lang)), "description": pageDescription,
+  "areaServed": "ID", "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
+  "sameAs": [site.linkedin] if site.linkedin else [],
+  "knowsLanguage": ["id", "en"]
+} | json | safe }}</script>

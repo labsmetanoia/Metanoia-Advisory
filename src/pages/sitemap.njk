@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+layout: false
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for pg in collections.all -%}
+{%- if pg.data.alternates and not pg.data.noindex and pg.url -%}
+<url><loc>{{ site.baseUrl }}{{ pg.url }}</loc>
+{%- for l, u in pg.data.alternates %}<xhtml:link rel="alternate" hreflang="{{ 'id-ID' if l == 'id' else 'en' }}" href="{{ site.baseUrl }}{{ u }}"/>{% endfor -%}
+<xhtml:link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}/"/>
+</url>
+{% endif -%}
+{%- endfor %}
+</urlset>

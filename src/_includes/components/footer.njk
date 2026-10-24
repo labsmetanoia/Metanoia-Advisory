@@ -1,0 +1,47 @@
+{% set otherLang = "en" if lang == "id" else "id" %}
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer__statement">{{ ui | t(lang, "footer.statement") }}</p>
+    <div class="footer__grid">
+      <div>
+        <p class="footer__heading">{{ ui | t(lang, "footer.practices") }}</p>
+        <ul>
+          {% for pr in practices %}<li><a href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">{{ ui | t(lang, "footer.workInsights") }}</p>
+        <ul>
+          {% if site.phase == 2 %}
+          <li><a href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a></li>
+          <li><a href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
+          {% endif %}
+          {% if site.credentialsPdf %}<li><a href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf">{{ ui | t(lang, "cta.credentials") }}</a></li>{% endif %}
+          {% if site.linkedin %}<li><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a></li>{% endif %}
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">{{ ui | t(lang, "footer.firm") }}</p>
+        <ul>
+          <li><a href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>
+          {% for person in people | where("seniority", "partner") %}<li><a href="{{ 'people' | itemUrl(person, lang) }}">{{ person.name }}</a></li>{% endfor %}
+          <li><a href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
+          {% if site.email %}<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">{{ ui | t(lang, "footer.legal") }}</p>
+        <ul>
+          <li><a href="{{ 'conflicts' | legalUrl(lang) }}">{{ ui | t(lang, "footer.conflicts") }}</a></li>
+          <li><a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "footer.privacy") }}</a></li>
+          <li><a href="{{ 'terms' | legalUrl(lang) }}">{{ ui | t(lang, "footer.terms") }}</a></li>
+          <li><a href="#" data-consent-open>{{ ui | t(lang, "consent.settings") }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }} {{ site.addressJakarta }}{% if site.addressSingapore %} · {{ site.addressSingapore }}{% endif %}</span>
+      <span class="lang-switch"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>
+    </div>
+  </div>
+</footer>

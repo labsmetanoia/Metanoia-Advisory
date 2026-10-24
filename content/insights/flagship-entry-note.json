@@ -1,0 +1,52 @@
+{
+  "key": "flagship-entry-note",
+  "draft": true,
+  "forthcoming": true,
+  "type": "flagship",
+  "practice": "marketEntry",
+  "slug": {
+    "en": "indonesia-entry-note-2027",
+    "id": "catatan-masuk-pasar-indonesia-2027"
+  },
+  "title": {
+    "en": "Indonesia entry note 2027: what has changed for mid-market entrants",
+    "id": "Catatan masuk pasar Indonesia 2027: apa yang berubah bagi pendatang menengah"
+  },
+  "metaDescription": {
+    "en": "Forthcoming note for regional HQs and funds: the capital threshold, trade agreements, the licence stack and the sentiment cycle, with sourced charts.",
+    "id": "Catatan yang akan terbit untuk kantor pusat regional dan dana investasi: ambang modal, perjanjian dagang, susunan izin, siklus sentimen, grafik bersumber."
+  },
+  "date": "2026-10-22",
+  "authors": [
+    "reza"
+  ],
+  "readingTime": 2,
+  "summary": {
+    "en": "A ten-page note for boards weighing Indonesia in 2027: the lower PT PMA capital threshold, the US tariff and EU CEPA corridors, the licence stack that did not change, and how to read a sentiment cycle that lags FDI by two to four quarters.",
+    "id": "Catatan sepuluh halaman untuk dewan yang menimbang Indonesia pada 2027: ambang modal PT PMA yang lebih rendah, koridor tarif AS dan CEPA Uni Eropa, susunan izin yang tidak berubah, dan cara membaca siklus sentimen yang tertinggal dua hingga empat kuartal dari PMA."
+  },
+  "findings": [
+    {
+      "en": "Entry just got cheaper: the PT PMA threshold fell 75% in October 2025.",
+      "id": "Masuk pasar menjadi lebih murah: ambang PT PMA turun 75% pada Oktober 2025."
+    },
+    {
+      "en": "Two trade deals redirect flows from 2026: a 19% US tariff and the Indonesia–EU CEPA concluded in September 2025.",
+      "id": "Dua perjanjian dagang mengalihkan arus investasi sejak 2026: tarif AS 19% dan CEPA Indonesia–UE yang disepakati September 2025."
+    },
+    {
+      "en": "The cycle is the risk: FDI growth was flat in 2025 and sentiment weakened in H1 2026 before recovering.",
+      "id": "Siklus adalah risikonya: pertumbuhan PMA mendatar pada 2025 dan sentimen melemah pada paruh pertama 2026 sebelum pulih."
+    }
+  ],
+  "body": {
+    "en": "## Outline\n\n1. The decision boards are actually making in 2027.\n2. Capital: BKPM Regulation 5/2025 and what it changes for entry mode.\n3. Trade: the US tariff deal and the Indonesia–EU CEPA as sources of new entrants.\n4. Rules that did not move: KBLI, the Positive List, OSS, LKPM, sector licences.\n5. Sentiment: reading the 2026 cycle and what it means for timing.\n6. Three questions to answer before the next board meeting.\n\nPublished as a bilingual PDF. Subscribe below to receive it.",
+    "id": "## Garis besar\n\n1. Keputusan yang sebenarnya diambil dewan pada 2027.\n2. Modal: Peraturan BKPM 5/2025 dan perubahannya bagi moda masuk.\n3. Perdagangan: kesepakatan tarif AS dan CEPA Indonesia–UE sebagai sumber pendatang baru.\n4. Aturan yang tidak bergeser: KBLI, Daftar Positif, OSS, LKPM, izin sektor.\n5. Sentimen: membaca siklus 2026 dan artinya bagi penentuan waktu.\n6. Tiga pertanyaan yang harus dijawab sebelum rapat dewan berikutnya.\n\nTerbit sebagai PDF dwibahasa. Berlangganan di bawah untuk menerimanya."
+  },
+  "chart": "chart-fdi-share",
+  "pdf": "",
+  "relatedServices": [
+    "me-assessment",
+    "me-partner-search"
+  ]
+}

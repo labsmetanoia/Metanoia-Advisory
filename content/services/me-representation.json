@@ -1,0 +1,74 @@
+{
+  "key": "me-representation",
+  "order": 4,
+  "practice": "marketEntry",
+  "slug": {
+    "en": "market-representation-and-implementation",
+    "id": "representasi-pasar-dan-implementasi"
+  },
+  "title": {
+    "en": "Market representation and implementation",
+    "id": "Representasi pasar dan implementasi"
+  },
+  "promise": {
+    "en": "A credible senior face in Indonesia for the six to eighteen months before your country manager is in place.",
+    "id": "Wajah senior yang kredibel di Indonesia selama enam hingga delapan belas bulan sebelum country manager Anda siap."
+  },
+  "metaDescription": {
+    "en": "Fractional country manager in Indonesia, two to three days a week: pipeline, partner management, hiring the permanent GM, board reporting.",
+    "id": "Country manager paruh waktu di Indonesia, dua hingga tiga hari seminggu: pipeline, pengelolaan mitra, perekrutan GM tetap, pelaporan dewan."
+  },
+  "who": [
+    {
+      "en": "Entrants who have decided to proceed but have no one on the ground yet",
+      "id": "Pendatang yang telah memutuskan lanjut tetapi belum memiliki orang di lapangan"
+    },
+    {
+      "en": "Funds that need a local operator for a portfolio company's first year",
+      "id": "Dana investasi yang membutuhkan operator lokal untuk tahun pertama perusahaan portofolio"
+    },
+    {
+      "en": "Companies that want the people who built the entry case to run its first year",
+      "id": "Perusahaan yang ingin orang-orang penyusun kajian masuk menjalankan tahun pertamanya"
+    }
+  ],
+  "get": [
+    {
+      "en": "A senior lead on the ground two to three days a week",
+      "id": "Pemimpin senior di lapangan dua hingga tiga hari seminggu"
+    },
+    {
+      "en": "Pipeline, partner and distributor management, key-account meetings",
+      "id": "Pengelolaan pipeline, mitra, dan distributor; pertemuan key account"
+    },
+    {
+      "en": "Hiring and onboarding of the permanent general manager",
+      "id": "Perekrutan dan orientasi general manager tetap"
+    },
+    {
+      "en": "Monthly board reporting in the format your HQ already uses",
+      "id": "Pelaporan dewan bulanan dalam format yang sudah dipakai kantor pusat Anda"
+    },
+    {
+      "en": "Compliance back-office (LKPM, tax, payroll) through a white-label partner, one point of contact",
+      "id": "Back office kepatuhan (LKPM, pajak, penggajian) melalui mitra berlabel putih, satu titik kontak"
+    }
+  ],
+  "getSummary": {
+    "en": "Senior presence 2–3 days a week; pipeline, partners, hiring, board reporting",
+    "id": "Kehadiran senior 2–3 hari seminggu; pipeline, mitra, perekrutan, pelaporan dewan"
+  },
+  "duration": {
+    "en": "Six-month minimum; typically six to eighteen months",
+    "id": "Minimum enam bulan; umumnya enam hingga delapan belas bulan"
+  },
+  "how": {
+    "en": "Monthly retainer with partner days stated explicitly. We stay if you keep us; we hand over when your team is ready.",
+    "id": "Retainer bulanan dengan hari kerja partner dinyatakan eksplisit. Kami tetap mendampingi jika Anda menghendaki; kami menyerahkan saat tim Anda siap."
+  },
+  "next": {
+    "en": "Handover to your general manager with a documented pipeline, partner file and board pack.",
+    "id": "Serah terima kepada general manager Anda dengan pipeline, berkas mitra, dan materi dewan yang terdokumentasi."
+  },
+  "relatedService": "pres-investor-decks"
+}

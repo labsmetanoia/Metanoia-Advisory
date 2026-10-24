@@ -1,0 +1,90 @@
+{
+  "key": "adv-business-case",
+  "order": 6,
+  "practice": "advisory",
+  "slug": {
+    "en": "business-cases-and-investment-analysis",
+    "id": "kajian-bisnis-dan-analisis-investasi"
+  },
+  "title": {
+    "en": "Business cases and investment analysis",
+    "id": "Kajian bisnis dan analisis investasi"
+  },
+  "promise": {
+    "en": "The investor-ready business case: strategy, model, investor deck, teaser and data-room narrative from the same numbers, in six to ten weeks.",
+    "id": "Kajian bisnis siap investor: strategi, model, dek investor, teaser, dan narasi data room dari angka yang sama, dalam enam hingga sepuluh minggu."
+  },
+  "metaDescription": {
+    "en": "Investor-ready business cases in Indonesia: investment analysis, model, investor deck, teaser and data-room narrative from one team and one data set.",
+    "id": "Kajian bisnis siap investor di Indonesia: analisis investasi, model, dek investor, teaser, dan narasi data room dari satu tim dan satu set data."
+  },
+  "who": [
+    {
+      "en": "CFOs and CEOs raising equity or debt, or seeking a joint-venture partner",
+      "id": "CFO dan CEO yang menggalang ekuitas atau utang, atau mencari mitra usaha patungan"
+    },
+    {
+      "en": "Conglomerate subsidiaries and PE portfolio companies taking a project to the board",
+      "id": "Anak usaha konglomerasi dan perusahaan portofolio PE yang membawa proyek ke dewan"
+    },
+    {
+      "en": "Indonesian groups presenting to foreign or Gulf capital",
+      "id": "Grup Indonesia yang memaparkan kepada modal asing atau Teluk"
+    }
+  ],
+  "get": [
+    {
+      "en": "Investment thesis and strategic options appraisal",
+      "id": "Tesis investasi dan penilaian pilihan strategis"
+    },
+    {
+      "en": "Three-year financial model with returns analysis and scenarios",
+      "id": "Model keuangan tiga tahun dengan analisis imbal hasil dan skenario"
+    },
+    {
+      "en": "Investor deck, teaser and data-room narrative from the same data set",
+      "id": "Dek investor, teaser, dan narasi data room dari set data yang sama"
+    },
+    {
+      "en": "Board paper and Q&A preparation",
+      "id": "Materi dewan dan persiapan tanya jawab"
+    },
+    {
+      "en": "Optional implementation retainer through the raise or the integration",
+      "id": "Retainer implementasi opsional selama penggalangan dana atau integrasi"
+    }
+  ],
+  "getSummary": {
+    "en": "Thesis, model, investor deck, teaser, data-room narrative",
+    "id": "Tesis, model, dek investor, teaser, narasi data room"
+  },
+  "duration": {
+    "en": "Six to ten weeks",
+    "id": "Enam hingga sepuluh minggu"
+  },
+  "how": {
+    "en": "One lead partner, one lead from the Presentation practice, one shared engagement manager. The partner presents to your board and your investors.",
+    "id": "Satu partner utama, satu pemimpin dari praktik Presentasi, satu engagement manager bersama. Partner memaparkan kepada dewan dan investor Anda."
+  },
+  "next": {
+    "en": "Investment-grade documentation for the raise, or an implementation retainer while the capital is deployed.",
+    "id": "Dokumentasi berstandar investor untuk penggalangan dana, atau retainer implementasi sementara modal digunakan."
+  },
+  "artefact": {
+    "title": {
+      "en": "The same numbers, in the room",
+      "id": "Angka yang sama, di ruang rapat"
+    },
+    "text": {
+      "en": "Every page of the investor deck is built from the model, with an action title that states the finding. Figures here are synthetic.",
+      "id": "Setiap halaman dek investor dibangun dari model, dengan judul tindakan yang menyatakan temuan. Angka di sini bersifat sintetis."
+    },
+    "component": "slide-after",
+    "frame": true,
+    "caption": {
+      "en": "Illustrative deck page with synthetic figures.",
+      "id": "Halaman dek ilustratif dengan angka sintetis."
+    }
+  },
+  "relatedService": "pres-equity-story"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "metanoia-advisory-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Corporate website for Metanoia Advisory: bilingual (ID/EN) static site built with Eleventy.",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve --quiet",
+    "build": "rm -rf _site && eleventy",
+    "build:preview": "rm -rf _site && SITE_PREVIEW=1 eleventy",
+    "build:phase1": "rm -rf _site && SITE_PHASE=1 eleventy",
+    "clean": "rm -rf _site",
+    "test": "npm run build:preview && node scripts/check-links.mjs && SITE_PREVIEW=1 node scripts/check-parity.mjs && npm run build && node scripts/check-links.mjs && node scripts/check-parity.mjs",
+    "test:a11y": "node scripts/check-a11y.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7",
+    "axe-core": "^4.14.0",
+    "html-validate": "^11.17.0"
+  }
+}

@@ -1,0 +1,4 @@
+# Language negotiation for the root (Netlify / Cloudflare Pages syntax). Indonesian browsers go to /id/, everyone else to /en/.
+/  /id/  302  Language=id
+/  /en/  302
+# Legacy and interim-site redirects go here (301), one per line: /old-path  /en/new-path/  301

@@ -1,0 +1,74 @@
+{
+  "key": "me-partner-search",
+  "order": 2,
+  "practice": "marketEntry",
+  "slug": {
+    "en": "partner-distributor-and-site-search",
+    "id": "pencarian-mitra-distributor-dan-lokasi"
+  },
+  "title": {
+    "en": "Partner, distributor and site search",
+    "id": "Pencarian mitra, distributor, dan lokasi"
+  },
+  "promise": {
+    "en": "The partner, distributor or industrial site chosen on diligence rather than on who you happened to meet, with part of our fee paid only on signing.",
+    "id": "Mitra, distributor, atau kawasan industri yang dipilih berdasarkan uji tuntas, bukan karena kebetulan bertemu, dengan sebagian imbalan kami dibayar hanya saat penandatanganan."
+  },
+  "metaDescription": {
+    "en": "Partner, distributor, joint-venture and site search in Indonesia: longlist, diligence on ownership and litigation, introductions, term-sheet support.",
+    "id": "Pencarian mitra, distributor, usaha patungan, dan lokasi di Indonesia: daftar panjang, uji tuntas kepemilikan dan litigasi, perkenalan, term sheet."
+  },
+  "who": [
+    {
+      "en": "Companies whose entry case depends on a local partner or distributor",
+      "id": "Perusahaan yang kajian masuknya bergantung pada mitra atau distributor lokal"
+    },
+    {
+      "en": "Manufacturers choosing between industrial estates and incentive zones",
+      "id": "Produsen yang memilih antara kawasan industri dan zona insentif"
+    },
+    {
+      "en": "Indonesian groups seeking a foreign joint-venture or technology partner",
+      "id": "Grup Indonesia yang mencari mitra usaha patungan atau teknologi asing"
+    }
+  ],
+  "get": [
+    {
+      "en": "A longlist built from the market, not from one introduction",
+      "id": "Daftar panjang yang dibangun dari pasar, bukan dari satu perkenalan"
+    },
+    {
+      "en": "Diligence on ownership, litigation, channel conflicts and financial standing",
+      "id": "Uji tuntas atas kepemilikan, litigasi, konflik saluran, dan kondisi keuangan"
+    },
+    {
+      "en": "Introductions and structured first meetings; comparison against your criteria",
+      "id": "Perkenalan dan pertemuan pertama terstruktur; perbandingan terhadap kriteria Anda"
+    },
+    {
+      "en": "For sites: shortlist, incentive comparison (KEK, tax holidays), lease structuring",
+      "id": "Untuk lokasi: daftar pendek, perbandingan insentif (KEK, tax holiday), struktur sewa"
+    },
+    {
+      "en": "Term-sheet support and negotiation alongside your counsel",
+      "id": "Dukungan term sheet dan negosiasi bersama penasihat hukum Anda"
+    }
+  ],
+  "getSummary": {
+    "en": "Longlist, diligence, introductions, term-sheet support",
+    "id": "Daftar panjang, uji tuntas, perkenalan, dukungan term sheet"
+  },
+  "duration": {
+    "en": "Six to ten weeks to a signed term sheet",
+    "id": "Enam hingga sepuluh minggu hingga term sheet ditandatangani"
+  },
+  "how": {
+    "en": "A fixed retainer plus a fee that is paid only when the agreement is signed, with named counterparties and a defined attribution window.",
+    "id": "Retainer tetap ditambah imbalan yang dibayar hanya saat perjanjian ditandatangani, dengan pihak lawan bernama dan jendela atribusi yang ditetapkan."
+  },
+  "next": {
+    "en": "Licensing coordination through our law-firm and corporate-services partners, then market representation while the partnership beds in.",
+    "id": "Koordinasi perizinan melalui mitra firma hukum dan jasa korporasi kami, lalu representasi pasar sementara kemitraan berjalan."
+  },
+  "relatedService": "adv-business-case"
+}

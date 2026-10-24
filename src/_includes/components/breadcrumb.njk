@@ -1,0 +1,7 @@
+{# expects `crumbs`: array of {name, url} ending with current page (no url) #}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    {% for c in crumbs %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.name }}</a>{% else %}<span aria-current="page">{{ c.name }}</span>{% endif %}</li>{% endfor %}
+  </ol>
+</nav>
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs | breadcrumbLd(site.baseUrl, page.url) } | json | safe }}</script>

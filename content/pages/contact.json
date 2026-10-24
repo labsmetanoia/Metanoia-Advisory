@@ -1,0 +1,25 @@
+{
+  "seoTitle": { "en": "Talk to a partner", "id": "Bicara dengan partner" },
+  "metaDescription": { "en": "Book a 45-minute working session with a partner at Metanoia Advisory in Jakarta, request a review of your last public-expose deck, or write to us.", "id": "Jadwalkan sesi kerja 45 menit bersama partner Metanoia Advisory di Jakarta, minta tinjauan dek public expose terakhir Anda, atau tulis kepada kami." },
+  "hero": {
+    "title": { "en": "Talk to a partner", "id": "Bicara dengan partner" },
+    "text": { "en": "The fastest route is a 45-minute working session: pick a partner and a time. If you would rather write first, the form below reaches a partner directly and is answered within two working days.", "id": "Jalur tercepat adalah sesi kerja 45 menit: pilih partner dan waktunya. Jika Anda lebih suka menulis dahulu, formulir di bawah langsung sampai ke partner dan dijawab dalam dua hari kerja." }
+  },
+  "book": {
+    "title": { "en": "Book a working session", "id": "Jadwalkan sesi kerja" },
+    "text": { "en": "Choose the partner closest to your situation. You will receive a confirmation in your language within five minutes, with our credentials attached.", "id": "Pilih partner yang paling dekat dengan situasi Anda. Anda akan menerima konfirmasi dalam bahasa Anda dalam lima menit, beserta kredensial kami." }
+  },
+  "form": {
+    "title": { "en": "Or write to us", "id": "Atau tulis kepada kami" },
+    "text": { "en": "Four fields. Tell us the situation and we will come back with a view, not a brochure.", "id": "Empat kolom. Ceritakan situasinya dan kami akan kembali dengan pandangan, bukan brosur." }
+  },
+  "deckReview": {
+    "title": { "en": "Request a review of your last public-expose deck", "id": "Minta tinjauan dek public expose terakhir Anda" },
+    "text": { "en": "Send a link or a file. Within two working days a partner replies with three observations: what the deck says, what it should say, and the one page we would rebuild first.", "id": "Kirimkan tautan atau berkasnya. Dalam dua hari kerja seorang partner membalas dengan tiga pengamatan: apa yang dikatakan dek itu, apa yang seharusnya dikatakan, dan satu halaman yang akan kami bangun ulang terlebih dahulu." },
+    "success": { "en": "We will reply with three observations within two working days. If the deck is confidential, send it from your work address and we will confirm receipt under NDA.", "id": "Kami akan membalas dengan tiga pengamatan dalam dua hari kerja. Jika dek bersifat rahasia, kirimkan dari alamat kantor Anda dan kami akan mengonfirmasi penerimaan di bawah NDA." }
+  },
+  "confidentiality": {
+    "en": "Everything you share with us, including in a working session, is treated as confidential and never used in our own materials without written permission. We run a conflict check before any engagement that touches a listed company's market-facing materials.",
+    "id": "Segala yang Anda bagikan kepada kami, termasuk dalam sesi kerja, diperlakukan sebagai rahasia dan tidak pernah digunakan dalam materi kami tanpa izin tertulis. Kami menjalankan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat."
+  }
+}

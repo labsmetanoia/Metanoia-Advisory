@@ -1,0 +1,15 @@
+{# Hero artefact: a flat render of a deck page set in the firm's chart standard, using the sourced FDI chart. #}
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ 'A board-deck page set in the firm’s chart standard: finding in the title, one accent, labelled values, source line.' if lang == 'en' else 'Halaman dek dewan dalam standar grafik firma: temuan di judul, satu aksen, nilai berlabel, baris sumber.' }}">
+  <rect width="640" height="400" fill="#ffffff"/>
+  <text x="40" y="60" font-family="{{ 'Fraunces, Georgia, serif' if site.route == 'journal' else 'Inter Tight, Inter, sans-serif' }}" font-size="20" font-weight="600" fill="#14161A">{% if lang == "en" %}<tspan x="40" dy="0">Singapore supplied USD 12.6 bn of Indonesia’s FDI in Jan–Sep</tspan><tspan x="40" dy="26">2025, 45% of the top four source countries combined</tspan>{% else %}<tspan x="40" dy="0">Singapura menyalurkan PMA USD 12,6 miliar ke Indonesia pada</tspan><tspan x="40" dy="26">Jan–Sep 2025, 45% dari gabungan empat negara asal terbesar</tspan>{% endif %}</text>
+  <text x="40" y="118" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5E6166">{{ "Realised FDI by source, USD billion, January–September 2025" if lang == "en" else "Realisasi PMA menurut asal, miliar USD, Januari–September 2025" }}</text>
+  {% set rows = [["Singapore","Singapura",12.6],["Hong Kong","Hong Kong",7.3],["China","Tiongkok",5.4],["Malaysia","Malaysia",2.7]] %}
+  {% for r in rows %}{% set y = 145 + loop.index0 * 46 %}{% set wdt = r[2] / 12.6 * 380 %}
+  <text x="40" y="{{ y + 20 }}" font-family="Inter, Arial, sans-serif" font-size="13" fill="{{ '#14161A' if loop.first else '#5E6166' }}" font-weight="{{ 600 if loop.first else 400 }}">{{ r[0] if lang == "en" else r[1] }}</text>
+  <rect x="150" y="{{ y }}" width="{{ wdt | round(1) }}" height="28" fill="{{ (site.route == 'journal' and '#1F3A5F' or '#0E5B5B') if loop.first else '#D9D8D3' }}"/>
+  <text x="{{ (158 + wdt) | round(1) }}" y="{{ y + 20 }}" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#14161A">{{ r[2] }}</text>
+  {% endfor %}
+  <line x1="150" y1="140" x2="150" y2="330" stroke="#A5A7AA"/>
+  <text x="40" y="372" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5E6166">{{ "Source: BKPM via Bisnis, 17 Oct 2025. Note: Japan and the US each contributed roughly USD 1 bn per quarter." if lang == "en" else "Sumber: BKPM via Bisnis, 17 Okt 2025. Catatan: Jepang dan AS masing-masing sekitar USD 1 miliar per kuartal." }}</text>
+  <text x="600" y="372" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" fill="#A5A7AA">12</text>
+</svg>

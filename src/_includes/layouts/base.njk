@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="{{ lang }}" data-route="{{ site.route }}" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle | truncate(70) }}</title>
+{% if pageDescription %}<meta name="description" content="{{ pageDescription | truncate(160) }}">{% endif %}
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% set otherLang = "en" if lang == "id" else "id" %}
+{% if site.baseUrl %}
+<link rel="canonical" href="{{ site.baseUrl }}{{ page.url }}">
+{% for l, u in alternates %}<link rel="alternate" hreflang="{{ 'id-ID' if l == 'id' else 'en' }}" href="{{ site.baseUrl }}{{ u }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}/">
+{% endif %}
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ pageTitle }}">
+{% if pageDescription %}<meta property="og:description" content="{{ pageDescription | truncate(200) }}">{% endif %}
+<meta property="og:locale" content="{{ 'id_ID' if lang == 'id' else 'en_GB' }}">
+<meta property="og:locale:alternate" content="{{ 'en_GB' if lang == 'id' else 'id_ID' }}">
+{% if site.baseUrl %}<meta property="og:url" content="{{ site.baseUrl }}{{ page.url }}">
+<meta property="og:image" content="{{ site.baseUrl }}{{ ogImage }}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="{{ '#FAF8F4' if site.route == 'journal' else '#F7F8FA' }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{% if site.route == "journal" %}
+<link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+{% else %}
+<link rel="preload" href="/assets/fonts/intertight-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+{% endif %}
+<link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+<script>window.__SITE__={ga4:{{ site.ga4MeasurementId | json | safe }},linkedin:{{ site.linkedinPartnerId | json | safe }},hubspotPortalId:{{ site.hubspot.portalId | json | safe }}};</script>
+</head>
+<body{% if bodyAttrs %} {{ bodyAttrs | safe }}{% endif %}>
+<a class="skip-link" href="#main">{{ ui | t(lang, "skip") }}</a>
+{% include "components/header.njk" %}
+<main id="main" tabindex="-1">
+{{ content | safe }}
+{% if showCta !== false and site.phase == 2 %}{% include "components/cta-band.njk" %}{% endif %}
+</main>
+{% include "components/footer.njk" %}
+{% include "components/consent.njk" %}
+{% if site.preview %}<button type="button" class="route-toggle">Route: Journal / Boardroom</button>{% endif %}
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

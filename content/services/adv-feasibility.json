@@ -1,0 +1,89 @@
+{
+  "key": "adv-feasibility",
+  "order": 5,
+  "practice": "advisory",
+  "slug": {
+    "en": "feasibility-studies-and-financial-modelling",
+    "id": "studi-kelayakan-dan-pemodelan-keuangan"
+  },
+  "title": {
+    "en": "Feasibility studies and financial modelling",
+    "id": "Studi kelayakan dan pemodelan keuangan"
+  },
+  "promise": {
+    "en": "A feasibility study with a model a lender or investor can interrogate, and a recommendation that says what would change our mind.",
+    "id": "Studi kelayakan dengan model yang dapat diuji pemberi pinjaman atau investor, dan rekomendasi yang menyatakan apa yang akan mengubah pandangan kami."
+  },
+  "metaDescription": {
+    "en": "Feasibility studies and financial modelling in Indonesia: sourced assessment, three-statement model with scenarios, risk register, recommendation.",
+    "id": "Studi kelayakan dan pemodelan keuangan di Indonesia: penilaian bersumber, model tiga laporan dengan skenario, daftar risiko, rekomendasi."
+  },
+  "who": [
+    {
+      "en": "Boards and project sponsors deciding on a new plant, line, venture or acquisition",
+      "id": "Dewan dan sponsor proyek yang memutuskan pabrik, lini, usaha, atau akuisisi baru"
+    },
+    {
+      "en": "CFOs who need a model that will survive a lender's or investor's diligence",
+      "id": "CFO yang membutuhkan model yang tahan uji tuntas pemberi pinjaman atau investor"
+    },
+    {
+      "en": "Conglomerate subsidiaries taking a project to the group investment committee",
+      "id": "Anak usaha konglomerasi yang membawa proyek ke komite investasi grup"
+    }
+  ],
+  "get": [
+    {
+      "en": "Market and commercial assessment with sourced evidence",
+      "id": "Penilaian pasar dan komersial dengan bukti bersumber"
+    },
+    {
+      "en": "Regulatory and incentive review: BKPM/OSS, KBLI, sector licences, tax holidays, KEK",
+      "id": "Tinjauan regulasi dan insentif: BKPM/OSS, KBLI, izin sektor, tax holiday, KEK"
+    },
+    {
+      "en": "Three-statement financial model with scenarios, sensitivities and a reconciliation log",
+      "id": "Model keuangan tiga laporan dengan skenario, sensitivitas, dan log rekonsiliasi"
+    },
+    {
+      "en": "Risk register with owners and early-warning indicators",
+      "id": "Daftar risiko dengan penanggung jawab dan indikator peringatan dini"
+    },
+    {
+      "en": "A written recommendation and the kill criteria that go with it",
+      "id": "Rekomendasi tertulis dan kriteria penghentian yang menyertainya"
+    }
+  ],
+  "getSummary": {
+    "en": "Sourced assessment, three-statement model, risk register, recommendation",
+    "id": "Penilaian bersumber, model tiga laporan, daftar risiko, rekomendasi"
+  },
+  "duration": {
+    "en": "Five to eight weeks",
+    "id": "Lima hingga delapan minggu"
+  },
+  "how": {
+    "en": "Fixed fee; weekly reviews; model walkthrough with your finance team before the read-out.",
+    "id": "Biaya tetap; tinjauan mingguan; penelusuran model bersama tim keuangan Anda sebelum pemaparan."
+  },
+  "next": {
+    "en": "The investor-ready business case: the same model carried into the deck, teaser and data-room narrative.",
+    "id": "Kajian bisnis siap investor: model yang sama dibawa ke dek, teaser, dan narasi data room."
+  },
+  "artefact": {
+    "title": {
+      "en": "Regulation as an input, not a footnote",
+      "id": "Regulasi sebagai masukan, bukan catatan kaki"
+    },
+    "text": {
+      "en": "A feasibility study for a foreign-owned venture changes materially when a capital threshold moves. We track the rules that move the model.",
+      "id": "Studi kelayakan untuk usaha milik asing berubah secara material ketika ambang modal bergeser. Kami memantau aturan yang menggerakkan model."
+    },
+    "component": "chart-pma-capital",
+    "caption": {
+      "en": "Minimum paid-up capital for a PT PMA before and after BKPM Regulation 5/2025.",
+      "id": "Modal disetor minimum PT PMA sebelum dan sesudah Peraturan BKPM 5/2025."
+    }
+  },
+  "relatedService": "me-assessment"
+}

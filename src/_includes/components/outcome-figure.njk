@@ -1,0 +1,6 @@
+{# expects `o` (outcome), `lang` #}
+<div class="outcome">
+  <div class="outcome__figure" aria-label="{{ o.figure }} {{ o.unit | L(lang) }}">{{ o.figure }}<span class="unit">{{ o.unit | L(lang) }}</span></div>
+  <p class="outcome__caption">{{ o.caption | L(lang) }}</p>
+  {% if o.source %}<p class="outcome__source">{{ ui | t(lang, "labels.source") }}: {{ o.source | L(lang) }}</p>{% endif %}
+</div>

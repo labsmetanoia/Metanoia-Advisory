@@ -1,0 +1,36 @@
+---
+pagination: { data: personPages, size: 1, alias: p }
+pageKey: person
+---
+{% set person = p.person %}
+<section class="section">
+  <div class="wrap">
+    {% set crumbs = [{ name: ui | t(lang, "nav.about"), url: 'about' | pageUrl(lang) }, { name: person.name }] %}
+    {% include "components/breadcrumb.njk" %}
+    {% if person.draft %}<div class="notice"><strong>{{ ui | t(lang, "labels.draftPerson") }}.</strong> {{ ui | t(lang, "labels.draftPersonText") }}</div>{% endif %}
+    <div class="grid">
+      <div class="col-4"><div class="avatar" aria-hidden="true" style="max-width:360px">{% if person.portrait %}<img src="{{ person.portrait }}" alt="" width="480" height="600">{% else %}{{ person.name | initials }}{% endif %}</div></div>
+      <div class="col-8">
+        <span class="kicker">{{ ui | t(lang, "labels.seniority." + person.seniority) }} · {% for pk in person.practices %}{{ site.practiceNames[pk] | L(lang) }}{% if not loop.last %} · {% endif %}{% endfor %}</span>
+        <h1>{{ person.name }}</h1>
+        <p class="lede">{{ person.role | L(lang) }}</p>
+        <h2 class="h3" style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:32px">{{ ui | t(lang, "labels.trackRecord") }}</h2>
+        <div class="measure">{{ person.trackRecord | L(lang) | md | safe }}</div>
+        <h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:32px">{{ ui | t(lang, "labels.engagements") }}</h2>
+        <ol class="measure">{% for e in person.engagements %}<li>{{ e | L(lang) }}</li>{% endfor %}</ol>
+        <p class="meta" style="margin-top:24px"><strong>{{ ui | t(lang, "labels.languages") }}:</strong> {{ person.languages | join(", ") }}</p>
+        <div class="cluster" style="margin-top:24px">
+          {% set cal = person.calendarUrl or site.calendarUrl %}
+          {% if cal %}<a class="btn btn--primary" href="{{ cal }}" rel="noopener" data-event="outbound_calendar" data-location="person">{{ ui | t(lang, "cta.calendar") }}</a>{% endif %}
+          <a class="btn btn--secondary" href="mailto:{{ person.email }}">{{ ui | t(lang, "cta.email") }}</a>
+          {% if person.linkedin %}<a class="arrow-link" href="{{ person.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="cluster" style="justify-content:space-between;margin-top:64px;padding-top:24px;border-top:1px solid var(--grey-2)">
+      {% if p.prev %}<a class="arrow-link" href="{{ 'people' | itemUrl(p.prev, lang) }}">← {{ p.prev.name }}</a>{% else %}<span></span>{% endif %}
+      {% if p.next %}<a class="arrow-link" href="{{ 'people' | itemUrl(p.next, lang) }}">{{ p.next.name }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "Person", "name": person.name, "jobTitle": person.role | L(lang), "worksFor": { "@type": "Organization", "name": site.name }, "email": "mailto:" + person.email, "sameAs": [person.linkedin] if person.linkedin else [], "knowsLanguage": person.languages, "url": site.baseUrl + page.url } | json | safe }}</script>

@@ -1,0 +1,51 @@
+{
+  "key": "flagship-investor-communication",
+  "draft": true,
+  "forthcoming": true,
+  "type": "flagship",
+  "practice": "presentation",
+  "slug": {
+    "en": "state-of-indonesian-investor-communication",
+    "id": "kondisi-komunikasi-investor-indonesia"
+  },
+  "title": {
+    "en": "State of Indonesian investor communication: thirty public-expose decks against a decision-grade standard",
+    "id": "Kondisi komunikasi investor Indonesia: tiga puluh dek public expose diuji terhadap standar kualitas keputusan"
+  },
+  "metaDescription": {
+    "en": "Forthcoming flagship report: thirty IDX-listed companies' public-expose decks scored on structure, charts and disclosure.",
+    "id": "Laporan utama yang akan terbit: dek public expose tiga puluh emiten BEI dinilai dari struktur, grafik, dan keterbukaan."
+  },
+  "date": "2026-10-23",
+  "authors": [
+    "reza"
+  ],
+  "readingTime": 2,
+  "summary": {
+    "en": "Our first flagship report scores thirty public-expose decks from IDX-listed mid-caps on whether a reader can find the finding, trust the chart and locate the disclosure. Published on completion of the firm's first reporting season.",
+    "id": "Laporan utama pertama kami menilai tiga puluh dek public expose dari emiten menengah BEI berdasarkan apakah pembaca dapat menemukan temuannya, memercayai grafiknya, dan menemukan keterbukaannya. Terbit setelah musim pelaporan pertama firma selesai."
+  },
+  "findings": [
+    {
+      "en": "How many pages in a typical public-expose deck state a finding in the title (the study will measure this).",
+      "id": "Berapa banyak halaman dalam dek public expose tipikal yang menyatakan temuan di judulnya (studi ini akan mengukurnya)."
+    },
+    {
+      "en": "How often a chart's values are labelled and sourced, so an analyst can reuse them without asking.",
+      "id": "Seberapa sering nilai grafik diberi label dan sumber, sehingga analis dapat memakainya kembali tanpa bertanya."
+    },
+    {
+      "en": "Whether the three questions analysts most often ask are answered in the first five pages.",
+      "id": "Apakah tiga pertanyaan yang paling sering diajukan analis terjawab dalam lima halaman pertama."
+    }
+  ],
+  "body": {
+    "en": "## Why this study\n\nEvery IDX-listed company presents a public expose at least once a year. The decks are public, comparable and rarely examined as a set. We are scoring thirty of them, from private-sector mid-caps, against the standard we use in our own work.\n\n## Method (outline)\n\nThirty decks from the most recent public-expose season; three raters; a 20-point rubric covering structure (does each page state a finding?), charts (one message, labelled values, a source line) and disclosure (can a reader find what POJK and IDX rules require?). Results are reported in aggregate; no company is named without permission.\n\n## When\n\nThe report publishes after the firm's first reporting season, with a bilingual PDF and a short briefing for heads of investor relations. Subscribe below to receive it.",
+    "id": "## Mengapa studi ini\n\nSetiap emiten BEI memaparkan public expose setidaknya sekali setahun. Dek-dek itu bersifat publik, dapat diperbandingkan, dan jarang diteliti sebagai satu kumpulan. Kami menilai tiga puluh di antaranya, dari emiten menengah swasta, terhadap standar yang kami pakai dalam pekerjaan kami sendiri.\n\n## Metode (garis besar)\n\nTiga puluh dek dari musim public expose terkini; tiga penilai; rubrik 20 poin yang mencakup struktur (apakah setiap halaman menyatakan temuan?), grafik (satu pesan, nilai berlabel, baris sumber), dan keterbukaan (dapatkah pembaca menemukan yang disyaratkan POJK dan aturan BEI?). Hasil dilaporkan secara agregat; tidak ada perusahaan yang disebut tanpa izin.\n\n## Kapan\n\nLaporan terbit setelah musim pelaporan pertama firma, dengan PDF dwibahasa dan briefing singkat untuk kepala hubungan investor. Berlangganan di bawah untuk menerimanya."
+  },
+  "pdf": "",
+  "relatedServices": [
+    "pres-investor-decks",
+    "pres-equity-story"
+  ]
+}
