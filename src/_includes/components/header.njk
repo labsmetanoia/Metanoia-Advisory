@@ -24,7 +24,7 @@
           <li class="nav__contact-mobile"><a class="nav__link{% if activeNav == 'contact' %} is-active{% endif %}" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
         </ul>
         <div class="nav__lang nav__lang--desktop">{% include "components/lang-select.njk" %}</div>
-        <div class="nav__cta nav__cta--desktop"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="header">{{ ui | t(lang, "cta.contact") }} →</a></div>
+        <div class="nav__cta nav__cta--desktop"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="header"><span>{{ ui | t(lang, "cta.contact") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a></div>
         <div class="nav__cta nav__cta--mobile"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="menu">{{ ui | t(lang, "cta.contact") }}</a></div>
       </nav>
     </div>

@@ -3,57 +3,90 @@ pagination: { data: langPages, size: 1, alias: p }
 pageKey: about
 ---
 {% set c = pages.about %}
-<section class="page-hero">
-  <div class="wrap">
-    <span class="kicker">{{ ui | t(lang, "nav.about") }}</span>
-    <h1>{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
-    <p class="lede">{{ c.hero.text | L(lang) }}</p>
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="wrap about-hero__grid">
+    <div class="about-hero__copy">
+      <span class="kicker kicker--rule">{{ ui | t(lang, "nav.about") }}</span>
+      <h1 id="about-title" class="gold-em">{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
+      <p class="lede">{{ c.hero.text | L(lang) }}</p>
+    </div>
   </div>
+  {% if c.hero.photo %}<div class="about-hero__media" aria-hidden="true"><img src="{{ c.hero.photo }}" alt="" width="1400" height="753" fetchpriority="high" decoding="async"></div>{% endif %}
 </section>
 
-<section class="section fade-up" aria-labelledby="story-title">
-  <div class="wrap grid">
-    <div class="col-4"><h2 id="story-title">{{ c.story.title | L(lang) }}</h2></div>
-    <div class="col-8 measure">{{ c.story.body | L(lang) | md | safe }}</div>
-  </div>
-</section>
-
-<section class="section fade-up" aria-labelledby="how-title">
-  <div class="wrap">
-    <div class="section-head"><h2 id="how-title">{{ c.how.title | L(lang) }}</h2></div>
-    <div class="grid-3">
-      {% for st in c.how.items %}<div class="service-block"><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div>{% endfor %}
+<section class="section fade-up about-story" aria-labelledby="story-title">
+  <div class="wrap about-story__grid">
+    <div class="about-story__aside">
+      <h2 id="story-title" class="gold-em">{{ c.story.title | L(lang) | mdInline | safe }}</h2>
+      <span class="rule-gold" aria-hidden="true"></span>
+      {% if c.story.photo %}<img class="about-story__photo" src="{{ c.story.photo }}" alt="" width="900" height="887" loading="lazy" decoding="async">{% endif %}
+    </div>
+    <div class="about-story__body">{{ c.story.body | L(lang) | md | safe }}</div>
+    <div class="about-story__cards stagger">
+      {% for card in c.story.cards %}
+      <a class="practice-card" href="{{ card.key | pageUrl(lang) }}">
+        <span class="practice-card__icon">{% set icon = card.icon %}{% include "components/icon.njk" %}</span>
+        <span class="practice-card__num" aria-hidden="true">{{ loop.index | pad2 }}</span>
+        <span class="practice-card__name">{{ site.practiceNames[card.key] | L(lang) }}</span>
+        <span class="practice-card__line">{{ card.line | L(lang) }}</span>
+        <span class="practice-card__arrow" aria-hidden="true">→</span>
+      </a>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="band fade-up" aria-labelledby="ladder-title">
+<section class="section fade-up about-how" aria-labelledby="how-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="ladder-title">{{ c.ladder.title | L(lang) }}</h2><p class="meta measure">{{ c.ladder.text | L(lang) }}</p></div>
-    <ol class="ladder">
-      {% for st in c.ladder.steps %}<li><span class="kicker">{{ loop.index }}</span><h3>{{ st.title | L(lang) }}</h3><p class="meta">{{ st.duration | L(lang) }}</p><p>{{ st.text | L(lang) }}</p></li>{% endfor %}
+    <div class="svc4-head svc4-head--solo"><h2 id="how-title" class="gold-em">{{ c.how.title | L(lang) | mdInline | safe }}</h2></div>
+    <div class="about-how__grid stagger">
+      {% for st in c.how.items %}
+      <div class="about-how__item">
+        <div class="about-how__head"><span class="disc-gold">{% set icon = st.icon or "doc" %}{% include "components/icon.njk" %}</span><div><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div></div>
+        {% if st.photo %}<img class="about-how__photo" src="{{ st.photo }}" alt="" width="1200" height="407" loading="lazy" decoding="async">{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band fade-up about-ladder" aria-labelledby="ladder-title">
+  <div class="wrap">
+    <div class="svc4-head"><h2 id="ladder-title" class="gold-em">{{ c.ladder.title | L(lang) | mdInline | safe }}</h2><p>{{ c.ladder.text | L(lang) }}</p></div>
+    <ol class="ladder2">
+      {% for st in c.ladder.steps %}
+      <li class="ladder2__step">
+        <span class="ladder2__num" aria-hidden="true">{{ loop.index }}</span>
+        <div class="ladder2__body">
+          <span class="disc-tint">{% set icon = st.icon or "doc" %}{% include "components/icon.njk" %}</span>
+          <div><h3>{{ st.title | L(lang) }}</h3><p class="ladder2__meta">{{ st.duration | L(lang) }}</p><p>{{ st.text | L(lang) }}</p></div>
+        </div>
+      </li>
+      {% endfor %}
     </ol>
   </div>
+  {% if c.ladder.ridge %}<img class="ridge" src="{{ c.ladder.ridge }}" alt="" width="2400" height="145" loading="lazy" decoding="async" aria-hidden="true">{% endif %}
 </section>
 
-<section class="approach-band fade-up" aria-labelledby="approach-title">
-  <div class="wrap">
-    <div class="section-head"><h2 id="approach-title" class="gold-em">{{ pages.home.approach.title | L(lang) | mdInline | safe }}</h2><p class="meta measure">{{ pages.home.approach.text | L(lang) }}</p></div>
-    {% set ap = pages.home.approach %}{% include "components/approach.njk" %}
+<section class="section fade-up about-eco" aria-labelledby="eco-title">
+  <div class="wrap about-eco__grid">
+    <div class="about-eco__intro"><span class="rule-gold" aria-hidden="true"></span><h2 id="eco-title" class="gold-em">{{ c.ecosystem.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.ecosystem.text | L(lang) }}</p></div>
+    <ul class="eco-grid stagger">
+      {% for e in c.ecosystem.items %}
+      <li class="eco-card{% if loop.last %} eco-card--wide{% endif %}">
+        <div class="eco-card__copy"><span class="disc-gold">{% set icon = e.icon or "doc" %}{% include "components/icon.njk" %}</span><h3>{{ e.title | L(lang) }}</h3><p>{{ e.text | L(lang) }}</p><span class="eco-card__arrow" aria-hidden="true">→</span></div>
+        {% if e.photo %}<img class="eco-card__photo" src="{{ e.photo }}" alt="" loading="lazy" decoding="async">{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% if site.credentialsPdf %}
+    <div class="cred-band">
+      <div class="cred-band__title"><span class="kicker">{{ c.credentials.kicker | L(lang) }}</span><h3 class="gold-em">{{ c.credentials.title | L(lang) | mdInline | safe }}</h3></div>
+      <p class="cred-band__text">{{ c.credentials.text | L(lang) }}</p>
+      <a class="btn btn--primary cred-band__btn" href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf"><span class="cred-band__ico" aria-hidden="true">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><span>{{ ui | t(lang, "cta.credentials") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+    {% endif %}
   </div>
 </section>
-
-<section class="section fade-up" aria-labelledby="eco-title">
-  <div class="wrap grid">
-    <div class="col-4"><h2 id="eco-title">{{ c.ecosystem.title | L(lang) }}</h2><p class="muted">{{ c.ecosystem.text | L(lang) }}</p></div>
-    <div class="col-8"><ul class="grid-2" style="list-style:none;padding:0;margin:0">{% for e in c.ecosystem.items %}<li class="service-block" style="padding-top:16px"><h3>{{ e.title | L(lang) }}</h3><p class="meta">{{ e.text | L(lang) }}</p></li>{% endfor %}</ul></div>
-  </div>
-</section>
-
-{% if site.credentialsPdf %}
-<section class="section fade-up">
-  <div class="wrap"><div class="statement"><h3>{{ c.credentials.title | L(lang) }}</h3><p class="muted">{{ c.credentials.text | L(lang) }}</p><a class="btn btn--secondary" href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf">{{ ui | t(lang, "cta.credentials") }}</a></div></div>
-</section>
-{% endif %}
 
 <script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "AboutPage", "name": pageTitle, "description": pageDescription, "about": { "@type": "Organization", "name": site.name } } | json | safe }}</script>

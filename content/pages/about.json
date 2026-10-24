@@ -4,33 +4,61 @@
     "id": "Tentang firma"
   },
   "metaDescription": {
-    "en": "Metanoia Advisory is a Jakarta firm with presentation design and corporate communications at its core, supported by Indonesia market-entry and strategy advisory.",
-    "id": "Metanoia Advisory adalah firma di Jakarta dengan desain presentasi dan komunikasi korporat sebagai inti, didukung advisory masuk pasar Indonesia dan strategi."
+    "en": "Metanoia Advisory is a Jakarta firm with strategic storytelling and corporate communications at its core, supported by Indonesia market-entry and strategy advisory.",
+    "id": "Metanoia Advisory adalah firma di Jakarta dengan strategic storytelling dan komunikasi korporat sebagai inti, didukung advisory masuk pasar Indonesia dan strategi."
   },
   "hero": {
     "title": {
-      "en": "A decision is made twice: in the analysis, and in the room where it is presented.",
-      "id": "Keputusan diambil dua kali: dalam analisis, dan di ruang tempat ia dipaparkan."
+      "en": "A decision is made twice: *in the analysis, and in the room where it is presented.*",
+      "id": "Keputusan diambil dua kali: *dalam analisis, dan di ruang tempat ia dipaparkan.*"
     },
     "text": {
-      "en": "Most advisors own the first and hand off the second. Most design studios own the second and never see the first. Metanoia Advisory was built to own both, with presentation design and corporate communications at its core and two advisory practices behind it.",
-      "id": "Sebagian besar penasihat menguasai yang pertama lalu menyerahkan yang kedua. Sebagian besar studio desain menguasai yang kedua tanpa pernah melihat yang pertama. Metanoia Advisory dibangun untuk menguasai keduanya, dengan desain presentasi dan komunikasi korporat sebagai inti dan dua praktik advisory di belakangnya."
-    }
+      "en": "Most advisors own the first and hand off the second. Most design studios own the second and never see the first. Metanoia Advisory was built to own both, with strategic storytelling and corporate communications at its core and two advisory practices behind it.",
+      "id": "Sebagian besar penasihat menguasai yang pertama lalu menyerahkan yang kedua. Sebagian besar studio desain menguasai yang kedua tanpa pernah melihat yang pertama. Metanoia Advisory dibangun untuk menguasai keduanya, dengan strategic storytelling dan komunikasi korporat sebagai inti dan dua praktik advisory di belakangnya."
+    },
+    "photo": "/assets/img/photos/about-hero-skyline.webp"
   },
   "story": {
     "title": {
-      "en": "One firm, one standard, three practices",
-      "id": "Satu firma, satu standar, tiga praktik"
+      "en": "One firm, one standard, *three practices*",
+      "id": "Satu firma, satu standar, *tiga praktik*"
     },
     "body": {
-      "en": "Metanoia Advisory is a Jakarta firm for leadership teams that must get complex ideas understood and acted on: by a board, an investor, a regulator, a partner or a market.\n\nThe core practice is **Presentation Design & Corporate Communications**: board and executive decks, investor presentations and earnings materials, proposals, newsletters, templates, educational and marketing materials, annual and sustainability reports, and an AI-powered express service for work needed in hours. Two advisory practices supply the analysis those materials are built on. **Indonesia Market Entry & Localization Strategy** takes an international company from \"should we enter?\" to first local revenue. **Strategy & Investment Advisory** builds the feasibility studies, financial models, business cases and investment-grade documents that boards and investors act on.\n\nThe practices share one bench, one quality gate and one confidentiality regime. The team that builds the analysis builds the materials that present it, so the numbers in the model are the numbers in the room. Nothing is handed across a wall.\n\nWe do not practise law, tax or audit, and we do not compete with incorporation agents on price. Licensed and specialist work is delivered through named partners under our project management.",
-      "id": "Metanoia Advisory adalah firma di Jakarta untuk tim kepemimpinan yang harus membuat gagasan kompleks dipahami dan ditindaklanjuti: oleh dewan, investor, regulator, mitra, atau pasar.\n\nPraktik intinya adalah **Desain Presentasi & Komunikasi Korporat**: dek dewan dan eksekutif, presentasi investor dan materi paparan kinerja, proposal, nawala, templat, materi edukasi dan pemasaran, laporan tahunan dan keberlanjutan, serta layanan ekspres berbasis AI untuk pekerjaan yang dibutuhkan dalam hitungan jam. Dua praktik advisory menyediakan analisis yang menjadi dasar materi tersebut. **Strategi Masuk Pasar & Lokalisasi Indonesia** mendampingi perusahaan internasional dari pertanyaan \"perlukah kami masuk?\" hingga pendapatan lokal pertama. **Advisory Strategi & Investasi** menyusun studi kelayakan, model keuangan, kajian bisnis, dan dokumen berstandar investor yang menjadi dasar tindakan dewan dan investor.\n\nKetiga praktik berbagi satu tim, satu gerbang mutu, dan satu rezim kerahasiaan. Tim yang menyusun analisis adalah tim yang membangun materi pemaparannya, sehingga angka dalam model adalah angka yang dipaparkan di ruang rapat. Tidak ada yang diserahkan melewati tembok.\n\nKami tidak memberikan jasa hukum, perpajakan, atau audit, dan tidak bersaing harga dengan agen pendirian perusahaan. Pekerjaan berizin dan spesialis dikerjakan melalui mitra bernama di bawah manajemen proyek kami."
-    }
+      "en": "Metanoia Advisory is a Jakarta firm for leadership teams that must get complex ideas understood and acted on: by a board, an investor, a regulator, a partner or a market.\n\nThe core practice is **Strategic Storytelling & Corporate Communications**: board and executive decks, investor presentations and earnings materials, proposals, newsletters, templates, educational and marketing materials, annual and sustainability reports, and an AI-powered express service for work needed in hours. Two advisory practices supply the analysis those materials are built on. **Indonesia Market Entry & Localization Strategy** takes an international company from \"should we enter?\" to first local revenue. **Strategy & Investment Advisory** builds the feasibility studies, financial models, business cases and investment-grade documents that boards and investors act on.\n\nThe practices share one bench, one quality gate and one confidentiality regime. The team that builds the analysis builds the materials that present it, so the numbers in the model are the numbers in the room. Nothing is handed across a wall.\n\nWe do not practise law, tax or audit, and we do not compete with incorporation agents on price. Licensed and specialist work is delivered through named partners under our project management.",
+      "id": "Metanoia Advisory adalah firma di Jakarta untuk tim kepemimpinan yang harus membuat gagasan kompleks dipahami dan ditindaklanjuti: oleh dewan, investor, regulator, mitra, atau pasar.\n\nPraktik intinya adalah **Strategic Storytelling & Komunikasi Korporat**: dek dewan dan eksekutif, presentasi investor dan materi paparan kinerja, proposal, nawala, templat, materi edukasi dan pemasaran, laporan tahunan dan keberlanjutan, serta layanan ekspres berbasis AI untuk pekerjaan yang dibutuhkan dalam hitungan jam. Dua praktik advisory menyediakan analisis yang menjadi dasar materi tersebut. **Strategi Masuk Pasar & Lokalisasi Indonesia** mendampingi perusahaan internasional dari pertanyaan \"perlukah kami masuk?\" hingga pendapatan lokal pertama. **Advisory Strategi & Investasi** menyusun studi kelayakan, model keuangan, kajian bisnis, dan dokumen berstandar investor yang menjadi dasar tindakan dewan dan investor.\n\nKetiga praktik berbagi satu tim, satu gerbang mutu, dan satu rezim kerahasiaan. Tim yang menyusun analisis adalah tim yang membangun materi pemaparannya, sehingga angka dalam model adalah angka yang dipaparkan di ruang rapat. Tidak ada yang diserahkan melewati tembok.\n\nKami tidak memberikan jasa hukum, perpajakan, atau audit, dan tidak bersaing harga dengan agen pendirian perusahaan. Pekerjaan berizin dan spesialis dikerjakan melalui mitra bernama di bawah manajemen proyek kami."
+    },
+    "photo": "/assets/img/photos/about-mountain.webp",
+    "cards": [
+      {
+        "key": "presentation",
+        "icon": "board",
+        "line": {
+          "en": "Turn complex ideas into clear, compelling materials.",
+          "id": "Mengubah gagasan kompleks menjadi materi yang jelas dan meyakinkan."
+        }
+      },
+      {
+        "key": "marketEntry",
+        "icon": "pin",
+        "line": {
+          "en": "From market assessment to local revenue.",
+          "id": "Dari penilaian pasar hingga pendapatan lokal."
+        }
+      },
+      {
+        "key": "advisory",
+        "icon": "chartup",
+        "line": {
+          "en": "From feasibility to investor-ready execution.",
+          "id": "Dari kelayakan hingga eksekusi siap investor."
+        }
+      }
+    ]
   },
   "how": {
     "title": {
-      "en": "How we work",
-      "id": "Cara kami bekerja"
+      "en": "How *we work*",
+      "id": "Cara *kami bekerja*"
     },
     "items": [
       {
@@ -41,7 +69,9 @@
         "text": {
           "en": "A senior engagement lead owns scoping, the storyboard and the final review, and carries a limited number of engagements at a time. On advisory work the same lead presents to the board and, if you keep us, runs the implementation.",
           "id": "Pemimpin penugasan senior memegang ruang lingkup, storyboard, dan tinjauan akhir, serta menangani jumlah penugasan yang terbatas pada satu waktu. Pada pekerjaan advisory, pemimpin yang sama memaparkan kepada dewan dan, jika Anda menghendaki, menjalankan implementasinya."
-        }
+        },
+        "icon": "people",
+        "photo": "/assets/img/photos/how-1.webp"
       },
       {
         "title": {
@@ -51,7 +81,9 @@
         "text": {
           "en": "Model, deck and report come from one data set and one team. Every deliverable carries a reconciliation log and passes a four-eyes check before it leaves the firm.",
           "id": "Model, dek, dan laporan berasal dari satu set data dan satu tim. Setiap keluaran disertai log rekonsiliasi dan melewati pemeriksaan empat mata sebelum keluar dari firma."
-        }
+        },
+        "icon": "chartup",
+        "photo": "/assets/img/photos/how-2.webp"
       },
       {
         "title": {
@@ -61,14 +93,16 @@
         "text": {
           "en": "Insider lists per engagement, segregated project folders, no consumer AI tools for client files, and a conflict check before any engagement that touches a listed company's market-facing materials. The design practice takes no success fees.",
           "id": "Daftar orang dalam per penugasan, folder proyek terpisah, tanpa alat AI konsumen untuk berkas klien, dan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat. Praktik desain tidak menerima success fee."
-        }
+        },
+        "icon": "shield",
+        "photo": "/assets/img/photos/how-3.webp"
       }
     ]
   },
   "ladder": {
     "title": {
-      "en": "How an engagement starts, and how it can continue",
-      "id": "Bagaimana penugasan dimulai, dan bagaimana ia dapat berlanjut"
+      "en": "How an engagement starts, *and how it can continue*",
+      "id": "Bagaimana penugasan dimulai, *dan bagaimana ia dapat berlanjut*"
     },
     "text": {
       "en": "Three steps, each with a clear end. You can stop after any of them.",
@@ -87,7 +121,8 @@
         "text": {
           "en": "You bring the decision. You leave with a view on what it would take, who would do it and how long it would run. A proposal follows only if you ask for one.",
           "id": "Anda membawa keputusan yang dihadapi. Anda pulang dengan gambaran tentang apa yang dibutuhkan, siapa yang mengerjakannya, dan berapa lama. Proposal menyusul hanya jika Anda memintanya."
-        }
+        },
+        "icon": "people"
       },
       {
         "title": {
@@ -101,7 +136,8 @@
         "text": {
           "en": "A scoped piece of work with a board-ready deliverable: an assessment, a business case, a feasibility study, an equity story, a report. Weekly reviews; a mid-point storyboard sign-off; the partner presents the result.",
           "id": "Pekerjaan berlingkup jelas dengan keluaran siap dewan: penilaian pasar, kajian bisnis, studi kelayakan, equity story, laporan. Tinjauan mingguan; persetujuan storyboard di tengah jalan; partner memaparkan hasilnya."
-        }
+        },
+        "icon": "doc"
       },
       {
         "title": {
@@ -115,9 +151,11 @@
         "text": {
           "en": "The same senior people stay on: an implementation retainer on advisory work, or a 12-month deck and report calendar on communications work. Priced explicitly in every proposal.",
           "id": "Orang-orang senior yang sama tetap mendampingi: retainer implementasi pada pekerjaan advisory, atau kalender dek dan laporan 12 bulan pada pekerjaan komunikasi. Harganya dinyatakan eksplisit dalam setiap proposal."
-        }
+        },
+        "icon": "gear"
       }
-    ]
+    ],
+    "ridge": "/assets/img/photos/eco-ridge.webp"
   },
   "people": {
     "title": {
@@ -131,8 +169,8 @@
   },
   "ecosystem": {
     "title": {
-      "en": "Partner ecosystem",
-      "id": "Ekosistem mitra"
+      "en": "Partner *ecosystem*",
+      "id": "*Ekosistem* mitra"
     },
     "text": {
       "en": "Licensed and specialist work is delivered by named partners under our project management. Firms are named here once agreements are signed and permission is given.",
@@ -147,7 +185,9 @@
         "text": {
           "en": "Entity structuring, licensing, contracts, regulatory opinions.",
           "id": "Struktur badan usaha, perizinan, kontrak, pendapat hukum."
-        }
+        },
+        "icon": "scales",
+        "photo": "/assets/img/photos/eco-law.webp"
       },
       {
         "title": {
@@ -157,7 +197,9 @@
         "text": {
           "en": "Incorporation, LKPM, tax and payroll, white-labelled.",
           "id": "Pendirian perusahaan, LKPM, pajak dan penggajian, berlabel putih."
-        }
+        },
+        "icon": "doclist",
+        "photo": "/assets/img/photos/eco-corp.webp"
       },
       {
         "title": {
@@ -167,7 +209,9 @@
         "text": {
           "en": "Pre-mandate and post-listing positioning for issuers.",
           "id": "Pemosisian pra-mandat dan pasca-pencatatan bagi emiten."
-        }
+        },
+        "icon": "bars",
+        "photo": "/assets/img/photos/eco-sec.webp"
       },
       {
         "title": {
@@ -177,7 +221,9 @@
         "text": {
           "en": "Print and production overflow for reports.",
           "id": "Cetak dan kapasitas produksi tambahan untuk laporan."
-        }
+        },
+        "icon": "monitor",
+        "photo": "/assets/img/photos/eco-prod.webp"
       },
       {
         "title": {
@@ -187,18 +233,24 @@
         "text": {
           "en": "BPOM and halal certification, PSE and data localisation, HR and labour law, industrial estates.",
           "id": "Sertifikasi BPOM dan halal, PSE dan lokalisasi data, SDM dan hukum ketenagakerjaan, kawasan industri."
-        }
+        },
+        "icon": "people",
+        "photo": "/assets/img/photos/eco-sector.webp"
       }
     ]
   },
   "credentials": {
     "title": {
-      "en": "Credentials",
-      "id": "Kredensial"
+      "en": "Our full credentials, *in one document*",
+      "id": "Kredensial lengkap kami, *dalam satu dokumen*"
     },
     "text": {
       "en": "Eight pages, both languages, updated quarterly: the three practices, what we design, how we work and selected artefacts. The same design system as this site.",
       "id": "Delapan halaman, dua bahasa, diperbarui setiap kuartal: tiga praktik, yang kami desain, cara kami bekerja, dan artefak pilihan. Sistem desain yang sama dengan situs ini."
+    },
+    "kicker": {
+      "en": "Credentials",
+      "id": "Kredensial"
     }
   }
 }
