@@ -51,6 +51,7 @@ export default function (eleventyConfig) {
     "@type": "ListItem", position: i + 1, name: c.name, item: (baseUrl || "") + (c.url || pageUrl),
   })));
   eleventyConfig.addFilter("first", (arr) => (Array.isArray(arr) ? arr[0] : arr));
+  eleventyConfig.addFilter("pad2", (n) => String(n).padStart(2, "0"));
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 

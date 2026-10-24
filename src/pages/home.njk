@@ -6,7 +6,6 @@ pageKey: home
 <section class="hero-stage" aria-labelledby="hero-title">
   <div class="wrap">
     <div class="hero-stage__text">
-      <span class="kicker">{{ c.hero.kicker | L(lang) }}</span>
       <h1 id="hero-title" class="display">{{ c.hero.headline | L(lang) }}</h1>
       <p class="sub">{{ c.hero.sub | L(lang) }}</p>
       <p class="lede">{{ c.hero.text | L(lang) }}</p>
@@ -38,61 +37,49 @@ pageKey: home
 </section>
 
 {% if site.phase == 2 %}
-<section class="section fade-up" aria-labelledby="portfolio-title" style="padding-top:var(--section)">
+<section class="section" aria-labelledby="portfolio-title" style="padding-top:var(--section)">
   <div class="wrap">
-    <div class="section-head"><h2 id="portfolio-title">{{ c.portfolio.title | L(lang) }}</h2><p class="meta measure">{{ c.portfolio.text | L(lang) }}</p></div>
-    <div class="tile-grid">{% for s in services | where("practice", "presentation") %}{% include "components/service-tile.njk" %}{% endfor %}</div>
+    <div class="svc-head fade-up">
+      <div><span class="kicker kicker--rule">{{ "Our services" if lang == "en" else "Layanan kami" }}</span><h2 id="portfolio-title" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.portfolio.title | L(lang) }}</h2><p class="lede">{{ c.portfolio.text | L(lang) }}</p></div>
+      <div class="pillars">{% for pl in c.portfolio.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
+    </div>
+    <div class="svc-grid stagger">{% for s in services | where("practice", "presentation") %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
   </div>
 </section>
 
 {% set ai = c.ai %}{% set aiService = services | find("key", "pres-ai-express") %}{% include "components/ai-band.njk" %}
 
-<section class="section fade-up" aria-labelledby="comp-title" style="padding-top:var(--section)">
+<section class="section" aria-labelledby="comp-title" style="padding-top:var(--section)">
   <div class="wrap grid">
-    <div class="col-4"><span class="kicker">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title">{{ c.complementary.title | L(lang) }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p></div>
-    <div class="col-8"><div class="comp-grid">{% for it in c.complementary.items %}<div class="comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<div><h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p></div></div>{% endfor %}</div></div>
+    <div class="col-4 comp-intro fade-up"><span class="kicker kicker--rule">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title" class="gold-em">{{ c.complementary.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p></div>
+    <div class="col-8"><div class="comp-grid stagger">{% for it in c.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art">{% include "charts/" + it.art + ".njk" %}</div></div></div>{% endfor %}</div></div>
   </div>
 </section>
 
-<section class="band fade-up" aria-labelledby="approach-title">
+<section class="approach-band fade-up" aria-labelledby="approach-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="approach-title">{{ c.approach.title | L(lang) }}</h2><p class="meta measure">{{ c.approach.text | L(lang) }}</p></div>
+    <div class="section-head"><h2 id="approach-title" class="gold-em">{{ c.approach.title | L(lang) | mdInline | safe }}</h2><p class="meta measure">{{ c.approach.text | L(lang) }}</p></div>
     {% set ap = c.approach %}{% include "components/approach.njk" %}
   </div>
 </section>
 
-<section class="section fade-up" aria-labelledby="advisory-title" style="padding-top:var(--section)">
+<section class="section" aria-labelledby="advisory-title" style="padding-top:var(--section)">
   <div class="wrap">
-    <div class="section-head"><h2 id="advisory-title">{{ c.advisory.title | L(lang) }}</h2><p class="meta measure">{{ c.advisory.text | L(lang) }}</p></div>
-    <div class="grid-2">
+    <div class="svc-head fade-up"><div><span class="kicker kicker--rule">{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}</span><h2 id="advisory-title" class="gold-em" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.advisory.title | L(lang) | mdInline | safe }}</h2></div><p class="muted" style="border-left:1px solid var(--grey-2);padding-left:var(--s-3)">{{ c.advisory.text | L(lang) }}</p></div>
+    <div class="adv-grid stagger">
       {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
-      <div class="practice-door">
-        <span class="kicker">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span>
+      <div class="adv-card">
+        <span class="kicker kicker--rule">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span>
         <h3>{{ site.practiceNames[pr.key] | L(lang) }}</h3>
-        <p class="muted">{{ hub.situationLine | L(lang) }}</p>
-        <ul>{% for b in hub.doorBullets %}<li>{{ b | L(lang) }}</li>{% endfor %}</ul>
-        <a class="arrow-link" href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }}</a>
+        <p class="lede">{{ hub.situationLine | L(lang) }}</p>
+        <ul class="adv-list">{% for b in hub.doorBullets %}<li>{% set icon = hub.doorIcons[loop.index0] %}{% include "components/icon.njk" %}<span>{{ b | L(lang) }}</span></li>{% endfor %}</ul>
+        <a class="btn btn--primary" href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }} →</a>
+        <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__tag">{{ hub.tagline | L(lang) }}</div><div class="cut__art">{% include "charts/" + hub.art + ".njk" %}</div></div>
       </div>
       {% endif %}{% endfor %}
     </div>
   </div>
 </section>
-
-{% set featured = cases | where("featuredHome", true) | first %}
-{% if featured %}
-<section class="band fade-up" aria-labelledby="featured-title">
-  <div class="wrap grid">
-    <div class="col-6">
-      <span class="kicker">{{ ui | t(lang, "labels.featured") }} · {{ featured.sector | L(lang) }}{% if featured.illustrative %} · {{ ui | t(lang, "labels.illustrative") }}{% endif %}</span>
-      <h2 id="featured-title"><a class="link-ink" href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a></h2>
-      <p>{{ featured.situationText | L(lang) }}</p>
-      {% set o = featured.outcome %}{% include "components/outcome-figure.njk" %}
-      <p style="margin-top:24px"><a class="arrow-link" href="{{ 'work' | itemUrl(featured, lang) }}">{{ ui | t(lang, "cta.readCase") }}</a></p>
-    </div>
-    <div class="col-6"><div class="artefact">{% include "charts/" + featured.artefacts[0].component + ".njk" %}</div></div>
-  </div>
-</section>
-{% endif %}
 
 <section class="section fade-up" aria-labelledby="insight-title" style="padding-top:var(--section)">
   <div class="wrap grid">

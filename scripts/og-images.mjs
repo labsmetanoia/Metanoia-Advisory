@@ -9,7 +9,7 @@ const fontData = readFileSync(`src/assets/fonts/${tok.file}`).toString("base64")
 const interData = readFileSync("src/assets/fonts/inter-normal-latin.woff2").toString("base64");
 const types = {
   default: ["Metanoia Advisory", "Turning complex ideas into compelling business outcomes."],
-  home: ["Global Perspective. Proven Expertise.", "Presentation Design & Corporate Communications · Indonesia Market Entry & Localization Strategy · Strategy & Investment Advisory"],
+  home: ["Global Perspective. Proven Expertise.", "Turning complex ideas into compelling business outcomes."],
   hub: ["Practice", "Presentation design, Indonesia market entry and localization, strategy and investment advisory. Jakarta."],
   service: ["Service", "Who it is for · What you get · How long · What happens next"],
   case: ["Work", "The situation, the decision at stake, what we built, and one sourced outcome."],

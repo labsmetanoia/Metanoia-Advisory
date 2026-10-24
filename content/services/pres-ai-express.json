@@ -72,5 +72,6 @@
     "id": "Sistem templat jika Anda belum memilikinya, agar setiap dek ekspres berangkat dari merek Anda; retainer jika volumenya rutin."
   },
   "relatedService": "pres-templates",
-  "practice": "presentation"
+  "practice": "presentation",
+  "art": "artefact-deck-page"
 }

@@ -1,0 +1,7 @@
+{# A working-session agenda page in the firm's standard (synthetic). #}
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="640" height="400" fill="#fff"/>
+<text x="40" y="52" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="2" fill="#9A7200">{{ "WORKING SESSION · 45 MIN" if lang == "en" else "SESI KERJA · 45 MENIT" }}</text>
+<text x="40" y="100" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#000">{{ "What it would take" if lang == "en" else "Apa yang dibutuhkan" }}</text>
+{% set rows = [["00–10", "The decision or the deck", "Keputusan atau dek"], ["10–30", "What good looks like, with examples", "Seperti apa yang baik, dengan contoh"], ["30–40", "Who would do it, and how long", "Siapa yang mengerjakan, berapa lama"], ["40–45", "Next step, if you want one", "Langkah berikutnya, jika Anda menghendaki"]] %}
+{% for r in rows %}{% set y = 150 + loop.index0 * 52 %}<text x="40" y="{{ y }}" font-family="Inter, Arial" font-size="13" font-weight="600" fill="#9A7200">{{ r[0] }}</text><text x="120" y="{{ y }}" font-family="Inter, Arial" font-size="15" fill="#000">{{ r[1] if lang == "en" else r[2] }}</text><line x1="40" y1="{{ y + 16 }}" x2="600" y2="{{ y + 16 }}" stroke="#E3E0DA"/>{% endfor %}
+<rect x="40" y="368" width="80" height="4" fill="#EAB200"/></svg>

@@ -8,10 +8,6 @@
     "id": "Desain presentasi dan komunikasi korporat, didukung advisory masuk pasar Indonesia dan strategi. Kami mengubah gagasan kompleks menjadi hasil bisnis yang berdampak."
   },
   "hero": {
-    "kicker": {
-      "en": "Jakarta · Presentation design and advisory",
-      "id": "Jakarta · Desain presentasi dan advisory"
-    },
     "headline": {
       "en": "Global Perspective. Proven Expertise.",
       "id": "Perspektif Global. Keahlian Teruji."
@@ -119,13 +115,48 @@
   },
   "portfolio": {
     "title": {
-      "en": "What we design",
-      "id": "Yang kami desain"
+      "en": "Services We Offer",
+      "id": "Layanan Kami"
     },
     "text": {
       "en": "Eleven services on one standard. Choose the one closest to the deck or document in front of you.",
       "id": "Sebelas layanan dalam satu standar. Pilih yang paling dekat dengan dek atau dokumen di hadapan Anda."
-    }
+    },
+    "pillars": [
+      {
+        "icon": "diamond",
+        "title": {
+          "en": "Strategy-led",
+          "id": "Berbasis strategi"
+        },
+        "text": {
+          "en": "Clarity and impact in every story",
+          "id": "Kejelasan dan dampak dalam setiap kisah"
+        }
+      },
+      {
+        "icon": "people",
+        "title": {
+          "en": "Institutional quality",
+          "id": "Mutu institusional"
+        },
+        "text": {
+          "en": "Trusted by executives and investors",
+          "id": "Dipercaya eksekutif dan investor"
+        }
+      },
+      {
+        "icon": "bolt",
+        "title": {
+          "en": "Fast and reliable",
+          "id": "Cepat dan andal"
+        },
+        "text": {
+          "en": "Ready when you are",
+          "id": "Siap saat Anda siap"
+        }
+      }
+    ]
   },
   "ai": {
     "pill": {
@@ -133,8 +164,8 @@
       "id": "Berbasis AI · Siap dalam hitungan jam"
     },
     "title": {
-      "en": "Professional presentations, ready in hours.",
-      "id": "Presentasi profesional, siap dalam hitungan jam."
+      "en": "Professional *presentations,* ready in hours.",
+      "id": "Presentasi *profesional,* siap dalam hitungan jam."
     },
     "text": {
       "en": "Send a brief and your content. AI-assisted tools draft the structure, layout and charts inside your template; a senior designer reviews every page and checks every number before it reaches you. The speed is automated. The judgement is not.",
@@ -149,7 +180,8 @@
         "text": {
           "en": "A structured form: audience, decision, source material, deadline. Ten minutes.",
           "id": "Formulir terstruktur: audiens, keputusan, bahan sumber, tenggat. Sepuluh menit."
-        }
+        },
+        "icon": "doc"
       },
       {
         "title": {
@@ -159,7 +191,8 @@
         "text": {
           "en": "Storyline, layouts and charts drafted inside your template, within the firm's own secure environment.",
           "id": "Alur cerita, tata letak, dan grafik disusun di dalam templat Anda, di lingkungan aman firma sendiri."
-        }
+        },
+        "icon": "sparkle"
       },
       {
         "title": {
@@ -169,7 +202,8 @@
         "text": {
           "en": "A senior designer edits every page and checks the figures against your source. Delivered the same working day for decks up to about 20 pages.",
           "id": "Desainer senior menyunting setiap halaman dan memeriksa angka terhadap sumber Anda. Dikirim pada hari kerja yang sama untuk dek hingga sekitar 20 halaman."
-        }
+        },
+        "icon": "people"
       }
     ],
     "guardTitle": {
@@ -178,23 +212,32 @@
     },
     "guards": [
       {
-        "en": "Your brand and template, not a generic look",
-        "id": "Merek dan templat Anda, bukan tampilan generik"
+        "icon": "shield",
+        "text": {
+          "en": "Your brand and template, not a generic look",
+          "id": "Merek dan templat Anda, bukan tampilan generik"
+        }
       },
       {
-        "en": "Client files never enter consumer AI tools",
-        "id": "Berkas klien tidak pernah masuk ke alat AI konsumen"
+        "icon": "doc",
+        "text": {
+          "en": "Client files never enter consumer AI tools",
+          "id": "Berkas klien tidak pernah masuk ke alat AI konsumen"
+        }
       },
       {
-        "en": "Not used for market disclosure or regulated filings",
-        "id": "Tidak digunakan untuk keterbukaan pasar atau pelaporan teregulasi"
+        "icon": "lock",
+        "text": {
+          "en": "Not used for market disclosure or regulated filings",
+          "id": "Tidak digunakan untuk keterbukaan pasar atau pelaporan teregulasi"
+        }
       }
     ]
   },
   "complementary": {
     "title": {
-      "en": "Take the story further",
-      "id": "Bawa kisahnya lebih jauh"
+      "en": "Take the story *further.*",
+      "id": "Bawa kisahnya *lebih jauh.*"
     },
     "text": {
       "en": "While presentation design is our core expertise, clients increasingly rely on us to bring the same strategic thinking and design excellence to their broader content and brand communications. Our complementary services ensure a consistent, compelling narrative across every client touchpoint.",
@@ -210,7 +253,8 @@
         "text": {
           "en": "An editorial calendar built from your strategy and your decks, so LinkedIn says what the board heard.",
           "id": "Kalender editorial yang dibangun dari strategi dan dek Anda, sehingga LinkedIn menyampaikan apa yang didengar dewan."
-        }
+        },
+        "art": "artefact-cover"
       },
       {
         "icon": "branding",
@@ -221,7 +265,8 @@
         "text": {
           "en": "Identity, presentation and document systems that carry one voice across subsidiaries and languages.",
           "id": "Sistem identitas, presentasi, dan dokumen yang membawa satu suara lintas anak usaha dan bahasa."
-        }
+        },
+        "art": "artefact-cover"
       },
       {
         "icon": "plan",
@@ -232,7 +277,8 @@
         "text": {
           "en": "A business plan with the model behind it, written to the standard a lender, investor or board requires.",
           "id": "Rencana bisnis beserta modelnya, ditulis sesuai standar yang disyaratkan pemberi pinjaman, investor, atau dewan."
-        }
+        },
+        "art": "artefact-report-spread"
       },
       {
         "icon": "events",
@@ -243,14 +289,15 @@
         "text": {
           "en": "Brochures, one-pagers and event materials in the same system as your decks.",
           "id": "Brosur, lembar satu halaman, dan materi acara dalam sistem yang sama dengan dek Anda."
-        }
+        },
+        "art": "artefact-report-spread"
       }
     ]
   },
   "approach": {
     "title": {
-      "en": "How we work with you",
-      "id": "Cara kami bekerja bersama Anda"
+      "en": "How we work *with you*",
+      "id": "Cara kami bekerja *bersama Anda*"
     },
     "text": {
       "en": "One senior point of contact, a structured process and a bench that works in the background. You see the lead; the lead sees everything.",
@@ -314,7 +361,8 @@
           "text": {
             "en": "Storyline, analysis, writing in both languages",
             "id": "Alur cerita, analisis, penulisan dalam dua bahasa"
-          }
+          },
+          "icon": "doclist"
         },
         {
           "title": {
@@ -324,7 +372,8 @@
           "text": {
             "en": "Layout, charts, templates to one standard",
             "id": "Tata letak, grafik, templat dalam satu standar"
-          }
+          },
+          "icon": "templates"
         },
         {
           "title": {
@@ -334,7 +383,8 @@
           "text": {
             "en": "Every figure tied to its source; four-eyes check",
             "id": "Setiap angka terikat ke sumbernya; pemeriksaan empat mata"
-          }
+          },
+          "icon": "shield"
         },
         {
           "title": {
@@ -344,7 +394,8 @@
           "text": {
             "en": "ID/EN parity; POJK, SEOJK, IDX, PSPK checklists",
             "id": "Kesetaraan ID/EN; daftar periksa POJK, SEOJK, BEI, PSPK"
-          }
+          },
+          "icon": "education"
         }
       ]
     },
@@ -407,12 +458,53 @@
   },
   "advisory": {
     "title": {
-      "en": "Advisory practices behind the story",
-      "id": "Praktik advisory di balik kisah"
+      "en": "Advisory practices *behind the story.*",
+      "id": "Praktik advisory *di balik kisah.*"
     },
     "text": {
       "en": "Two advisory practices supply the analysis the presentations are built on, for companies entering Indonesia and for boards deciding where the money goes.",
       "id": "Dua praktik advisory menyediakan analisis yang menjadi dasar presentasi, bagi perusahaan yang memasuki Indonesia dan bagi dewan yang memutuskan ke mana dana dialokasikan."
     }
+  },
+  "cta": {
+    "title": {
+      "en": "Start with a *45-minute* working session with a partner.",
+      "id": "Mulai dengan sesi kerja *45 menit* bersama partner kami."
+    },
+    "pillars": [
+      {
+        "icon": "chat",
+        "title": {
+          "en": "Focused discussion",
+          "id": "Diskusi terfokus"
+        },
+        "text": {
+          "en": "on your decision or deck",
+          "id": "tentang keputusan atau dek Anda"
+        }
+      },
+      {
+        "icon": "people",
+        "title": {
+          "en": "Partner-level perspective",
+          "id": "Perspektif tingkat partner"
+        },
+        "text": {
+          "en": "with practical next steps",
+          "id": "dengan langkah praktis berikutnya"
+        }
+      },
+      {
+        "icon": "doc",
+        "title": {
+          "en": "No proposal required",
+          "id": "Tanpa proposal"
+        },
+        "text": {
+          "en": "unless you ask for one",
+          "id": "kecuali Anda memintanya"
+        }
+      }
+    ]
   }
 }

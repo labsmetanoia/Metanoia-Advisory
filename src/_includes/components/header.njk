@@ -1,7 +1,7 @@
 {% set otherLang = "en" if lang == "id" else "id" %}
 <div class="topbar">
   <div class="wrap">
-    <span>{{ site.addressJakarta }}{% if site.email %} · <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</span>
+    <span>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</span>
     <span class="cluster" style="gap:16px">
       {% if site.linkedin %}<a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
       <span class="lang-switch" aria-label="Language"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>

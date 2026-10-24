@@ -3,13 +3,18 @@
   <div class="wrap grid">
     <div class="col-7">
       <span class="pill">{{ ai.pill | L(lang) }}</span>
-      <h2 id="ai-title">{{ ai.title | L(lang) }}</h2>
+      <h2 id="ai-title" class="gold-em">{{ ai.title | L(lang) | mdInline | safe }}</h2>
       <p class="lede" style="color:inherit">{{ ai.text | L(lang) }}</p>
-      <ol class="ai-steps">{% for st in ai.steps %}<li><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></li>{% endfor %}</ol>
+      <ol class="ai-steps">{% for st in ai.steps %}<li><h3>{% set icon = st.icon %}{% include "components/icon.njk" %}{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></li>{% endfor %}</ol>
     </div>
-    <div class="col-5" style="display:flex;flex-direction:column;gap:32px;justify-content:center">
-      <div class="guard"><strong style="color:var(--paper)">{{ ai.guardTitle | L(lang) }}</strong><ul>{% for g in ai.guards %}<li>{{ g | L(lang) }}</li>{% endfor %}</ul></div>
-      <div class="cluster">{% if aiService %}<a class="btn btn--primary" href="{{ aiService | serviceUrl(lang) }}" data-event="cta_click" data-location="ai-band">{{ ui | t(lang, "cta.express") }}</a>{% endif %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="ai-band-secondary">{{ ui | t(lang, "cta.deckReview") }}</a></div>
+    <div class="col-5 ai-side">
+      <div class="guard"><strong>{{ ai.guardTitle | L(lang) }}</strong><ul>{% for g in ai.guards %}<li>{% set icon = g.icon %}{% include "components/icon.njk" %}<span>{{ g.text | L(lang) }}</span></li>{% endfor %}</ul></div>
+      <div class="cluster" style="margin-top:32px">{% if aiService %}<a class="btn btn--primary" href="{{ aiService | serviceUrl(lang) }}" data-event="cta_click" data-location="ai-band">{{ ui | t(lang, "cta.express") }} →</a>{% endif %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="ai-band-secondary">{{ ui | t(lang, "cta.deckReview") }}</a></div>
+      <div class="ai-stack" aria-hidden="true">
+        <div class="ai-stack__card">{% include "charts/slide-after.njk" %}</div>
+        <div class="ai-stack__card">{% include "charts/artefact-report-spread.njk" %}</div>
+        <div class="ai-stack__card">{% include "charts/artefact-cover.njk" %}</div>
+      </div>
     </div>
   </div>
 </section>

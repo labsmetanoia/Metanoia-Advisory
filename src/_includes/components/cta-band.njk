@@ -1,9 +1,12 @@
+{% set cta = pages.home.cta %}
 <section class="cta-band" aria-labelledby="cta-title">
+  <div class="cta-band__visual" aria-hidden="true">{% include "charts/artefact-session.njk" %}</div>
   <div class="wrap cta-band__inner">
-    <div>
-      <h2 id="cta-title">{{ ui | t(lang, "closing.title") }}</h2>
+    <div class="cta-band__text">
+      <h2 id="cta-title" class="gold-em">{{ cta.title | L(lang) | mdInline | safe }}</h2>
       <p>{{ ui | t(lang, "closing.text") }}</p>
+      <div class="cta-pillars">{% for pl in cta.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
+      <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="closing-band">{{ ui | t(lang, "cta.talk") }} →</a>
     </div>
-    <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="closing-band">{{ ui | t(lang, "cta.talk") }}</a>
   </div>
 </section>

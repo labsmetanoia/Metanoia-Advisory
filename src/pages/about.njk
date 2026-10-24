@@ -36,9 +36,9 @@ pageKey: about
   </div>
 </section>
 
-<section class="section fade-up" aria-labelledby="approach-title">
+<section class="approach-band fade-up" aria-labelledby="approach-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="approach-title">{{ pages.home.approach.title | L(lang) }}</h2><p class="meta measure">{{ pages.home.approach.text | L(lang) }}</p></div>
+    <div class="section-head"><h2 id="approach-title" class="gold-em">{{ pages.home.approach.title | L(lang) | mdInline | safe }}</h2><p class="meta measure">{{ pages.home.approach.text | L(lang) }}</p></div>
     {% set ap = pages.home.approach %}{% include "components/approach.njk" %}
   </div>
 </section>

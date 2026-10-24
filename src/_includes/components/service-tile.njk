@@ -1,7 +1,9 @@
-{# expects `s` (service), `lang` #}
-<a class="tile{% if s.express %} tile--featured{% endif %}" href="{{ s | serviceUrl(lang) }}">
-  {% set icon = s.icon %}{% include "components/icon.njk" %}
-  {% if s.express %}<span class="tag tag--accent">{{ ui | t(lang, "labels.express") }}</span>{% endif %}
+{# expects `s` (service), `lang`, `num` (1-based) #}
+<a class="card-cut tile{% if s.express %} tile--dark{% endif %}" href="{{ s | serviceUrl(lang) }}">
+  <div class="tile__head"><span class="tile__num">{{ num | pad2 }}</span>{% set icon = s.icon %}{% include "components/icon.njk" %}</div>
+  {% if s.express %}<span class="tag">{{ ui | t(lang, "labels.express") }}</span>{% endif %}
   <h3>{{ s.title | L(lang) }}</h3>
   <p>{{ s.tileLine | L(lang) }}</p>
+  <span class="arrow-btn" aria-hidden="true">→</span>
+  <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art">{% include "charts/" + (s.art or "artefact-cover") + ".njk" %}</div></div>
 </a>

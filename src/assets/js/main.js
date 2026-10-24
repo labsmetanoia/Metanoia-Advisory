@@ -51,8 +51,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
-    qsa(".fade-up").forEach(function (el) { io.observe(el); });
-  } else { qsa(".fade-up").forEach(function (el) { el.classList.add("is-visible"); }); }
+    qsa(".fade-up, .stagger").forEach(function (el) { io.observe(el); });
+  } else { qsa(".fade-up, .stagger").forEach(function (el) { el.classList.add("is-visible"); }); }
 
   /* ---- Language preference (strictly necessary; consent-exempt) ---- */
   var lang = d.documentElement.lang === "id" ? "id" : "en";

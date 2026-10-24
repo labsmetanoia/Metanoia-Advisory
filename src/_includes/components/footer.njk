@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }} {{ site.addressJakarta }}{% if site.addressSingapore %} · {{ site.addressSingapore }}{% endif %}</span>
+      <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }}</span>
       <span class="lang-switch"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>
     </div>
   </div>

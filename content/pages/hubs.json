@@ -114,7 +114,17 @@
     "engagementsFrom": {
       "en": "USD 20,000",
       "id": "USD 20.000"
-    }
+    },
+    "tagline": {
+      "en": "Local insights. Real opportunities.",
+      "id": "Wawasan lokal. Peluang nyata."
+    },
+    "doorIcons": [
+      "bars",
+      "people",
+      "pin"
+    ],
+    "art": "artefact-deck-page"
   },
   "advisory": {
     "metaDescription": {
@@ -233,7 +243,17 @@
     "engagementsFrom": {
       "en": "USD 30,000",
       "id": "USD 30.000"
-    }
+    },
+    "tagline": {
+      "en": "Clear analysis. Stronger decisions.",
+      "id": "Analisis jernih. Keputusan lebih kuat."
+    },
+    "doorIcons": [
+      "doclist",
+      "chartup",
+      "layers"
+    ],
+    "art": "slide-after"
   },
   "presentation": {
     "metaDescription": {
@@ -269,8 +289,8 @@
       }
     },
     "servicesTitle": {
-      "en": "What we design",
-      "id": "Yang kami desain"
+      "en": "Services We Offer",
+      "id": "Layanan Kami"
     },
     "servicesText": {
       "en": "Eleven services on one standard, from a board pack to an express deck ready in hours. No per-slide pricing; retainers and fixed fees only.",

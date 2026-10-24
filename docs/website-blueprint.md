@@ -320,3 +320,25 @@ Implemented from the founder's nine-point refinement brief. Where a point depart
 **Measured after the revision.** 75 pages in preview (61 in production); 4,251 internal links checked, none broken; bilingual parity 100%; axe-core zero critical or serious issues on the 14 templates tested. Page weight on Home rises slightly with the five inline artefacts and remains well under 300 KB.
 
 **Updated decisions list.** D1–D8 stand (D4, creative route, is now closed: one palette). New: **D9** complementary-services delivery capacity; **A7** the express turnaround commitment; **A8** the headline "Global Perspective. Proven Expertise." and its Indonesian rendering "Perspektif Global. Keahlian Teruji." (a native reviewer may prefer "Keahlian yang Terbukti").
+
+---
+
+## 16. Revision 1.2 — homepage design refinement and motion (24 October 2026)
+
+Implemented from the founder's nine-point design-refinement feedback, with the supplied mock-ups as references.
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Hero motion | Headline, sub-heading, copy and buttons rise in a staggered sequence on load; the five artefact cards fan out from a stack with a 0.5–0.7 s stagger, then carry a slow light sheen; cards lift on hover; the curved band rises after the cards. All motion is CSS, disabled under `prefers-reduced-motion`, and the page is complete at rest without JavaScript | Purposeful and short: one orchestrated load sequence, no parallax or scroll-jacking |
+| 2 | Remove "Jakarta · Presentation Design and Advisory" | The hero kicker is gone. The location was also removed from the utility strip and the footer line; the office address remains on Contact only | Scope read as "location and descriptor" per the heading |
+| 3 | "Services We Offer" | Renamed in both languages on Home and the hub. Section head now pairs the title with three value pillars (Strategy-led, Institutional quality, Fast and reliable). Tiles are numbered 01–11 with icon, title, line, arrow button and a diagonal cut panel on the right; the AI tile is dark and spans two columns. Tiles reveal with a stagger on scroll and lift on hover, with the cut panel sliding | The reference's photographs are replaced by the firm's own artefacts inside the cut panel; the panel accepts a photograph later |
+| 4 | AI-powered band | Headline with the gold word, three numbered steps with icons, "What stays the same" list with icon discs and the express-brief button on the right, and a floating three-card artefact stack in place of the laptop photograph; the gold glow drifts slowly | Matches the reference's composition without imagery |
+| 5 | Complementary services | Left intro with gold word ("further."), right 2 × 2 cards with icon, title, text, arrow button and diagonal cut panel | — |
+| 6 | How we work with you | Rebuilt as a dark band after the Storyfiner "Our unique approach" layout: "What you see" (your team ↔ engagement lead) and "What works in the background" (engagement manager → four teams) with connector nodes, a dashed divider and icons in every box, followed by the five stages. Applied on Home and About | — |
+| 7 | Advisory practices | Two large cards with gold kicker, title, intro, three icon-disc bullets, gold button and a dark-gold diagonal panel carrying the tagline ("Local insights. Real opportunities." / "Clear analysis. Stronger decisions.") and an artefact | Taglines are new copy; confirm |
+| 8 | Illustrative case section | Removed from Home. Cases remain on Work and the hubs (preview only) | — |
+| 9 | Closing call to action | Headline with "45-minute" in gold, three mini-pillars (Focused discussion, Partner-level perspective, No proposal required), gold button, and a diagonal gold panel on the right carrying a working-session agenda artefact. The band is shared by every page | The reference's office photograph is replaced by the agenda artefact |
+
+**Colour note.** Gold display words use `--gold-text #9A7200` on paper (≥ 4:1) rather than the palette's `#C09200`, which fails contrast even at display sizes; on the dark bands the palette gold `#EAB200` is used as supplied.
+
+**Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero critical or serious issues on the tested templates.
