@@ -1,0 +1,71 @@
+{
+  "key": "pres-newsletters",
+  "order": 4,
+  "icon": "newsletter",
+  "slug": {
+    "en": "company-newsletters",
+    "id": "nawala-perusahaan"
+  },
+  "title": {
+    "en": "Company newsletters",
+    "id": "Nawala perusahaan"
+  },
+  "tileLine": {
+    "en": "Internal and stakeholder newsletters with an editorial structure, on a monthly or quarterly rhythm.",
+    "id": "Nawala internal dan pemangku kepentingan dengan struktur editorial, dalam ritme bulanan atau kuartalan."
+  },
+  "promise": {
+    "en": "Employee, investor and stakeholder newsletters with an editorial structure and a consistent template, produced on a monthly or quarterly rhythm.",
+    "id": "Nawala untuk karyawan, investor, dan pemangku kepentingan dengan struktur editorial dan templat yang konsisten, diproduksi dalam ritme bulanan atau kuartalan."
+  },
+  "metaDescription": {
+    "en": "Company newsletters for employees, investors and stakeholders: editorial structure, consistent template, bilingual, monthly or quarterly.",
+    "id": "Nawala perusahaan untuk karyawan, investor, dan pemangku kepentingan: struktur editorial, templat konsisten, dwibahasa, bulanan atau kuartalan."
+  },
+  "who": [
+    {
+      "en": "Corporate communications and HR teams",
+      "id": "Tim komunikasi korporat dan SDM"
+    },
+    {
+      "en": "Investor-relations teams keeping shareholders informed between results",
+      "id": "Tim hubungan investor yang menjaga pemegang saham tetap terinformasi di antara rilis kinerja"
+    },
+    {
+      "en": "Groups with subsidiaries that need one voice",
+      "id": "Grup dengan anak usaha yang membutuhkan satu suara"
+    }
+  ],
+  "get": [
+    {
+      "en": "Editorial plan and section structure",
+      "id": "Rencana editorial dan struktur rubrik"
+    },
+    {
+      "en": "Template for print, PDF and email",
+      "id": "Templat untuk cetak, PDF, dan email"
+    },
+    {
+      "en": "Writing and editing in Bahasa Indonesia and English",
+      "id": "Penulisan dan penyuntingan dalam Bahasa Indonesia dan Inggris"
+    },
+    {
+      "en": "Charts and data pages to the firm's standard",
+      "id": "Grafik dan halaman data sesuai standar firma"
+    }
+  ],
+  "getSummary": {
+    "en": "Editorial plan, template, bilingual writing, data pages",
+    "id": "Rencana editorial, templat, penulisan dwibahasa, halaman data"
+  },
+  "duration": {
+    "en": "Monthly or quarterly retainer",
+    "id": "Retainer bulanan atau kuartalan"
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "adv-strategy",
+  "practice": "presentation"
+}

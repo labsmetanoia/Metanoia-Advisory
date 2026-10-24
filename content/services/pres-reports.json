@@ -67,8 +67,13 @@
     "id": "Biaya tetap, ditagih per tonggak. Pada peluncuran kami menerima paling banyak dua laporan per musim agar pemimpin praktik meninjau setiap halaman."
   },
   "next": {
-    "en": "The investor-communication retainer for the year ahead, built on the report's template system.",
-    "id": "Retainer komunikasi investor untuk tahun mendatang, dibangun di atas sistem templat laporan."
+    "en": "The earnings-call retainer for the year ahead, built on the report's template system.",
+    "id": "Retainer paparan kinerja untuk tahun mendatang, dibangun di atas sistem templat laporan."
   },
-  "relatedService": "adv-strategy"
+  "relatedService": "adv-strategy",
+  "icon": "report",
+  "tileLine": {
+    "en": "Integrated annual and sustainability reports: SEOJK 16/2021, POJK 51/2017 and PSPK-ready from FY2027.",
+    "id": "Laporan tahunan dan keberlanjutan terpadu: SEOJK 16/2021, POJK 51/2017, dan siap PSPK mulai tahun buku 2027."
+  }
 }

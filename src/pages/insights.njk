@@ -26,7 +26,7 @@ pageKey: insights
       {% for a in notes %}
       <div class="insight-row">
         <div><h3><a href="{{ 'insights' | itemUrl(a, lang) }}">{{ a.title | L(lang) }}</a></h3><p>{{ a.summary | L(lang) }}</p>
-        <p class="meta" style="margin-top:8px">{% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}">{{ au.name }}</a>{% endif %}{% endfor %} · {{ a.readingTime }} {{ ui | t(lang, "labels.readingTime") }}{% if a.draft %} · <span class="tag tag--draft">Draft</span>{% endif %}</p></div>
+        <p class="meta" style="margin-top:8px">{% set shown = 0 %}{% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}{% set shown = shown + 1 %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}">{{ au.name }}</a>{% endif %}{% endfor %}{% if shown == 0 %}{{ ui | t(lang, "labels.byFirm") }}{% endif %} · {{ a.readingTime }} {{ ui | t(lang, "labels.readingTime") }}{% if a.draft %} · <span class="tag tag--draft">Draft</span>{% endif %}</p></div>
         <time class="meta" datetime="{{ a.date | isoDate }}">{{ a.date | date(lang) }}</time>
       </div>
       {% endfor %}

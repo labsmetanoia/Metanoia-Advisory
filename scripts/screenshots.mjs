@@ -15,16 +15,16 @@ const server = createServer((req, res) => {
 const port = server.address().port;
 mkdirSync("screenshots", { recursive: true });
 const shots = [
-  ["home-en", "/en/"], ["home-id", "/id/"], ["about-en", "/en/about/"], ["hub-market-entry-en", "/en/market-entry/"], ["hub-advisory-id", "/id/strategi-investasi/"], ["hub-presentation-en", "/en/presentation/"],
-  ["service-en", "/en/advisory/business-cases-and-investment-analysis/"], ["work-en", "/en/work/"], ["case-en", "/en/work/illustrative-distributor-led-entry/"], ["insights-en", "/en/insights/"], ["article-en", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/"], ["contact-id", "/id/kontak/"], ["person-en", "/en/people/reza/"],
+  ["home-en", "/en/"], ["home-id", "/id/"], ["about-en", "/en/about/"], ["hub-market-entry-en", "/en/indonesia-market-entry/"], ["hub-advisory-id", "/id/strategi-investasi/"], ["hub-presentation-en", "/en/presentation/"],
+  ["service-en", "/en/advisory/business-cases-and-investment-analysis/"], ["work-en", "/en/work/"], ["case-en", "/en/work/illustrative-distributor-led-entry/"], ["insights-en", "/en/insights/"], ["article-en", "/en/insights/bkpm-regulation-5-2025-mid-market-entrants/"], ["contact-id", "/id/kontak/"],
 ];
-const route = process.env.SITE_ROUTE || "journal";
+const route = "gold";
 const browser = await chromium.launch();
 for (const [name, url] of shots) {
   for (const [w, label] of [[1280, "desktop"], [390, "mobile"]]) {
     const page = await browser.newPage({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
     await page.goto(`http://localhost:${port}${url}`, { waitUntil: "load" });
-    await page.evaluate((r) => { document.documentElement.setAttribute("data-route", r); document.querySelectorAll(".fade-up").forEach((e) => e.classList.add("is-visible")); const c = document.querySelector(".consent"); c && c.classList.remove("is-open"); const t = document.querySelector(".route-toggle"); t && t.remove(); }, route);
+    await page.evaluate((r) => { document.querySelectorAll(".fade-up").forEach((e) => e.classList.add("is-visible")); const c = document.querySelector(".consent"); c && c.classList.remove("is-open"); }, route);
     await page.waitForTimeout(300);
     await page.screenshot({ path: `screenshots/${route}-${name}-${label}.png`, fullPage: true });
     await page.close();

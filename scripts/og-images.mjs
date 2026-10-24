@@ -4,18 +4,17 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const cfg = JSON.parse(readFileSync("site.config.json", "utf8"));
-const route = process.env.SITE_ROUTE || cfg.route || "journal";
-const tok = route === "journal" ? { paper: "#FAF8F4", ink: "#14161A", accent: "#1F3A5F", font: "Fraunces", file: "fraunces-normal-latin.woff2" } : { paper: "#F7F8FA", ink: "#101418", accent: "#0E5B5B", font: "Inter Tight", file: "intertight-normal-latin.woff2" };
+const tok = { paper: "#FAF8F4", ink: "#000000", accent: "#EAB200", sand: "#EEE7DA", font: "Fraunces", file: "fraunces-normal-latin.woff2" };
 const fontData = readFileSync(`src/assets/fonts/${tok.file}`).toString("base64");
 const interData = readFileSync("src/assets/fonts/inter-normal-latin.woff2").toString("base64");
 const types = {
-  default: ["Metanoia Advisory", "We build the case, win the room, and stay until it is done."],
-  home: ["Jakarta advisory firm", "Market-entry consulting · Strategy & Investment Advisory · Presentation Design & Corporate Communications"],
-  hub: ["Practice", "Market-entry consulting, strategy and investment advisory, presentation design. Jakarta."],
+  default: ["Metanoia Advisory", "Turning complex ideas into compelling business outcomes."],
+  home: ["Global Perspective. Proven Expertise.", "Presentation Design & Corporate Communications · Indonesia Market Entry & Localization Strategy · Strategy & Investment Advisory"],
+  hub: ["Practice", "Presentation design, Indonesia market entry and localization, strategy and investment advisory. Jakarta."],
   service: ["Service", "Who it is for · What you get · How long · What happens next"],
   case: ["Work", "The situation, the decision at stake, what we built, and one sourced outcome."],
   insight: ["Insights", "Finding first, then evidence, with a source under every chart."],
-  person: ["People", "Partners who build the case, present it, and stay through delivery."],
+  person: ["People", "A senior team that builds the case, presents it, and stays through delivery."],
 };
 mkdirSync("src/assets/img/og", { recursive: true });
 const browser = await chromium.launch();
@@ -30,7 +29,7 @@ for (const [key, [kicker, line]] of Object.entries(types)) {
   .w span{font-family:"T";font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:#5E6166;margin-left:14px;font-weight:400}
   .l{position:absolute;left:80px;right:80px;top:270px;font-family:"D",serif;font-size:${line.length > 90 ? 36 : 44}px;line-height:1.2;font-weight:500;max-width:980px}
   .r{position:absolute;left:80px;right:80px;bottom:80px;border-top:1px solid #A5A7AA;padding-top:20px;font-size:20px;color:#5E6166;display:flex;justify-content:space-between}
-  .a{position:absolute;left:80px;bottom:112px;width:120px;height:6px;background:${tok.accent}}
+  .a{position:absolute;left:80px;bottom:112px;width:120px;height:6px;background:${tok.accent}} .w span,.k,.r{color:#5F5E5C}
   </style></head><body><div class="k">${kicker}</div><div class="w">Metanoia<span>Advisory</span></div><div class="l">${line}</div><div class="a"></div><div class="r"><span>Jakarta</span><span>ID / EN</span></div></body></html>`;
   await page.setContent(html, { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);

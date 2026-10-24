@@ -1,6 +1,6 @@
 {
   "key": "adv-strategy",
-  "order": 7,
+  "order": 33,
   "practice": "advisory",
   "slug": {
     "en": "strategic-planning-and-strategy-refresh",
@@ -66,5 +66,5 @@
     "en": "The Presentation practice carries the plan into the equity story and the next annual report; an implementation retainer runs the transformation office if you want one.",
     "id": "Praktik Presentasi membawa rencana ke equity story dan laporan tahunan berikutnya; retainer implementasi menjalankan kantor transformasi jika Anda menghendaki."
   },
-  "relatedService": "pres-equity-story"
+  "relatedService": "pres-board-decks"
 }

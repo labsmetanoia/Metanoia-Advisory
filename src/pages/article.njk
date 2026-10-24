@@ -13,7 +13,7 @@ pageKey: article
       <h1>{{ a.title | L(lang) }}</h1>
       <p class="lede">{{ a.summary | L(lang) }}</p>
       <div class="article__meta meta">
-        {% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}"><span class="avatar" aria-hidden="true">{{ au.name | initials }}</span>{{ au.name }}</a>{% endif %}{% endfor %}
+        {% set shown = 0 %}{% for ak in a.authors %}{% set au = people | find("key", ak) %}{% if au %}{% set shown = shown + 1 %}<a class="author-chip" href="{{ 'people' | itemUrl(au, lang) }}"><span class="avatar" aria-hidden="true">{{ au.name | initials }}</span>{{ au.name }}</a>{% endif %}{% endfor %}{% if shown == 0 %}<span class="author-chip">{{ ui | t(lang, "labels.byFirm") }}</span>{% endif %}
         <time datetime="{{ a.date | isoDate }}">{{ a.date | date(lang) }}</time><span>{{ a.readingTime }} {{ ui | t(lang, "labels.readingTime") }}</span>
       </div>
       {% if a.type == "flagship" and a.findings %}

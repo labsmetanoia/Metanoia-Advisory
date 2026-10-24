@@ -23,9 +23,12 @@ pageKey: hub
   <div class="wrap">
     <div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) }}</p></div>
     {% set list = services | where("practice", pr.key) %}
-    <div class="{{ 'grid-4' if list | length == 4 else 'grid-3' }}">{% for s in list %}{% include "components/service-block.njk" %}{% endfor %}</div>
+    {% if pr.flagship %}<div class="tile-grid">{% for s in list %}{% include "components/service-tile.njk" %}{% endfor %}</div>
+    {% else %}<div class="{{ 'grid-4' if list | length == 4 else 'grid-3' }}">{% for s in list %}{% include "components/service-block.njk" %}{% endfor %}</div>{% endif %}
   </div>
 </section>
+
+{% if pr.flagship %}{% set ai = pages.home.ai %}{% set aiService = services | find("key", "pres-ai-express") %}{% include "components/ai-band.njk" %}{% endif %}
 
 <section class="band fade-up" aria-labelledby="process-title">
   <div class="wrap">
@@ -54,6 +57,14 @@ pageKey: hub
 </section>
 {% endif %}
 
+{% if pr.flagship %}
+<section class="section fade-up" aria-labelledby="comp-title">
+  <div class="wrap">
+    <div class="section-head"><h2 id="comp-title">{{ pages.home.complementary.title | L(lang) }}</h2></div>
+    <div class="grid"><div class="col-4"><p class="muted">{{ pages.home.complementary.text | L(lang) }}</p></div><div class="col-8"><div class="comp-grid">{% for it in pages.home.complementary.items %}<div class="comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<div><h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p></div></div>{% endfor %}</div></div></div>
+  </div>
+</section>
+{% endif %}
 {% set lead = people | whereIncludes("practices", pr.key) | where("seniority", "partner") | first %}
 {% if lead %}
 <section class="section fade-up" aria-labelledby="lead-title">

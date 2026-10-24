@@ -1,0 +1,76 @@
+{
+  "key": "pres-ai-express",
+  "order": 12,
+  "icon": "ai",
+  "express": true,
+  "slug": {
+    "en": "ai-powered-presentation-design",
+    "id": "desain-presentasi-berbasis-ai"
+  },
+  "title": {
+    "en": "AI-powered presentation design",
+    "id": "Desain presentasi berbasis AI"
+  },
+  "tileLine": {
+    "en": "Professional presentations, ready in hours: AI-assisted drafting inside your template, reviewed by a senior designer before release.",
+    "id": "Presentasi profesional, siap dalam hitungan jam: penyusunan berbantuan AI di dalam templat Anda, ditinjau desainer senior sebelum dirilis."
+  },
+  "promise": {
+    "en": "Professional presentations, ready in hours: AI-assisted drafting inside your template, every page reviewed by a senior designer before it reaches you.",
+    "id": "Presentasi profesional, siap dalam hitungan jam: draf berbantuan AI di dalam templat Anda, setiap halaman ditinjau desainer senior sebelum sampai kepada Anda."
+  },
+  "metaDescription": {
+    "en": "AI-powered presentation design: decks ready in hours. AI-assisted drafting inside your template, every page reviewed by a senior designer.",
+    "id": "Desain presentasi berbasis AI: dek siap dalam hitungan jam. Draf berbantuan AI di dalam templat Anda, setiap halaman ditinjau desainer senior."
+  },
+  "who": [
+    {
+      "en": "Teams with a deadline today, not next week",
+      "id": "Tim dengan tenggat hari ini, bukan minggu depan"
+    },
+    {
+      "en": "Companies that already have a template system and need volume handled consistently",
+      "id": "Perusahaan yang sudah memiliki sistem templat dan membutuhkan volume ditangani secara konsisten"
+    },
+    {
+      "en": "Internal updates, workshop decks and first drafts that do not need a full engagement",
+      "id": "Pembaruan internal, dek lokakarya, dan draf pertama yang tidak memerlukan penugasan penuh"
+    }
+  ],
+  "get": [
+    {
+      "en": "A structured brief form and a secure upload",
+      "id": "Formulir brief terstruktur dan unggahan aman"
+    },
+    {
+      "en": "AI-assisted storyline, layout and chart drafting inside your template, within the firm's own tenancy",
+      "id": "Penyusunan alur cerita, tata letak, dan grafik berbantuan AI di dalam templat Anda, di lingkungan firma sendiri"
+    },
+    {
+      "en": "Review of every page by a senior designer; numbers checked against your source",
+      "id": "Tinjauan setiap halaman oleh desainer senior; angka diperiksa terhadap sumber Anda"
+    },
+    {
+      "en": "Delivery in hours for decks up to about 20 pages; one round of revisions included",
+      "id": "Pengiriman dalam hitungan jam untuk dek hingga sekitar 20 halaman; satu putaran revisi termasuk"
+    }
+  ],
+  "getSummary": {
+    "en": "Brief, AI-assisted draft in your template, senior review, delivery in hours",
+    "id": "Brief, draf berbantuan AI dalam templat Anda, tinjauan senior, pengiriman dalam hitungan jam"
+  },
+  "duration": {
+    "en": "Hours, not days: same working day for a brief received in the morning (Jakarta time)",
+    "id": "Hitungan jam, bukan hari: hari kerja yang sama untuk brief yang diterima pagi hari (waktu Jakarta)"
+  },
+  "how": {
+    "en": "What stays human: the storyline, the numbers and the final review. Client files never enter consumer AI tools; drafting runs inside the firm's own environment. Not used for market disclosure or regulated filings.",
+    "id": "Yang tetap dikerjakan manusia: alur cerita, angka, dan tinjauan akhir. Berkas klien tidak pernah masuk ke alat AI konsumen; penyusunan berjalan di lingkungan firma sendiri. Tidak digunakan untuk keterbukaan pasar atau pelaporan teregulasi."
+  },
+  "next": {
+    "en": "A template system if you do not have one yet, so every express deck starts from your brand; a retainer if the volume is regular.",
+    "id": "Sistem templat jika Anda belum memilikinya, agar setiap dek ekspres berangkat dari merek Anda; retainer jika volumenya rutin."
+  },
+  "relatedService": "pres-templates",
+  "practice": "presentation"
+}

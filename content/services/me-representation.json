@@ -1,6 +1,6 @@
 {
   "key": "me-representation",
-  "order": 4,
+  "order": 24,
   "practice": "marketEntry",
   "slug": {
     "en": "market-representation-and-implementation",
@@ -70,5 +70,5 @@
     "en": "Handover to your general manager with a documented pipeline, partner file and board pack.",
     "id": "Serah terima kepada general manager Anda dengan pipeline, berkas mitra, dan materi dewan yang terdokumentasi."
   },
-  "relatedService": "pres-investor-decks"
+  "relatedService": "pres-earnings"
 }

@@ -1,0 +1,71 @@
+{
+  "key": "pres-templates",
+  "order": 5,
+  "icon": "templates",
+  "slug": {
+    "en": "corporate-presentation-templates",
+    "id": "templat-presentasi-korporat"
+  },
+  "title": {
+    "en": "Corporate presentation templates",
+    "id": "Templat presentasi korporat"
+  },
+  "tileLine": {
+    "en": "A PowerPoint or Google Slides system your whole company can use without breaking the brand.",
+    "id": "Sistem PowerPoint atau Google Slides yang dapat dipakai seluruh perusahaan tanpa merusak merek."
+  },
+  "promise": {
+    "en": "A template system in PowerPoint or Google Slides, with layouts, a chart library and a guide, so every deck in the company looks like it came from the same hand.",
+    "id": "Sistem templat dalam PowerPoint atau Google Slides, dengan tata letak, pustaka grafik, dan panduan, sehingga setiap dek di perusahaan tampak berasal dari tangan yang sama."
+  },
+  "metaDescription": {
+    "en": "Corporate presentation templates: PowerPoint or Google Slides master, layouts, chart library, icon set, usage guide and training.",
+    "id": "Templat presentasi korporat: master PowerPoint atau Google Slides, tata letak, pustaka grafik, set ikon, panduan, dan pelatihan."
+  },
+  "who": [
+    {
+      "en": "Companies whose decks look different in every department",
+      "id": "Perusahaan yang deknya tampak berbeda di setiap departemen"
+    },
+    {
+      "en": "Groups rolling out a new brand identity",
+      "id": "Grup yang meluncurkan identitas merek baru"
+    },
+    {
+      "en": "IR and finance teams that produce the same deck types every quarter",
+      "id": "Tim IR dan keuangan yang memproduksi jenis dek yang sama setiap kuartal"
+    }
+  ],
+  "get": [
+    {
+      "en": "Master template with layouts for the deck types you actually produce",
+      "id": "Templat master dengan tata letak untuk jenis dek yang benar-benar Anda produksi"
+    },
+    {
+      "en": "Chart library in the firm's standard, linked to Excel where needed",
+      "id": "Pustaka grafik dalam standar firma, tertaut ke Excel bila perlu"
+    },
+    {
+      "en": "Icon set, image rules and a short usage guide",
+      "id": "Set ikon, aturan gambar, dan panduan penggunaan singkat"
+    },
+    {
+      "en": "A 90-minute training for the teams that use it",
+      "id": "Pelatihan 90 menit bagi tim yang menggunakannya"
+    }
+  ],
+  "getSummary": {
+    "en": "Master template, chart library, icon set, guide, training",
+    "id": "Templat master, pustaka grafik, set ikon, panduan, pelatihan"
+  },
+  "duration": {
+    "en": "Three to five weeks",
+    "id": "Tiga hingga lima minggu"
+  },
+  "next": {
+    "en": "Teams keep producing in the system; we review a sample each quarter if you want us to.",
+    "id": "Tim terus berproduksi dalam sistem; kami meninjau sampel setiap kuartal jika Anda menghendaki."
+  },
+  "relatedService": "adv-documentation",
+  "practice": "presentation"
+}

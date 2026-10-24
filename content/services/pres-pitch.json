@@ -1,0 +1,71 @@
+{
+  "key": "pres-pitch",
+  "order": 6,
+  "icon": "pitch",
+  "slug": {
+    "en": "investor-pitch-decks",
+    "id": "dek-pitch-investor"
+  },
+  "title": {
+    "en": "Investor pitch decks",
+    "id": "Dek pitch investor"
+  },
+  "tileLine": {
+    "en": "Fundraising decks, teasers and data-room narratives built from the same model as the business case.",
+    "id": "Dek penggalangan dana, teaser, dan narasi data room yang dibangun dari model yang sama dengan kajian bisnis."
+  },
+  "promise": {
+    "en": "Fundraising decks, teasers and data-room narratives whose numbers come from the same model the Advisory practice built, so nothing in the room contradicts the data room.",
+    "id": "Dek penggalangan dana, teaser, dan narasi data room yang angkanya berasal dari model praktik Advisory, sehingga ruang rapat dan data room tidak saling bertentangan."
+  },
+  "metaDescription": {
+    "en": "Investor pitch decks, teasers and data-room narratives for companies raising capital in Indonesia, built from the financial model.",
+    "id": "Dek pitch investor, teaser, dan narasi data room untuk perusahaan yang menggalang modal di Indonesia, dibangun dari model keuangan."
+  },
+  "who": [
+    {
+      "en": "Founders and CFOs raising equity or debt",
+      "id": "Pendiri dan CFO yang menggalang ekuitas atau utang"
+    },
+    {
+      "en": "PE portfolio companies preparing an exit or a follow-on",
+      "id": "Perusahaan portofolio PE yang menyiapkan exit atau putaran lanjutan"
+    },
+    {
+      "en": "Indonesian groups presenting to foreign or Gulf capital",
+      "id": "Grup Indonesia yang memaparkan kepada modal asing atau Teluk"
+    }
+  ],
+  "get": [
+    {
+      "en": "Investment thesis and storyline",
+      "id": "Tesis investasi dan alur cerita"
+    },
+    {
+      "en": "Pitch deck, two-page teaser and data-room narrative",
+      "id": "Dek pitch, teaser dua halaman, dan narasi data room"
+    },
+    {
+      "en": "Q&A book for the toughest questions",
+      "id": "Buku tanya jawab untuk pertanyaan tersulit"
+    },
+    {
+      "en": "Rehearsal and a bilingual version",
+      "id": "Latihan dan versi dwibahasa"
+    }
+  ],
+  "getSummary": {
+    "en": "Thesis, pitch deck, teaser, data-room narrative, Q&A book",
+    "id": "Tesis, dek pitch, teaser, narasi data room, buku tanya jawab"
+  },
+  "duration": {
+    "en": "Two to four weeks",
+    "id": "Dua hingga empat minggu"
+  },
+  "next": {
+    "en": "The investor-ready business case when the model itself needs building; the earnings-call retainer after the raise.",
+    "id": "Kajian bisnis siap investor ketika modelnya sendiri perlu disusun; retainer paparan kinerja setelah penggalangan dana."
+  },
+  "relatedService": "adv-business-case",
+  "practice": "presentation"
+}

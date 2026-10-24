@@ -81,11 +81,9 @@
   "relatedServices": [
     "me-assessment",
     "me-partner-search",
-    "pres-equity-story"
+    "pres-board-decks"
   ],
-  "relatedPeople": [
-    "reza"
-  ],
+  "relatedPeople": [],
   "featuredHome": true,
   "featuredHub": true
 }

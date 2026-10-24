@@ -1,0 +1,19 @@
+{# Thin-line monochrome icon set, 1.5 px stroke. expects `icon` name. Gold stroke on the `.g` element marks the one emphasis. #}
+<span class="tile__icon" aria-hidden="true">
+{%- if icon == "board" -%}<svg viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="24" rx="2"/><path d="M24 33v6M16 39h16"/><path class="g" d="M12 27l7-8 6 5 9-10"/></svg>
+{%- elif icon == "consulting" -%}<svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="28" rx="2"/><path d="M12 16h14M12 22h10"/><path class="g" d="M28 30v-6M33 30V18M38 30v-9"/><path d="M12 40h24"/></svg>
+{%- elif icon == "sales" -%}<svg viewBox="0 0 48 48"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 24h12M18 30h12"/><path class="g" d="M18 36h8"/></svg>
+{%- elif icon == "newsletter" -%}<svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36" rx="2"/><path d="M14 13h20"/><path class="g" d="M14 19h9v10h-9z"/><path d="M27 20h7M27 25h7M14 34h20"/></svg>
+{%- elif icon == "templates" -%}<svg viewBox="0 0 48 48"><rect x="14" y="4" width="28" height="20" rx="2"/><rect x="10" y="12" width="28" height="20" rx="2"/><rect class="g" x="6" y="20" width="28" height="20" rx="2"/><path d="M12 27h10M12 33h16"/></svg>
+{%- elif icon == "pitch" -%}<svg viewBox="0 0 48 48"><path d="M8 40h32"/><path d="M12 34V22M20 34V16M28 34V12"/><path class="g" d="M36 34V8"/><path d="M8 8l6 6"/></svg>
+{%- elif icon == "earnings" -%}<svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="30" rx="2"/><path d="M6 18h36M14 6v8M34 6v8"/><path class="g" d="M13 33l7-6 6 4 9-8"/></svg>
+{%- elif icon == "education" -%}<svg viewBox="0 0 48 48"><path d="M8 10c6-3 12-3 16 0 4-3 10-3 16 0v28c-6-3-12-3-16 0-4-3-10-3-16 0z"/><path d="M24 10v28"/><path class="g" d="M13 20h6M13 26h6"/></svg>
+{%- elif icon == "marketing" -%}<svg viewBox="0 0 48 48"><path d="M8 20v8h6l14 8V12L14 20z"/><path class="g" d="M34 18a8 8 0 0 1 0 12"/><path d="M38 14a14 14 0 0 1 0 20"/></svg>
+{%- elif icon == "report" -%}<svg viewBox="0 0 48 48"><path d="M10 6h24a4 4 0 0 1 4 4v32H14a4 4 0 0 1-4-4z"/><path d="M10 38a4 4 0 0 0 4 4"/><path d="M18 14h14M18 20h14"/><path class="g" d="M18 28h6v8h-6z"/><path d="M28 30h4M28 35h4"/></svg>
+{%- elif icon == "ai" -%}<svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="24" rx="2"/><path d="M24 34v8M16 42h16"/><path class="g" d="M26 14l-6 9h6l-2 7 7-10h-6z"/></svg>
+{%- elif icon == "social" -%}<svg viewBox="0 0 48 48"><circle class="g" cx="24" cy="12" r="6"/><circle cx="10" cy="34" r="5"/><circle cx="38" cy="34" r="5"/><path d="M20 16l-8 13M28 16l8 13M15 34h18"/></svg>
+{%- elif icon == "branding" -%}<svg viewBox="0 0 48 48"><rect class="g" x="6" y="8" width="16" height="16" rx="3"/><path d="M28 10h12M28 16h8"/><rect x="6" y="30" width="8" height="8"/><rect x="18" y="30" width="8" height="8"/><rect x="30" y="30" width="8" height="8"/></svg>
+{%- elif icon == "plan" -%}<svg viewBox="0 0 48 48"><path d="M10 6h28v36H10z"/><path d="M16 14h16M16 20h12"/><path class="g" d="M14 28h20l-4 6h-12z"/><path d="M20 38h8"/></svg>
+{%- elif icon == "events" -%}<svg viewBox="0 0 48 48"><path d="M6 10l12-3v31L6 41zM18 7l12 3v31l-12-3M30 10l12-3v31l-12 3"/><path class="g" d="M21 16h6M21 22h6"/></svg>
+{%- else -%}<svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="2"/></svg>{%- endif -%}
+</span>

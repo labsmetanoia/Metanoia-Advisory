@@ -1,24 +1,32 @@
 {
   "seoTitle": {
-    "en": "Advisory and presentation design, Jakarta",
-    "id": "Advisory dan desain presentasi, Jakarta"
+    "en": "Presentation design and advisory, Jakarta",
+    "id": "Desain presentasi dan advisory, Jakarta"
   },
   "metaDescription": {
-    "en": "Market-entry consulting, strategy and investment advisory, and presentation design for leadership teams making high-stakes decisions in Indonesia.",
-    "id": "Konsultansi masuk pasar, advisory strategi dan investasi, serta desain presentasi untuk tim kepemimpinan yang mengambil keputusan penting di Indonesia."
+    "en": "Presentation design and corporate communications, supported by Indonesia market-entry and strategy advisory. We turn complex ideas into compelling business outcomes.",
+    "id": "Desain presentasi dan komunikasi korporat, didukung advisory masuk pasar Indonesia dan strategi. Kami mengubah gagasan kompleks menjadi hasil bisnis yang berdampak."
   },
   "hero": {
-    "title": {
-      "en": "We build the case, win the room, and *stay until it is done*.",
-      "id": "Kami menyusun kajian, memenangkan ruang, dan *mendampingi hingga tuntas*."
+    "kicker": {
+      "en": "Jakarta · Presentation design and advisory",
+      "id": "Jakarta · Desain presentasi dan advisory"
+    },
+    "headline": {
+      "en": "Global Perspective. Proven Expertise.",
+      "id": "Perspektif Global. Keahlian Teruji."
+    },
+    "sub": {
+      "en": "Turning Complex Ideas into Compelling Business Outcomes",
+      "id": "Mengubah Gagasan Kompleks menjadi Hasil Bisnis yang Berdampak"
     },
     "text": {
-      "en": "Market-entry consulting, strategy and investment advisory, and presentation design for leadership teams making high-stakes decisions in Indonesia. One senior team, so the numbers in the model are the numbers in the room.",
-      "id": "Konsultansi masuk pasar, advisory strategi dan investasi, serta desain presentasi untuk tim kepemimpinan yang mengambil keputusan berisiko tinggi di Indonesia. Satu tim senior, sehingga angka dalam model adalah angka yang dipaparkan di ruang rapat."
+      "en": "From strategic advisory to executive storytelling and presentation design, we help organizations across industries translate complex ideas into clear strategies, compelling narratives, and impactful business decisions.",
+      "id": "Dari advisory strategis hingga penuturan eksekutif dan desain presentasi, kami membantu organisasi lintas industri menerjemahkan gagasan kompleks menjadi strategi yang jelas, narasi yang meyakinkan, dan keputusan bisnis yang berdampak."
     },
-    "artefactCaption": {
-      "en": "A deck page set in the firm's chart standard: the finding in the title, one accent, labelled values, a source line. Data: BKPM, 2025.",
-      "id": "Halaman dek dalam standar grafik firma: temuan di judul, satu aksen, nilai berlabel, baris sumber. Data: BKPM, 2025."
+    "fanCaption": {
+      "en": "Pages from our own deck and report standard: the finding in the title, one accent, labelled values, a source line.",
+      "id": "Halaman dari standar dek dan laporan kami sendiri: temuan di judul, satu aksen, nilai berlabel, baris sumber."
     }
   },
   "situations": {
@@ -61,6 +69,350 @@
     "text": {
       "en": "A regulatory change, an entry decision or a chart rebuilt, with one artefact from recent work. No announcements.",
       "id": "Satu perubahan regulasi, satu keputusan masuk pasar, atau satu grafik yang dibangun ulang, beserta satu artefak dari pekerjaan terkini. Tanpa pengumuman."
+    }
+  },
+  "flagship": {
+    "kicker": {
+      "en": "Our core practice",
+      "id": "Praktik inti kami"
+    },
+    "title": {
+      "en": "Presentation Design & Corporate Communications",
+      "id": "Desain Presentasi & Komunikasi Korporat"
+    },
+    "text": {
+      "en": "Board packs, investor presentations, proposals, reports and templates that say what the numbers mean. Built by a team that combines consulting structure with executive-grade design, and reconciled to your figures before anything reaches the room.",
+      "id": "Materi dewan, presentasi investor, proposal, laporan, dan templat yang menjelaskan makna di balik angka. Dibangun oleh tim yang memadukan struktur konsultansi dengan desain kelas eksekutif, dan direkonsiliasi dengan angka Anda sebelum apa pun sampai ke ruang rapat."
+    },
+    "points": [
+      {
+        "title": {
+          "en": "Consulting structure",
+          "id": "Struktur konsultansi"
+        },
+        "text": {
+          "en": "The answer first, the evidence behind it, an action title on every page.",
+          "id": "Jawaban dahulu, bukti di belakangnya, judul tindakan di setiap halaman."
+        }
+      },
+      {
+        "title": {
+          "en": "Executive-grade design",
+          "id": "Desain kelas eksekutif"
+        },
+        "text": {
+          "en": "One chart standard, one accent, your brand. No decoration that costs attention.",
+          "id": "Satu standar grafik, satu aksen, merek Anda. Tanpa dekorasi yang menyita perhatian."
+        }
+      },
+      {
+        "title": {
+          "en": "Numbers that match",
+          "id": "Angka yang sama"
+        },
+        "text": {
+          "en": "A reconciliation log on every deliverable and a four-eyes check before release.",
+          "id": "Log rekonsiliasi pada setiap keluaran dan pemeriksaan empat mata sebelum dirilis."
+        }
+      }
+    ]
+  },
+  "portfolio": {
+    "title": {
+      "en": "What we design",
+      "id": "Yang kami desain"
+    },
+    "text": {
+      "en": "Eleven services on one standard. Choose the one closest to the deck or document in front of you.",
+      "id": "Sebelas layanan dalam satu standar. Pilih yang paling dekat dengan dek atau dokumen di hadapan Anda."
+    }
+  },
+  "ai": {
+    "pill": {
+      "en": "AI-powered · Ready in hours",
+      "id": "Berbasis AI · Siap dalam hitungan jam"
+    },
+    "title": {
+      "en": "Professional presentations, ready in hours.",
+      "id": "Presentasi profesional, siap dalam hitungan jam."
+    },
+    "text": {
+      "en": "Send a brief and your content. AI-assisted tools draft the structure, layout and charts inside your template; a senior designer reviews every page and checks every number before it reaches you. The speed is automated. The judgement is not.",
+      "id": "Kirimkan brief dan konten Anda. Perangkat berbantuan AI menyusun struktur, tata letak, dan grafik di dalam templat Anda; desainer senior meninjau setiap halaman dan memeriksa setiap angka sebelum sampai kepada Anda. Kecepatannya diotomatiskan. Penilaiannya tidak."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Brief",
+          "id": "Brief"
+        },
+        "text": {
+          "en": "A structured form: audience, decision, source material, deadline. Ten minutes.",
+          "id": "Formulir terstruktur: audiens, keputusan, bahan sumber, tenggat. Sepuluh menit."
+        }
+      },
+      {
+        "title": {
+          "en": "Draft",
+          "id": "Draf"
+        },
+        "text": {
+          "en": "Storyline, layouts and charts drafted inside your template, within the firm's own secure environment.",
+          "id": "Alur cerita, tata letak, dan grafik disusun di dalam templat Anda, di lingkungan aman firma sendiri."
+        }
+      },
+      {
+        "title": {
+          "en": "Review and deliver",
+          "id": "Tinjau dan kirim"
+        },
+        "text": {
+          "en": "A senior designer edits every page and checks the figures against your source. Delivered the same working day for decks up to about 20 pages.",
+          "id": "Desainer senior menyunting setiap halaman dan memeriksa angka terhadap sumber Anda. Dikirim pada hari kerja yang sama untuk dek hingga sekitar 20 halaman."
+        }
+      }
+    ],
+    "guardTitle": {
+      "en": "What stays the same",
+      "id": "Yang tidak berubah"
+    },
+    "guards": [
+      {
+        "en": "Your brand and template, not a generic look",
+        "id": "Merek dan templat Anda, bukan tampilan generik"
+      },
+      {
+        "en": "Client files never enter consumer AI tools",
+        "id": "Berkas klien tidak pernah masuk ke alat AI konsumen"
+      },
+      {
+        "en": "Not used for market disclosure or regulated filings",
+        "id": "Tidak digunakan untuk keterbukaan pasar atau pelaporan teregulasi"
+      }
+    ]
+  },
+  "complementary": {
+    "title": {
+      "en": "Take the story further",
+      "id": "Bawa kisahnya lebih jauh"
+    },
+    "text": {
+      "en": "While presentation design is our core expertise, clients increasingly rely on us to bring the same strategic thinking and design excellence to their broader content and brand communications. Our complementary services ensure a consistent, compelling narrative across every client touchpoint.",
+      "id": "Meskipun desain presentasi adalah keahlian inti kami, klien semakin mengandalkan kami untuk membawa pemikiran strategis dan keunggulan desain yang sama ke konten dan komunikasi merek mereka yang lebih luas. Layanan pelengkap kami memastikan narasi yang konsisten dan meyakinkan di setiap titik kontak klien."
+    },
+    "items": [
+      {
+        "icon": "social",
+        "title": {
+          "en": "Social Media Strategy & Management",
+          "id": "Strategi & Pengelolaan Media Sosial"
+        },
+        "text": {
+          "en": "An editorial calendar built from your strategy and your decks, so LinkedIn says what the board heard.",
+          "id": "Kalender editorial yang dibangun dari strategi dan dek Anda, sehingga LinkedIn menyampaikan apa yang didengar dewan."
+        }
+      },
+      {
+        "icon": "branding",
+        "title": {
+          "en": "Corporate Branding",
+          "id": "Branding Korporat"
+        },
+        "text": {
+          "en": "Identity, presentation and document systems that carry one voice across subsidiaries and languages.",
+          "id": "Sistem identitas, presentasi, dan dokumen yang membawa satu suara lintas anak usaha dan bahasa."
+        }
+      },
+      {
+        "icon": "plan",
+        "title": {
+          "en": "Business Plan Development",
+          "id": "Penyusunan Rencana Bisnis"
+        },
+        "text": {
+          "en": "A business plan with the model behind it, written to the standard a lender, investor or board requires.",
+          "id": "Rencana bisnis beserta modelnya, ditulis sesuai standar yang disyaratkan pemberi pinjaman, investor, atau dewan."
+        }
+      },
+      {
+        "icon": "events",
+        "title": {
+          "en": "Event Brochures & Marketing Collateral",
+          "id": "Brosur Acara & Materi Pemasaran"
+        },
+        "text": {
+          "en": "Brochures, one-pagers and event materials in the same system as your decks.",
+          "id": "Brosur, lembar satu halaman, dan materi acara dalam sistem yang sama dengan dek Anda."
+        }
+      }
+    ]
+  },
+  "approach": {
+    "title": {
+      "en": "How we work with you",
+      "id": "Cara kami bekerja bersama Anda"
+    },
+    "text": {
+      "en": "One senior point of contact, a structured process and a bench that works in the background. You see the lead; the lead sees everything.",
+      "id": "Satu titik kontak senior, proses terstruktur, dan tim yang bekerja di latar belakang. Anda melihat pemimpin penugasan; pemimpin penugasan melihat semuanya."
+    },
+    "see": {
+      "title": {
+        "en": "What you see",
+        "id": "Yang Anda lihat"
+      },
+      "client": {
+        "en": "Your team",
+        "id": "Tim Anda"
+      },
+      "clientText": {
+        "en": "CFO, IR, strategy or marketing lead",
+        "id": "CFO, IR, strategi, atau pimpinan pemasaran"
+      },
+      "lead": {
+        "en": "Metanoia engagement lead",
+        "id": "Pemimpin penugasan Metanoia"
+      },
+      "leadText": {
+        "en": "Senior, accountable, present in every review",
+        "id": "Senior, bertanggung jawab, hadir di setiap tinjauan"
+      },
+      "items": [
+        {
+          "en": "Requirements gathering and source collection",
+          "id": "Penggalian kebutuhan dan pengumpulan sumber"
+        },
+        {
+          "en": "Weekly review and mid-point storyboard sign-off",
+          "id": "Tinjauan mingguan dan persetujuan storyboard di tengah jalan"
+        },
+        {
+          "en": "Alignment with your counsel, auditor or underwriter where needed",
+          "id": "Penyelarasan dengan penasihat hukum, auditor, atau penjamin emisi Anda bila diperlukan"
+        }
+      ]
+    },
+    "background": {
+      "title": {
+        "en": "What works in the background",
+        "id": "Yang bekerja di latar belakang"
+      },
+      "pmo": {
+        "en": "Engagement manager",
+        "id": "Engagement manager"
+      },
+      "pmoText": {
+        "en": "Runs the cadence, the quality gate and the file",
+        "id": "Menjalankan ritme, gerbang mutu, dan berkas"
+      },
+      "items": [
+        {
+          "title": {
+            "en": "Strategy and content team",
+            "id": "Tim strategi dan konten"
+          },
+          "text": {
+            "en": "Storyline, analysis, writing in both languages",
+            "id": "Alur cerita, analisis, penulisan dalam dua bahasa"
+          }
+        },
+        {
+          "title": {
+            "en": "Design team",
+            "id": "Tim desain"
+          },
+          "text": {
+            "en": "Layout, charts, templates to one standard",
+            "id": "Tata letak, grafik, templat dalam satu standar"
+          }
+        },
+        {
+          "title": {
+            "en": "Reconciliation and QA",
+            "id": "Rekonsiliasi dan QA"
+          },
+          "text": {
+            "en": "Every figure tied to its source; four-eyes check",
+            "id": "Setiap angka terikat ke sumbernya; pemeriksaan empat mata"
+          }
+        },
+        {
+          "title": {
+            "en": "Translation and regulatory review",
+            "id": "Penerjemahan dan tinjauan regulasi"
+          },
+          "text": {
+            "en": "ID/EN parity; POJK, SEOJK, IDX, PSPK checklists",
+            "id": "Kesetaraan ID/EN; daftar periksa POJK, SEOJK, BEI, PSPK"
+          }
+        }
+      ]
+    },
+    "stagesTitle": {
+      "en": "From first conversation to delivery",
+      "id": "Dari percakapan pertama hingga pengiriman"
+    },
+    "stages": [
+      {
+        "title": {
+          "en": "Engagement and requirements",
+          "id": "Penugasan dan kebutuhan"
+        },
+        "text": {
+          "en": "A working session, then a one-page brief: audience, decision, sources, deadline.",
+          "id": "Sesi kerja, lalu brief satu halaman: audiens, keputusan, sumber, tenggat."
+        }
+      },
+      {
+        "title": {
+          "en": "Strategy development",
+          "id": "Pengembangan strategi"
+        },
+        "text": {
+          "en": "The message and the evidence: what must the reader believe, and why.",
+          "id": "Pesan dan buktinya: apa yang harus diyakini pembaca, dan mengapa."
+        }
+      },
+      {
+        "title": {
+          "en": "Content structuring",
+          "id": "Penyusunan konten"
+        },
+        "text": {
+          "en": "Storyboard with an action title on every page, signed off before layout.",
+          "id": "Storyboard dengan judul tindakan di setiap halaman, disetujui sebelum tata letak."
+        }
+      },
+      {
+        "title": {
+          "en": "Design execution",
+          "id": "Eksekusi desain"
+        },
+        "text": {
+          "en": "Layout, charts and templates to one standard; figures reconciled to your model.",
+          "id": "Tata letak, grafik, dan templat dalam satu standar; angka direkonsiliasi dengan model Anda."
+        }
+      },
+      {
+        "title": {
+          "en": "Final delivery",
+          "id": "Pengiriman akhir"
+        },
+        "text": {
+          "en": "Four-eyes check, rehearsal where needed, editable files and a template to continue.",
+          "id": "Pemeriksaan empat mata, latihan bila perlu, berkas yang dapat disunting, dan templat untuk melanjutkan."
+        }
+      }
+    ]
+  },
+  "advisory": {
+    "title": {
+      "en": "Advisory practices behind the story",
+      "id": "Praktik advisory di balik kisah"
+    },
+    "text": {
+      "en": "Two advisory practices supply the analysis the presentations are built on, for companies entering Indonesia and for boards deciding where the money goes.",
+      "id": "Dua praktik advisory menyediakan analisis yang menjadi dasar presentasi, bagi perusahaan yang memasuki Indonesia dan bagi dewan yang memutuskan ke mana dana dialokasikan."
     }
   }
 }

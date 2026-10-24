@@ -36,13 +36,10 @@ pageKey: about
   </div>
 </section>
 
-<section class="section fade-up" aria-labelledby="people-title">
+<section class="section fade-up" aria-labelledby="approach-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="people-title">{{ c.people.title | L(lang) }}</h2><p class="meta measure">{{ c.people.text | L(lang) }}</p></div>
-    {% set partners = people | where("seniority", "partner") %}
-    {% set others = people | where("seniority", "associate") %}
-    {% if partners | length %}<div class="grid-4">{% for person in partners %}{% include "components/person-card.njk" %}{% endfor %}</div>{% else %}<p class="empty">{{ ui | t(lang, "labels.emptyPeople") }}</p>{% endif %}
-    {% if others | length %}<h3 style="margin-top:48px">{{ ui | t(lang, "labels.seniority.associate") }}</h3><div class="grid-4">{% for person in others %}{% include "components/person-card.njk" %}{% endfor %}</div>{% endif %}
+    <div class="section-head"><h2 id="approach-title">{{ pages.home.approach.title | L(lang) }}</h2><p class="meta measure">{{ pages.home.approach.text | L(lang) }}</p></div>
+    {% set ap = pages.home.approach %}{% include "components/approach.njk" %}
   </div>
 </section>
 

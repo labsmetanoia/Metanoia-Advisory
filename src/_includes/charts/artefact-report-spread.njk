@@ -1,0 +1,13 @@
+{# Flat render of an annual-report spread in the firm's standard (synthetic text blocks, no claims). #}
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="640" height="400" fill="#fff"/><line x1="320" y1="0" x2="320" y2="400" stroke="#E3E0DA"/>
+<text x="40" y="60" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="600" fill="#000">{{ "Letter from the Board" if lang == "en" else "Surat dari Dewan" }}</text>
+<rect x="40" y="80" width="80" height="4" fill="#EAB200"/>
+{% for i in range(0, 9) %}<rect x="40" y="{{ 104 + i*16 }}" width="{{ [240,236,228,240,220,236,232,180,0][i] }}" height="6" rx="3" fill="#E3E0DA"/>{% endfor %}
+{% for i in range(0, 7) %}<rect x="40" y="{{ 262 + i*16 }}" width="{{ [240,232,238,226,240,200,120][i] }}" height="6" rx="3" fill="#E3E0DA"/>{% endfor %}
+<text x="360" y="60" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5F5E5C">{{ "Revenue by segment, Rp trillion" if lang == "en" else "Pendapatan per segmen, Rp triliun" }}</text>
+{% set vals = [42, 58, 30, 76] %}{% for v in vals %}<rect x="{{ 360 + loop.index0*60 }}" y="{{ 220 - v*2 }}" width="40" height="{{ v*2 }}" fill="{{ '#EAB200' if loop.last else '#E3E0DA' }}"/><text x="{{ 380 + loop.index0*60 }}" y="{{ 212 - v*2 }}" text-anchor="middle" font-family="Inter, Arial" font-size="11" font-weight="600" fill="#000">{{ v }}</text>{% endfor %}
+<line x1="360" y1="220" x2="600" y2="220" stroke="#B4B2AE"/>
+<text x="360" y="260" font-family="Fraunces, Georgia, serif" font-size="40" font-weight="500" fill="#000">76<tspan font-size="16" fill="#5F5E5C"> Rp tn</tspan></text>
+<text x="360" y="284" font-family="Inter, Arial" font-size="11" fill="#5F5E5C">{{ "Largest segment, FY (synthetic figures)" if lang == "en" else "Segmen terbesar, tahun buku (angka sintetis)" }}</text>
+{% for i in range(0, 4) %}<rect x="360" y="{{ 310 + i*16 }}" width="{{ [230,236,220,140][i] }}" height="6" rx="3" fill="#E3E0DA"/>{% endfor %}
+<text x="40" y="384" font-family="Inter, Arial" font-size="9" fill="#B4B2AE">14</text><text x="600" y="384" text-anchor="end" font-family="Inter, Arial" font-size="9" fill="#B4B2AE">15</text></svg>

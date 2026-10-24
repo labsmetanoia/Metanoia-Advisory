@@ -1,0 +1,71 @@
+{
+  "key": "pres-sales",
+  "order": 3,
+  "icon": "sales",
+  "slug": {
+    "en": "sales-proposals",
+    "id": "proposal-penjualan"
+  },
+  "title": {
+    "en": "Sales proposals",
+    "id": "Proposal penjualan"
+  },
+  "tileLine": {
+    "en": "Proposals and tender responses that lead with the client's problem and make the commercial case plainly.",
+    "id": "Proposal dan tanggapan tender yang berangkat dari masalah klien dan menyampaikan kasus komersial dengan jelas."
+  },
+  "promise": {
+    "en": "Proposals, tender responses and pitch decks that lead with the buyer's problem, state the value plainly and are easy to approve.",
+    "id": "Proposal, tanggapan tender, dan dek pitch yang berangkat dari masalah pembeli, menyatakan nilai dengan jelas, dan mudah disetujui."
+  },
+  "metaDescription": {
+    "en": "Sales proposals, tender responses and pitch decks for B2B companies in Indonesia: buyer-first structure, clear commercial case, bilingual.",
+    "id": "Proposal penjualan, tanggapan tender, dan dek pitch untuk perusahaan B2B di Indonesia: struktur berbasis pembeli, kasus komersial jelas, dwibahasa."
+  },
+  "who": [
+    {
+      "en": "Sales and bid teams at B2B companies",
+      "id": "Tim penjualan dan tender di perusahaan B2B"
+    },
+    {
+      "en": "Professional-services firms responding to RFPs",
+      "id": "Firma jasa profesional yang menanggapi RFP"
+    },
+    {
+      "en": "Companies entering Indonesia with a partner or distributor pitch",
+      "id": "Perusahaan yang memasuki Indonesia dengan pitch untuk mitra atau distributor"
+    }
+  ],
+  "get": [
+    {
+      "en": "Proposal structure: problem, approach, value, proof, price, next step",
+      "id": "Struktur proposal: masalah, pendekatan, nilai, bukti, harga, langkah berikutnya"
+    },
+    {
+      "en": "Executive summary that can be read alone",
+      "id": "Ringkasan eksekutif yang dapat dibaca tersendiri"
+    },
+    {
+      "en": "Case-study and credentials pages in a reusable format",
+      "id": "Halaman studi kasus dan kredensial dalam format yang dapat dipakai ulang"
+    },
+    {
+      "en": "Bilingual version where the buyer needs it",
+      "id": "Versi dwibahasa jika pembeli membutuhkannya"
+    }
+  ],
+  "getSummary": {
+    "en": "Proposal structure, executive summary, credentials pages, bilingual",
+    "id": "Struktur proposal, ringkasan eksekutif, halaman kredensial, dwibahasa"
+  },
+  "duration": {
+    "en": "Three to ten working days",
+    "id": "Tiga hingga sepuluh hari kerja"
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "me-partner-search",
+  "practice": "presentation"
+}

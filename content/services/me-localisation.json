@@ -1,6 +1,6 @@
 {
   "key": "me-localisation",
-  "order": 3,
+  "order": 23,
   "practice": "marketEntry",
   "slug": {
     "en": "localisation-and-go-to-market",
@@ -66,5 +66,5 @@
     "en": "Market representation: a senior local lead runs the plan until your own general manager is hired.",
     "id": "Representasi pasar: pemimpin lokal senior menjalankan rencana hingga general manager Anda direkrut."
   },
-  "relatedService": "pres-equity-story"
+  "relatedService": "pres-board-decks"
 }

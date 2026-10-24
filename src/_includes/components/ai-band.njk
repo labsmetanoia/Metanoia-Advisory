@@ -1,0 +1,15 @@
+{# expects `ai` = pages.home.ai, `aiService`, `lang` #}
+<section class="ai-band fade-up" aria-labelledby="ai-title">
+  <div class="wrap grid">
+    <div class="col-7">
+      <span class="pill">{{ ai.pill | L(lang) }}</span>
+      <h2 id="ai-title">{{ ai.title | L(lang) }}</h2>
+      <p class="lede" style="color:inherit">{{ ai.text | L(lang) }}</p>
+      <ol class="ai-steps">{% for st in ai.steps %}<li><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></li>{% endfor %}</ol>
+    </div>
+    <div class="col-5" style="display:flex;flex-direction:column;gap:32px;justify-content:center">
+      <div class="guard"><strong style="color:var(--paper)">{{ ai.guardTitle | L(lang) }}</strong><ul>{% for g in ai.guards %}<li>{{ g | L(lang) }}</li>{% endfor %}</ul></div>
+      <div class="cluster">{% if aiService %}<a class="btn btn--primary" href="{{ aiService | serviceUrl(lang) }}" data-event="cta_click" data-location="ai-band">{{ ui | t(lang, "cta.express") }}</a>{% endif %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="ai-band-secondary">{{ ui | t(lang, "cta.deckReview") }}</a></div>
+    </div>
+  </div>
+</section>

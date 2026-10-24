@@ -1,0 +1,71 @@
+{
+  "key": "pres-educational",
+  "order": 8,
+  "icon": "education",
+  "slug": {
+    "en": "educational-materials",
+    "id": "materi-edukasi"
+  },
+  "title": {
+    "en": "Educational materials",
+    "id": "Materi edukasi"
+  },
+  "tileLine": {
+    "en": "Training decks, explainers and onboarding materials that teach one idea per page.",
+    "id": "Dek pelatihan, materi penjelas, dan materi orientasi yang mengajarkan satu gagasan per halaman."
+  },
+  "promise": {
+    "en": "Training decks, regulatory explainers and onboarding materials that teach one idea per page and survive being presented by someone who did not write them.",
+    "id": "Dek pelatihan, penjelasan regulasi, dan materi orientasi yang mengajarkan satu gagasan per halaman dan tetap efektif saat dipaparkan oleh orang yang tidak menulisnya."
+  },
+  "metaDescription": {
+    "en": "Educational materials: training decks, regulatory explainers (POJK, PSPK, OSS) and onboarding materials, bilingual, one idea per page.",
+    "id": "Materi edukasi: dek pelatihan, penjelasan regulasi (POJK, PSPK, OSS), dan materi orientasi, dwibahasa, satu gagasan per halaman."
+  },
+  "who": [
+    {
+      "en": "Learning and development, compliance and finance teams",
+      "id": "Tim pembelajaran dan pengembangan, kepatuhan, dan keuangan"
+    },
+    {
+      "en": "Companies explaining a new regulation or process across subsidiaries",
+      "id": "Perusahaan yang menjelaskan regulasi atau proses baru lintas anak usaha"
+    },
+    {
+      "en": "Associations and chambers briefing their members",
+      "id": "Asosiasi dan kamar dagang yang memberi pengarahan kepada anggotanya"
+    }
+  ],
+  "get": [
+    {
+      "en": "Learning structure: objectives, sequence, checks for understanding",
+      "id": "Struktur pembelajaran: tujuan, urutan, pengecekan pemahaman"
+    },
+    {
+      "en": "Presenter deck and self-study version",
+      "id": "Dek presenter dan versi belajar mandiri"
+    },
+    {
+      "en": "Diagrams and worked examples in the firm's standard",
+      "id": "Diagram dan contoh terapan dalam standar firma"
+    },
+    {
+      "en": "Bilingual production",
+      "id": "Produksi dwibahasa"
+    }
+  ],
+  "getSummary": {
+    "en": "Learning structure, presenter and self-study decks, diagrams, bilingual",
+    "id": "Struktur pembelajaran, dek presenter dan belajar mandiri, diagram, dwibahasa"
+  },
+  "duration": {
+    "en": "Two to four weeks",
+    "id": "Dua hingga empat minggu"
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "me-localisation",
+  "practice": "presentation"
+}

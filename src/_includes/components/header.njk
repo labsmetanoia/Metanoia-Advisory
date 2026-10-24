@@ -1,39 +1,46 @@
 {% set otherLang = "en" if lang == "id" else "id" %}
+<div class="topbar">
+  <div class="wrap">
+    <span>{{ site.addressJakarta }}{% if site.email %} · <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</span>
+    <span class="cluster" style="gap:16px">
+      {% if site.linkedin %}<a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
+      <span class="lang-switch" aria-label="Language"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>
+    </span>
+  </div>
+</div>
 <header class="header">
-  <div class="wrap header__inner">
-    <a class="wordmark" href="{{ 'home' | pageUrl(lang) }}">Metanoia<span class="visually-hidden"> </span><span class="wordmark__sub">Advisory</span></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-open="{{ ui | t(lang, 'menu') }}" data-close="{{ ui | t(lang, 'close') }}">{{ ui | t(lang, "menu") }}</button>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <div class="lang-switch lang-switch--mobile" aria-label="Language">
-        <span aria-current="true">{{ ui | t(lang, "langShort") }}</span><span aria-hidden="true">/</span>
-        <a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langShort") }}<span class="visually-hidden"> · {{ ui | t(lang, 'otherLangLabel') }}</span></a>
-      </div>
-      <ul class="nav__list">
-        <li><a class="nav__link{% if activeNav == 'about' %} is-active{% endif %}" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>
-        {% for pr in practices %}
-        <li class="practice-menu">
-          <a class="nav__link{% if activeNav == pr.key %} is-active{% endif %}" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "nav." + pr.key) }}</a>
+  <div class="wrap">
+    <div class="header__pill">
+      <a class="wordmark" href="{{ 'home' | pageUrl(lang) }}">Metanoia<span class="visually-hidden"> </span><span class="wordmark__sub">Advisory</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-open="{{ ui | t(lang, 'menu') }}" data-close="{{ ui | t(lang, 'close') }}">{{ ui | t(lang, "menu") }}</button>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <div class="lang-switch lang-switch--mobile" aria-label="Language">
+          <span aria-current="true">{{ ui | t(lang, "langShort") }}</span><span aria-hidden="true">/</span>
+          <a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langShort") }}<span class="visually-hidden"> · {{ ui | t(lang, 'otherLangLabel') }}</span></a>
+        </div>
+        <ul class="nav__list">
+          {% for pr in practices %}
+          <li class="practice-menu">
+            <a class="nav__link{% if activeNav == pr.key %} is-active{% endif %}" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "nav." + pr.key) }}</a>
+            {% if site.phase == 2 %}
+            <div class="practice-menu__panel">
+              {% for s in services | where("practice", pr.key) %}<a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a>{% endfor %}
+              {% set featured = (cases | whereIncludes("practices", pr.key) | where("featuredHub", true)) | first %}
+              {% if featured %}<p class="meta">{{ ui | t(lang, "labels.featured") }}</p><a href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a>{% endif %}
+            </div>
+            {% endif %}
+          </li>
+          {% endfor %}
           {% if site.phase == 2 %}
-          <div class="practice-menu__panel">
-            {% for s in services | where("practice", pr.key) %}<a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a>{% endfor %}
-            {% set featured = (cases | whereIncludes("practices", pr.key) | where("featuredHub", true)) | first %}
-            {% if featured %}<p class="meta">{{ ui | t(lang, "labels.featured") }}</p><a href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a>{% endif %}
-          </div>
+          <li><a class="nav__link{% if activeNav == 'work' %} is-active{% endif %}" href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a></li>
+          <li><a class="nav__link{% if activeNav == 'insights' %} is-active{% endif %}" href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
           {% endif %}
-        </li>
-        {% endfor %}
-        {% if site.phase == 2 %}
-        <li><a class="nav__link{% if activeNav == 'work' %} is-active{% endif %}" href="{{ 'work' | pageUrl(lang) }}">{{ ui | t(lang, "nav.work") }}</a></li>
-        <li><a class="nav__link{% if activeNav == 'insights' %} is-active{% endif %}" href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>
-        {% endif %}
-        <li><a class="nav__link{% if activeNav == 'contact' %} is-active{% endif %}" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
-      </ul>
-      <div class="lang-switch lang-switch--desktop" aria-label="Language">
-        <span aria-current="true">{{ ui | t(lang, "langShort") }}</span><span aria-hidden="true">/</span>
-        <a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langShort") }}<span class="visually-hidden"> · {{ ui | t(lang, 'otherLangLabel') }}</span></a>
-      </div>
-      <div class="nav__cta nav__cta--desktop"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="header">{{ ui | t(lang, "cta.talk") }}</a></div>
-      <div class="nav__cta nav__cta--mobile"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="menu">{{ ui | t(lang, "cta.talk") }}</a></div>
-    </nav>
+          <li><a class="nav__link{% if activeNav == 'about' %} is-active{% endif %}" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>
+          <li class="nav__contact-mobile"><a class="nav__link{% if activeNav == 'contact' %} is-active{% endif %}" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
+        </ul>
+        <div class="nav__cta nav__cta--desktop"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="header">{{ ui | t(lang, "cta.talk") }} →</a></div>
+        <div class="nav__cta nav__cta--mobile"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="menu">{{ ui | t(lang, "cta.talk") }}</a></div>
+      </nav>
+    </div>
   </div>
 </header>

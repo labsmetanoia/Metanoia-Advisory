@@ -3,7 +3,6 @@ import { PREVIEW } from "../../lib/content.js";
 
 const cfg = JSON.parse(readFileSync(new URL("../../site.config.json", import.meta.url), "utf8"));
 const phase = process.env.SITE_PHASE === "1" ? 1 : 2;
-const route = process.env.SITE_ROUTE || cfg.route || "journal";
 
 // In preview builds, unconfigured integrations get example.com placeholders so every component renders.
 const warn = [];
@@ -32,12 +31,11 @@ if (warn.length) {
 export default {
   ...cfg,
   phase,
-  route,
   preview: PREVIEW,
   baseUrl: cfg.domain ? cfg.domain.replace(/\/$/, "") : "",
   buildDate: new Date().toISOString(),
   practiceNames: {
-    marketEntry: { en: "Market-Entry Consulting", id: "Konsultansi Masuk Pasar" },
+    marketEntry: { en: "Indonesia Market Entry & Localization Strategy", id: "Strategi Masuk Pasar & Lokalisasi Indonesia" },
     advisory: { en: "Strategy & Investment Advisory", id: "Advisory Strategi & Investasi" },
     presentation: { en: "Presentation Design & Corporate Communications", id: "Desain Presentasi & Komunikasi Korporat" },
   },

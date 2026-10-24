@@ -1,22 +1,26 @@
 {
-  "key": "pres-investor-decks",
-  "order": 9,
-  "practice": "presentation",
+  "key": "pres-earnings",
+  "order": 7,
+  "icon": "earnings",
   "slug": {
-    "en": "investor-and-results-decks",
-    "id": "dek-investor-dan-paparan-kinerja"
+    "en": "earnings-call-presentations-and-investor-reports",
+    "id": "presentasi-paparan-kinerja-dan-laporan-investor"
   },
   "title": {
-    "en": "Investor and results decks",
-    "id": "Dek investor dan paparan kinerja"
+    "en": "Earnings call presentations & investor reports",
+    "id": "Presentasi paparan kinerja & laporan investor"
+  },
+  "tileLine": {
+    "en": "Quarterly results decks, the public expose and investor updates on a 12-month retainer, 48-hour turnaround at results.",
+    "id": "Dek kinerja kuartalan, public expose, dan pembaruan investor dalam retainer 12 bulan, penyelesaian 48 jam saat kinerja dirilis."
   },
   "promise": {
-    "en": "Four results decks, the public expose and a template system a year, from a team that knows your numbers and turns a results deck in 48 hours.",
-    "id": "Empat dek kinerja, public expose, dan sistem templat setiap tahun, dari tim yang memahami angka Anda dan menyelesaikan dek kinerja dalam 48 jam."
+    "en": "Four results decks, the public expose and investor updates a year, from a team that knows your numbers and turns a results deck in 48 hours.",
+    "id": "Empat dek kinerja, public expose, dan pembaruan investor setiap tahun, dari tim yang memahami angka Anda dan menyelesaikan dek kinerja dalam 48 jam."
   },
   "metaDescription": {
-    "en": "Investor and results decks for IDX-listed companies on a 12-month retainer: quarterly decks, the public expose, a template system, 48-hour turnaround.",
-    "id": "Dek investor dan kinerja untuk emiten BEI dalam retainer 12 bulan: dek kuartalan, public expose, sistem templat, penyelesaian 48 jam."
+    "en": "Earnings call presentations and investor reports for IDX issuers on a 12-month retainer: results decks, public expose, 48-hour turnaround.",
+    "id": "Presentasi paparan kinerja dan laporan investor untuk emiten BEI dalam retainer 12 bulan: dek kinerja, public expose, penyelesaian 48 jam."
   },
   "who": [
     {
@@ -29,7 +33,7 @@
     },
     {
       "en": "Newly listed companies building their first investor calendar",
-      "id": "Perusahaan yang baru tercatat dan sedang membangun kalender investor pertamanya"
+      "id": "Perusahaan yang baru tercatat dan membangun kalender investor pertamanya"
     }
   ],
   "get": [
@@ -42,12 +46,12 @@
       "id": "Dek public expose tahunan"
     },
     {
-      "en": "A template and chart system your team can use between cycles",
-      "id": "Sistem templat dan grafik yang dapat dipakai tim Anda di antara siklus"
+      "en": "Investor updates and two ad-hoc decks a year",
+      "id": "Pembaruan investor dan dua dek ad hoc setahun"
     },
     {
-      "en": "Two ad-hoc decks a year (investor meetings, analyst briefings)",
-      "id": "Dua dek ad hoc setahun (pertemuan investor, briefing analis)"
+      "en": "A template and chart system your team can use between cycles",
+      "id": "Sistem templat dan grafik yang dapat dipakai tim Anda di antara siklus"
     },
     {
       "en": "48-hour turnaround at results; a disclosure checklist on every release",
@@ -55,8 +59,8 @@
     }
   ],
   "getSummary": {
-    "en": "4 results decks, public expose, template system, 2 ad-hoc decks",
-    "id": "4 dek kinerja, public expose, sistem templat, 2 dek ad hoc"
+    "en": "4 results decks, public expose, investor updates, template system",
+    "id": "4 dek kinerja, public expose, pembaruan investor, sistem templat"
   },
   "duration": {
     "en": "Twelve-month retainer, renewed annually",
@@ -67,8 +71,8 @@
     "id": "Bulanan di muka; tanpa harga per slide. Persetujuan storyboard sebelum tata letak pada setiap dek."
   },
   "next": {
-    "en": "An equity-story workshop when the strategy changes, and the annual report from the same team.",
-    "id": "Lokakarya equity story saat strategi berubah, dan laporan tahunan dari tim yang sama."
+    "en": "A board-deck or equity-story engagement when the strategy changes, and the annual report from the same team.",
+    "id": "Penugasan dek dewan atau equity story saat strategi berubah, dan laporan tahunan dari tim yang sama."
   },
   "artefact": {
     "title": {
@@ -85,5 +89,6 @@
       "id": "Kalender komunikasi investor indikatif; tenggat pasti bergantung pada tahun buku emiten."
     }
   },
-  "relatedService": "adv-strategy"
+  "relatedService": "adv-strategy",
+  "practice": "presentation"
 }

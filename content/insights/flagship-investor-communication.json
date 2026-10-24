@@ -17,9 +17,7 @@
     "id": "Laporan utama yang akan terbit: dek public expose tiga puluh emiten BEI dinilai dari struktur, grafik, dan keterbukaan."
   },
   "date": "2026-10-23",
-  "authors": [
-    "reza"
-  ],
+  "authors": [],
   "readingTime": 2,
   "summary": {
     "en": "Our first flagship report scores thirty public-expose decks from IDX-listed mid-caps on whether a reader can find the finding, trust the chart and locate the disclosure. Published on completion of the firm's first reporting season.",
@@ -45,7 +43,7 @@
   },
   "pdf": "",
   "relatedServices": [
-    "pres-investor-decks",
-    "pres-equity-story"
+    "pres-earnings",
+    "pres-board-decks"
   ]
 }

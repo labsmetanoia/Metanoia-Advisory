@@ -3,59 +3,81 @@ pagination: { data: langPages, size: 1, alias: p }
 pageKey: home
 ---
 {% set c = pages.home %}
-<section class="hero">
-  <div class="wrap grid">
-    <div class="col-7 hero__text">
-      <h1 class="display">{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
+<section class="hero-stage" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-stage__text">
+      <span class="kicker">{{ c.hero.kicker | L(lang) }}</span>
+      <h1 id="hero-title" class="display">{{ c.hero.headline | L(lang) }}</h1>
+      <p class="sub">{{ c.hero.sub | L(lang) }}</p>
       <p class="lede">{{ c.hero.text | L(lang) }}</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hero">{{ ui | t(lang, "cta.talk") }}</a>
-        {% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'work' | pageUrl(lang) }}" data-event="cta_click" data-location="hero-secondary">{{ ui | t(lang, "cta.seeWork") }}</a>{% endif %}
+        <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hero">{{ ui | t(lang, "cta.talk") }} →</a>
+        {% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'presentation' | pageUrl(lang) }}" data-event="cta_click" data-location="hero-secondary">{{ ui | t(lang, "cta.allServices") }}</a>{% endif %}
       </div>
     </div>
-    <div class="col-5 hero__artefact">
-      <figure>
-        <div class="artefact">{% include "charts/artefact-deck-page.njk" %}</div>
-        <figcaption>{{ c.hero.artefactCaption | L(lang) }}</figcaption>
-      </figure>
+    <div class="fan" role="img" aria-label="{{ c.hero.fanCaption | L(lang) }}">
+      <div class="fan__card">{% include "charts/artefact-report-spread.njk" %}</div>
+      <div class="fan__card">{% include "charts/slide-after.njk" %}</div>
+      <div class="fan__card">{% include "charts/artefact-deck-page.njk" %}</div>
+      <div class="fan__card">{% include "charts/artefact-cover.njk" %}</div>
+      <div class="fan__card">{% include "charts/artefact-calendar-slide.njk" %}</div>
+    </div>
+  </div>
+  <div class="arch">
+    <div class="wrap arch__inner">
+      <span class="kicker">{{ c.flagship.kicker | L(lang) }}</span>
+      <h2>{{ c.flagship.title | L(lang) }}</h2>
+      <p class="lede" style="margin:0 auto">{{ c.flagship.text | L(lang) }}</p>
+      <ul class="arch__points">{% for pt in c.flagship.points %}<li><strong>{{ pt.title | L(lang) }}</strong>{{ pt.text | L(lang) }}</li>{% endfor %}</ul>
+      <div class="hero__actions" style="justify-content:center;margin-top:var(--s-4)">
+        <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="arch">{{ ui | t(lang, "cta.deckReview") }}</a>
+        <a class="arrow-link" href="{{ 'presentation' | pageUrl(lang) }}">{{ site.practiceNames.presentation | L(lang) }}</a>
+      </div>
     </div>
   </div>
 </section>
 
 {% if site.phase == 2 %}
-<section class="section fade-up" aria-labelledby="situations-title">
+<section class="section fade-up" aria-labelledby="portfolio-title" style="padding-top:var(--section)">
   <div class="wrap">
-    <h2 id="situations-title" class="visually-hidden">{{ c.situations.title | L(lang) }}</h2>
-    <div class="grid-3">
-      {% for pr in practices %}{% set hub = pages.hubs[pr.key] %}
-      <a class="situation-card" href="{{ pr.key | pageUrl(lang) }}">
-        <div><h3>{{ ui | t(lang, "labels.situations." + pr.situation) }}</h3><p>{{ hub.situationLine | L(lang) }}</p></div>
-        <span class="situation-card__arrow" aria-hidden="true">→</span>
-      </a>
-      {% endfor %}
-    </div>
+    <div class="section-head"><h2 id="portfolio-title">{{ c.portfolio.title | L(lang) }}</h2><p class="meta measure">{{ c.portfolio.text | L(lang) }}</p></div>
+    <div class="tile-grid">{% for s in services | where("practice", "presentation") %}{% include "components/service-tile.njk" %}{% endfor %}</div>
   </div>
 </section>
-{% endif %}
 
-<section class="section fade-up" aria-labelledby="practices-title">
+{% set ai = c.ai %}{% set aiService = services | find("key", "pres-ai-express") %}{% include "components/ai-band.njk" %}
+
+<section class="section fade-up" aria-labelledby="comp-title" style="padding-top:var(--section)">
+  <div class="wrap grid">
+    <div class="col-4"><span class="kicker">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title">{{ c.complementary.title | L(lang) }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p></div>
+    <div class="col-8"><div class="comp-grid">{% for it in c.complementary.items %}<div class="comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<div><h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p></div></div>{% endfor %}</div></div>
+  </div>
+</section>
+
+<section class="band fade-up" aria-labelledby="approach-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="practices-title">{{ c.practices.title | L(lang) }}</h2><p class="meta measure">{{ c.practices.text | L(lang) }}</p></div>
-    <div class="grid-3">
-      {% for pr in practices %}{% set hub = pages.hubs[pr.key] %}
+    <div class="section-head"><h2 id="approach-title">{{ c.approach.title | L(lang) }}</h2><p class="meta measure">{{ c.approach.text | L(lang) }}</p></div>
+    {% set ap = c.approach %}{% include "components/approach.njk" %}
+  </div>
+</section>
+
+<section class="section fade-up" aria-labelledby="advisory-title" style="padding-top:var(--section)">
+  <div class="wrap">
+    <div class="section-head"><h2 id="advisory-title">{{ c.advisory.title | L(lang) }}</h2><p class="meta measure">{{ c.advisory.text | L(lang) }}</p></div>
+    <div class="grid-2">
+      {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
       <div class="practice-door">
+        <span class="kicker">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span>
         <h3>{{ site.practiceNames[pr.key] | L(lang) }}</h3>
+        <p class="muted">{{ hub.situationLine | L(lang) }}</p>
         <ul>{% for b in hub.doorBullets %}<li>{{ b | L(lang) }}</li>{% endfor %}</ul>
-        {% set lead = people | whereIncludes("practices", pr.key) | where("seniority", "partner") | first %}
-        {% if lead %}<div class="practice-door__lead"><div class="avatar" aria-hidden="true">{% if lead.portrait %}<img src="{{ lead.portrait }}" alt="" width="40" height="50" loading="lazy">{% else %}<span style="font-size:14px">{{ lead.name | initials }}</span>{% endif %}</div><span>{{ ui | t(lang, "labels.lead") }}: <a class="link-ink" href="{{ 'people' | itemUrl(lead, lang) }}">{{ lead.name }}</a></span></div>{% endif %}
         <a class="arrow-link" href="{{ pr.key | pageUrl(lang) }}">{{ site.practiceNames[pr.key] | L(lang) }}</a>
       </div>
-      {% endfor %}
+      {% endif %}{% endfor %}
     </div>
   </div>
 </section>
 
-{% if site.phase == 2 %}
 {% set featured = cases | where("featuredHome", true) | first %}
 {% if featured %}
 <section class="band fade-up" aria-labelledby="featured-title">
@@ -64,7 +86,6 @@ pageKey: home
       <span class="kicker">{{ ui | t(lang, "labels.featured") }} · {{ featured.sector | L(lang) }}{% if featured.illustrative %} · {{ ui | t(lang, "labels.illustrative") }}{% endif %}</span>
       <h2 id="featured-title"><a class="link-ink" href="{{ 'work' | itemUrl(featured, lang) }}">{{ featured.title | L(lang) }}</a></h2>
       <p>{{ featured.situationText | L(lang) }}</p>
-      <p class="muted">{{ featured.built | L(lang) | truncate(220) }}</p>
       {% set o = featured.outcome %}{% include "components/outcome-figure.njk" %}
       <p style="margin-top:24px"><a class="arrow-link" href="{{ 'work' | itemUrl(featured, lang) }}">{{ ui | t(lang, "cta.readCase") }}</a></p>
     </div>
@@ -73,17 +94,7 @@ pageKey: home
 </section>
 {% endif %}
 
-{% set homePeople = people | where("showOnHome", true) | limit(4) %}
-{% if homePeople | length %}
-<section class="section fade-up" aria-labelledby="people-title">
-  <div class="wrap">
-    <div class="section-head"><h2 id="people-title">{{ c.people.title | L(lang) }}</h2><a class="arrow-link" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "cta.allPeople") }}</a></div>
-    <div class="grid-4">{% for person in homePeople %}{% include "components/person-card.njk" %}{% endfor %}</div>
-  </div>
-</section>
-{% endif %}
-
-<section class="section fade-up" aria-labelledby="insight-title">
+<section class="section fade-up" aria-labelledby="insight-title" style="padding-top:var(--section)">
   <div class="wrap grid">
     <div class="col-6">
       {% set flagship = insights | where("type", "flagship") | first %}
@@ -106,12 +117,14 @@ pageKey: home
   </div>
 </section>
 {% else %}
-{# Phase 1 interim one-pager: founder card(s) and contact in place of the full sections #}
 <section class="section fade-up">
-  <div class="wrap grid">
-    {% for person in people | where("seniority", "partner") %}<div class="col-6"><div class="contact-card"><div class="avatar" aria-hidden="true">{% if person.portrait %}<img src="{{ person.portrait }}" alt="" width="96" height="120">{% else %}{{ person.name | initials }}{% endif %}</div><div><h3>{{ person.name }}</h3><p class="role muted">{{ person.role | L(lang) }}</p><p>{{ person.summary | L(lang) }}</p><div class="cluster">{% if site.calendarUrl %}<a class="btn btn--primary" href="{{ site.calendarUrl }}" data-event="outbound_calendar" rel="noopener">{{ ui | t(lang, "cta.talk") }}</a>{% endif %}<a class="btn btn--secondary" href="mailto:{{ person.email }}">{{ ui | t(lang, "cta.email") }}</a></div></div></div></div>{% endfor %}
+  <div class="wrap grid-3">
+    {% for pr in practices %}{% set hub = pages.hubs[pr.key] %}
+    <div class="practice-door"><h3>{{ site.practiceNames[pr.key] | L(lang) }}</h3><ul>{% for b in hub.doorBullets %}<li>{{ b | L(lang) }}</li>{% endfor %}</ul></div>
+    {% endfor %}
   </div>
 </section>
+<section class="section fade-up"><div class="wrap"><div class="cluster">{% if site.calendarUrl %}<a class="btn btn--primary" href="{{ site.calendarUrl }}" data-event="outbound_calendar" rel="noopener">{{ ui | t(lang, "cta.talk") }}</a>{% endif %}{% if site.email %}<a class="btn btn--secondary" href="mailto:{{ site.email }}">{{ ui | t(lang, "cta.email") }}</a>{% endif %}</div></div></section>
 {% endif %}
 
 <script type="application/ld+json">{{ {

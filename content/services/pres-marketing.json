@@ -1,0 +1,71 @@
+{
+  "key": "pres-marketing",
+  "order": 9,
+  "icon": "marketing",
+  "slug": {
+    "en": "marketing-presentations",
+    "id": "presentasi-pemasaran"
+  },
+  "title": {
+    "en": "Marketing presentations",
+    "id": "Presentasi pemasaran"
+  },
+  "tileLine": {
+    "en": "Product, partner and launch decks that make the offer clear before they make it attractive.",
+    "id": "Dek produk, mitra, dan peluncuran yang menjelaskan penawaran sebelum membuatnya menarik."
+  },
+  "promise": {
+    "en": "Product, partner and launch presentations that make the offer clear before they make it attractive, in your brand and in both languages.",
+    "id": "Presentasi produk, mitra, dan peluncuran yang menjelaskan penawaran sebelum membuatnya menarik, dalam merek Anda dan dalam dua bahasa."
+  },
+  "metaDescription": {
+    "en": "Marketing presentations for launches, partner programmes and corporate profiles in Indonesia: clear offer, brand-consistent, bilingual.",
+    "id": "Presentasi pemasaran untuk peluncuran, program mitra, dan profil korporat di Indonesia: penawaran jelas, konsisten dengan merek, dwibahasa."
+  },
+  "who": [
+    {
+      "en": "Marketing and partnership teams",
+      "id": "Tim pemasaran dan kemitraan"
+    },
+    {
+      "en": "Companies launching in Indonesia that need a corporate profile and a partner deck",
+      "id": "Perusahaan yang meluncur di Indonesia dan membutuhkan profil korporat serta dek mitra"
+    },
+    {
+      "en": "Teams whose product decks have grown faster than their story",
+      "id": "Tim yang dek produknya tumbuh lebih cepat daripada kisahnya"
+    }
+  ],
+  "get": [
+    {
+      "en": "Offer and audience framing",
+      "id": "Perumusan penawaran dan audiens"
+    },
+    {
+      "en": "Corporate profile, product and partner decks",
+      "id": "Profil korporat, dek produk, dan dek mitra"
+    },
+    {
+      "en": "Visual system aligned with your brand guidelines",
+      "id": "Sistem visual yang selaras dengan panduan merek Anda"
+    },
+    {
+      "en": "Bilingual versions and a template for the sales team",
+      "id": "Versi dwibahasa dan templat untuk tim penjualan"
+    }
+  ],
+  "getSummary": {
+    "en": "Offer framing, corporate profile, product and partner decks, template",
+    "id": "Perumusan penawaran, profil korporat, dek produk dan mitra, templat"
+  },
+  "duration": {
+    "en": "Two to four weeks",
+    "id": "Dua hingga empat minggu"
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "me-localisation",
+  "practice": "presentation"
+}

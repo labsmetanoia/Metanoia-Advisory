@@ -79,8 +79,8 @@
   "permission": false,
   "client": "",
   "relatedServices": [
-    "pres-investor-decks",
-    "pres-equity-story"
+    "pres-earnings",
+    "pres-board-decks"
   ],
   "relatedPeople": [],
   "featuredHome": false,

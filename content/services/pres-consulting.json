@@ -1,0 +1,71 @@
+{
+  "key": "pres-consulting",
+  "order": 2,
+  "icon": "consulting",
+  "slug": {
+    "en": "consulting-presentations",
+    "id": "presentasi-konsultansi"
+  },
+  "title": {
+    "en": "Consulting presentations",
+    "id": "Presentasi konsultansi"
+  },
+  "tileLine": {
+    "en": "Findings-first decks for strategy, transformation and advisory teams, in the consulting structure boards expect.",
+    "id": "Dek berbasis temuan untuk tim strategi, transformasi, dan advisory, dalam struktur konsultansi yang diharapkan dewan."
+  },
+  "promise": {
+    "en": "Steering-committee and final-report decks in the consulting structure boards expect: the answer first, the evidence behind it, the next step at the end.",
+    "id": "Dek komite pengarah dan laporan akhir dalam struktur konsultansi yang diharapkan dewan: jawaban dahulu, bukti di belakangnya, langkah berikutnya di akhir."
+  },
+  "metaDescription": {
+    "en": "Consulting presentations: steering-committee decks, final reports and workshop materials in a findings-first structure, charts rebuilt to one standard.",
+    "id": "Presentasi konsultansi: dek komite pengarah, laporan akhir, dan materi lokakarya dalam struktur berbasis temuan, grafik dibangun ulang ke satu standar."
+  },
+  "who": [
+    {
+      "en": "In-house strategy and transformation offices",
+      "id": "Kantor strategi dan transformasi internal"
+    },
+    {
+      "en": "Boutique consultancies without a design bench",
+      "id": "Konsultan butik tanpa tim desain"
+    },
+    {
+      "en": "Project teams reporting to a steering committee",
+      "id": "Tim proyek yang melapor kepada komite pengarah"
+    }
+  ],
+  "get": [
+    {
+      "en": "Storyline and page-by-page storyboard",
+      "id": "Alur cerita dan storyboard halaman demi halaman"
+    },
+    {
+      "en": "Charts rebuilt to one standard: finding in the title, one accent, labelled values, source line",
+      "id": "Grafik dibangun ulang ke satu standar: temuan di judul, satu aksen, nilai berlabel, baris sumber"
+    },
+    {
+      "en": "Executive summary, appendix and a speaker-notes version",
+      "id": "Ringkasan eksekutif, lampiran, dan versi catatan pembicara"
+    },
+    {
+      "en": "Template so the team can keep working in the same structure",
+      "id": "Templat agar tim dapat terus bekerja dalam struktur yang sama"
+    }
+  ],
+  "getSummary": {
+    "en": "Storyboard, rebuilt charts, executive summary, template",
+    "id": "Storyboard, grafik yang dibangun ulang, ringkasan eksekutif, templat"
+  },
+  "duration": {
+    "en": "One to three weeks per deck",
+    "id": "Satu hingga tiga minggu per dek"
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "adv-feasibility",
+  "practice": "presentation"
+}

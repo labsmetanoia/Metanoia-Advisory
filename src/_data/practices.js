@@ -1,6 +1,6 @@
-// The three practices. Hub copy lives in content/pages/hubs.json; this file carries structure.
+// The three practices, in display order: Presentation Design & Corporate Communications is the flagship.
 export default [
-  { key: "marketEntry", situation: "entering", proof: "chart", order: 1 },
-  { key: "advisory", situation: "raising", proof: "chart", order: 2 },
-  { key: "presentation", situation: "reporting", proof: "beforeAfter", order: 3 },
+  { key: "presentation", situation: "reporting", proof: "beforeAfter", order: 1, flagship: true },
+  { key: "marketEntry", situation: "entering", proof: "chart", order: 2 },
+  { key: "advisory", situation: "raising", proof: "chart", order: 3 },
 ];

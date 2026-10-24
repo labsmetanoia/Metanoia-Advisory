@@ -1,0 +1,24 @@
+{# Working approach: what the client sees, what works in the background, then the five stages. expects `ap` = pages.home.approach, `lang` #}
+<div class="approach">
+  <div class="approach__col">
+    <p class="kicker">{{ ap.see.title | L(lang) }}</p>
+    <div class="approach__row">
+      <div class="approach__box"><strong>{{ ap.see.client | L(lang) }}</strong><span>{{ ap.see.clientText | L(lang) }}</span></div>
+      <div class="approach__link" aria-hidden="true"></div>
+      <div class="approach__box approach__box--lead"><strong>{{ ap.see.lead | L(lang) }}</strong><span>{{ ap.see.leadText | L(lang) }}</span></div>
+    </div>
+    <ul class="approach__list">{% for it in ap.see.items %}<li>{{ it | L(lang) }}</li>{% endfor %}</ul>
+  </div>
+  <div class="approach__col">
+    <p class="kicker">{{ ap.background.title | L(lang) }}</p>
+    <div class="approach__bg">
+      <div class="approach__box approach__pmo"><strong>{{ ap.background.pmo | L(lang) }}</strong><span>{{ ap.background.pmoText | L(lang) }}</span></div>
+      <div class="approach__link" aria-hidden="true"></div>
+      {% for it in ap.background.items %}<div class="approach__box"><strong>{{ it.title | L(lang) }}</strong><span>{{ it.text | L(lang) }}</span></div>{% if not loop.last %}<div></div><div></div>{% endif %}{% endfor %}
+    </div>
+  </div>
+</div>
+<div style="margin-top:var(--s-6)">
+  <p class="kicker">{{ ap.stagesTitle | L(lang) }}</p>
+  {% set steps = ap.stages %}{% include "components/process-strip.njk" %}
+</div>

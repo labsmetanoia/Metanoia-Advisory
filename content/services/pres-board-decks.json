@@ -1,0 +1,79 @@
+{
+  "key": "pres-board-decks",
+  "order": 1,
+  "icon": "board",
+  "slug": {
+    "en": "board-and-executive-decks",
+    "id": "dek-dewan-dan-eksekutif"
+  },
+  "title": {
+    "en": "Board & executive decks",
+    "id": "Dek dewan & eksekutif"
+  },
+  "tileLine": {
+    "en": "Board packs, CEO strategy decks and equity stories that can be read in the time the board has.",
+    "id": "Materi dewan, dek strategi CEO, dan equity story yang dapat dibaca dalam waktu yang dimiliki dewan."
+  },
+  "promise": {
+    "en": "Board packs, CEO strategy decks and equity stories built from one investment thesis, so the board, the executive team and the market hear the same story.",
+    "id": "Materi dewan, dek strategi CEO, dan equity story yang dibangun dari satu tesis investasi, sehingga dewan, tim eksekutif, dan pasar mendengar kisah yang sama."
+  },
+  "metaDescription": {
+    "en": "Board and executive decks for Indonesian companies: board packs, CEO strategy decks and equity stories, reconciled to the model and rehearsed.",
+    "id": "Dek dewan dan eksekutif untuk perusahaan Indonesia: materi dewan, dek strategi CEO, dan equity story, direkonsiliasi dengan model dan dilatih."
+  },
+  "who": [
+    {
+      "en": "CEOs and CFOs taking a decision to the board",
+      "id": "CEO dan CFO yang membawa keputusan ke dewan"
+    },
+    {
+      "en": "Boards that receive packs they cannot read in the time available",
+      "id": "Dewan yang menerima materi yang tak terbaca dalam waktu tersedia"
+    },
+    {
+      "en": "Leadership teams preparing a strategy announcement or investor day",
+      "id": "Tim kepemimpinan yang menyiapkan pengumuman strategi atau investor day"
+    }
+  ],
+  "get": [
+    {
+      "en": "Investment-thesis workshop with management",
+      "id": "Lokakarya tesis investasi bersama manajemen"
+    },
+    {
+      "en": "Board pack with an action title on every page and a one-page decision memo",
+      "id": "Materi dewan dengan judul tindakan di setiap halaman dan memo keputusan satu halaman"
+    },
+    {
+      "en": "CEO strategy deck and equity-story document",
+      "id": "Dek strategi CEO dan dokumen equity story"
+    },
+    {
+      "en": "Reconciliation log tying every figure to your model",
+      "id": "Log rekonsiliasi yang mengikat setiap angka ke model Anda"
+    },
+    {
+      "en": "Rehearsal with the presenters",
+      "id": "Latihan bersama para presenter"
+    }
+  ],
+  "getSummary": {
+    "en": "Thesis workshop, board pack, CEO deck, equity story, rehearsal",
+    "id": "Lokakarya tesis, materi dewan, dek CEO, equity story, latihan"
+  },
+  "duration": {
+    "en": "Two to six weeks",
+    "id": "Dua hingga enam minggu"
+  },
+  "how": {
+    "en": "Storyboard signed off before layout; a four-eyes check before anything reaches the board.",
+    "id": "Storyboard disetujui sebelum tata letak; pemeriksaan empat mata sebelum apa pun sampai ke dewan."
+  },
+  "next": {
+    "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat korporat atau retainer dek 12 bulan, sehingga setiap dek berikutnya berangkat dari standar yang sama."
+  },
+  "relatedService": "adv-strategy",
+  "practice": "presentation"
+}

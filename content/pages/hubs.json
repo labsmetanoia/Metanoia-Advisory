@@ -1,8 +1,8 @@
 {
   "marketEntry": {
     "metaDescription": {
-      "en": "Market-entry consulting for Indonesia: market assessment, entry strategy, partner and site search, localisation and market representation.",
-      "id": "Konsultansi masuk pasar Indonesia: penilaian pasar, strategi masuk, pencarian mitra dan lokasi, lokalisasi, dan representasi pasar."
+      "en": "Indonesia market entry and localization strategy: market assessment, entry strategy, partner and site search, localization and market representation.",
+      "id": "Strategi masuk pasar dan lokalisasi Indonesia: penilaian pasar, strategi masuk, pencarian mitra dan lokasi, lokalisasi, dan representasi pasar."
     },
     "situationLine": {
       "en": "From \"should we?\" to first local revenue, with a partner and a site you have vetted.",
@@ -237,8 +237,8 @@
   },
   "presentation": {
     "metaDescription": {
-      "en": "Presentation design and corporate communications for listed companies in Indonesia: results decks, equity stories, board packs, annual reports.",
-      "id": "Desain presentasi dan komunikasi korporat untuk perusahaan tercatat di Indonesia: dek kinerja, equity story, materi dewan, laporan tahunan."
+      "en": "Presentation design and corporate communications in Indonesia: board and investor decks, proposals, reports, templates and an AI-powered express service ready in hours.",
+      "id": "Desain presentasi dan komunikasi korporat di Indonesia: dek dewan dan investor, proposal, laporan, templat, dan layanan ekspres berbasis AI yang siap dalam hitungan jam."
     },
     "situationLine": {
       "en": "Results decks, equity stories and annual reports that say what the numbers mean.",
@@ -260,21 +260,21 @@
     ],
     "hero": {
       "title": {
-        "en": "Investor materials that say what the numbers mean.",
-        "id": "Materi investor yang menjelaskan makna di balik angka."
+        "en": "Investor materials, board packs and proposals that say what the numbers mean.",
+        "id": "Materi investor, materi dewan, dan proposal yang menjelaskan makna di balik angka."
       },
       "text": {
-        "en": "For CFOs, heads of investor relations and corporate secretaries of listed and pre-IPO companies. Results decks, public exposes, equity stories, board packs and annual reports, built to one chart and storytelling standard and reconciled to your model, by a team that understands the disclosure rules it is working within.",
-        "id": "Untuk CFO, kepala hubungan investor, dan sekretaris perusahaan di perusahaan tercatat dan pra-IPO. Dek kinerja, public expose, equity story, materi dewan, dan laporan tahunan, dibangun dengan satu standar grafik dan penuturan serta direkonsiliasi dengan model Anda, oleh tim yang memahami aturan keterbukaan yang menjadi kerangkanya."
+        "en": "Our core practice. For CFOs, heads of investor relations, corporate secretaries and marketing leads of listed, pre-IPO and growing companies: presentations, reports and templates built on one chart and storytelling standard, reconciled to your figures, by a team that understands the disclosure rules it works within.",
+        "id": "Praktik inti kami. Untuk CFO, kepala hubungan investor, sekretaris perusahaan, dan pimpinan pemasaran di perusahaan tercatat, pra-IPO, dan yang sedang bertumbuh: presentasi, laporan, dan templat yang dibangun dengan satu standar grafik dan penuturan, direkonsiliasi dengan angka Anda, oleh tim yang memahami aturan keterbukaan yang menjadi kerangkanya."
       }
     },
     "servicesTitle": {
-      "en": "Three services on the issuer's calendar",
-      "id": "Tiga layanan dalam kalender emiten"
+      "en": "What we design",
+      "id": "Yang kami desain"
     },
     "servicesText": {
-      "en": "The results cycle, the strategic layer and the annual report. No per-slide pricing; retainers and fixed fees only.",
-      "id": "Siklus kinerja, lapisan strategis, dan laporan tahunan. Tanpa harga per slide; hanya retainer dan biaya tetap."
+      "en": "Eleven services on one standard, from a board pack to an express deck ready in hours. No per-slide pricing; retainers and fixed fees only.",
+      "id": "Sebelas layanan dalam satu standar, dari materi dewan hingga dek ekspres yang siap dalam hitungan jam. Tanpa harga per slide; hanya retainer dan biaya tetap."
     },
     "processText": {
       "en": "Storyboard before layout, numbers before design, a four-eyes check before anything reaches an investor.",

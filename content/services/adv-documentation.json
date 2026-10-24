@@ -1,6 +1,6 @@
 {
   "key": "adv-documentation",
-  "order": 8,
+  "order": 34,
   "practice": "advisory",
   "slug": {
     "en": "investment-grade-documentation-and-capital-raise-readiness",
@@ -70,5 +70,5 @@
     "en": "After the raise or listing: the investor-communication retainer, so the story told in the roadshow is the story told every quarter.",
     "id": "Setelah penggalangan dana atau pencatatan: retainer komunikasi investor, agar kisah yang dituturkan dalam roadshow adalah kisah yang dituturkan setiap kuartal."
   },
-  "relatedService": "pres-investor-decks"
+  "relatedService": "pres-earnings"
 }

@@ -1,6 +1,6 @@
 {
   "key": "adv-business-case",
-  "order": 6,
+  "order": 32,
   "practice": "advisory",
   "slug": {
     "en": "business-cases-and-investment-analysis",
@@ -86,5 +86,5 @@
       "id": "Halaman dek ilustratif dengan angka sintetis."
     }
   },
-  "relatedService": "pres-equity-story"
+  "relatedService": "pres-board-decks"
 }

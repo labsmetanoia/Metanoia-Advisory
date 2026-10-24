@@ -1,0 +1,8 @@
+{# Compact slide version of the issuer calendar for the hero fan (no chart frame). #}
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="640" height="400" fill="#fff"/>
+<text x="40" y="56" font-family="Fraunces, Georgia, serif" font-size="22" font-weight="600" fill="#000">{{ "Two moments carry the year: FY results and the public expose" if lang == "en" else "Dua momen menentukan setahun: kinerja tahunan dan public expose" }}</text>
+<text x="40" y="82" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5F5E5C">{{ "Indicative investor-communication calendar, IDX issuer" if lang == "en" else "Kalender komunikasi investor indikatif, emiten BEI" }}</text>
+<line x1="40" y1="200" x2="600" y2="200" stroke="#B4B2AE"/>
+{% set items = [["Jan–Feb","FY"],["Mar","Audit"],["Apr","AR"],["Apr–May","Q1"],["May–Jun","AGM"],["Jul–Aug","H1"],["Oct–Nov","Q3"],["Nov–Dec","Story"]] %}
+{% for it in items %}{% set x = 50 + loop.index0 * 76 %}<circle cx="{{ x }}" cy="200" r="7" fill="{{ '#EAB200' if loop.index0 in [0,4] else '#E3E0DA' }}" stroke="#000" stroke-width="{{ 1 if loop.index0 in [0,4] else 0 }}"/><text x="{{ x }}" y="{{ 170 if loop.index0 % 2 == 0 else 240 }}" text-anchor="middle" font-family="Inter, Arial" font-size="11" fill="#5F5E5C">{{ it[0] }}</text><text x="{{ x }}" y="{{ 150 if loop.index0 % 2 == 0 else 260 }}" text-anchor="middle" font-family="Inter, Arial" font-size="12" font-weight="600" fill="#000">{{ it[1] }}</text>{% endfor %}
+<text x="40" y="372" font-family="Inter, Arial" font-size="10" fill="#5F5E5C">{{ "Timing indicative; deadlines depend on the issuer's financial year." if lang == "en" else "Waktu indikatif; tenggat bergantung pada tahun buku emiten." }}</text></svg>
