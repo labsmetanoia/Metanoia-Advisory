@@ -23,7 +23,7 @@ for (const url of pages) {
   if (!resp || resp.status() >= 400) { console.log(`SKIP ${url} (${resp && resp.status()})`); await page.close(); continue; }
   const consoleErrors = [];
   page.on("pageerror", (e) => consoleErrors.push(e.message));
-  await page.evaluate(() => document.querySelectorAll(".fade-up").forEach((e) => e.classList.add("is-visible")));
+  await page.evaluate(() => document.querySelectorAll(".fade-up, .stagger").forEach((e) => e.classList.add("is-visible")));
   await page.addScriptTag({ content: axeSource });
   const results = await page.evaluate(async () => await window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] } }));
   const serious = results.violations.filter((v) => ["critical", "serious"].includes(v.impact));

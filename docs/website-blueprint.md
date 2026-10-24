@@ -342,3 +342,15 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 **Colour note.** Gold display words use `--gold-text #9A7200` on paper (≥ 4:1) rather than the palette's `#C09200`, which fails contrast even at display sizes; on the dark bands the palette gold `#EAB200` is used as supplied.
 
 **Measured after the revision.** 75 pages (preview), no broken links, bilingual parity 100%, axe-core zero critical or serious issues on the tested templates.
+
+---
+
+## 17. Revision 1.3 — video hero, live slides and photography (24 October 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Video background and animated slides | The uploaded 10-second clip is transcoded to two silent H.264 files (1280 px, 1.1 MB; 854 px, 0.4 MB) with a WebP poster. The browser loads the video only on screens 768 px and wider, when reduced motion is off and data-saver is off; otherwise the poster shows. A paper-coloured veil keeps the headline and copy at full contrast. After the load sequence the five artefact cards cycle through the fan positions every 4.2 seconds with a 1.2-second easing, and the centre card floats | Page weight on Home with video is about 1.6 MB on desktop; the mobile build stays under 600 KB |
+| 2 | Uploaded images mapped to sections | Eleven service tiles, four complementary cards and the intro visual, the two advisory cards, the AI tile and band, and the closing call to action now carry the matching uploaded image as WebP (82 quality). Originals are kept in `assets-src/photos/` | The tile crops are small (about 255 × 150 px) and will look soft on high-density screens; higher-resolution versions of the same images would help. **Three uploads were not used:** the "AI-powered · Ready in hours" pictures 1–3 are other companies' published materials (an stc/MAGNiTT report cover and two pages from Grab's 2023 ESG report). Presenting them as the firm's work would misrepresent authorship and infringe copyright; they are set aside in `assets-src/excluded-third-party/` |
+| 3 | How we work with you | Photo boxes for "Your team", "Metanoia engagement lead" and "Engagement manager", photo strips on the four background teams, and five stage cards with photographs, all cut from the supplied reference composite; section intros added as in the reference | The crops come from a 1536 × 1024 composite, so they are low resolution; replace with the originals when available |
+
+**Licensing note.** The Jakarta skyline and LRT photographs supplied for the advisory cards are used as directed; their licences are the firm's responsibility to confirm before launch.
