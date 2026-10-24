@@ -21,14 +21,20 @@
       "id": "Dari advisory strategis hingga penuturan eksekutif dan desain presentasi, kami membantu organisasi lintas industri menerjemahkan gagasan kompleks menjadi strategi yang jelas, narasi yang meyakinkan, dan keputusan bisnis yang berdampak."
     },
     "fanCaption": {
-      "en": "Pages from our own deck and report standard: the finding in the title, one accent, labelled values, a source line.",
-      "id": "Halaman dari standar dek dan laporan kami sendiri: temuan di judul, satu aksen, nilai berlabel, baris sumber."
+      "en": "Five pages from the firm's deck standard: a board cover, a results chart, a market assessment page, a report spread and the investor calendar.",
+      "id": "Lima halaman dari standar dek firma: sampul dewan, grafik kinerja, halaman penilaian pasar, bentangan laporan, dan kalender investor."
     },
-    "video": {
-      "mp4": "/assets/video/hero-1280.mp4",
-      "mp4Small": "/assets/video/hero-854.mp4",
-      "poster": "/assets/video/hero-poster.webp"
-    }
+    "background": {
+      "large": "/assets/img/photos/hero-bg-1672.webp",
+      "small": "/assets/img/photos/hero-bg-960.webp"
+    },
+    "slides": [
+      "/assets/img/photos/hero-slide-1.webp",
+      "/assets/img/photos/hero-slide-2.webp",
+      "/assets/img/photos/hero-slide-3.webp",
+      "/assets/img/photos/hero-slide-4.webp",
+      "/assets/img/photos/hero-slide-5.webp"
+    ]
   },
   "situations": {
     "title": {

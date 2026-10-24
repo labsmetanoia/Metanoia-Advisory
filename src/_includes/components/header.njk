@@ -1,23 +1,11 @@
 {% set otherLang = "en" if lang == "id" else "id" %}
-<div class="topbar">
-  <div class="wrap">
-    <span>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</span>
-    <span class="cluster" style="gap:16px">
-      {% if site.linkedin %}<a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
-      <span class="lang-switch" aria-label="Language"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>
-    </span>
-  </div>
-</div>
 <header class="header">
   <div class="wrap">
     <div class="header__pill">
       <a class="wordmark" href="{{ 'home' | pageUrl(lang) }}">Metanoia<span class="visually-hidden"> </span><span class="wordmark__sub">Advisory</span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-open="{{ ui | t(lang, 'menu') }}" data-close="{{ ui | t(lang, 'close') }}">{{ ui | t(lang, "menu") }}</button>
       <nav class="nav" id="nav" aria-label="Primary">
-        <div class="lang-switch lang-switch--mobile" aria-label="Language">
-          <span aria-current="true">{{ ui | t(lang, "langShort") }}</span><span aria-hidden="true">/</span>
-          <a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langShort") }}<span class="visually-hidden"> · {{ ui | t(lang, 'otherLangLabel') }}</span></a>
-        </div>
+        <div class="nav__lang nav__lang--mobile">{% set variant = "menu" %}{% include "components/lang-select.njk" %}{% set variant = "" %}</div>
         <ul class="nav__list">
           {% for pr in practices %}
           <li class="practice-menu">
@@ -38,6 +26,7 @@
           <li><a class="nav__link{% if activeNav == 'about' %} is-active{% endif %}" href="{{ 'about' | pageUrl(lang) }}">{{ ui | t(lang, "nav.about") }}</a></li>
           <li class="nav__contact-mobile"><a class="nav__link{% if activeNav == 'contact' %} is-active{% endif %}" href="{{ 'contact' | pageUrl(lang) }}">{{ ui | t(lang, "nav.contact") }}</a></li>
         </ul>
+        <div class="nav__lang nav__lang--desktop">{% include "components/lang-select.njk" %}</div>
         <div class="nav__cta nav__cta--desktop"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="header">{{ ui | t(lang, "cta.talk") }} →</a></div>
         <div class="nav__cta nav__cta--mobile"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="menu">{{ ui | t(lang, "cta.talk") }}</a></div>
       </nav>

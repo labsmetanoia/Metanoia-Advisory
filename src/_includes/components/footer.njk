@@ -41,7 +41,7 @@
     </div>
     <div class="footer__bottom">
       <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }}</span>
-      <span class="lang-switch"><span aria-current="true">{{ ui | t(lang, "langName") }}</span><span aria-hidden="true">/</span><a href="{{ alternates[otherLang] }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" data-lang-switch="{{ otherLang }}">{{ ui | t(otherLang, "langName") }}</a></span>
+      {% set variant = "footer" %}{% include "components/lang-select.njk" %}{% set variant = "" %}
     </div>
   </div>
 </footer>

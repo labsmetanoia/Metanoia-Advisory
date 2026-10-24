@@ -116,7 +116,8 @@
       "express": "Express",
       "byFirm": "Metanoia Advisory",
       "complementary": "Complementary services",
-      "approach": "How we work"
+      "approach": "How we work",
+      "language": "Language"
     },
     "form": {
       "name": "Name",
@@ -297,7 +298,8 @@
       "express": "Ekspres",
       "byFirm": "Metanoia Advisory",
       "complementary": "Layanan pelengkap",
-      "approach": "Cara kami bekerja"
+      "approach": "Cara kami bekerja",
+      "language": "Bahasa"
     },
     "form": {
       "name": "Nama",

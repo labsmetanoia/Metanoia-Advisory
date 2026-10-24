@@ -3,8 +3,8 @@ pagination: { data: langPages, size: 1, alias: p }
 pageKey: home
 ---
 {% set c = pages.home %}
-<section class="hero-stage hero-stage--video" aria-labelledby="hero-title">
-  <div class="hero-video" aria-hidden="true" data-video-mp4="{{ c.hero.video.mp4 }}" data-video-mp4-small="{{ c.hero.video.mp4Small }}"><img class="hero-video__poster" src="{{ c.hero.video.poster }}" alt="" width="1280" height="720" fetchpriority="high" decoding="async"><video class="hero-video__media" muted playsinline loop preload="none" poster="{{ c.hero.video.poster }}"></video><div class="hero-video__veil"></div></div>
+<section class="hero-stage hero-stage--image" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"><img class="hero-bg__img" src="{{ c.hero.background.large }}" srcset="{{ c.hero.background.small }} 960w, {{ c.hero.background.large }} 1672w" sizes="100vw" alt="" width="1672" height="941" fetchpriority="high" decoding="async"><div class="hero-bg__veil"></div></div>
   <div class="wrap">
     <div class="hero-stage__text">
       <h1 id="hero-title" class="display">{{ c.hero.headline | L(lang) }}</h1>
@@ -16,11 +16,7 @@ pageKey: home
       </div>
     </div>
     <div class="fan fan--live" role="img" aria-label="{{ c.hero.fanCaption | L(lang) }}">
-      <div class="fan__card">{% include "charts/artefact-report-spread.njk" %}</div>
-      <div class="fan__card">{% include "charts/slide-after.njk" %}</div>
-      <div class="fan__card">{% include "charts/artefact-deck-page.njk" %}</div>
-      <div class="fan__card">{% include "charts/artefact-cover.njk" %}</div>
-      <div class="fan__card">{% include "charts/artefact-calendar-slide.njk" %}</div>
+      {% for sl in c.hero.slides %}<div class="fan__card fan__card--img"><img src="{{ sl }}" alt="" width="1200" height="675" {% if loop.index == 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async"></div>{% endfor %}
     </div>
   </div>
   <div class="arch">

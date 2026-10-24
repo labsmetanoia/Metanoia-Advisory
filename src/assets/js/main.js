@@ -243,3 +243,19 @@
     }, 2200);
   }
 })();
+
+/* ---- Flag language selector ---- */
+(function () {
+  var sels = Array.prototype.slice.call(document.querySelectorAll("[data-langsel]"));
+  if (!sels.length) return;
+  function close(sel) { var b = sel.querySelector(".langsel__btn"), m = sel.querySelector(".langsel__menu"); b.setAttribute("aria-expanded", "false"); m.hidden = true; }
+  sels.forEach(function (sel) {
+    var btn = sel.querySelector(".langsel__btn"), menu = sel.querySelector(".langsel__menu");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation(); var open = btn.getAttribute("aria-expanded") === "true";
+      sels.forEach(close); if (!open) { btn.setAttribute("aria-expanded", "true"); menu.hidden = false; var first = menu.querySelector("a:not(.is-current)"); first && first.focus(); }
+    });
+    sel.addEventListener("keydown", function (e) { if (e.key === "Escape") { close(sel); btn.focus(); } });
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest("[data-langsel]")) sels.forEach(close); });
+})();
