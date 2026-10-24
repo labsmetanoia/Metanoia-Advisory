@@ -124,7 +124,8 @@
       "people",
       "pin"
     ],
-    "art": "artefact-deck-page"
+    "art": "artefact-deck-page",
+    "photo": "/assets/img/photos/adv-market-entry.webp"
   },
   "advisory": {
     "metaDescription": {
@@ -253,7 +254,8 @@
       "chartup",
       "layers"
     ],
-    "art": "slide-after"
+    "art": "slide-after",
+    "photo": "/assets/img/photos/adv-strategy.webp"
   },
   "presentation": {
     "metaDescription": {

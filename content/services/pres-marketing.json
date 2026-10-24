@@ -68,5 +68,6 @@
   },
   "relatedService": "me-localisation",
   "practice": "presentation",
-  "art": "artefact-cover"
+  "art": "artefact-cover",
+  "photo": "/assets/img/photos/svc-marketing.webp"
 }

@@ -23,6 +23,11 @@
     "fanCaption": {
       "en": "Pages from our own deck and report standard: the finding in the title, one accent, labelled values, a source line.",
       "id": "Halaman dari standar dek dan laporan kami sendiri: temuan di judul, satu aksen, nilai berlabel, baris sumber."
+    },
+    "video": {
+      "mp4": "/assets/video/hero-1280.mp4",
+      "mp4Small": "/assets/video/hero-854.mp4",
+      "poster": "/assets/video/hero-poster.webp"
     }
   },
   "situations": {
@@ -232,7 +237,8 @@
           "id": "Tidak digunakan untuk keterbukaan pasar atau pelaporan teregulasi"
         }
       }
-    ]
+    ],
+    "photo": "/assets/img/photos/svc-ai.webp"
   },
   "complementary": {
     "title": {
@@ -254,7 +260,8 @@
           "en": "An editorial calendar built from your strategy and your decks, so LinkedIn says what the board heard.",
           "id": "Kalender editorial yang dibangun dari strategi dan dek Anda, sehingga LinkedIn menyampaikan apa yang didengar dewan."
         },
-        "art": "artefact-cover"
+        "art": "artefact-cover",
+        "photo": "/assets/img/photos/comp-social.webp"
       },
       {
         "icon": "branding",
@@ -266,7 +273,8 @@
           "en": "Identity, presentation and document systems that carry one voice across subsidiaries and languages.",
           "id": "Sistem identitas, presentasi, dan dokumen yang membawa satu suara lintas anak usaha dan bahasa."
         },
-        "art": "artefact-cover"
+        "art": "artefact-cover",
+        "photo": "/assets/img/photos/comp-branding.webp"
       },
       {
         "icon": "plan",
@@ -278,7 +286,8 @@
           "en": "A business plan with the model behind it, written to the standard a lender, investor or board requires.",
           "id": "Rencana bisnis beserta modelnya, ditulis sesuai standar yang disyaratkan pemberi pinjaman, investor, atau dewan."
         },
-        "art": "artefact-report-spread"
+        "art": "artefact-report-spread",
+        "photo": "/assets/img/photos/comp-plan.webp"
       },
       {
         "icon": "events",
@@ -290,9 +299,11 @@
           "en": "Brochures, one-pagers and event materials in the same system as your decks.",
           "id": "Brosur, lembar satu halaman, dan materi acara dalam sistem yang sama dengan dek Anda."
         },
-        "art": "artefact-report-spread"
+        "art": "artefact-report-spread",
+        "photo": "/assets/img/photos/comp-events.webp"
       }
-    ]
+    ],
+    "photo": "/assets/img/photos/comp-intro.webp"
   },
   "approach": {
     "title": {
@@ -337,7 +348,13 @@
           "en": "Alignment with your counsel, auditor or underwriter where needed",
           "id": "Penyelarasan dengan penasihat hukum, auditor, atau penjamin emisi Anda bila diperlukan"
         }
-      ]
+      ],
+      "clientPhoto": "/assets/img/photos/approach-client.webp",
+      "leadPhoto": "/assets/img/photos/approach-lead.webp",
+      "text": {
+        "en": "A simple and seamless experience with a dedicated partner by your side.",
+        "id": "Pengalaman yang sederhana dan mulus dengan partner khusus di sisi Anda."
+      }
     },
     "background": {
       "title": {
@@ -362,7 +379,8 @@
             "en": "Storyline, analysis, writing in both languages",
             "id": "Alur cerita, analisis, penulisan dalam dua bahasa"
           },
-          "icon": "doclist"
+          "icon": "doclist",
+          "photo": "/assets/img/photos/approach-bg-1.webp"
         },
         {
           "title": {
@@ -373,7 +391,8 @@
             "en": "Layout, charts, templates to one standard",
             "id": "Tata letak, grafik, templat dalam satu standar"
           },
-          "icon": "templates"
+          "icon": "templates",
+          "photo": "/assets/img/photos/approach-bg-2.webp"
         },
         {
           "title": {
@@ -384,7 +403,8 @@
             "en": "Every figure tied to its source; four-eyes check",
             "id": "Setiap angka terikat ke sumbernya; pemeriksaan empat mata"
           },
-          "icon": "shield"
+          "icon": "shield",
+          "photo": "/assets/img/photos/approach-bg-3.webp"
         },
         {
           "title": {
@@ -395,9 +415,15 @@
             "en": "ID/EN parity; POJK, SEOJK, IDX, PSPK checklists",
             "id": "Kesetaraan ID/EN; daftar periksa POJK, SEOJK, BEI, PSPK"
           },
-          "icon": "education"
+          "icon": "education",
+          "photo": "/assets/img/photos/approach-bg-4.webp"
         }
-      ]
+      ],
+      "pmoPhoto": "/assets/img/photos/approach-manager.webp",
+      "text": {
+        "en": "A coordinated team with clear responsibilities, ensuring quality, accuracy and speed.",
+        "id": "Tim terkoordinasi dengan tanggung jawab yang jelas, menjamin mutu, akurasi, dan kecepatan."
+      }
     },
     "stagesTitle": {
       "en": "From first conversation to delivery",
@@ -412,7 +438,8 @@
         "text": {
           "en": "A working session, then a one-page brief: audience, decision, sources, deadline.",
           "id": "Sesi kerja, lalu brief satu halaman: audiens, keputusan, sumber, tenggat."
-        }
+        },
+        "photo": "/assets/img/photos/approach-stage-1.webp"
       },
       {
         "title": {
@@ -422,7 +449,8 @@
         "text": {
           "en": "The message and the evidence: what must the reader believe, and why.",
           "id": "Pesan dan buktinya: apa yang harus diyakini pembaca, dan mengapa."
-        }
+        },
+        "photo": "/assets/img/photos/approach-stage-2.webp"
       },
       {
         "title": {
@@ -432,7 +460,8 @@
         "text": {
           "en": "Storyboard with an action title on every page, signed off before layout.",
           "id": "Storyboard dengan judul tindakan di setiap halaman, disetujui sebelum tata letak."
-        }
+        },
+        "photo": "/assets/img/photos/approach-stage-3.webp"
       },
       {
         "title": {
@@ -442,7 +471,8 @@
         "text": {
           "en": "Layout, charts and templates to one standard; figures reconciled to your model.",
           "id": "Tata letak, grafik, dan templat dalam satu standar; angka direkonsiliasi dengan model Anda."
-        }
+        },
+        "photo": "/assets/img/photos/approach-stage-4.webp"
       },
       {
         "title": {
@@ -452,7 +482,8 @@
         "text": {
           "en": "Four-eyes check, rehearsal where needed, editable files and a template to continue.",
           "id": "Pemeriksaan empat mata, latihan bila perlu, berkas yang dapat disunting, dan templat untuk melanjutkan."
-        }
+        },
+        "photo": "/assets/img/photos/approach-stage-5.webp"
       }
     ]
   },
@@ -505,6 +536,7 @@
           "id": "kecuali Anda memintanya"
         }
       }
-    ]
+    ],
+    "photo": "/assets/img/photos/cta-session.webp"
   }
 }

@@ -13,7 +13,7 @@
       <div class="ai-stack" aria-hidden="true">
         <div class="ai-stack__card">{% include "charts/slide-after.njk" %}</div>
         <div class="ai-stack__card">{% include "charts/artefact-report-spread.njk" %}</div>
-        <div class="ai-stack__card">{% include "charts/artefact-cover.njk" %}</div>
+        <div class="ai-stack__card ai-stack__card--photo">{% if ai.photo %}<img src="{{ ai.photo }}" alt="" loading="lazy" decoding="async">{% else %}{% include "charts/artefact-cover.njk" %}{% endif %}</div>
       </div>
     </div>
   </div>

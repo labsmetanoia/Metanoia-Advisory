@@ -1,6 +1,6 @@
 {% set cta = pages.home.cta %}
 <section class="cta-band" aria-labelledby="cta-title">
-  <div class="cta-band__visual" aria-hidden="true">{% include "charts/artefact-session.njk" %}</div>
+  <div class="cta-band__visual{% if cta.photo %} cta-band__visual--photo{% endif %}" aria-hidden="true">{% if cta.photo %}<img src="{{ cta.photo }}" alt="" loading="lazy" decoding="async">{% else %}{% include "charts/artefact-session.njk" %}{% endif %}</div>
   <div class="wrap cta-band__inner">
     <div class="cta-band__text">
       <h2 id="cta-title" class="gold-em">{{ cta.title | L(lang) | mdInline | safe }}</h2>

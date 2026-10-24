@@ -5,5 +5,5 @@
   <h3>{{ s.title | L(lang) }}</h3>
   <p>{{ s.tileLine | L(lang) }}</p>
   <span class="arrow-btn" aria-hidden="true">→</span>
-  <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art">{% include "charts/" + (s.art or "artefact-cover") + ".njk" %}</div></div>
+  <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art{% if s.photo %} cut__art--photo{% endif %}">{% if s.photo %}<img src="{{ s.photo }}" alt="" loading="lazy" decoding="async">{% else %}{% include "charts/" + (s.art or "artefact-cover") + ".njk" %}{% endif %}</div></div>
 </a>

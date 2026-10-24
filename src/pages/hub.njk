@@ -61,7 +61,7 @@ pageKey: hub
 <section class="section fade-up" aria-labelledby="comp-title">
   <div class="wrap">
     <div class="section-head"><h2 id="comp-title" class="gold-em">{{ pages.home.complementary.title | L(lang) | mdInline | safe }}</h2></div>
-    <div class="grid"><div class="col-4"><p class="muted">{{ pages.home.complementary.text | L(lang) }}</p></div><div class="col-8"><div class="comp-grid stagger">{% for it in pages.home.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art">{% include "charts/" + it.art + ".njk" %}</div></div></div>{% endfor %}</div></div></div>
+    <div class="grid"><div class="col-4"><p class="muted">{{ pages.home.complementary.text | L(lang) }}</p></div><div class="col-8"><div class="comp-grid stagger">{% for it in pages.home.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo"><img src="{{ it.photo }}" alt="" loading="lazy" decoding="async"></div></div></div>{% endfor %}</div></div></div>
   </div>
 </section>
 {% endif %}

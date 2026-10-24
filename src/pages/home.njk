@@ -3,7 +3,8 @@ pagination: { data: langPages, size: 1, alias: p }
 pageKey: home
 ---
 {% set c = pages.home %}
-<section class="hero-stage" aria-labelledby="hero-title">
+<section class="hero-stage hero-stage--video" aria-labelledby="hero-title">
+  <div class="hero-video" aria-hidden="true" data-video-mp4="{{ c.hero.video.mp4 }}" data-video-mp4-small="{{ c.hero.video.mp4Small }}"><img class="hero-video__poster" src="{{ c.hero.video.poster }}" alt="" width="1280" height="720" fetchpriority="high" decoding="async"><video class="hero-video__media" muted playsinline loop preload="none" poster="{{ c.hero.video.poster }}"></video><div class="hero-video__veil"></div></div>
   <div class="wrap">
     <div class="hero-stage__text">
       <h1 id="hero-title" class="display">{{ c.hero.headline | L(lang) }}</h1>
@@ -14,7 +15,7 @@ pageKey: home
         {% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'presentation' | pageUrl(lang) }}" data-event="cta_click" data-location="hero-secondary">{{ ui | t(lang, "cta.allServices") }}</a>{% endif %}
       </div>
     </div>
-    <div class="fan" role="img" aria-label="{{ c.hero.fanCaption | L(lang) }}">
+    <div class="fan fan--live" role="img" aria-label="{{ c.hero.fanCaption | L(lang) }}">
       <div class="fan__card">{% include "charts/artefact-report-spread.njk" %}</div>
       <div class="fan__card">{% include "charts/slide-after.njk" %}</div>
       <div class="fan__card">{% include "charts/artefact-deck-page.njk" %}</div>
@@ -51,8 +52,8 @@ pageKey: home
 
 <section class="section" aria-labelledby="comp-title" style="padding-top:var(--section)">
   <div class="wrap grid">
-    <div class="col-4 comp-intro fade-up"><span class="kicker kicker--rule">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title" class="gold-em">{{ c.complementary.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p></div>
-    <div class="col-8"><div class="comp-grid stagger">{% for it in c.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art">{% include "charts/" + it.art + ".njk" %}</div></div></div>{% endfor %}</div></div>
+    <div class="col-4 comp-intro fade-up"><span class="kicker kicker--rule">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title" class="gold-em">{{ c.complementary.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p>{% if c.complementary.photo %}<img class="comp-intro__photo" src="{{ c.complementary.photo }}" alt="" loading="lazy" decoding="async" width="357" height="263">{% endif %}</div>
+    <div class="col-8"><div class="comp-grid stagger">{% for it in c.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo"><img src="{{ it.photo }}" alt="" loading="lazy" decoding="async"></div></div></div>{% endfor %}</div></div>
   </div>
 </section>
 
@@ -74,7 +75,7 @@ pageKey: home
         <p class="lede">{{ hub.situationLine | L(lang) }}</p>
         <ul class="adv-list">{% for b in hub.doorBullets %}<li>{% set icon = hub.doorIcons[loop.index0] %}{% include "components/icon.njk" %}<span>{{ b | L(lang) }}</span></li>{% endfor %}</ul>
         <a class="btn btn--primary" href="{{ pr.key | pageUrl(lang) }}" aria-label="{{ site.practiceNames[pr.key] | L(lang) }}">{{ ui | t(lang, "cta.explore") }} →</a>
-        <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__tag">{{ hub.tagline | L(lang) }}</div><div class="cut__art">{% include "charts/" + hub.art + ".njk" %}</div></div>
+        <div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo cut__art--full"><img src="{{ hub.photo }}" alt="" loading="lazy" decoding="async"></div><div class="cut__tag">{{ hub.tagline | L(lang) }}</div></div>
       </div>
       {% endif %}{% endfor %}
     </div>

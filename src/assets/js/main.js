@@ -214,3 +214,32 @@
     });
   }
 })();
+
+/* ---- Hero: video background (desktop, not reduced motion) and live slide fan ---- */
+(function () {
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hv = document.querySelector(".hero-video");
+  if (hv && !reduced) {
+    var video = hv.querySelector("video");
+    var wide = window.matchMedia("(min-width: 768px)").matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (video && !saveData) {
+      var src = document.createElement("source");
+      src.src = hv.getAttribute(wide ? "data-video-mp4" : "data-video-mp4-small"); src.type = "video/mp4";
+      video.appendChild(src); video.load();
+      var p = video.play(); if (p && p.then) p.then(function () { hv.classList.add("is-playing"); }).catch(function () {});
+      video.addEventListener("playing", function () { hv.classList.add("is-playing"); });
+      document.addEventListener("visibilitychange", function () { document.hidden ? video.pause() : video.play().catch(function () {}); });
+    }
+  }
+  var fan = document.querySelector(".fan--live");
+  if (fan && !reduced) {
+    var cards = Array.prototype.slice.call(fan.querySelectorAll(".fan__card"));
+    var order = cards.map(function (_, i) { return i; }); // order[pos] = card index
+    function apply() { order.forEach(function (ci, pos) { cards[ci].className = "fan__card pos-" + (pos + 1); }); }
+    setTimeout(function () {
+      apply(); fan.classList.add("is-cycling");
+      setInterval(function () { order.unshift(order.pop()); apply(); }, 4200);
+    }, 2200);
+  }
+})();

@@ -1,24 +1,26 @@
-{# Working approach: what the client sees, what works in the background, then the five stages. expects `ap`, `lang` #}
+{# Working approach with photography: what the client sees, what works in the background, then the five stages. expects `ap`, `lang` #}
 <div class="approach">
   <div class="approach__col">
     <p class="kicker">{{ ap.see.title | L(lang) }}</p>
+    {% if ap.see.text %}<p class="approach__intro">{{ ap.see.text | L(lang) }}</p>{% endif %}
     <div class="approach__row">
-      <div class="approach__box">{% set icon = "people" %}{% include "components/icon.njk" %}<strong>{{ ap.see.client | L(lang) }}</strong><span>{{ ap.see.clientText | L(lang) }}</span></div>
+      <div class="approach__box approach__box--photo">{% if ap.see.clientPhoto %}<img src="{{ ap.see.clientPhoto }}" alt="" loading="lazy" decoding="async">{% endif %}<div class="approach__body">{% set icon = "people" %}{% include "components/icon.njk" %}<strong>{{ ap.see.client | L(lang) }}</strong><span>{{ ap.see.clientText | L(lang) }}</span></div></div>
       <div class="approach__link" aria-hidden="true"></div>
-      <div class="approach__box approach__box--lead">{% set icon = "diamond" %}{% include "components/icon.njk" %}<strong>{{ ap.see.lead | L(lang) }}</strong><span>{{ ap.see.leadText | L(lang) }}</span></div>
+      <div class="approach__box approach__box--photo approach__box--lead">{% if ap.see.leadPhoto %}<img src="{{ ap.see.leadPhoto }}" alt="" loading="lazy" decoding="async">{% endif %}<div class="approach__body">{% set icon = "diamond" %}{% include "components/icon.njk" %}<strong>{{ ap.see.lead | L(lang) }}</strong><span>{{ ap.see.leadText | L(lang) }}</span></div></div>
     </div>
     <ul class="approach__list">{% for it in ap.see.items %}<li>{{ it | L(lang) }}</li>{% endfor %}</ul>
   </div>
   <div class="approach__col">
     <p class="kicker">{{ ap.background.title | L(lang) }}</p>
+    {% if ap.background.text %}<p class="approach__intro">{{ ap.background.text | L(lang) }}</p>{% endif %}
     <div class="approach__bg">
-      <div class="approach__box approach__pmo">{% set icon = "doclist" %}{% include "components/icon.njk" %}<strong>{{ ap.background.pmo | L(lang) }}</strong><span>{{ ap.background.pmoText | L(lang) }}</span></div>
+      <div class="approach__box approach__box--photo approach__pmo">{% if ap.background.pmoPhoto %}<img src="{{ ap.background.pmoPhoto }}" alt="" loading="lazy" decoding="async">{% endif %}<div class="approach__body">{% set icon = "doclist" %}{% include "components/icon.njk" %}<strong>{{ ap.background.pmo | L(lang) }}</strong><span>{{ ap.background.pmoText | L(lang) }}</span></div></div>
       <div class="approach__link" aria-hidden="true"></div>
-      {% for it in ap.background.items %}<div class="approach__box">{% set icon = it.icon %}{% include "components/icon.njk" %}<strong>{{ it.title | L(lang) }}</strong><span>{{ it.text | L(lang) }}</span></div>{% if not loop.last %}<div></div><div></div>{% endif %}{% endfor %}
+      {% for it in ap.background.items %}<div class="approach__box approach__box--strip">{% set icon = it.icon %}{% include "components/icon.njk" %}<div><strong>{{ it.title | L(lang) }}</strong><span>{{ it.text | L(lang) }}</span></div>{% if it.photo %}<img src="{{ it.photo }}" alt="" loading="lazy" decoding="async">{% endif %}</div>{% if not loop.last %}<div></div><div></div>{% endif %}{% endfor %}
     </div>
   </div>
 </div>
 <div style="margin-top:var(--s-6)">
   <p class="kicker">{{ ap.stagesTitle | L(lang) }}</p>
-  {% set steps = ap.stages %}{% include "components/process-strip.njk" %}
+  <ol class="stages stagger">{% for st in ap.stages %}<li class="stage"><span class="stage__num">{{ loop.index | pad2 }}</span>{% if st.photo %}<img class="stage__photo" src="{{ st.photo }}" alt="" loading="lazy" decoding="async">{% endif %}<div class="stage__body"><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div></li>{% endfor %}</ol>
 </div>
