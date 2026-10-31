@@ -92,5 +92,11 @@
   "relatedService": "adv-strategy",
   "practice": "presentation",
   "art": "artefact-calendar-slide",
-  "photo": "/assets/img/photos/svc-earnings.webp"
+  "photo": "/assets/img/photos/svc-earnings.webp",
+  "heroEm": {
+    "en": 3,
+    "id": 3
+  },
+  "heroPhoto": "/assets/img/photos/svc-earnings-hero.webp",
+  "artefactPhoto": "/assets/img/photos/svc-earnings-city.webp"
 }

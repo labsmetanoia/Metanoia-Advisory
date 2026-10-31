@@ -463,3 +463,14 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 | 7 | "Jakarta" on About | Removed from the story ("Metanoia Advisory is an advisory firm for leadership teams…") and the page description ("…is an advisory firm with strategic storytelling…"); the footer's "Jakarta, Indonesia" line, which also appeared on About, is removed with the email line | The contact page, privacy notice and the express service's "Jakarta time" line are outside the About page and unchanged |
 
 **Measured after the revision.** 69 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues of any severity on the twelve tested templates, no copy under a gold stripe on any card at any tested width.
+
+---
+
+## 26. Revision 2.2 — service pages, footer legal strip (31 October 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Footer legal strip | The independence statement and the copyright line now share one frosted bar at the foot of the footer: the statement left behind a gold hairline at 13 px, the copyright and the language selector right, on a single row that stacks on phones | Replaces the two separate frosted blocks of revision 2.1 |
+| 2–5 | Service pages | The service template is rebuilt for all nineteen service pages, after the four references: a hero with the breadcrumb, a gold rule, the title with its tail in gold (per-service word count), the promise and two buttons, and a photograph fading in from the right; four numbered facts (who it is for, what you get, how long, what happens next) with tinted icon discs, gold bullets and, where supplied, a photograph under the first two; the artefact band (the investor calendar on Earnings calls) as a framed white card beside the title with a skyline fading in below the copy; and the "Related in the other practice" block as a tinted band with the related service's photograph fading in from the right. The four referenced pages carry the photographs cut from their references (eleven images, baked-in reference text painted out or trimmed, upscaled 4× to 1,600 / 1,400 / 1,000 px). Other service pages use their existing tile photograph in the hero and the related service's photograph in the band | Heroes crop from the right on tablets and move above the copy on phones; the facts stack in one column below 900 px |
+
+**Measured after the revision.** 70 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues of any severity on the twelve tested templates, no horizontal overflow on the four referenced pages at 1,440 / 390 px.

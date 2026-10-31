@@ -42,10 +42,12 @@
         </ul>
       </div>
     </div>
-    <p class="footer__statement">{{ ui | t(lang, "footer.statement") }}</p>
-    <div class="footer__bottom">
-      <span>© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }}</span>
-      {% set variant = "footer" %}{% include "components/lang-select.njk" %}{% set variant = "" %}
+    <div class="footer__legal">
+      <p class="footer__statement">{{ ui | t(lang, "footer.statement") }}</p>
+      <div class="footer__bottom">
+        <span class="footer__copy">© {% year %} {{ site.legalName or site.name }}. {{ ui | t(lang, "footer.rights") }}</span>
+        {% set variant = "footer" %}{% include "components/lang-select.njk" %}{% set variant = "" %}
+      </div>
     </div>
   </div>
 </footer>

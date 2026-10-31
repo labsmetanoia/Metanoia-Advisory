@@ -77,5 +77,14 @@
   "relatedService": "adv-strategy",
   "practice": "presentation",
   "art": "artefact-cover",
-  "photo": "/assets/img/photos/svc-board.webp"
+  "photo": "/assets/img/photos/svc-board.webp",
+  "heroEm": {
+    "en": 2,
+    "id": 2
+  },
+  "heroPhoto": "/assets/img/photos/svc-board-hero.webp",
+  "factPhotos": [
+    "/assets/img/photos/svc-board-a.webp",
+    "/assets/img/photos/svc-board-b.webp"
+  ]
 }

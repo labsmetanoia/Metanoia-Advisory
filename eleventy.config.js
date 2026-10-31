@@ -52,6 +52,8 @@ export default function (eleventyConfig) {
   })));
   eleventyConfig.addFilter("first", (arr) => (Array.isArray(arr) ? arr[0] : arr));
   eleventyConfig.addFilter("pad2", (n) => String(n).padStart(2, "0"));
+  // Wrap the last n words of a plain-text title in <em> (gold emphasis in headings)
+  eleventyConfig.addFilter("emTail", (s, n) => { const w = String(s || "").split(" "); n = Math.min(Math.max(1, Number(n) || 1), w.length - 1 || 1); const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;"); return w.length < 2 ? esc(s) : `${esc(w.slice(0, -n).join(" "))} <em>${esc(w.slice(-n).join(" "))}</em>`; });
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
