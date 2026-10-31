@@ -41,6 +41,7 @@ pageKey: home
       <div class="pillars">{% for pl in c.portfolio.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
     </div>
     <div class="svc-grid stagger">{% for s in services | where("practice", "presentation") %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
+    {% set list = services | where("practice", "presentation") %}{% include "components/services-folder.njk" %}
   </div>
 </section>
 

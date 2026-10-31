@@ -19,7 +19,10 @@
       "featuredInsight": "Featured insight",
       "readMore": "Read more",
       "subToggle": "Show services",
-      "whyUs": "Why Metanoia"
+      "whyUs": "Why Metanoia",
+      "prev": "Previous service",
+      "next": "Next service",
+      "tabs": "Services"
     },
     "cta": {
       "talk": "Talk to Our Team",
@@ -209,7 +212,10 @@
       "featuredInsight": "Wawasan pilihan",
       "readMore": "Baca selengkapnya",
       "subToggle": "Tampilkan layanan",
-      "whyUs": "Mengapa Metanoia"
+      "whyUs": "Mengapa Metanoia",
+      "prev": "Layanan sebelumnya",
+      "next": "Layanan berikutnya",
+      "tabs": "Layanan"
     },
     "cta": {
       "talk": "Bicara dengan Tim Kami",

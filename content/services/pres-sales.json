@@ -79,5 +79,9 @@
   "heroTitle": {
     "en": "Sales *proposals*",
     "id": "Proposal *penjualan*"
+  },
+  "shortLabel": {
+    "en": "Sales",
+    "id": "Penjualan"
   }
 }

@@ -78,5 +78,9 @@
   "factPhotos": [
     "/assets/img/photos/comp-events-new.webp",
     "/assets/img/photos/svc-educational-tile.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Marketing",
+    "id": "Pemasaran"
+  }
 }

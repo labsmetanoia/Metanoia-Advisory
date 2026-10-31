@@ -78,5 +78,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-newsletters-tile.webp",
     "/assets/img/photos/comp-social-new.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Consulting",
+    "id": "Konsultansi"
+  }
 }

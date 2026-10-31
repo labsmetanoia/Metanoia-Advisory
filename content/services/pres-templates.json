@@ -79,5 +79,9 @@
   "factPhotos": [
     "/assets/img/photos/comp-branding-new.webp",
     "/assets/img/photos/svc-templates-rel.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Templates",
+    "id": "Templat"
+  }
 }

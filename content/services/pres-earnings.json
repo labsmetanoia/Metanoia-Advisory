@@ -102,5 +102,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-earnings-city.webp",
     "/assets/img/photos/svc-charts.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Earnings",
+    "id": "Kinerja"
+  }
 }

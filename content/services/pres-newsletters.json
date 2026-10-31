@@ -73,5 +73,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-newsletters-tile.webp",
     "/assets/img/photos/how-1.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Newsletters",
+    "id": "Nawala"
+  }
 }

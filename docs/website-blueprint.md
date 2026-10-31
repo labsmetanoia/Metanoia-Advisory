@@ -521,3 +521,18 @@ Verified at 1,440 / 1,280 / 1,024 / 390 px on the four referenced pages: copy al
 | 5–7 | Artefact pages | The three uploaded board pages replace the generated charts on Market assessment ("A page from the evidence"), Feasibility studies ("Regulation as an input, not a footnote") and Business cases ("The same numbers, in the room"), at 1,536 and 1,000 px with descriptive alt text; the captions and the market-assessment intro are rewritten to describe the new pages | Originals kept in `assets-src/photos/` |
 
 **Measured after the revision.** 70 pages (preview), no broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow on the contact page at 1,440 / 1,024 / 390 px.
+
+---
+
+## 31. Revision 2.7 — phone experience (31 October 2026)
+
+All changes sit inside a single `max-width: 767.98px` block, so tablets and desktops render exactly as before.
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Overall phone experience | Hero and practice-page buttons stack full-width and wrap cleanly; the flagship section's button sits inside the margins and its three points become a gold-ruled list; section headings and ledes step down one size; the "How we work" people cards become photo-left rows with the badge tucked in the corner; the four-service cards on Market Entry and Strategy & Investment become a swipe carousel (one card at 84% width, snapping), which cuts those pages from about 7,000 to 5,100 px | Phone pages were measured before and after: Home 20,400 → 15,000 px |
+| 2 | "Our Services" folder | On phones the eleven tiles are replaced by a folder view after the reference: a horizontally scrolling tab strip (icon and short label, the active tab lifted in white with a gold icon), a counter ("02/11") with previous and next buttons, a pill with the service's short label, the service title with its gold emphasis, the one-line description and a photograph card with the number and "Learn more". Tabs respond to tap, arrow keys and swipe. Used on Home and the Strategic Storytelling page | Short labels added to each service (`shortLabel`, bilingual) |
+| 3 | Complementary services | Each card becomes a compact row: 92 px photograph thumbnail, title, one line of copy and the arrow; the intro photograph is hidden on phones | — |
+| 4 | Service pages | Facts section with smaller discs and headings and tighter gaps; hero headline and lede one size down; the boardroom tagline smaller; related-service heading one size down | Content unchanged |
+
+**Measured after the revision.** Desktop grid confirmed hidden only below 768 px; no broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow at 390 px.

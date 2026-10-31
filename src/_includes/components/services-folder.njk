@@ -1,0 +1,20 @@
+{# Phone-only folder view of the services list. expects `list`, `lang`; shown below 768px, the tile grid is hidden there #}
+<div class="svc-folder" data-folder>
+  <div class="svc-folder__tabs" role="tablist" aria-label="{{ ui | t(lang, 'nav.tabs') }}">
+    {% for s in list %}<button class="svc-folder__tab{% if loop.first %} is-active{% endif %}" type="button" role="tab" id="ft-{{ s.key }}" aria-controls="fp-{{ s.key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-i="{{ loop.index0 }}"><span class="svc-folder__ticon">{% set icon = s.icon %}{% include "components/icon.njk" %}</span><span class="svc-folder__tlabel">{{ s.shortLabel | L(lang) }}</span></button>{% endfor %}
+  </div>
+  <div class="svc-folder__sheet">
+    <div class="svc-folder__nav">
+      <span class="svc-folder__count"><b data-folder-current>01</b><span>/{{ list | length | pad2 }}</span></span>
+      <span class="svc-folder__arrows"><button class="svc-folder__arrow" type="button" data-folder-prev aria-label="{{ ui | t(lang, 'nav.prev') }}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5L4 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="svc-folder__arrow svc-folder__arrow--next" type="button" data-folder-next aria-label="{{ ui | t(lang, 'nav.next') }}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></span>
+    </div>
+    {% for s in list %}
+    <div class="svc-folder__panel{% if loop.first %} is-active{% endif %}" role="tabpanel" id="fp-{{ s.key }}" aria-labelledby="ft-{{ s.key }}"{% if not loop.first %} hidden{% endif %}>
+      <span class="svc-folder__pill">{{ s.shortLabel | L(lang) }}</span>
+      <h3 class="gold-em">{% if s.heroTitle %}{{ s.heroTitle | L(lang) | mdInline | safe }}{% else %}{{ s.title | L(lang) | emTail(1) | safe }}{% endif %}</h3>
+      <p>{{ s.tileLine | L(lang) }}</p>
+      <a class="svc-folder__card" href="{{ s | serviceUrl(lang) }}"><img src="{{ s.heroPhoto or (s.factPhotos and s.factPhotos[0]) or s.photo }}" alt="" width="1200" height="640" loading="lazy" decoding="async"><span class="svc-folder__bar"><span class="svc-folder__num">{{ loop.index | pad2 }}</span><span class="svc-folder__more">{{ ui | t(lang, "nav.learnMore") }} <span aria-hidden="true">→</span></span></span></a>
+    </div>
+    {% endfor %}
+  </div>
+</div>

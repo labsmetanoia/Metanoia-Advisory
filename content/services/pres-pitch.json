@@ -79,5 +79,9 @@
   "factPhotos": [
     "/assets/img/photos/comp-plan-new.webp",
     "/assets/img/photos/svc-pitch-rel.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Pitch decks",
+    "id": "Dek pitch"
+  }
 }

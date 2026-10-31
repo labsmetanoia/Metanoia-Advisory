@@ -73,5 +73,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-educational-tile.webp",
     "/assets/img/photos/how-3.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Education",
+    "id": "Edukasi"
+  }
 }

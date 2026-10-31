@@ -284,3 +284,31 @@
     if (e.key === "Escape") { var a = d.activeElement; if (a && a.closest(".practice-menu")) { a.closest(".practice-menu").querySelector(".nav__link").focus(); } }
   });
 })();
+
+// Phone folder view of the services: tabs, prev/next, swipe
+(function () {
+  document.querySelectorAll("[data-folder]").forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]')), panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    var cur = root.querySelector("[data-folder-current]"), i = 0;
+    function show(n, focus) {
+      i = (n + tabs.length) % tabs.length;
+      tabs.forEach(function (t, k) { var on = k === i; t.classList.toggle("is-active", on); t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1; });
+      panels.forEach(function (p, k) { var on = k === i; p.classList.toggle("is-active", on); p.hidden = !on; });
+      if (cur) cur.textContent = String(i + 1).padStart(2, "0");
+      tabs[i].scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+      if (focus) tabs[i].focus();
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener("click", function () { show(k); });
+      t.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); show(i + 1, true); } if (e.key === "ArrowLeft") { e.preventDefault(); show(i - 1, true); } });
+    });
+    var prev = root.querySelector("[data-folder-prev]"), next = root.querySelector("[data-folder-next]");
+    if (prev) prev.addEventListener("click", function () { show(i - 1); });
+    if (next) next.addEventListener("click", function () { show(i + 1); });
+    var sheet = root.querySelector(".svc-folder__sheet"), x0 = null;
+    if (sheet) {
+      sheet.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      sheet.addEventListener("touchend", function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 48) show(dx < 0 ? i + 1 : i - 1); }, { passive: true });
+    }
+  });
+})();

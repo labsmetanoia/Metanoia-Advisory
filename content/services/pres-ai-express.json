@@ -78,5 +78,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-ai-tile.webp",
     "/assets/img/photos/svc-templates-hero.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "AI express",
+    "id": "AI ekspres"
+  }
 }

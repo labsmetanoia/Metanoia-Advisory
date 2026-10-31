@@ -90,5 +90,9 @@
   "heroTagline": {
     "en": "One story.\nMany audiences.\nGreater alignment.",
     "id": "Satu kisah.\nBanyak audiens.\nKeselarasan lebih kuat."
+  },
+  "shortLabel": {
+    "en": "Board decks",
+    "id": "Dek dewan"
   }
 }

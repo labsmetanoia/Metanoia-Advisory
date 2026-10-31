@@ -23,6 +23,7 @@ pageKey: hub
     {% set list = services | where("practice", pr.key) %}
     {% if pr.flagship %}<div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) }}</p></div>
     <div class="svc-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
+    {% include "components/services-folder.njk" %}
     {% else %}<div class="svc4-head"><h2 id="services-title" class="gold-em">{{ hub.servicesTitle | L(lang) | mdInline | safe }}</h2><p>{{ hub.servicesText | L(lang) }}</p></div>
     <div class="svc4-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-card.njk" %}{% endfor %}</div>{% endif %}
   </div>

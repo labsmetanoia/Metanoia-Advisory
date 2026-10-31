@@ -81,5 +81,9 @@
   "factPhotos": [
     "/assets/img/photos/svc-templates-rel.webp",
     "/assets/img/photos/svc-earnings-hero.webp"
-  ]
+  ],
+  "shortLabel": {
+    "en": "Reports",
+    "id": "Laporan"
+  }
 }
