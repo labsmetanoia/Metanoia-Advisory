@@ -59,8 +59,8 @@
     "id": "Tesis, model, dek investor, teaser, narasi data room"
   },
   "duration": {
-    "en": "Six to ten weeks",
-    "id": "Enam hingga sepuluh minggu"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "how": {
     "en": "One lead partner, one lead from the Strategic Storytelling practice, one shared engagement manager. The partner presents to your board and your investors.",
@@ -82,11 +82,21 @@
     "component": "slide-after",
     "frame": true,
     "caption": {
-      "en": "Illustrative deck page with synthetic figures.",
-      "id": "Halaman dek ilustratif dengan angka sintetis."
+      "en": "Built from the model: the title states the finding and one accent carries it. Figures are synthetic.",
+      "id": "Dibangun dari model: judul menyatakan temuan dan satu aksen membawanya. Angka bersifat sintetis."
+    },
+    "image": "/assets/img/photos/art-numbers-1536.webp",
+    "imageSmall": "/assets/img/photos/art-numbers-1000.webp",
+    "alt": {
+      "en": "Board page: EBITDA margin recovered to 14% in Q3 as logistics costs normalised; quarterly bar chart with the FY24 average line and a port at dusk.",
+      "id": "Halaman dewan: margin EBITDA pulih ke 14% pada Q3 seiring normalisasi biaya logistik; grafik batang kuartalan dengan garis rata-rata FY24 dan pelabuhan saat senja."
     }
   },
   "relatedService": "pres-board-decks",
   "photo": "/assets/img/photos/adv-2.webp",
-  "icon": "people"
+  "icon": "people",
+  "factPhotos": [
+    "/assets/img/photos/adv-2.webp",
+    "/assets/img/photos/svc-pitch-rel.webp"
+  ]
 }

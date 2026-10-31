@@ -59,8 +59,8 @@
     "id": "Peta pasar dan regulasi, perbandingan moda masuk, model tiga tahun, rekomendasi dewan"
   },
   "duration": {
-    "en": "Four weeks for the assessment; four to eight for the full entry case",
-    "id": "Empat minggu untuk penilaian; empat hingga delapan untuk kajian masuk lengkap"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "how": {
     "en": "Weekly reviews with your sponsor; a mid-point read-out; the partner presents to your board.",
@@ -128,16 +128,26 @@
       "id": "Satu halaman dari bukti"
     },
     "text": {
-      "en": "Our market assessments use the same chart standard as our decks: the finding in the title, one accent, labelled values, a source line.",
-      "id": "Penilaian pasar kami memakai standar grafik yang sama dengan dek kami: temuan di judul, satu aksen, nilai berlabel, baris sumber."
+      "en": "Our market assessments use the same standard as our decks: the finding in the title, one map or chart that carries it, every figure labelled and sourced.",
+      "id": "Penilaian pasar kami memakai standar yang sama dengan dek kami: temuan di judul, satu peta atau grafik yang membawanya, setiap angka berlabel dan bersumber."
     },
     "component": "chart-fdi-sources",
     "caption": {
-      "en": "Realised FDI into Indonesia by source country, January–September 2025.",
-      "id": "Realisasi PMA ke Indonesia menurut negara asal, Januari–September 2025."
+      "en": "An illustrative investment-thesis page: the entry route in the title, the value chain mapped, each opportunity sized and sequenced.",
+      "id": "Halaman tesis investasi ilustratif: rute masuk di judul, rantai nilai dipetakan, setiap peluang diukur dan diurutkan."
+    },
+    "image": "/assets/img/photos/art-evidence-1536.webp",
+    "imageSmall": "/assets/img/photos/art-evidence-1000.webp",
+    "alt": {
+      "en": "Investment-thesis page: \"Enter through midstream, expand to upstream and power + regas opportunities post-PLN RUPTL\", an isometric map of the Indonesian gas value chain with five sized opportunities from B2B piped gas to gas-to-power, and a short-, mid- and long-term pathway.",
+      "id": "Halaman tesis investasi: \"Enter through midstream, expand to upstream and power + regas opportunities post-PLN RUPTL\", peta isometrik rantai nilai gas Indonesia dengan lima peluang berukuran dari gas pipa B2B hingga gas-to-power, serta jalur jangka pendek, menengah, dan panjang."
     }
   },
   "relatedService": "adv-feasibility",
   "photo": "/assets/img/photos/me-1.webp",
-  "icon": "bars"
+  "icon": "bars",
+  "factPhotos": [
+    "/assets/img/photos/me-1.webp",
+    "/assets/img/photos/hero-market-entry.webp"
+  ]
 }

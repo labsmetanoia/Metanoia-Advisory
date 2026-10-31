@@ -69,5 +69,9 @@
   "relatedService": "adv-strategy",
   "practice": "presentation",
   "art": "artefact-report-spread",
-  "photo": "/assets/img/photos/tile-newsletters.webp"
+  "photo": "/assets/img/photos/tile-newsletters.webp",
+  "factPhotos": [
+    "/assets/img/photos/svc-newsletters-tile.webp",
+    "/assets/img/photos/how-1.webp"
+  ]
 }

@@ -98,5 +98,9 @@
   "heroTitle": {
     "en": "Earnings call presentations *& investor reports*",
     "id": "Presentasi paparan kinerja *& laporan investor*"
-  }
+  },
+  "factPhotos": [
+    "/assets/img/photos/svc-earnings-city.webp",
+    "/assets/img/photos/svc-charts.webp"
+  ]
 }

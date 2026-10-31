@@ -59,8 +59,8 @@
     "id": "Tinjauan strategi, pilihan, rencana tiga tahun, materi dewan"
   },
   "duration": {
-    "en": "Six to ten weeks",
-    "id": "Enam hingga sepuluh minggu"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "next": {
     "en": "The Strategic Storytelling practice carries the plan into the equity story and the next annual report; an implementation retainer runs the transformation office if you want one.",
@@ -68,5 +68,9 @@
   },
   "relatedService": "pres-board-decks",
   "photo": "/assets/img/photos/adv-3.webp",
-  "icon": "gear"
+  "icon": "gear",
+  "factPhotos": [
+    "/assets/img/photos/adv-3.webp",
+    "/assets/img/photos/about-hero-skyline.webp"
+  ]
 }

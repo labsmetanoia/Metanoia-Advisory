@@ -59,8 +59,8 @@
     "id": "Storyboard, grafik yang dibangun ulang, ringkasan eksekutif, templat"
   },
   "duration": {
-    "en": "One to three weeks per deck",
-    "id": "Satu hingga tiga minggu per dek"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "next": {
     "en": "Most clients continue with a corporate template system or a 12-month deck retainer, so every later deck starts from the same standard.",
@@ -74,5 +74,9 @@
     "en": "Consulting *presentations*",
     "id": "Presentasi *konsultansi*"
   },
-  "heroPhoto": "/assets/img/photos/svc-consulting-hero.webp"
+  "heroPhoto": "/assets/img/photos/svc-consulting-hero.webp",
+  "factPhotos": [
+    "/assets/img/photos/svc-newsletters-tile.webp",
+    "/assets/img/photos/comp-social-new.webp"
+  ]
 }

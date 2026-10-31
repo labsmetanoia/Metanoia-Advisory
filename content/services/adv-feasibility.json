@@ -59,8 +59,8 @@
     "id": "Penilaian bersumber, model tiga laporan, daftar risiko, rekomendasi"
   },
   "duration": {
-    "en": "Five to eight weeks",
-    "id": "Lima hingga delapan minggu"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "how": {
     "en": "Fixed fee; weekly reviews; model walkthrough with your finance team before the read-out.",
@@ -81,11 +81,21 @@
     },
     "component": "chart-pma-capital",
     "caption": {
-      "en": "Minimum paid-up capital for a PT PMA before and after BKPM Regulation 5/2025.",
-      "id": "Modal disetor minimum PT PMA sebelum dan sesudah Peraturan BKPM 5/2025."
+      "en": "A regulatory input to the model, presented in our chart standard. Figures are public.",
+      "id": "Masukan regulasi untuk model, disajikan dalam standar grafik kami. Angka bersifat publik."
+    },
+    "image": "/assets/img/photos/art-regulation-1536.webp",
+    "imageSmall": "/assets/img/photos/art-regulation-1000.webp",
+    "alt": {
+      "en": "Board page on the minimum paid-up capital for a foreign-owned PT PMA before and after BKPM Regulation 5/2025.",
+      "id": "Halaman dewan tentang modal disetor minimum PT PMA sebelum dan sesudah Peraturan BKPM 5/2025."
     }
   },
   "relatedService": "me-assessment",
   "photo": "/assets/img/photos/adv-1.webp",
-  "icon": "chartup"
+  "icon": "chartup",
+  "factPhotos": [
+    "/assets/img/photos/adv-1.webp",
+    "/assets/img/photos/board-lng-1000.webp"
+  ]
 }

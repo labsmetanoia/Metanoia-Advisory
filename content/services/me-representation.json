@@ -72,5 +72,9 @@
   },
   "relatedService": "pres-earnings",
   "photo": "/assets/img/photos/me-4.webp",
-  "icon": "chartup"
+  "icon": "chartup",
+  "factPhotos": [
+    "/assets/img/photos/me-4.webp",
+    "/assets/img/photos/how-1.webp"
+  ]
 }

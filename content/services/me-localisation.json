@@ -59,8 +59,8 @@
     "id": "Harga, pemosisian, rencana saluran, koordinasi sertifikasi"
   },
   "duration": {
-    "en": "Four to six weeks",
-    "id": "Empat hingga enam minggu"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "next": {
     "en": "Market representation: a senior local lead runs the plan until your own general manager is hired.",
@@ -68,5 +68,9 @@
   },
   "relatedService": "pres-board-decks",
   "photo": "/assets/img/photos/me-3.webp",
-  "icon": "gear"
+  "icon": "gear",
+  "factPhotos": [
+    "/assets/img/photos/me-3.webp",
+    "/assets/img/photos/eco-sector.webp"
+  ]
 }

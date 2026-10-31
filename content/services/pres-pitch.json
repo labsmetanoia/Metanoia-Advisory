@@ -59,8 +59,8 @@
     "id": "Tesis, dek pitch, teaser, narasi data room, buku tanya jawab"
   },
   "duration": {
-    "en": "Two to four weeks",
-    "id": "Dua hingga empat minggu"
+    "en": "Scoped to the engagement. Smaller pieces of work are typically complete within a week; larger engagements take longer, and we agree the timeline with you before we start.",
+    "id": "Disesuaikan dengan lingkup penugasan. Pekerjaan yang lebih kecil umumnya selesai dalam satu minggu; penugasan yang lebih besar membutuhkan waktu lebih lama, dan kami menyepakati jadwalnya bersama Anda sebelum mulai."
   },
   "next": {
     "en": "The investor-ready business case when the model itself needs building; the earnings-call retainer after the raise.",
@@ -75,6 +75,9 @@
     "id": "Dek *pitch investor*"
   },
   "heroPhoto": "/assets/img/photos/svc-pitch-hero.webp",
-  "factsLayout": "four",
-  "relPhoto": "/assets/img/photos/svc-pitch-rel.webp"
+  "relPhoto": "/assets/img/photos/svc-pitch-rel.webp",
+  "factPhotos": [
+    "/assets/img/photos/comp-plan-new.webp",
+    "/assets/img/photos/svc-pitch-rel.webp"
+  ]
 }

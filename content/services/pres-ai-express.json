@@ -74,5 +74,9 @@
   "relatedService": "pres-templates",
   "practice": "presentation",
   "art": "artefact-deck-page",
-  "photo": "/assets/img/photos/tile-ai.webp"
+  "photo": "/assets/img/photos/tile-ai.webp",
+  "factPhotos": [
+    "/assets/img/photos/svc-ai-tile.webp",
+    "/assets/img/photos/svc-templates-hero.webp"
+  ]
 }

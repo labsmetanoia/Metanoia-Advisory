@@ -9,13 +9,14 @@
   },
   "hero": {
     "title": {
-      "en": "Talk to Our Team",
-      "id": "Bicara dengan Tim Kami"
+      "en": "Talk to *Our Team*",
+      "id": "Bicara dengan *Tim Kami*"
     },
     "text": {
       "en": "The fastest route is a 45-minute working session with a senior member of the team: pick a time. If you would rather write first, the form below is answered within two working days.",
       "id": "Jalur tercepat adalah sesi kerja 45 menit bersama anggota senior tim kami: pilih waktunya. Jika Anda lebih suka menulis dahulu, formulir di bawah dijawab dalam dua hari kerja."
-    }
+    },
+    "photo": "/assets/img/photos/contact-hero.webp"
   },
   "book": {
     "title": {
@@ -25,6 +26,56 @@
     "text": {
       "en": "Bring the decision or the deck you are working on. You will receive a confirmation in your language within five minutes, with our credentials attached.",
       "id": "Bawa keputusan atau dek yang sedang Anda kerjakan. Anda akan menerima konfirmasi dalam bahasa Anda dalam lima menit, beserta kredensial kami."
+    },
+    "points": [
+      {
+        "icon": "calendar",
+        "strong": {
+          "en": "45-minute",
+          "id": "45 menit"
+        },
+        "text": {
+          "en": "working session",
+          "id": "sesi kerja"
+        }
+      },
+      {
+        "icon": "people",
+        "strong": {
+          "en": "With a senior",
+          "id": "Bersama anggota senior"
+        },
+        "text": {
+          "en": "member of the team",
+          "id": "tim kami"
+        }
+      },
+      {
+        "icon": "doc",
+        "strong": {
+          "en": "Bring your deck",
+          "id": "Bawa dek"
+        },
+        "text": {
+          "en": "or key question",
+          "id": "atau pertanyaan utama Anda"
+        }
+      },
+      {
+        "icon": "chat",
+        "strong": {
+          "en": "Confirmation",
+          "id": "Konfirmasi"
+        },
+        "text": {
+          "en": "within five minutes",
+          "id": "dalam lima menit"
+        }
+      }
+    ],
+    "button": {
+      "en": "Book a time",
+      "id": "Pilih waktu"
     }
   },
   "form": {
@@ -35,12 +86,42 @@
     "text": {
       "en": "Four fields. Tell us the situation and we will come back with a view, not a brochure.",
       "id": "Empat kolom. Ceritakan situasinya dan kami akan kembali dengan pandangan, bukan brosur."
+    },
+    "placeholders": {
+      "name": {
+        "en": "Name",
+        "id": "Nama"
+      },
+      "company": {
+        "en": "Company",
+        "id": "Perusahaan"
+      },
+      "email": {
+        "en": "Email",
+        "id": "Email"
+      },
+      "situation": {
+        "en": "How can we help?",
+        "id": "Apa yang bisa kami bantu?"
+      },
+      "message": {
+        "en": "A few lines about the decision, timeline or question…",
+        "id": "Beberapa baris tentang keputusan, jadwal, atau pertanyaannya…"
+      }
+    },
+    "submit": {
+      "en": "Send message",
+      "id": "Kirim pesan"
+    },
+    "notConnected": {
+      "en": "The form is not connected yet. Please *email us* or *book a time* directly.",
+      "id": "Formulir belum terhubung. Silakan *kirim email* atau *pilih waktu* secara langsung."
     }
   },
   "deckReview": {
     "title": {
-      "en": "Request a review of your last public-expose deck",
-      "id": "Minta tinjauan dek public expose terakhir Anda"
+      "en": "Request a review of your last *public-expose deck*",
+      "id": "Minta tinjauan *dek public expose* terakhir Anda"
     },
     "text": {
       "en": "Send a link or a file. Within two working days a senior designer replies with three observations: what the deck says, what it should say, and the one page we would rebuild first.",
@@ -49,10 +130,100 @@
     "success": {
       "en": "We will reply with three observations within two working days. If the deck is confidential, send it from your work address and we will confirm receipt under NDA.",
       "id": "Kami akan membalas dengan tiga pengamatan dalam dua hari kerja. Jika dek bersifat rahasia, kirimkan dari alamat kantor Anda dan kami akan mengonfirmasi penerimaan di bawah NDA."
-    }
+    },
+    "photo": "/assets/img/photos/deck-hero.webp",
+    "button": {
+      "en": "Send your deck",
+      "id": "Kirim dek Anda"
+    },
+    "note": {
+      "en": "PDF or a link (Google Drive, Dropbox, etc.)",
+      "id": "PDF atau tautan (Google Drive, Dropbox, dll.)"
+    },
+    "response": {
+      "en": "Response within\ntwo working days",
+      "id": "Balasan dalam\ndua hari kerja"
+    },
+    "steps": [
+      {
+        "icon": "doc",
+        "title": {
+          "en": "What the deck says",
+          "id": "Apa yang dikatakan dek"
+        },
+        "text": {
+          "en": "A short read on your current story and key messages",
+          "id": "Bacaan singkat tentang kisah dan pesan utama Anda saat ini"
+        }
+      },
+      {
+        "icon": "chartup",
+        "title": {
+          "en": "What it should say",
+          "id": "Apa yang seharusnya dikatakan"
+        },
+        "text": {
+          "en": "Our view on the gaps and opportunities",
+          "id": "Pandangan kami tentang celah dan peluang"
+        }
+      },
+      {
+        "icon": "target",
+        "title": {
+          "en": "The one page to rebuild first",
+          "id": "Satu halaman yang dibangun ulang lebih dulu"
+        },
+        "text": {
+          "en": "A concrete example to move the story forward",
+          "id": "Contoh konkret untuk memajukan kisah Anda"
+        }
+      }
+    ]
   },
   "confidentiality": {
     "en": "Everything you share with us, including in a working session, is treated as confidential and never used in our own materials without written permission. We run a conflict check before any engagement that touches a listed company's market-facing materials.",
     "id": "Segala yang Anda bagikan kepada kami, termasuk dalam sesi kerja, diperlakukan sebagai rahasia dan tidak pernah digunakan dalam materi kami tanpa izin tertulis. Kami menjalankan pemeriksaan konflik sebelum setiap penugasan yang menyentuh materi publik perusahaan tercatat."
+  },
+  "trust": [
+    {
+      "icon": "shield",
+      "title": {
+        "en": "Confidential",
+        "id": "Rahasia"
+      },
+      "text": {
+        "en": "Your information is kept confidential.",
+        "id": "Informasi Anda dijaga kerahasiaannya."
+      }
+    },
+    {
+      "icon": "globe",
+      "title": {
+        "en": "Global team",
+        "id": "Tim global"
+      },
+      "text": {
+        "en": "We can meet in your time zone and language.",
+        "id": "Kami dapat bertemu di zona waktu dan bahasa Anda."
+      }
+    },
+    {
+      "icon": "clock",
+      "title": {
+        "en": "Fast response",
+        "id": "Respons cepat"
+      },
+      "text": {
+        "en": "Form submissions are answered within two working days.",
+        "id": "Kiriman formulir dijawab dalam dua hari kerja."
+      }
+    }
+  ],
+  "office": {
+    "photo": "/assets/img/photos/office-monas.webp",
+    "emailLabel": {
+      "en": "Email us",
+      "id": "Kirim email"
+    }
   }
 }

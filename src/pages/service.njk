@@ -58,7 +58,7 @@ pageKey: service
 <section class="svc-artefact fade-up" aria-labelledby="artefact-title">
   <div class="wrap svc-artefact__grid">
     <div class="svc-artefact__copy"><h2 id="artefact-title">{{ s.artefact.title | L(lang) }}</h2><span class="rule-gold rule-gold--short" aria-hidden="true"></span><p>{{ s.artefact.text | L(lang) }}</p>{% if s.artefactPhoto %}<img class="svc-artefact__photo" src="{{ s.artefactPhoto }}" alt="" width="1000" height="388" loading="lazy" decoding="async">{% endif %}</div>
-    <figure class="svc-artefact__card"><div class="svc-artefact__chart">{% include "charts/" + s.artefact.component + ".njk" %}</div><figcaption class="svc-artefact__caption"><span class="svc-artefact__ci" aria-hidden="true">{% set icon = "bars" %}{% include "components/icon.njk" %}</span>{{ s.artefact.caption | L(lang) }}</figcaption></figure>
+    <figure class="svc-artefact__card"><div class="svc-artefact__chart">{% if s.artefact.image %}<img src="{{ s.artefact.image }}"{% if s.artefact.imageSmall %} srcset="{{ s.artefact.imageSmall }} 1000w, {{ s.artefact.image }} 1536w" sizes="(min-width: 1024px) 60vw, 100vw"{% endif %} alt="{{ s.artefact.alt | L(lang) }}" width="1536" height="1024" loading="lazy" decoding="async">{% else %}{% include "charts/" + s.artefact.component + ".njk" %}{% endif %}</div><figcaption class="svc-artefact__caption"><span class="svc-artefact__ci" aria-hidden="true">{% set icon = "bars" %}{% include "components/icon.njk" %}</span>{{ s.artefact.caption | L(lang) }}</figcaption></figure>
   </div>
 </section>
 {% endif %}
