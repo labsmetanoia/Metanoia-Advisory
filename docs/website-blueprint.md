@@ -487,3 +487,11 @@ Implemented from the founder's nine-point design-refinement feedback, with the s
 | Related in the other practice | Sand band; kicker with the gold rule beneath it; title, practice line, promise and a bold link with a gold arrow; the photograph fills the right half to the viewport edge with a short inner fade | — |
 
 Verified at 1,440 / 1,280 / 1,024 / 390 px on the four referenced pages: copy aligned to the page grid at every width, buttons on one row from 1,100 px, no horizontal overflow; links, parity and accessibility checks pass.
+
+---
+
+## 28. Revision 2.4 — stale stylesheet after deploys (31 October 2026)
+
+**Defect.** The hosting headers cached everything under `/assets/` for a year as immutable, while the stylesheet and script kept the same file names on every deploy. Browsers that had visited the site once kept drawing new pages with the first stylesheet they had cached, so revisions 2.2 and 2.3 appeared broken or unchanged to returning visitors (the footer, for example, showed its revision 2.1 form over the revision 2.2 markup).
+
+**Fix.** The stylesheet and script URLs now carry a ten-character hash of their contents (`main.css?v=…`), computed at build time, so a change always produces a new URL. The cache rules are split: fonts, CSS and JS stay cached for a year (their URLs change with their content); images and video revalidate on each visit, which Netlify answers with a cheap 304 when unchanged. Visitors who cached the old stylesheet see the new one on their next page load without any action, because the URL differs.

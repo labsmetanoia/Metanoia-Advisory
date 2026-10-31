@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import markdownIt from "markdown-it";
 import { readFileSync } from "node:fs";
 import { routes, pageUrl, itemUrl, serviceUrl, legalUrl, altUrl } from "./lib/routes.js";
@@ -22,6 +23,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
   eleventyConfig.addFilter("mdInline", (s) => (s ? md.renderInline(String(s)) : ""));
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
+  // Cache-busting: the stylesheet and script URLs carry a hash of their contents, so a deploy always reaches the browser.
+  eleventyConfig.addGlobalData("assetVersion", () => createHash("sha1").update(readFileSync("src/assets/css/main.css")).update(readFileSync("src/assets/js/main.js")).digest("hex").slice(0, 10));
   eleventyConfig.addFilter("t", (ui, lang, key) => {
     const parts = key.split(".");
     let cur = ui[lang];

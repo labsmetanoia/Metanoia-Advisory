@@ -5,5 +5,13 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com; connect-src 'self' https://api.hsforms.com https://www.google-analytics.com https://*.analytics.google.com https://px.ads.linkedin.com; img-src 'self' data: https://www.google-analytics.com https://px.ads.linkedin.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.hsforms.com
-/assets/*
+/assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/img/*
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/video/*
+  Cache-Control: public, max-age=0, must-revalidate
