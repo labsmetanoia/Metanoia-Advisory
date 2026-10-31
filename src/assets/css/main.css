@@ -1422,3 +1422,10 @@ body.menu-open { overflow: hidden; }
 .svc-rel__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%); mask-image: linear-gradient(90deg, transparent 0%, #000 18%); }
 @media (max-width: 768px) { .svc-rel__grid { grid-template-columns: 1fr; } .svc-rel__copy { padding: var(--s-5) var(--side) var(--s-3); } .svc-rel__copy > * { max-width: none; } .svc-rel__media { min-height: 0; height: 220px; } .svc-rel__media img { -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%); mask-image: linear-gradient(180deg, transparent, #000 40%); } }
 @media (min-width: 1024px) and (max-width: 1279.98px) { .svc-hero__copy, .svc-rel__copy { padding-left: max(var(--s-4), calc((100cqw - var(--content-max)) / 2)); } }
+
+/* Four-column facts (references for Investor pitch decks and Marketing presentations) */
+.svc-facts__grid--4 { grid-template-columns: 1.15fr 1.25fr .85fr 1.1fr; }
+.svc-facts__grid--4 .fact__head h2 { font-size: 25px; line-height: 30px; }
+.svc-facts__grid--4 .fact__head .disc-tint { width: 58px; height: 58px; }
+@media (max-width: 1100px) { .svc-facts__grid--4 { grid-template-columns: 1fr 1fr; row-gap: var(--s-5); } .svc-facts__grid--4 .fact:nth-child(3) { border-left: 0; padding-left: 0; } .svc-facts__grid--4 .fact:nth-child(2), .svc-facts__grid--4 .fact:nth-child(4) { padding-right: 0; } }
+@media (max-width: 900px) { .svc-facts__grid--4 { grid-template-columns: 1fr; } .svc-facts__grid--4 .fact { padding: 0; border-left: 0; } }

@@ -19,7 +19,7 @@ pageKey: service
 </section>
 
 <section class="section svc-facts fade-up" aria-label="{{ ui | t(lang, 'labels.who') }}, {{ ui | t(lang, 'labels.get') }}, {{ ui | t(lang, 'labels.duration') }}">
-  <div class="wrap svc-facts__grid">
+  <div class="wrap svc-facts__grid{% if s.factsLayout == 'four' %} svc-facts__grid--4{% endif %}">
     <div class="fact">
       <div class="fact__index" aria-hidden="true"><span>01</span></div>
       <div class="fact__head"><span class="disc-tint">{% set icon = "people" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.who") }}</h2></div>
@@ -32,18 +32,18 @@ pageKey: service
       <ul class="fact__list">{% for g in s.get %}<li>{{ g | L(lang) }}</li>{% endfor %}</ul>
       {% if s.factPhotos and s.factPhotos[1] %}<img class="fact__photo" src="{{ s.factPhotos[1] }}" alt="" width="1000" height="420" loading="lazy" decoding="async">{% endif %}
     </div>
-    <div class="fact fact--stack">
-      <div>
-        <div class="fact__index" aria-hidden="true"><span>03</span></div>
-        <div class="fact__head"><span class="disc-tint">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.duration") }}</h2></div>
-        <p class="fact__lead">{{ s.duration | L(lang) }}</p>{% if s.how %}<p class="fact__text">{{ s.how | L(lang) }}</p>{% endif %}
-      </div>
-      <div>
-        <div class="fact__index" aria-hidden="true"><span>04</span></div>
-        <div class="fact__head"><span class="disc-tint">{% set icon = "chartup" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.next") }}</h2></div>
-        <p class="fact__text">{{ s.next | L(lang) }}</p>
-      </div>
-    </div>
+    {% set f3 %}
+      <div class="fact__index" aria-hidden="true"><span>03</span></div>
+      <div class="fact__head"><span class="disc-tint">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.duration") }}</h2></div>
+      <p class="fact__lead">{{ s.duration | L(lang) }}</p>{% if s.how %}<p class="fact__text">{{ s.how | L(lang) }}</p>{% endif %}
+    {% endset %}
+    {% set f4 %}
+      <div class="fact__index" aria-hidden="true"><span>04</span></div>
+      <div class="fact__head"><span class="disc-tint">{% set icon = "chartup" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.next") }}</h2></div>
+      <p class="fact__text">{{ s.next | L(lang) }}</p>
+    {% endset %}
+    {% if s.factsLayout == 'four' %}<div class="fact">{{ f3 | safe }}</div><div class="fact">{{ f4 | safe }}</div>
+    {% else %}<div class="fact fact--stack"><div>{{ f3 | safe }}</div><div>{{ f4 | safe }}</div></div>{% endif %}
   </div>
 </section>
 

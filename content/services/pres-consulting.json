@@ -69,5 +69,10 @@
   "relatedService": "adv-feasibility",
   "practice": "presentation",
   "art": "slide-after",
-  "photo": "/assets/img/photos/svc-consulting.webp"
+  "photo": "/assets/img/photos/tile-consulting.webp",
+  "heroTitle": {
+    "en": "Consulting *presentations*",
+    "id": "Presentasi *konsultansi*"
+  },
+  "heroPhoto": "/assets/img/photos/svc-consulting-hero.webp"
 }

@@ -69,5 +69,12 @@
   "relatedService": "adv-business-case",
   "practice": "presentation",
   "art": "artefact-deck-page",
-  "photo": "/assets/img/photos/svc-pitch.webp"
+  "photo": "/assets/img/photos/tile-pitch.webp",
+  "heroTitle": {
+    "en": "Investor *pitch decks*",
+    "id": "Dek *pitch investor*"
+  },
+  "heroPhoto": "/assets/img/photos/svc-pitch-hero.webp",
+  "factsLayout": "four",
+  "relPhoto": "/assets/img/photos/svc-pitch-rel.webp"
 }

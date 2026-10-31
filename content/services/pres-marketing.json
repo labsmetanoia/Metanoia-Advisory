@@ -69,5 +69,11 @@
   "relatedService": "me-localisation",
   "practice": "presentation",
   "art": "artefact-cover",
-  "photo": "/assets/img/photos/svc-marketing.webp"
+  "photo": "/assets/img/photos/tile-marketing.webp",
+  "heroTitle": {
+    "en": "Marketing *presentations*",
+    "id": "Presentasi *pemasaran*"
+  },
+  "heroPhoto": "/assets/img/photos/svc-marketing-hero.webp",
+  "factsLayout": "four"
 }

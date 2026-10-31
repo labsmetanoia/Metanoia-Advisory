@@ -77,11 +77,11 @@
   "relatedService": "adv-strategy",
   "practice": "presentation",
   "art": "artefact-cover",
-  "photo": "/assets/img/photos/svc-board.webp",
+  "photo": "/assets/img/photos/tile-board.webp",
   "heroPhoto": "/assets/img/photos/svc-board-hero.webp",
   "factPhotos": [
     "/assets/img/photos/svc-board-a.webp",
-    "/assets/img/photos/svc-board-b.webp"
+    "/assets/img/photos/svc-charts.webp"
   ],
   "heroTitle": {
     "en": "Board & *executive decks*",
