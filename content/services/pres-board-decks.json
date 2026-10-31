@@ -78,13 +78,17 @@
   "practice": "presentation",
   "art": "artefact-cover",
   "photo": "/assets/img/photos/svc-board.webp",
-  "heroEm": {
-    "en": 2,
-    "id": 2
-  },
   "heroPhoto": "/assets/img/photos/svc-board-hero.webp",
   "factPhotos": [
     "/assets/img/photos/svc-board-a.webp",
     "/assets/img/photos/svc-board-b.webp"
-  ]
+  ],
+  "heroTitle": {
+    "en": "Board & *executive decks*",
+    "id": "Dek dewan & *eksekutif*"
+  },
+  "heroTagline": {
+    "en": "One story.\nMany audiences.\nGreater alignment.",
+    "id": "Satu kisah.\nBanyak audiens.\nKeselarasan lebih kuat."
+  }
 }

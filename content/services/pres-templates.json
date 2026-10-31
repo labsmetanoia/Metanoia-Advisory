@@ -70,10 +70,10 @@
   "practice": "presentation",
   "art": "artefact-cover",
   "photo": "/assets/img/photos/svc-templates.webp",
-  "heroEm": {
-    "en": 1,
-    "id": 1
-  },
   "heroPhoto": "/assets/img/photos/svc-templates-hero.webp",
-  "relPhoto": "/assets/img/photos/svc-templates-rel.webp"
+  "relPhoto": "/assets/img/photos/svc-templates-rel.webp",
+  "heroTitle": {
+    "en": "Corporate *presentation* templates",
+    "id": "Templat *presentasi* korporat"
+  }
 }

@@ -5,42 +5,42 @@ pageKey: service
 {% set s = p.service %}{% set prName = site.practiceNames[s.practice] | L(lang) %}
 {% set heroPhoto = s.heroPhoto or s.photo %}
 <section class="svc-hero" aria-labelledby="svc-title">
-  <div class="wrap svc-hero__grid">
+  <div class="svc-hero__grid">
     <div class="svc-hero__copy">
       {% set crumbs = [{ name: prName, url: s.practice | pageUrl(lang) }, { name: s.title | L(lang) }] %}
       {% include "components/breadcrumb.njk" %}
-      <span class="rule-gold" aria-hidden="true"></span>
-      <h1 id="svc-title" class="gold-em">{{ s.title | L(lang) | emTail((s.heroEm | L(lang)) if s.heroEm else 1) | safe }}</h1>
+      <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+      <h1 id="svc-title" class="gold-em">{% if s.heroTitle %}{{ s.heroTitle | L(lang) | mdInline | safe }}{% else %}{{ s.title | L(lang) | emTail(1) | safe }}{% endif %}</h1>
       <p class="lede">{{ s.promise | L(lang) }}</p>
-      <div class="page-hero__actions"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="service-hero"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% if s.practice == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="service-secondary"><span>{{ ui | t(lang, "cta.deckReview") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}</div>
+      <div class="svc-hero__actions"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="service-hero"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% if s.practice == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="service-secondary"><span>{{ ui | t(lang, "cta.deckReview") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}</div>
     </div>
+    <div class="svc-hero__media" aria-hidden="true">{% if heroPhoto %}<img src="{{ heroPhoto }}" alt="" width="1600" height="1100" fetchpriority="high" decoding="async">{% endif %}{% if s.heroTagline %}<p class="svc-hero__tagline">{{ s.heroTagline | L(lang) | replace("\n", "<br>") | safe }}</p>{% endif %}</div>
   </div>
-  {% if heroPhoto %}<div class="svc-hero__media" aria-hidden="true"><img src="{{ heroPhoto }}" alt="" width="1600" height="1100" fetchpriority="high" decoding="async"></div>{% endif %}
 </section>
 
 <section class="section svc-facts fade-up" aria-label="{{ ui | t(lang, 'labels.who') }}, {{ ui | t(lang, 'labels.get') }}, {{ ui | t(lang, 'labels.duration') }}">
   <div class="wrap svc-facts__grid">
     <div class="fact">
-      <span class="fact__num" aria-hidden="true">01</span>
+      <div class="fact__index" aria-hidden="true"><span>01</span></div>
       <div class="fact__head"><span class="disc-tint">{% set icon = "people" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.who") }}</h2></div>
       <ul class="fact__list">{% for w in s.who %}<li>{{ w | L(lang) }}</li>{% endfor %}</ul>
       {% if s.factPhotos and s.factPhotos[0] %}<img class="fact__photo" src="{{ s.factPhotos[0] }}" alt="" width="1000" height="420" loading="lazy" decoding="async">{% endif %}
     </div>
     <div class="fact">
-      <span class="fact__num" aria-hidden="true">02</span>
+      <div class="fact__index" aria-hidden="true"><span>02</span></div>
       <div class="fact__head"><span class="disc-tint">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.get") }}</h2></div>
       <ul class="fact__list">{% for g in s.get %}<li>{{ g | L(lang) }}</li>{% endfor %}</ul>
       {% if s.factPhotos and s.factPhotos[1] %}<img class="fact__photo" src="{{ s.factPhotos[1] }}" alt="" width="1000" height="420" loading="lazy" decoding="async">{% endif %}
     </div>
     <div class="fact fact--stack">
       <div>
-        <span class="fact__num" aria-hidden="true">03</span>
+        <div class="fact__index" aria-hidden="true"><span>03</span></div>
         <div class="fact__head"><span class="disc-tint">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.duration") }}</h2></div>
         <p class="fact__lead">{{ s.duration | L(lang) }}</p>{% if s.how %}<p class="fact__text">{{ s.how | L(lang) }}</p>{% endif %}
       </div>
       <div>
-        <span class="fact__num" aria-hidden="true">04</span>
-        <div class="fact__head"><span class="disc-tint">{% set icon = "bars" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.next") }}</h2></div>
+        <div class="fact__index" aria-hidden="true"><span>04</span></div>
+        <div class="fact__head"><span class="disc-tint">{% set icon = "chartup" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.next") }}</h2></div>
         <p class="fact__text">{{ s.next | L(lang) }}</p>
       </div>
     </div>
@@ -56,10 +56,9 @@ pageKey: service
 
 {% if s.artefact %}
 <section class="svc-artefact fade-up" aria-labelledby="artefact-title">
-  {% if s.artefactPhoto %}<img class="svc-artefact__bg" src="{{ s.artefactPhoto }}" alt="" width="1000" height="524" loading="lazy" decoding="async" aria-hidden="true">{% endif %}
   <div class="wrap svc-artefact__grid">
-    <div class="svc-artefact__copy"><h2 id="artefact-title">{{ s.artefact.title | L(lang) }}</h2><span class="rule-gold" aria-hidden="true"></span><p>{{ s.artefact.text | L(lang) }}</p></div>
-    <figure class="svc-artefact__card"><div class="{{ "artefact" if s.artefact.frame }}">{% include "charts/" + s.artefact.component + ".njk" %}</div><figcaption>{{ s.artefact.caption | L(lang) }}</figcaption></figure>
+    <div class="svc-artefact__copy"><h2 id="artefact-title">{{ s.artefact.title | L(lang) }}</h2><span class="rule-gold rule-gold--short" aria-hidden="true"></span><p>{{ s.artefact.text | L(lang) }}</p>{% if s.artefactPhoto %}<img class="svc-artefact__photo" src="{{ s.artefactPhoto }}" alt="" width="1000" height="388" loading="lazy" decoding="async">{% endif %}</div>
+    <figure class="svc-artefact__card"><div class="svc-artefact__chart">{% include "charts/" + s.artefact.component + ".njk" %}</div><figcaption class="svc-artefact__caption"><span class="svc-artefact__ci" aria-hidden="true">{% set icon = "bars" %}{% include "components/icon.njk" %}</span>{{ s.artefact.caption | L(lang) }}</figcaption></figure>
   </div>
 </section>
 {% endif %}
@@ -68,16 +67,17 @@ pageKey: service
 {% if relService %}
 {% set relPhoto = s.relPhoto or relService.heroPhoto or relService.photo %}
 <section class="svc-rel fade-up" aria-labelledby="rel-title">
-  <div class="wrap svc-rel__grid">
+  <div class="svc-rel__grid">
     <div class="svc-rel__copy">
-      <span class="kicker kicker--rule">{{ ui | t(lang, "labels.relatedService") }}</span>
+      <span class="kicker">{{ ui | t(lang, "labels.relatedService") }}</span>
+      <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
       <h2 id="rel-title"><a class="link-ink" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a></h2>
       <p class="svc-rel__practice">{{ site.practiceNames[relService.practice] | L(lang) }}</p>
       <p>{{ relService.promise | L(lang) }}</p>
-      <a class="arrow-link" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }}</a>
+      <a class="svc-rel__link" href="{{ relService | serviceUrl(lang) }}">{{ relService.title | L(lang) }} <span aria-hidden="true">→</span></a>
     </div>
+    <div class="svc-rel__media" aria-hidden="true">{% if relPhoto %}<img src="{{ relPhoto }}" alt="" width="1400" height="700" loading="lazy" decoding="async">{% endif %}</div>
   </div>
-  {% if relPhoto %}<div class="svc-rel__media" aria-hidden="true"><img src="{{ relPhoto }}" alt="" width="1400" height="700" loading="lazy" decoding="async"></div>{% endif %}
 </section>
 {% endif %}
 <script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "Service", "name": s.title | L(lang), "serviceType": prName, "description": s.promise | L(lang), "provider": { "@type": "Organization", "name": site.name }, "areaServed": "ID", "url": site.baseUrl + page.url } | json | safe }}</script>

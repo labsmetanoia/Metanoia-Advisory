@@ -70,14 +70,14 @@
   "practice": "presentation",
   "art": "artefact-report-spread",
   "photo": "/assets/img/photos/svc-sales.webp",
-  "heroEm": {
-    "en": 1,
-    "id": 1
-  },
   "heroPhoto": "/assets/img/photos/svc-sales-hero.webp",
   "factPhotos": [
     "/assets/img/photos/svc-sales-a.webp",
     "/assets/img/photos/svc-sales-b.webp"
   ],
-  "relPhoto": "/assets/img/photos/svc-sales-rel.webp"
+  "relPhoto": "/assets/img/photos/svc-sales-rel.webp",
+  "heroTitle": {
+    "en": "Sales *proposals*",
+    "id": "Proposal *penjualan*"
+  }
 }
