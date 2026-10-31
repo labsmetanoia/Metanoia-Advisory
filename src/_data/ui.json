@@ -127,7 +127,10 @@
       "byFirm": "Metanoia Advisory",
       "complementary": "Complementary services",
       "approach": "How we work",
-      "language": "Language"
+      "language": "Language",
+      "stickyHint": "45-minute working session",
+      "readMore": "Read more",
+      "readLess": "Show less"
     },
     "form": {
       "name": "Name",
@@ -320,7 +323,10 @@
       "byFirm": "Metanoia Advisory",
       "complementary": "Layanan pelengkap",
       "approach": "Cara kami bekerja",
-      "language": "Bahasa"
+      "language": "Bahasa",
+      "stickyHint": "Sesi kerja 45 menit",
+      "readMore": "Baca selengkapnya",
+      "readLess": "Tampilkan lebih sedikit"
     },
     "form": {
       "name": "Nama",

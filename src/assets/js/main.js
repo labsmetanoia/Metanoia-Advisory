@@ -312,3 +312,33 @@
     }
   });
 })();
+
+// Phones: sticky "Talk to Our Team" bar after the hero, hidden near the closing band and footer and while the menu is open
+(function () {
+  var bar = document.querySelector("[data-sticky-cta]"); if (!bar) return;
+  var mq = window.matchMedia("(max-width: 767.98px)"), nearEnd = false;
+  var ends = document.querySelectorAll(".cta-band, .footer");
+  if ("IntersectionObserver" in window) {
+    var seen = new Set();
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? seen.add(e.target) : seen.delete(e.target); }); nearEnd = seen.size > 0; update(); }, { rootMargin: "0px 0px 120px 0px" });
+    ends.forEach(function (el) { io.observe(el); });
+  }
+  function update() {
+    var show = mq.matches && window.scrollY > 560 && !nearEnd && !document.body.classList.contains("menu-open");
+    bar.hidden = !show; document.body.classList.toggle("has-sticky-cta", show);
+  }
+  window.addEventListener("scroll", update, { passive: true }); mq.addEventListener("change", update);
+  new MutationObserver(update).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  update();
+})();
+// Phones: collapse long body copy behind "Read more"
+(function () {
+  var mq = window.matchMedia("(max-width: 767.98px)");
+  document.querySelectorAll("[data-readmore]").forEach(function (box) {
+    if (!mq.matches || box.scrollHeight < 560) return;
+    box.classList.add("is-collapsed");
+    var btn = document.createElement("button"); btn.type = "button"; btn.className = "readmore"; btn.textContent = box.getAttribute("data-more"); btn.setAttribute("aria-expanded", "false");
+    box.insertAdjacentElement("afterend", btn);
+    btn.addEventListener("click", function () { var open = box.classList.toggle("is-collapsed") === false; btn.textContent = box.getAttribute(open ? "data-less" : "data-more"); btn.setAttribute("aria-expanded", open ? "true" : "false"); });
+  });
+})();

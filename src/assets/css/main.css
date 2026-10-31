@@ -1599,3 +1599,67 @@ body.menu-open { overflow: hidden; }
   .cta-band h2 { font-size: 32px; }
   .footer__tagline { font-size: 20px; line-height: 28px; }
 }
+
+/* ---------- Revision 2.8: phone refinements (≤767px only) ---------- */
+.sticky-cta { display: none; }
+@media (max-width: 767.98px) {
+  /* Sticky action bar */
+  .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px var(--side) calc(10px + env(safe-area-inset-bottom)); background: rgba(250,248,244,.9); backdrop-filter: blur(10px); border-top: 1px solid rgba(0,0,0,.06); animation: sticky-in 260ms ease; }
+  .sticky-cta[hidden] { display: none; }
+  .sticky-cta__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .sticky-cta__hint { font-size: 12.5px; line-height: 16px; color: var(--grey-1); }
+  .sticky-cta .btn { min-height: 46px; padding: 0 18px; border-radius: 999px; gap: 8px; white-space: nowrap; box-shadow: 0 12px 24px -16px rgba(192,146,0,.9); }
+  @keyframes sticky-in { from { transform: translateY(100%); } to { transform: none; } }
+
+  /* Hero: tighter copy, buttons as a pair */
+  .hero-stage__text .display { font-size: 34px; }
+  .hero-stage__text .sub { font-size: 19px; line-height: 27px; }
+  .hero-stage__text .lede { font-size: 15.5px; line-height: 25px; margin-bottom: var(--s-3); }
+  .hero-stage__text .hero__actions { gap: 10px; }
+  .hero-stage__text .hero__actions .btn { min-height: 46px; }
+
+  /* Service head value props: a row of chips */
+  .svc-head .pillars { display: flex; gap: 8px; overflow-x: auto; margin: 4px calc(-1 * var(--side)) 0; padding: 0 var(--side) 6px; scrollbar-width: none; }
+  .svc-head .pillars::-webkit-scrollbar { display: none; }
+  .svc-head .pillars > div { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border: 1px solid var(--grey-3); border-radius: 999px; background: #fff; }
+  .svc-head .pillars .tile__icon { width: 20px; height: 20px; color: var(--gold-dark); } .svc-head .pillars .tile__icon svg { width: 20px; height: 20px; }
+  .svc-head .pillars strong { font-size: 13px; line-height: 1; white-space: nowrap; }
+  .svc-head .pillars span { display: none; }
+
+  /* Advisory practice cards: compact */
+  .adv-card { padding: var(--s-3); gap: 12px; }
+  .adv-card h3 { font-size: 24px; }
+  .adv-card .lede { font-size: 15.5px; line-height: 24px; }
+  .adv-list .tile__icon { width: 36px; height: 36px; } .adv-list .tile__icon svg { width: 18px; height: 18px; }
+  .adv-list li { gap: 12px; padding: 10px 0; font-size: 15px; }
+
+  /* About: story behind Read more; ecosystem as compact rows */
+  .about-story__body p { font-size: 15.5px; line-height: 25px; }
+  .about-story__body.is-collapsed { max-height: 460px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent); mask-image: linear-gradient(180deg, #000 72%, transparent); }
+  .readmore { margin: -8px 0 var(--s-3); padding: 10px 16px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 600 14px/1 var(--font-text); cursor: pointer; }
+  .eco-card, .eco-card--wide { grid-template-columns: 1fr; min-height: 0; }
+  .eco-card__copy { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; row-gap: 2px; padding: 14px 16px; }
+  .eco-card__copy .disc-gold { width: 44px; height: 44px; grid-row: 1 / span 2; } .eco-card__copy .disc-gold .tile__icon, .eco-card__copy .disc-gold .tile__icon svg { width: 22px; height: 22px; }
+  .eco-card__copy h3 { grid-column: 2; font-size: 17px; line-height: 22px; margin: 2px 0 0; }
+  .eco-card__copy p { grid-column: 2; font-size: 13.5px; line-height: 19px; }
+  .eco-card__arrow { display: none; }
+
+  /* Flagship note and newsletter: the newsletter on a tinted card */
+  section[aria-labelledby="insight-title"] .col-6 + .col-6 { background: var(--tint); border-radius: 14px; padding: 20px; margin-top: var(--s-2); }
+  .newsletter { max-width: none; }
+
+  /* Hub hero kicker */
+  .hub-hero__kicker { font-size: 11px; letter-spacing: .1em; }
+
+  /* Footer: two columns, lighter rhythm */
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-3); }
+  .footer__heading { font-size: 10.5px; margin-bottom: 10px; }
+  .footer li { padding: 4px 0; } .footer a { font-size: 14px; line-height: 20px; }
+  .footer__top { padding-bottom: var(--s-4); margin-bottom: var(--s-4); }
+  .wordmark--footer { font-size: 30px; }
+  body.has-sticky-cta .footer { padding-bottom: calc(var(--s-3) + 76px); }
+
+  /* Touch targets */
+  .comp-card .arrow-btn { width: 40px; height: 40px; }
+  .btn { min-height: 46px; }
+}

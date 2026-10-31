@@ -38,6 +38,7 @@
 {{ content | safe }}
 {% if showCta !== false and site.phase == 2 %}{% include "components/cta-band.njk" %}{% endif %}
 </main>
+{% if showCta !== false and site.phase == 2 %}<div class="sticky-cta" data-sticky-cta hidden><div class="sticky-cta__inner"><span class="sticky-cta__hint">{{ ui | t(lang, "labels.stickyHint") }}</span><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="sticky"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a></div></div>{% endif %}
 {% include "components/footer.njk" %}
 {% include "components/consent.njk" %}
 <script src="/assets/js/main.js?v={{ assetVersion }}" defer></script>

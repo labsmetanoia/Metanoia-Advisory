@@ -21,7 +21,7 @@ pageKey: about
       <span class="rule-gold" aria-hidden="true"></span>
       {% if c.story.photo %}<img class="about-story__photo" src="{{ c.story.photo }}" alt="" width="900" height="887" loading="lazy" decoding="async">{% endif %}
     </div>
-    <div class="about-story__body">{{ c.story.body | L(lang) | md | safe }}</div>
+    <div class="about-story__body" data-readmore data-more="{{ ui | t(lang, 'labels.readMore') }}" data-less="{{ ui | t(lang, 'labels.readLess') }}">{{ c.story.body | L(lang) | md | safe }}</div>
     <div class="about-story__cards stagger">
       {% for card in c.story.cards %}
       <a class="practice-card" href="{{ card.key | pageUrl(lang) }}">

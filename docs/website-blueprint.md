@@ -536,3 +536,22 @@ All changes sit inside a single `max-width: 767.98px` block, so tablets and desk
 | 4 | Service pages | Facts section with smaller discs and headings and tighter gaps; hero headline and lede one size down; the boardroom tagline smaller; related-service heading one size down | Content unchanged |
 
 **Measured after the revision.** Desktop grid confirmed hidden only below 768 px; no broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow at 390 px.
+
+---
+
+## 32. Revision 2.8 — phone refinements, second pass (31 October 2026)
+
+All rules sit inside the phone-only block (`max-width: 767.98px`); tablets and desktops are unchanged. The three reference sites named in the brief could not be fetched from the build environment (their hosts are outside its network allow-list), so the pass applies the patterns those firms are known for: a persistent conversion action, one idea per screen, compact list rows instead of tall cards, and quieter type.
+
+| Area | Change | Why |
+| --- | --- | --- |
+| Sticky action bar | After the hero, a frosted bar pins to the bottom with "45-minute working session" and the "Talk to Our Team" button; it hides while the menu is open, near the closing band and in the footer, and is not rendered on the contact page | The conversion action is always one tap away, as on Rocket Capital's phone layout |
+| Hero | Headline 34 px, sub-line 19 px, lede 15.5 px; buttons 46 px | Fits the headline, sub-line and both buttons in the first screen |
+| Services head | The three value props become a horizontal row of chips | Saves about 300 px before the folder |
+| Advisory cards | Tighter padding, 24 px titles, smaller list icons | Two cards fit in less than two screens |
+| About | The story collapses behind a "Read more" button on phones (expands in place); the partner-ecosystem cards become icon-left rows without the decorative arrow | A 1,900 px block of prose becomes a choice |
+| Flagship note and newsletter | The newsletter sits on a tinted card | Separates the two columns that stack on phones |
+| Footer | Four link groups in two columns, smaller headings and links; the wordmark 30 px; room above the sticky bar | Footer height 1,344 → 1,022 px |
+| Touch targets | Complementary-row arrows 40 px; every button at least 46 px tall | Comfortable thumbs |
+
+**Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates; the sticky bar is confirmed hidden on desktop and at the foot of every page.
