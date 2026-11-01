@@ -1663,3 +1663,7 @@ body.menu-open { overflow: hidden; }
   .comp-card .arrow-btn { width: 40px; height: 40px; }
   .btn { min-height: 46px; }
 }
+/* ---------- Revision 2.10: photo panels meet the gold stripe exactly (no white wedge at the foot) ---------- */
+/* The stripe's right edge runs 36% → 8% of the panel on tiles and 32% → 6% on advisory cards; the panels start 1% inside it. */
+.cut__gold, .cut__art { clip-path: polygon(35% 0, 100% 0, 100% 100%, 7% 100%); }
+.adv-card .cut__gold, .adv-card .cut__art, .adv-card .cut__art--full { clip-path: polygon(31% 0, 100% 0, 100% 100%, 5% 100%); }
