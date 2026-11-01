@@ -38,7 +38,7 @@ export default {
       switch (data.pageKey) {
         case "home": return `${name} — ${L(pages.home.seoTitle, lang)}`;
         case "hub": return `${L(site.practiceNames[p.practice.key], lang)} — ${name}`;
-        case "service": return `${L(p.service.title, lang)} — ${L(site.practiceNames[p.service.practice], lang)} — ${name}`;
+        case "service": return `${L(p.service.title, lang)} — ${name}`;
         case "person": return `${p.person.name} — ${L(p.person.role, lang)} — ${name}`;
         case "article": return `${L(p.item.title, lang)} — ${name}`;
         case "legal": return `${L(pages.legal[p.key].title, lang)} — ${name}`;

@@ -555,3 +555,18 @@ All rules sit inside the phone-only block (`max-width: 767.98px`); tablets and d
 | Touch targets | Complementary-row arrows 40 px; every button at least 46 px tall | Comfortable thumbs |
 
 **Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates; the sticky bar is confirmed hidden on desktop and at the foot of every page.
+
+---
+
+## 33. Revision 2.9 — positioning in search, copy review (1 November 2026)
+
+| # | Feedback point | What changed | Note |
+| --- | --- | --- | --- |
+| 1 | Search positioning | Home title is now "Metanoia Advisory — Strategic Storytelling & Corporate Communications"; the description names the advisory capabilities (strategic advisory, financial modelling, feasibility studies, investor relations). The same text feeds the Open Graph and Twitter tags. The ProfessionalService structured data gains `slogan` and a `knowsAbout` list of the seven capabilities. Service-page titles are now "Service — Metanoia Advisory" (the practice name made them overrun Google's 70-character display). The practice-page Open Graph image text and the AI express service description are reworded; the conflicts statement names the Strategic Storytelling practice | Google re-crawls on its own schedule; use Search Console → URL inspection → Request indexing on the home page to hurry it. The snippet shown in search can take days to update after a crawl |
+| 2 | Hero button | "All presentation services" is now "All storytelling services" (shared string) | Indonesian: "Semua layanan storytelling" |
+| 3 | Take the story further | Intro rewritten around strategic storytelling as the core expertise, with the same strategic thinking and design standard carried into wider content and brand communications | Hero and advisory intros reworded to the same positioning |
+| 4 | How we work photographs | Design team, Content structuring and Design execution use the three uploaded photographs, cropped to the cards' ratios and upscaled to 2× their rendered size | Originals in `assets-src/photos/` |
+| 5 | Company newsletters hero | The uploaded photograph is the page's hero, with the title emphasis on "newsletters" | 1,600 px WebP |
+| 6 | Content review | Every visible English string on the 29 production pages was extracted and read. Corrections: "organizations" → "organisations" (the site is British English; "Localization" in the practice name is kept as the firm's chosen proper noun and the Localization service title now matches it); the About page's "design practice" → "storytelling practice"; the "For counsel review" draft notices on the three legal pages no longer appear on the production site (they still show in previews, as a reminder to have counsel sign them off); the practice-name repetition in service titles removed. No spelling errors found; headings are one `h1` per page with ordered `h2`/`h3`; no broken links; no placeholder text | The legal pages remain drafts in substance: counsel should confirm the controller's legal name, processors and governing law before the firm relies on them |
+
+**Measured after the revision.** 68 pages, no broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates.

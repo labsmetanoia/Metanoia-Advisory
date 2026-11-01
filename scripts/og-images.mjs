@@ -10,7 +10,7 @@ const interData = readFileSync("src/assets/fonts/inter-normal-latin.woff2").toSt
 const types = {
   default: ["Metanoia Advisory", "Turning complex ideas into compelling business outcomes."],
   home: ["Global Perspective. Proven Expertise.", "Turning complex ideas into compelling business outcomes."],
-  hub: ["Practice", "Presentation design, Indonesia market entry and localization, strategy and investment advisory. Jakarta."],
+  hub: ["Practice", "Strategic storytelling and corporate communications, Indonesia market entry and localization, strategy and investment advisory."],
   service: ["Service", "Who it is for · What you get · How long · What happens next"],
   case: ["Work", "The situation, the decision at stake, what we built, and one sourced outcome."],
   insight: ["Insights", "Finding first, then evidence, with a source under every chart."],

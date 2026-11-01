@@ -11,7 +11,7 @@ showCta: false
     <div class="article">
       <h1>{{ doc.title | L(lang) }}</h1>
       <p class="meta">{{ ui | t(lang, "labels.lastUpdated") }}: <time datetime="{{ doc.updated }}">{{ doc.updated | date(lang) }}</time></p>
-      {% if doc.reviewNote %}<div class="notice"><strong>{{ "For counsel review." if lang == "en" else "Untuk ditinjau penasihat hukum." }}</strong> {{ doc.reviewNote | L(lang) }}</div>{% endif %}
+      {% if doc.reviewNote and site.preview %}<div class="notice"><strong>{{ "For counsel review." if lang == "en" else "Untuk ditinjau penasihat hukum." }}</strong> {{ doc.reviewNote | L(lang) }}</div>{% endif %}
       <div class="article__body">{{ doc.body | L(lang) | md | safe }}</div>
     </div>
   </div>

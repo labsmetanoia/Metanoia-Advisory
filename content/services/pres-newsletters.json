@@ -77,5 +77,10 @@
   "shortLabel": {
     "en": "Newsletters",
     "id": "Nawala"
+  },
+  "heroPhoto": "/assets/img/photos/svc-newsletters-hero.webp",
+  "heroTitle": {
+    "en": "Company *newsletters*",
+    "id": "Nawala *perusahaan*"
   }
 }
