@@ -2,7 +2,7 @@
 <header class="header">
   <div class="wrap">
     <div class="header__pill">
-      <a class="wordmark" href="{{ 'home' | pageUrl(lang) }}">Metanoia<span class="visually-hidden"> </span><span class="wordmark__sub">Advisory</span></a>
+      <a class="wordmark" href="{{ 'home' | pageUrl(lang) }}"><span class="wordmark__name">Metanoia</span><span class="visually-hidden"> </span><span class="wordmark__bar" aria-hidden="true"></span><span class="wordmark__sub">Advisory</span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-open="{{ ui | t(lang, 'menu') }}" data-close="{{ ui | t(lang, 'close') }}">{{ ui | t(lang, "menu") }}</button>
       <nav class="nav" id="nav" aria-label="Primary">
         <div class="nav__lang nav__lang--mobile">{% set variant = "menu" %}{% include "components/lang-select.njk" %}{% set variant = "" %}</div>

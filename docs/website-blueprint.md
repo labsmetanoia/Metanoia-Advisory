@@ -570,3 +570,25 @@ All rules sit inside the phone-only block (`max-width: 767.98px`); tablets and d
 | 6 | Content review | Every visible English string on the 29 production pages was extracted and read. Corrections: "organizations" → "organisations" (the site is British English; "Localization" in the practice name is kept as the firm's chosen proper noun and the Localization service title now matches it); the About page's "design practice" → "storytelling practice"; the "For counsel review" draft notices on the three legal pages no longer appear on the production site (they still show in previews, as a reminder to have counsel sign them off); the practice-name repetition in service titles removed. No spelling errors found; headings are one `h1` per page with ordered `h2`/`h3`; no broken links; no placeholder text | The legal pages remain drafts in substance: counsel should confirm the controller's legal name, processors and governing law before the firm relies on them |
 
 **Measured after the revision.** 68 pages, no broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates.
+
+---
+
+## 34. Revision 2.10 and the brand-identity trial (1 November 2026)
+
+**2.10, cut cards.** The city photographs on the tilted cards now meet the gold stripe exactly: the photo panel's clip-path starts 1% inside the stripe's edge, on the home tiles and the advisory cards alike, so no paper wedge shows at the foot.
+
+**Brand trial.** The updated corporate identity (`Metanoia_Advisory_Logo.html`, concept A "The Imprint") is applied across the site for evaluation. The layout and content are untouched; only the typefaces, the lockups and the icon changed. The commit before the trial is tagged `pre-brand-trial`, so the previous identity can be restored with one command (`git revert <trial commit>` keeps history; `git reset --hard pre-brand-trial` discards it).
+
+| Element | Before | Now |
+| --- | --- | --- |
+| Display face | Fraunces 500–600 | Cormorant Garamond 600 (wordmark, headlines, every display-face element); letter-spacing −2% |
+| Text face | Inter 400–600 | Manrope 200–800 (navigation, body, labels, numbers, buttons) |
+| Type sizes | — | Cormorant's x-height is lower than Fraunces', so the heading scale and every fixed display-face size are 10% larger to hold the same visual weight; line-heights unchanged |
+| Header lockup | "Metanoia" + small "ADVISORY" | Horizontal lockup: Metanoia · deep-gold (#C09200) vertical bar · ADVISORY in Manrope capitals tracked 42%, black (gold is never used for lettering under 24 px) |
+| Footer lockup | Same as header, larger | Stacked primary lockup: Metanoia with ADVISORY beneath between two bright-gold rules; the old gold bar above the brand is removed |
+| Favicon and app icon | Gold tile, black M | Monogram seal: black tile, paper keyline inset 6%, Cinzel "M" at 56% of the tile; 32 px and 180 px PNGs regenerated |
+| Open Graph images | Fraunces + Inter | Regenerated with the horizontal lockup in Cormorant Garamond and Manrope |
+| Chart SVGs | Fraunces / Inter font stacks | Cormorant Garamond / Manrope font stacks |
+| Fonts shipped | Fraunces, Inter, Inter Tight (8 files, 548 KB) | Cormorant Garamond regular and italic, Manrope (6 files, 185 KB), Latin and Latin Extended, variable |
+
+**Measured after the trial.** Header fits with no overflow at 1280, 1366, 1440 and 1600 px in both languages; no broken links; bilingual parity 100%; axe-core zero issues on the twelve tested templates.
