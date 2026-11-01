@@ -4,9 +4,11 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const cfg = JSON.parse(readFileSync("site.config.json", "utf8"));
-const tok = { paper: "#FAF8F4", ink: "#000000", accent: "#EAB200", sand: "#EEE7DA", font: "Cormorant Garamond", file: "cormorant-garamond-normal-latin.woff2" };
+const tok = { paper: "#FAF8F4", ink: "#000000", accent: "#EAB200", sand: "#EEE7DA", font: "Fraunces", file: "fraunces-normal-latin.woff2" };
 const fontData = readFileSync(`src/assets/fonts/${tok.file}`).toString("base64");
-const interData = readFileSync("src/assets/fonts/manrope-normal-latin.woff2").toString("base64");
+const interData = readFileSync("src/assets/fonts/inter-normal-latin.woff2").toString("base64");
+const cormorantData = readFileSync("src/assets/fonts/cormorant-garamond-normal-latin.woff2").toString("base64");
+const manropeData = readFileSync("src/assets/fonts/manrope-normal-latin.woff2").toString("base64");
 const types = {
   default: ["Metanoia Advisory", "Turning complex ideas into compelling business outcomes."],
   home: ["Global Perspective. Proven Expertise.", "Turning complex ideas into compelling business outcomes."],
@@ -21,13 +23,15 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 for (const [key, [kicker, line]] of Object.entries(types)) {
   const html = `<!doctype html><html><head><style>
-  @font-face{font-family:"D";src:url(data:font/woff2;base64,${fontData}) format("woff2");font-weight:300 700}
-  @font-face{font-family:"T";src:url(data:font/woff2;base64,${interData}) format("woff2");font-weight:200 800}
+  @font-face{font-family:"D";src:url(data:font/woff2;base64,${fontData}) format("woff2");font-weight:500 600}
+  @font-face{font-family:"T";src:url(data:font/woff2;base64,${interData}) format("woff2");font-weight:400 600}
+  @font-face{font-family:"C";src:url(data:font/woff2;base64,${cormorantData}) format("woff2");font-weight:300 700}
+  @font-face{font-family:"M";src:url(data:font/woff2;base64,${manropeData}) format("woff2");font-weight:200 800}
   body{margin:0;width:1200px;height:630px;background:${tok.paper};color:${tok.ink};font-family:"T",sans-serif;position:relative}
   .k{position:absolute;left:80px;top:80px;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:#5E6166;font-weight:500}
-  .w{position:absolute;left:80px;top:124px;font-family:"D",serif;font-size:72px;font-weight:600;letter-spacing:-0.02em;display:flex;align-items:center;line-height:1}
+  .w{position:absolute;left:80px;top:124px;font-family:"C",serif;font-size:72px;font-weight:600;letter-spacing:-0.02em;display:flex;align-items:center;line-height:1}
   .w i{display:inline-block;width:2px;height:52px;background:#C09200;margin:0 26px 0 24px}
-  .w span{font-family:"T";font-size:24px;letter-spacing:.42em;text-transform:uppercase;color:#000;font-weight:600;position:relative;top:2px}
+  .w span{font-family:"M";font-size:24px;letter-spacing:.42em;text-transform:uppercase;color:#000;font-weight:600;position:relative;top:2px}
   .l{position:absolute;left:80px;right:80px;top:270px;font-family:"D",serif;font-size:${line.length > 90 ? 36 : 44}px;line-height:1.2;font-weight:500;max-width:980px}
   .r{position:absolute;left:80px;right:80px;bottom:80px;border-top:1px solid #A5A7AA;padding-top:20px;font-size:20px;color:#5E6166;display:flex;justify-content:space-between}
   .a{position:absolute;left:80px;bottom:112px;width:120px;height:6px;background:${tok.accent}} .k,.r{color:#5F5E5C}

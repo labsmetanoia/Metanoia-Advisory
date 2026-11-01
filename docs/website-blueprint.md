@@ -592,3 +592,20 @@ All rules sit inside the phone-only block (`max-width: 767.98px`); tablets and d
 | Fonts shipped | Fraunces, Inter, Inter Tight (8 files, 548 KB) | Cormorant Garamond regular and italic, Manrope (6 files, 185 KB), Latin and Latin Extended, variable |
 
 **Measured after the trial.** Header fits with no overflow at 1280, 1366, 1440 and 1600 px in both languages; no broken links; bilingual parity 100%; axe-core zero issues on the twelve tested templates.
+
+---
+
+## 35. Brand trial outcome — typography restored, lockups and icon kept (1 November 2026)
+
+The firm kept the Fraunces and Inter typography from before the trial, judging it to have more character, and approved the new lockups and monogram. The site therefore runs as follows.
+
+| Element | Decision |
+| --- | --- |
+| Headlines, body, navigation, numbers, charts, Open Graph text | Fraunces and Inter, at the pre-trial sizes (the 10% enlargement is undone) |
+| Header lockup | Kept: Metanoia · deep-gold bar · ADVISORY, in Cormorant Garamond and Manrope |
+| Footer lockup | Kept: the stacked lockup with gold rules |
+| Favicon, app icon | Kept: the black monogram seal |
+| Open Graph images | Lockup in the brand faces, headline in Fraunces |
+| Fonts shipped | Fraunces, Inter, Inter Tight as before, plus one Cormorant Garamond file and one Manrope file (Latin only, 62 KB) for the lockups |
+
+The tag `pre-brand-trial` still marks the state before either change.
