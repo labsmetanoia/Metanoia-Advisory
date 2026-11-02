@@ -1,4 +1,5 @@
 {# Working approach: what you see | what works in the background, then the five stages. expects `ap`, `lang` #}
+<div class="approach2__tabs" role="tablist" aria-label="{{ ap.title | L(lang) if ap.title else "" }}"><button type="button" class="approach2__tab is-active" role="tab" aria-selected="true" data-col="0">{{ ap.see.title | L(lang) }}</button><button type="button" class="approach2__tab" role="tab" aria-selected="false" data-col="1">{{ ap.background.title | L(lang) }}</button></div>
 <div class="approach2">
   <div class="approach2__col">
     <p class="kicker">{{ ap.see.title | L(lang) }}</p>

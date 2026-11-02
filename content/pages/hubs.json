@@ -119,6 +119,10 @@
     "servicesTextM": {
       "en": "Buy one phase and roll into the next. Licensing and compliance run through partners.",
       "id": "Ambil satu tahap lalu lanjut ke berikutnya. Perizinan dan kepatuhan berjalan melalui mitra."
+    },
+    "taglineM": {
+      "en": "Local insights. *Real opportunities.*",
+      "id": "Wawasan lokal. *Peluang nyata.*"
     }
   },
   "advisory": {
@@ -266,6 +270,10 @@
     "processTextM": {
       "en": "We build the model and the document that carries it, in the same weeks.",
       "id": "Kami membangun model dan dokumen yang membawanya, dalam minggu-minggu yang sama."
+    },
+    "taglineM": {
+      "en": "Clear analysis. *Stronger decisions.*",
+      "id": "Analisis jernih. *Keputusan lebih kuat.*"
     }
   },
   "presentation": {

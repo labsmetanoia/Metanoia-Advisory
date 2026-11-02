@@ -626,3 +626,19 @@ Phones only (≤767 px). The desktop build was screenshotted before and after at
 Also on phones: the five "From first conversation to delivery" stages are numbered rows without photographs.
 
 **Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow on any tested phone page.
+
+---
+
+## 37. Revision 2.12 — phone refinements, fourth pass (2 November 2026)
+
+Phones only (≤767 px); the desktop build was compared pixel by pixel before and after on four pages at 1,440 and 1,024 px.
+
+| # | Brief point | What changed | How it is built |
+| --- | --- | --- | --- |
+| 1 | Hero slides | The three slides (FDI chart, EBITDA chart, investor calendar) stay as a fixed composition and breathe: each scales between 1 and 1.05 over 7.5–9 seconds, offset so they never move together. The left-to-right cycling is switched off on phones only | The fan script skips its rotation timer on phones; a `fan-breathe` keyframe replaces the cycle in the phone block |
+| 2 | Core-practice principles | "Consulting structure · Executive-grade design · Numbers that match" are white numbered cards (01–03 in Fraunces gold) with a short gold accent that draws in on reveal. One card at a time is lit with a gold border and lift; the light moves every 2.8 s while the section is on screen, and a tap pins it | CSS counters for the numerals; a small phone script drives the highlight and stops on tap; reduced-motion safe |
+| 3 | How we work with you | The two columns become two tabs, "What you see" and "What works in the background", with a gold underline that slides. Panel one shows the client team and engagement lead side by side with the three checkpoints beneath; panel two shows the engagement manager and a 2×2 grid of the four background teams. The five stages form a vertical timeline on a gold spine that draws down the list as it reveals | `approach2__tabs` bar rendered on every build, shown and wired on phones only; stage photographs hidden on phones |
+| 4 | Advisory practices | Rebuilt on the Rocket Capital pattern: a two-tab bar (Market Entry · Strategy & Investment) with uppercase tracked labels and a deep-gold underline, then a sand panel with the practice name as a kicker, the practice tagline as the headline with its second sentence in gold italic, a gold rule, the short practice description, a full-width "Explore the practice" button and a full-bleed photograph. Switching tabs fades the panel in with a short stagger. Tabs are keyboard-operable with roles and `aria-selected` | `adv-tabs` markup on the home page; tab labels in `advisory.tabs`, emphasised taglines in `hubs.*.taglineM` |
+| 5 | Footer | Centred stacked lockup and tagline, a full-width "Talk to Our Team" pill, a hairline, two tidy link columns with smaller tracked headings, a lighter legal strip, and a bottom row with the copyright, the language flag and a "Back to top" pill | Phone stylesheet block; the back-to-top link is rendered on every build and shown on phones only |
+
+**Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow.

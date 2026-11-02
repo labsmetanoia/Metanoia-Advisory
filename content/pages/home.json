@@ -567,6 +567,16 @@
     "textM": {
       "en": "Two advisory practices supply the analysis every story is built on: entering Indonesia, and deciding where the money goes.",
       "id": "Dua praktik advisory menyediakan analisis di balik setiap kisah: memasuki Indonesia, dan memutuskan ke mana dana dialokasikan."
+    },
+    "tabs": {
+      "marketEntry": {
+        "en": "Market Entry",
+        "id": "Masuk Pasar"
+      },
+      "advisory": {
+        "en": "Strategy & Investment",
+        "id": "Strategi & Investasi"
+      }
     }
   },
   "cta": {

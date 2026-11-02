@@ -237,9 +237,10 @@
     var cards = Array.prototype.slice.call(fan.querySelectorAll(".fan__card"));
     var order = cards.map(function (_, i) { return i; }); // order[pos] = card index
     function apply() { order.forEach(function (ci, pos) { cards[ci].className = "fan__card pos-" + (pos + 1); }); }
+    var phoneFan = window.matchMedia && window.matchMedia("(max-width: 767.98px)").matches;
     setTimeout(function () {
       apply(); fan.classList.add("is-cycling");
-      setInterval(function () { order.unshift(order.pop()); apply(); }, 4200);
+      if (!phoneFan) setInterval(function () { order.unshift(order.pop()); apply(); }, 4200); /* phones keep a fixed composition that breathes */
     }, 2200);
   }
 })();
@@ -371,5 +372,43 @@
     };
     window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     update();
+  }
+})();
+
+/* ---- Phones (≤767px): practice tabs, approach tabs, principle highlight ---- */
+(function () {
+  var phone = window.matchMedia && window.matchMedia("(max-width: 767.98px)");
+  if (!phone || !phone.matches) return;
+  var qsa = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  /* Advisory practice tabs */
+  qsa("[data-advtabs]").forEach(function (root) {
+    var tabs = qsa(".adv-tabs__tab", root), panels = qsa(".adv-tabs__panel", root);
+    function select(i) {
+      tabs.forEach(function (t, k) { t.classList.toggle("is-active", k === i); t.setAttribute("aria-selected", String(k === i)); });
+      panels.forEach(function (p, k) { if (k === i) { p.hidden = false; p.classList.add("is-active"); p.classList.remove("is-entering"); void p.offsetWidth; p.classList.add("is-entering"); } else { p.hidden = true; p.classList.remove("is-active", "is-entering"); } });
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { select(i); }); t.addEventListener("keydown", function (e) { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = (i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length; select(n); tabs[n].focus(); } }); });
+  });
+  /* How we work: two columns as tabs */
+  qsa(".approach2").forEach(function (root) {
+    var bar = root.previousElementSibling; if (!bar || !bar.classList.contains("approach2__tabs")) return;
+    var tabs = qsa(".approach2__tab", bar), cols = qsa(".approach2__col", root);
+    root.classList.add("has-tabs");
+    function select(i) { tabs.forEach(function (t, k) { t.classList.toggle("is-active", k === i); t.setAttribute("aria-selected", String(k === i)); }); cols.forEach(function (c, k) { c.classList.toggle("is-active", k === i); c.classList.remove("is-entering"); if (k === i) { void c.offsetWidth; c.classList.add("is-entering"); } }); }
+    select(0);
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { select(i); }); });
+  });
+  /* Core-practice principles: one card lit at a time until the reader taps */
+  var pts = qsa(".arch__points li");
+  if (pts.length && !(window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    var cur = 0, timer = null, manual = false;
+    function light(i) { pts.forEach(function (li, k) { li.classList.toggle("is-hot", k === i); }); }
+    function start() { if (timer || manual) return; light(cur); timer = setInterval(function () { cur = (cur + 1) % pts.length; light(cur); }, 2800); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    pts.forEach(function (li, i) { li.addEventListener("click", function () { manual = true; stop(); cur = i; light(i); }); });
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? start() : stop(); }); }, { threshold: 0.4 });
+      io.observe(pts[0].parentNode);
+    } else start();
   }
 })();

@@ -65,10 +65,21 @@ pageKey: home
 <section class="section" aria-labelledby="advisory-title" style="padding-top:var(--section)">
   <div class="wrap">
     <div class="svc-head fade-up"><div><span class="kicker kicker--rule">{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}</span><h2 id="advisory-title" class="gold-em" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.advisory.title | L(lang) | mdInline | safe }}</h2></div><p class="muted" style="border-left:1px solid var(--grey-2);padding-left:var(--s-3)">{{ c.advisory.text | L(lang) | mc(c.advisory.textM | L(lang)) | safe }}</p></div>
-    <div class="adv-nav" aria-label="{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}">
-      {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
-      <a class="adv-nav__tile" href="{{ pr.key | pageUrl(lang) }}"><img src="{{ hub.photo }}" alt="" loading="lazy" decoding="async"><span class="adv-nav__body"><span class="adv-nav__kicker">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span><span class="adv-nav__name">{{ site.practiceNames[pr.key] | L(lang) }}</span><span class="adv-nav__line">{{ hub.tagline | L(lang) }}</span></span><span class="adv-nav__arrow" aria-hidden="true">→</span></a>
-      {% endif %}{% endfor %}
+    {% set advPractices = practices | rejectattr("flagship") %}
+    <div class="adv-tabs" data-advtabs>
+      <div class="adv-tabs__bar" role="tablist" aria-label="{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}">
+        {% for pr in advPractices %}<button class="adv-tabs__tab{% if loop.first %} is-active{% endif %}" type="button" role="tab" id="advtab-{{ pr.key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" aria-controls="advpanel-{{ pr.key }}">{{ c.advisory.tabs[pr.key] | L(lang) }}</button>{% endfor %}
+      </div>
+      {% for pr in advPractices %}{% set hub = pages.hubs[pr.key] %}
+      <div class="adv-tabs__panel{% if loop.first %} is-active{% endif %}" role="tabpanel" id="advpanel-{{ pr.key }}" aria-labelledby="advtab-{{ pr.key }}"{% if not loop.first %} hidden{% endif %}>
+        <span class="adv-tabs__kicker">{{ site.practiceNames[pr.key] | L(lang) }}</span>
+        <h3 class="adv-tabs__title gold-em">{{ hub.taglineM | L(lang) | mdInline | safe }}</h3>
+        <span class="adv-tabs__rule" aria-hidden="true"></span>
+        <p class="adv-tabs__text">{{ hub.hero.textM | L(lang) }}</p>
+        <a class="btn btn--primary adv-tabs__btn" href="{{ pr.key | pageUrl(lang) }}">{{ ui | t(lang, "cta.explore") }} <span aria-hidden="true">→</span></a>
+        <div class="adv-tabs__photo"><img src="{{ hub.photo }}" alt="" loading="lazy" decoding="async"></div>
+      </div>
+      {% endfor %}
     </div>
     <div class="adv-grid stagger">
       {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
