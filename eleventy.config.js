@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import markdownIt from "markdown-it";
 import { readFileSync } from "node:fs";
@@ -24,6 +25,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("mdInline", (s) => (s ? md.renderInline(String(s)) : ""));
   eleventyConfig.addFilter("json", (v) => JSON.stringify(v));
   // Cache-busting: the stylesheet and script URLs carry a hash of their contents, so a deploy always reaches the browser.
+  // Build stamp: served at /version.txt and as a <meta> tag so a deploy can be verified from any browser.
+  eleventyConfig.addGlobalData("buildInfo", () => {
+    let sha = process.env.COMMIT_REF || "";
+    if (!sha) { try { sha = execSync("git rev-parse HEAD", { stdio: ["ignore", "pipe", "ignore"] }).toString().trim(); } catch (e) { sha = "unknown"; } }
+    return { sha: sha.slice(0, 7), date: new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC", revision: "2.12" };
+  });
   eleventyConfig.addGlobalData("assetVersion", () => createHash("sha1").update(readFileSync("src/assets/css/main.css")).update(readFileSync("src/assets/js/main.js")).digest("hex").slice(0, 10));
   eleventyConfig.addFilter("t", (ui, lang, key) => {
     const parts = key.split(".");
