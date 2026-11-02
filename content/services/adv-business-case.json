@@ -98,5 +98,17 @@
   "factPhotos": [
     "/assets/img/photos/adv-2.webp",
     "/assets/img/photos/svc-pitch-rel.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "Strategy, model, investor deck, teaser and data-room narrative from the same numbers, in six to ten weeks.",
+    "id": "Strategi, model, dek investor, teaser, dan narasi data room dari angka yang sama, dalam enam hingga sepuluh minggu."
+  },
+  "howM": {
+    "en": "One lead partner, one storytelling lead, one engagement manager. The partner presents to your board and investors.",
+    "id": "Satu partner utama, satu pemimpin storytelling, satu engagement manager. Partner memaparkan kepada dewan dan investor Anda."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

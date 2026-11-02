@@ -82,5 +82,13 @@
   "heroTitle": {
     "en": "Company *newsletters*",
     "id": "Nawala *perusahaan*"
+  },
+  "promiseM": {
+    "en": "Employee, investor and stakeholder newsletters with an editorial structure, on a monthly or quarterly rhythm.",
+    "id": "Nawala karyawan, investor, dan pemangku kepentingan dengan struktur editorial, dalam ritme bulanan atau kuartalan."
+  },
+  "nextM": {
+    "en": "Most clients continue with a template system or a 12-month deck retainer.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat atau retainer dek 12 bulan."
   }
 }

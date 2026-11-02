@@ -83,5 +83,17 @@
   "shortLabel": {
     "en": "Sales",
     "id": "Penjualan"
+  },
+  "promiseM": {
+    "en": "Proposals, tender responses and pitch decks that lead with the buyer's problem and are easy to approve.",
+    "id": "Proposal, tanggapan tender, dan dek pitch yang berangkat dari masalah pembeli dan mudah disetujui."
+  },
+  "nextM": {
+    "en": "Most clients continue with a template system or a 12-month deck retainer.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat atau retainer dek 12 bulan."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
   }
 }

@@ -6,8 +6,8 @@
     <ul class="svc4__rows">
       <li><span class="svc4__ri">{% set icon = "people" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.who") }}</span><span class="svc4__text">{{ (s.who | first) | L(lang) }}</span></div></li>
       <li><span class="svc4__ri">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.get") }}</span><span class="svc4__text">{{ s.getSummary | L(lang) }}</span></div></li>
-      <li><span class="svc4__ri">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.duration") }}</span><span class="svc4__text">{{ s.duration | L(lang) }}</span></div></li>
-      <li><span class="svc4__ri">{% set icon = "arrow" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.next") }}</span><span class="svc4__text">{{ s.next | L(lang) }}</span></div></li>
+      <li><span class="svc4__ri">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.duration") }}</span><span class="svc4__text">{{ s.duration | L(lang) | mc(s.durationM | L(lang)) | safe }}</span></div></li>
+      <li><span class="svc4__ri">{% set icon = "arrow" %}{% include "components/icon.njk" %}</span><div><span class="svc4__label">{{ ui | t(lang, "labels.next") }}</span><span class="svc4__text">{{ s.next | L(lang) | mc(s.nextM | L(lang)) | safe }}</span></div></li>
     </ul>
     <a class="svc4__btn" href="{{ s | serviceUrl(lang) }}"><span>{{ s.title | L(lang) }}</span><span class="svc4__arrow" aria-hidden="true">→</span></a>
   </div>

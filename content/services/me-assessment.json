@@ -149,5 +149,13 @@
   "factPhotos": [
     "/assets/img/photos/me-1.webp",
     "/assets/img/photos/hero-market-entry.webp"
-  ]
+  ],
+  "nextM": {
+    "en": "Most clients move to the partner and site search; the HQ approval deck is built from the same numbers.",
+    "id": "Sebagian besar klien melanjutkan ke pencarian mitra dan lokasi; dek persetujuan kantor pusat disusun dari angka yang sama."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

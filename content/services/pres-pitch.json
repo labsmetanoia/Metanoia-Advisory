@@ -83,5 +83,17 @@
   "shortLabel": {
     "en": "Pitch decks",
     "id": "Dek pitch"
+  },
+  "promiseM": {
+    "en": "Fundraising decks, teasers and data-room narratives built from the same model, so nothing in the room contradicts the data room.",
+    "id": "Dek penggalangan dana, teaser, dan narasi data room dari model yang sama, sehingga ruang rapat dan data room tidak bertentangan."
+  },
+  "nextM": {
+    "en": "The investor-ready business case when the model needs building; the earnings-call retainer after the raise.",
+    "id": "Kajian bisnis siap investor ketika modelnya perlu disusun; retainer paparan kinerja setelah penggalangan dana."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
   }
 }

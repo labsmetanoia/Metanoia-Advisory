@@ -31,7 +31,11 @@
         "en": "For regional headquarters, fund operating partners and leadership teams deciding whether, how and with whom to enter or expand in Indonesia. We assess the market, build the entry case, find and vet the partner or site, and stay as your senior local presence until your own team is in place.",
         "id": "Untuk kantor pusat regional, operating partner dana investasi, dan tim kepemimpinan yang memutuskan apakah, bagaimana, dan dengan siapa memasuki atau memperluas bisnis di Indonesia. Kami menilai pasar, menyusun kajian masuk, mencari dan menguji mitra atau lokasi, dan menjadi kehadiran senior lokal Anda hingga tim Anda sendiri siap."
       },
-      "photo": "/assets/img/photos/hero-market-entry.webp"
+      "photo": "/assets/img/photos/hero-market-entry.webp",
+      "textM": {
+        "en": "For leadership teams deciding whether, how and with whom to enter Indonesia. We assess the market, build the case, vet the partner or site, and stay as your senior local presence until your team is in place.",
+        "id": "Untuk tim kepemimpinan yang memutuskan apakah, bagaimana, dan dengan siapa memasuki Indonesia. Kami menilai pasar, menyusun kajian, menguji mitra atau lokasi, dan menjadi kehadiran senior lokal Anda hingga tim Anda siap."
+      }
     },
     "servicesTitle": {
       "en": "Four services, *one entry path*",
@@ -111,7 +115,11 @@
       "pin"
     ],
     "art": "artefact-deck-page",
-    "photo": "/assets/img/photos/adv-market-entry.webp"
+    "photo": "/assets/img/photos/adv-market-entry.webp",
+    "servicesTextM": {
+      "en": "Buy one phase and roll into the next. Licensing and compliance run through partners.",
+      "id": "Ambil satu tahap lalu lanjut ke berikutnya. Perizinan dan kepatuhan berjalan melalui mitra."
+    }
   },
   "advisory": {
     "metaDescription": {
@@ -147,7 +155,11 @@
       },
       "photo": "/assets/img/photos/hero-advisory-2560.webp",
       "photoSmall": "/assets/img/photos/hero-advisory-1600.webp",
-      "focus": "50% 42%"
+      "focus": "50% 42%",
+      "textM": {
+        "en": "For CFOs, boards and investors weighing an investment, a raise or a new direction. Feasibility studies, models and business cases built by the people who will present them.",
+        "id": "Untuk CFO, dewan, dan investor yang menimbang investasi, penggalangan dana, atau arah baru. Studi kelayakan, model, dan kajian bisnis yang disusun oleh orang-orang yang akan memaparkannya."
+      }
     },
     "servicesTitle": {
       "en": "Four services for *one decision cycle*",
@@ -250,7 +262,11 @@
       "layers"
     ],
     "art": "slide-after",
-    "photo": "/assets/img/photos/adv-strategy.webp"
+    "photo": "/assets/img/photos/adv-strategy.webp",
+    "processTextM": {
+      "en": "We build the model and the document that carries it, in the same weeks.",
+      "id": "Kami membangun model dan dokumen yang membawanya, dalam minggu-minggu yang sama."
+    }
   },
   "presentation": {
     "metaDescription": {
@@ -284,6 +300,10 @@
       "text": {
         "en": "Our core practice. Conventional presentation design makes slides look better; strategic storytelling decides what they must say. For CFOs, heads of investor relations, corporate secretaries and marketing leads, we build the argument before the layout: the message, the evidence and the decision each page has to earn, reconciled to your figures and within the disclosure rules you work under.",
         "id": "Praktik inti kami. Desain presentasi konvensional membuat slide tampak lebih baik; strategic storytelling menentukan apa yang harus disampaikannya. Untuk CFO, kepala hubungan investor, sekretaris perusahaan, dan pimpinan pemasaran, kami membangun argumen sebelum tata letak: pesan, bukti, dan keputusan yang harus dimenangkan setiap halaman, direkonsiliasi dengan angka Anda dan dalam kerangka aturan keterbukaan yang berlaku."
+      },
+      "textM": {
+        "en": "Our core practice. Presentation design makes slides look better; strategic storytelling decides what they must say. We build the argument before the layout, reconciled to your figures.",
+        "id": "Praktik inti kami. Desain presentasi membuat slide tampak lebih baik; strategic storytelling menentukan apa yang harus disampaikan. Kami membangun argumen sebelum tata letak, direkonsiliasi dengan angka Anda."
       }
     },
     "servicesTitle": {
@@ -382,6 +402,10 @@
     "engagementsFrom": {
       "en": "Rp20 million a month",
       "id": "Rp20 juta per bulan"
+    },
+    "servicesTextM": {
+      "en": "Eleven services on one standard, from a board pack to an express deck ready in hours.",
+      "id": "Sebelas layanan dalam satu standar, dari materi dewan hingga dek ekspres yang siap dalam hitungan jam."
     }
   }
 }

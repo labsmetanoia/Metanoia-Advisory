@@ -72,5 +72,13 @@
   "factPhotos": [
     "/assets/img/photos/me-3.webp",
     "/assets/img/photos/eco-sector.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "Pricing, positioning, channels and certification planned for Indonesia as it is.",
+    "id": "Harga, pemosisian, saluran, dan sertifikasi yang direncanakan untuk Indonesia sebagaimana adanya."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

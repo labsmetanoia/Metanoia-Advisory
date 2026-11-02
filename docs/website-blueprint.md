@@ -609,3 +609,20 @@ The firm kept the Fraunces and Inter typography from before the trial, judging i
 | Fonts shipped | Fraunces, Inter, Inter Tight as before, plus one Cormorant Garamond file and one Manrope file (Latin only, 62 KB) for the lockups |
 
 The tag `pre-brand-trial` still marks the state before either change.
+
+---
+
+## 36. Revision 2.11 — phone experience, third pass (2 November 2026)
+
+Phones only (≤767 px). The desktop build was screenshotted before and after at 1,440 and 1,024 px on six pages and compared pixel by pixel: no difference.
+
+| # | Brief point | What changed | How it is built |
+| --- | --- | --- | --- |
+| 1 | Streamline content | Fifty-eight passages carry a shorter phone version in both languages: the home hero, every home section intro, the AI steps, the closing band, the three practice-page heroes and intros, the About and Contact heroes, and on every service page the promise, duration, "how" and "what happens next" lines (also on the four-service cards). Essential facts, figures and regulatory references are kept; connective wording goes | Content fields ending in `M` (e.g. `textM`, `promiseM`) next to the originals; the `mc` filter renders both, and the stylesheet shows the short one on phones. Home page height 14,187 → 12,356 px |
+| 2 | Motion | Scroll reveal with sibling stagger on section intros, lists, cards, facts and the footer brand; drawn gold kicker rules; hero parallax (background drifts at 0.28×, text lifts and fades); slow photo settle on the practice tiles, the Indonesia band and the service folder; press feedback on buttons and cards. All of it honours `prefers-reduced-motion` and uses transforms and opacity only | Phone-gated script block and stylesheet block; elements already animated by the existing fade-up and stagger groups are left alone |
+| 3 | Advisory practices | The two long cards are replaced by full-bleed navigation tiles in the Rocket Capital pattern: photograph, dark gradient, situation kicker in gold, practice name in Fraunces, tagline, circular arrow; the intro gains a gold rule. Each tile is one link to the practice page | `.adv-nav` markup rendered on every build, shown only on phones; the desktop cards are hidden there |
+| 4 | Hero | Eyebrow "Strategic Storytelling & Corporate Communications" between two gold ticks; headline at 40 px with "Proven Expertise." in gold; the subline with a drawn gold rule beneath; a shorter lede; one full-width pill button with a soft gold shadow and the secondary action as an underlined text link; the slide fan beneath | Phone stylesheet block; the eyebrow is the last child of the hero text so desktop animation timing is unchanged |
+
+Also on phones: the five "From first conversation to delivery" stages are numbered rows without photographs.
+
+**Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow on any tested phone page.

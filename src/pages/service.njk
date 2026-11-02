@@ -11,7 +11,7 @@ pageKey: service
       {% include "components/breadcrumb.njk" %}
       <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
       <h1 id="svc-title" class="gold-em">{% if s.heroTitle %}{{ s.heroTitle | L(lang) | mdInline | safe }}{% else %}{{ s.title | L(lang) | emTail(1) | safe }}{% endif %}</h1>
-      <p class="lede">{{ s.promise | L(lang) }}</p>
+      <p class="lede">{{ s.promise | L(lang) | mc(s.promiseM | L(lang)) | safe }}</p>
       <div class="svc-hero__actions"><a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="service-hero"><span>{{ ui | t(lang, "cta.talk") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% if s.practice == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="service-secondary"><span>{{ ui | t(lang, "cta.deckReview") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}</div>
     </div>
     <div class="svc-hero__media" aria-hidden="true">{% if heroPhoto %}<img src="{{ heroPhoto }}" alt="" width="1600" height="1100" fetchpriority="high" decoding="async">{% endif %}{% if s.heroTagline %}<p class="svc-hero__tagline">{{ s.heroTagline | L(lang) | replace("\n", "<br>") | safe }}</p>{% endif %}</div>
@@ -35,12 +35,12 @@ pageKey: service
     {% set f3 %}
       <div class="fact__index" aria-hidden="true"><span>03</span></div>
       <div class="fact__head"><span class="disc-tint">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.duration") }}</h2></div>
-      <p class="fact__lead">{{ s.duration | L(lang) }}</p>{% if s.how %}<p class="fact__text">{{ s.how | L(lang) }}</p>{% endif %}
+      <p class="fact__lead">{{ s.duration | L(lang) | mc(s.durationM | L(lang)) | safe }}</p>{% if s.how %}<p class="fact__text">{{ s.how | L(lang) | mc(s.howM | L(lang)) | safe }}</p>{% endif %}
     {% endset %}
     {% set f4 %}
       <div class="fact__index" aria-hidden="true"><span>04</span></div>
       <div class="fact__head"><span class="disc-tint">{% set icon = "chartup" %}{% include "components/icon.njk" %}</span><h2>{{ ui | t(lang, "labels.next") }}</h2></div>
-      <p class="fact__text">{{ s.next | L(lang) }}</p>
+      <p class="fact__text">{{ s.next | L(lang) | mc(s.nextM | L(lang)) | safe }}</p>
     {% endset %}
     {% if s.factsLayout == 'four' %}<div class="fact">{{ f3 | safe }}</div><div class="fact">{{ f4 | safe }}</div>
     {% else %}<div class="fact fact--stack"><div>{{ f3 | safe }}</div><div>{{ f4 | safe }}</div></div>{% endif %}

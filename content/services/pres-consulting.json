@@ -82,5 +82,17 @@
   "shortLabel": {
     "en": "Consulting",
     "id": "Konsultansi"
+  },
+  "promiseM": {
+    "en": "Steering-committee and final-report decks in the structure boards expect: the answer first, the evidence behind it.",
+    "id": "Dek komite pengarah dan laporan akhir dalam struktur yang diharapkan dewan: jawaban dahulu, bukti di belakangnya."
+  },
+  "nextM": {
+    "en": "Most clients continue with a template system or a 12-month deck retainer.",
+    "id": "Sebagian besar klien melanjutkan dengan sistem templat atau retainer dek 12 bulan."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
   }
 }

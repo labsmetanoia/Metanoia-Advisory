@@ -7,9 +7,10 @@ pageKey: home
   <div class="hero-bg" aria-hidden="true"><img class="hero-bg__img" src="{{ c.hero.background.large }}" srcset="{{ c.hero.background.small }} 960w, {{ c.hero.background.large }} 1672w" sizes="100vw" alt="" width="1672" height="941" fetchpriority="high" decoding="async"><div class="hero-bg__veil"></div></div>
   <div class="wrap">
     <div class="hero-stage__text">
-      <h1 id="hero-title" class="display">{{ c.hero.headline | L(lang) }}</h1>
+      <p class="hero-eyebrow mcopy" aria-hidden="true">{{ site.practiceNames.presentation | L(lang) }}</p>
+      <h1 id="hero-title" class="display gold-em">{{ c.hero.headline | L(lang) | mc(c.hero.headlineM | L(lang) | mdInline, true) | safe }}</h1>
       <p class="sub">{{ c.hero.sub | L(lang) }}</p>
-      <p class="lede">{{ c.hero.text | L(lang) }}</p>
+      <p class="lede">{{ c.hero.text | L(lang) | mc(c.hero.textM | L(lang)) | safe }}</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hero">{{ ui | t(lang, "cta.talk") }} →</a>
         {% if site.phase == 2 %}<a class="btn btn--secondary" href="{{ 'presentation' | pageUrl(lang) }}" data-event="cta_click" data-location="hero-secondary">{{ ui | t(lang, "cta.allServices") }}</a>{% endif %}
@@ -23,7 +24,7 @@ pageKey: home
     <div class="wrap arch__inner">
       <span class="kicker">{{ c.flagship.kicker | L(lang) }}</span>
       <h2>{{ c.flagship.title | L(lang) }}</h2>
-      <p class="lede" style="margin:0 auto">{{ c.flagship.text | L(lang) }}</p>
+      <p class="lede" style="margin:0 auto">{{ c.flagship.text | L(lang) | mc(c.flagship.textM | L(lang)) | safe }}</p>
       <ul class="arch__points">{% for pt in c.flagship.points %}<li><strong>{{ pt.title | L(lang) }}</strong>{{ pt.text | L(lang) }}</li>{% endfor %}</ul>
       <div class="hero__actions" style="justify-content:center;margin-top:var(--s-4)">
         <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="arch">{{ ui | t(lang, "cta.deckReview") }}</a>
@@ -37,7 +38,7 @@ pageKey: home
 <section class="section" aria-labelledby="portfolio-title" style="padding-top:var(--section)">
   <div class="wrap">
     <div class="svc-head fade-up">
-      <div><span class="kicker kicker--rule">{{ "Our services" if lang == "en" else "Layanan kami" }}</span><h2 id="portfolio-title" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.portfolio.title | L(lang) }}</h2><p class="lede">{{ c.portfolio.text | L(lang) }}</p></div>
+      <div><span class="kicker kicker--rule">{{ "Our services" if lang == "en" else "Layanan kami" }}</span><h2 id="portfolio-title" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.portfolio.title | L(lang) }}</h2><p class="lede">{{ c.portfolio.text | L(lang) | mc(c.portfolio.textM | L(lang)) | safe }}</p></div>
       <div class="pillars">{% for pl in c.portfolio.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
     </div>
     <div class="svc-grid stagger">{% for s in services | where("practice", "presentation") %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
@@ -49,21 +50,26 @@ pageKey: home
 
 <section class="section" aria-labelledby="comp-title" style="padding-top:var(--section)">
   <div class="wrap grid">
-    <div class="col-4 comp-intro fade-up"><span class="kicker kicker--rule">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title" class="gold-em">{{ c.complementary.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.complementary.text | L(lang) }}</p>{% if c.complementary.photo %}<img class="comp-intro__photo" src="{{ c.complementary.photo }}" alt="" loading="lazy" decoding="async" width="357" height="263">{% endif %}</div>
+    <div class="col-4 comp-intro fade-up"><span class="kicker kicker--rule">{{ ui | t(lang, "labels.complementary") }}</span><h2 id="comp-title" class="gold-em">{{ c.complementary.title | L(lang) | mdInline | safe }}</h2><p class="muted">{{ c.complementary.text | L(lang) | mc(c.complementary.textM | L(lang)) | safe }}</p>{% if c.complementary.photo %}<img class="comp-intro__photo" src="{{ c.complementary.photo }}" alt="" loading="lazy" decoding="async" width="357" height="263">{% endif %}</div>
     <div class="col-8"><div class="comp-grid stagger">{% for it in c.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo"><img src="{{ it.photo }}" alt="" loading="lazy" decoding="async"></div></div></div>{% endfor %}</div></div>
   </div>
 </section>
 
 <section class="approach-band fade-up" aria-labelledby="approach-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="approach-title" class="gold-em">{{ c.approach.title | L(lang) | mdInline | safe }}</h2><p class="meta measure">{{ c.approach.text | L(lang) }}</p></div>
+    <div class="section-head"><h2 id="approach-title" class="gold-em">{{ c.approach.title | L(lang) | mdInline | safe }}</h2><p class="meta measure">{{ c.approach.text | L(lang) | mc(c.approach.textM | L(lang)) | safe }}</p></div>
     {% set ap = c.approach %}{% include "components/approach.njk" %}
   </div>
 </section>
 
 <section class="section" aria-labelledby="advisory-title" style="padding-top:var(--section)">
   <div class="wrap">
-    <div class="svc-head fade-up"><div><span class="kicker kicker--rule">{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}</span><h2 id="advisory-title" class="gold-em" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.advisory.title | L(lang) | mdInline | safe }}</h2></div><p class="muted" style="border-left:1px solid var(--grey-2);padding-left:var(--s-3)">{{ c.advisory.text | L(lang) }}</p></div>
+    <div class="svc-head fade-up"><div><span class="kicker kicker--rule">{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}</span><h2 id="advisory-title" class="gold-em" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.advisory.title | L(lang) | mdInline | safe }}</h2></div><p class="muted" style="border-left:1px solid var(--grey-2);padding-left:var(--s-3)">{{ c.advisory.text | L(lang) | mc(c.advisory.textM | L(lang)) | safe }}</p></div>
+    <div class="adv-nav" aria-label="{{ "Advisory practices" if lang == "en" else "Praktik advisory" }}">
+      {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
+      <a class="adv-nav__tile" href="{{ pr.key | pageUrl(lang) }}"><img src="{{ hub.photo }}" alt="" loading="lazy" decoding="async"><span class="adv-nav__body"><span class="adv-nav__kicker">{{ ui | t(lang, "labels.situations." + pr.situation) }}</span><span class="adv-nav__name">{{ site.practiceNames[pr.key] | L(lang) }}</span><span class="adv-nav__line">{{ hub.tagline | L(lang) }}</span></span><span class="adv-nav__arrow" aria-hidden="true">→</span></a>
+      {% endif %}{% endfor %}
+    </div>
     <div class="adv-grid stagger">
       {% for pr in practices %}{% if not pr.flagship %}{% set hub = pages.hubs[pr.key] %}
       <div class="adv-card">
@@ -84,7 +90,7 @@ pageKey: home
     <div class="id-band__copy">
       <span class="kicker kicker--rule">{{ c.indonesia.kicker | L(lang) }}</span>
       <h2 id="id-title" class="gold-em">{{ c.indonesia.title | L(lang) | mdInline | safe }}</h2>
-      <p class="id-band__text">{{ c.indonesia.text | L(lang) }}</p>
+      <p class="id-band__text">{{ c.indonesia.text | L(lang) | mc(c.indonesia.textM | L(lang)) | safe }}</p>
       <ul class="id-band__points">{% for pt in c.indonesia.points %}<li><span class="id-band__tick" aria-hidden="true">✓</span>{{ pt | L(lang) }}</li>{% endfor %}</ul>
       <div class="cluster"><a class="btn btn--primary" href="{{ 'marketEntry' | pageUrl(lang) }}" data-event="cta_click" data-location="indonesia-band">{{ ui | t(lang, "cta.explore") }} <span aria-hidden="true">→</span></a><a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="indonesia-band-secondary">{{ ui | t(lang, "cta.talk") }}</a></div>
     </div>
@@ -103,13 +109,13 @@ pageKey: home
       {% if flagship.forthcoming %}<p class="meta">{{ ui | t(lang, "labels.forthcoming") }}</p>{% elif flagship.pdf %}<a class="btn btn--secondary" href="{{ flagship.pdf }}" data-event="download" data-asset="{{ flagship.key }}">{{ ui | t(lang, "cta.download") }}</a>{% endif %}
       {% else %}
       <h2 id="insight-title">{{ c.insight.title | L(lang) }}</h2>
-      <p>{{ c.insight.text | L(lang) }}</p>
+      <p>{{ c.insight.text | L(lang) | mc(c.insight.textM | L(lang)) | safe }}</p>
       {% endif %}
     </div>
     <div class="col-6">
       <span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span>
       <h3>{{ c.newsletter.title | L(lang) }}</h3>
-      <p class="muted">{{ c.newsletter.text | L(lang) }}</p>
+      <p class="muted">{{ c.newsletter.text | L(lang) | mc(c.newsletter.textM | L(lang)) | safe }}</p>
       {% set uid = "nl-home" %}{% include "components/newsletter.njk" %}
     </div>
   </div>

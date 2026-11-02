@@ -72,5 +72,17 @@
   "factPhotos": [
     "/assets/img/photos/adv-3.webp",
     "/assets/img/photos/about-hero-skyline.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "A three-year plan the board approves and the market can hear, with the equity story written alongside it.",
+    "id": "Rencana tiga tahun yang disetujui dewan dan didengar pasar, dengan equity story yang ditulis bersamanya."
+  },
+  "nextM": {
+    "en": "The plan carried into the equity story and the next annual report, with an implementation retainer if you want one.",
+    "id": "Rencana dibawa ke equity story dan laporan tahunan berikutnya, dengan retainer implementasi jika Anda menghendaki."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

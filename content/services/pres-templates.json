@@ -83,5 +83,13 @@
   "shortLabel": {
     "en": "Templates",
     "id": "Templat"
+  },
+  "promiseM": {
+    "en": "A PowerPoint or Google Slides system with layouts, a chart library and a guide, so every deck looks like it came from the same hand.",
+    "id": "Sistem PowerPoint atau Google Slides dengan tata letak, pustaka grafik, dan panduan, sehingga setiap dek tampak dari tangan yang sama."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
   }
 }

@@ -76,5 +76,17 @@
   "factPhotos": [
     "/assets/img/photos/adv-4.webp",
     "/assets/img/photos/svc-templates-rel.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "Information memoranda, equity stories and business plans that stand up to investor and underwriter diligence, ready in time.",
+    "id": "Memorandum informasi, equity story, dan rencana bisnis yang tahan uji tuntas investor dan penjamin emisi, siap tepat waktu."
+  },
+  "nextM": {
+    "en": "After the raise: the investor-communication retainer, so the roadshow story is the story told every quarter.",
+    "id": "Setelah penggalangan dana: retainer komunikasi investor, agar kisah roadshow menjadi kisah setiap kuartal."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

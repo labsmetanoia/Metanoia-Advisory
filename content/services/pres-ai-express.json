@@ -82,5 +82,17 @@
   "shortLabel": {
     "en": "AI express",
     "id": "AI ekspres"
+  },
+  "promiseM": {
+    "en": "AI-assisted drafting inside your template, every page reviewed by a senior designer before it reaches you.",
+    "id": "Draf berbantuan AI dalam templat Anda, setiap halaman ditinjau desainer senior sebelum sampai kepada Anda."
+  },
+  "howM": {
+    "en": "The storyline, the numbers and the final review stay human. Client files never enter consumer AI tools. Not used for regulated filings.",
+    "id": "Alur cerita, angka, dan tinjauan akhir tetap dikerjakan manusia. Berkas klien tidak pernah masuk ke alat AI konsumen. Tidak digunakan untuk pelaporan teregulasi."
+  },
+  "nextM": {
+    "en": "A template system if you need one; a retainer if the volume is regular.",
+    "id": "Sistem templat jika Anda membutuhkannya; retainer jika volumenya rutin."
   }
 }

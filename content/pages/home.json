@@ -34,7 +34,15 @@
       "/assets/img/photos/hero-slide-3.webp",
       "/assets/img/photos/hero-slide-4.webp",
       "/assets/img/photos/hero-slide-5.webp"
-    ]
+    ],
+    "headlineM": {
+      "en": "Global Perspective. *Proven Expertise.*",
+      "id": "Perspektif Global. *Keahlian Teruji.*"
+    },
+    "textM": {
+      "en": "Strategic advisory, financial modelling and executive storytelling that turn complex ideas into clear decisions.",
+      "id": "Advisory strategis, pemodelan keuangan, dan penuturan eksekutif yang mengubah gagasan kompleks menjadi keputusan yang jelas."
+    }
   },
   "situations": {
     "title": {
@@ -66,6 +74,10 @@
     "text": {
       "en": "Notes on Indonesian market entry, capital markets and investor communication, written from client questions rather than for search engines.",
       "id": "Catatan tentang masuk pasar Indonesia, pasar modal, dan komunikasi investor, ditulis dari pertanyaan klien, bukan untuk mesin pencari."
+    },
+    "textM": {
+      "en": "Notes on market entry, capital markets and investor communication, written from client questions.",
+      "id": "Catatan tentang masuk pasar, pasar modal, dan komunikasi investor, ditulis dari pertanyaan klien."
     }
   },
   "newsletter": {
@@ -76,6 +88,10 @@
     "text": {
       "en": "A regulatory change, an entry decision or a chart rebuilt, with one artefact from recent work. No announcements.",
       "id": "Satu perubahan regulasi, satu keputusan masuk pasar, atau satu grafik yang dibangun ulang, beserta satu artefak dari pekerjaan terkini. Tanpa pengumuman."
+    },
+    "textM": {
+      "en": "One regulatory change, one decision or one rebuilt chart a month. No announcements.",
+      "id": "Satu perubahan regulasi, satu keputusan, atau satu grafik yang dibangun ulang setiap bulan. Tanpa pengumuman."
     }
   },
   "flagship": {
@@ -122,7 +138,11 @@
           "id": "Log rekonsiliasi pada setiap keluaran dan pemeriksaan empat mata sebelum dirilis."
         }
       }
-    ]
+    ],
+    "textM": {
+      "en": "Board packs, investor presentations, proposals and reports that say what the numbers mean, reconciled to your figures before they reach the room.",
+      "id": "Materi dewan, presentasi investor, proposal, dan laporan yang menjelaskan makna angka, direkonsiliasi dengan angka Anda sebelum sampai ke ruang rapat."
+    }
   },
   "portfolio": {
     "title": {
@@ -167,7 +187,11 @@
           "id": "Siap saat Anda siap"
         }
       }
-    ]
+    ],
+    "textM": {
+      "en": "Eleven services, one standard. Pick the one closest to the document in front of you.",
+      "id": "Sebelas layanan, satu standar. Pilih yang paling dekat dengan dokumen di hadapan Anda."
+    }
   },
   "ai": {
     "pill": {
@@ -192,7 +216,11 @@
           "en": "A structured form: audience, decision, source material, deadline. Ten minutes.",
           "id": "Formulir terstruktur: audiens, keputusan, bahan sumber, tenggat. Sepuluh menit."
         },
-        "icon": "doc"
+        "icon": "doc",
+        "textM": {
+          "en": "Audience, decision, sources, deadline. Ten minutes.",
+          "id": "Audiens, keputusan, sumber, tenggat. Sepuluh menit."
+        }
       },
       {
         "title": {
@@ -203,7 +231,11 @@
           "en": "Storyline, layouts and charts drafted inside your template, within the firm's own secure environment.",
           "id": "Alur cerita, tata letak, dan grafik disusun di dalam templat Anda, di lingkungan aman firma sendiri."
         },
-        "icon": "sparkle"
+        "icon": "sparkle",
+        "textM": {
+          "en": "Storyline, layouts and charts drafted in your template, in our secure environment.",
+          "id": "Alur cerita, tata letak, dan grafik disusun dalam templat Anda, di lingkungan aman kami."
+        }
       },
       {
         "title": {
@@ -214,7 +246,11 @@
           "en": "A senior designer edits every page and checks the figures against your source. Delivered the same working day for decks up to about 20 pages.",
           "id": "Desainer senior menyunting setiap halaman dan memeriksa angka terhadap sumber Anda. Dikirim pada hari kerja yang sama untuk dek hingga sekitar 20 halaman."
         },
-        "icon": "people"
+        "icon": "people",
+        "textM": {
+          "en": "A senior designer edits every page and checks every figure. Same-day delivery for decks up to about 20 pages.",
+          "id": "Desainer senior menyunting setiap halaman dan memeriksa setiap angka. Dikirim hari yang sama untuk dek hingga sekitar 20 halaman."
+        }
       }
     ],
     "guardTitle": {
@@ -249,7 +285,11 @@
       "/assets/img/photos/ai-1.webp",
       "/assets/img/photos/ai-2.webp",
       "/assets/img/photos/ai-3.webp"
-    ]
+    ],
+    "textM": {
+      "en": "Send a brief and your content. AI drafts the structure, layout and charts in your template; a senior designer checks every page and number. The speed is automated. The judgement is not.",
+      "id": "Kirimkan brief dan konten Anda. AI menyusun struktur, tata letak, dan grafik dalam templat Anda; desainer senior memeriksa setiap halaman dan angka. Kecepatannya otomatis. Penilaiannya tidak."
+    }
   },
   "complementary": {
     "title": {
@@ -314,7 +354,11 @@
         "photo": "/assets/img/photos/comp-events-new.webp"
       }
     ],
-    "photo": "/assets/img/photos/comp-intro.webp"
+    "photo": "/assets/img/photos/comp-intro.webp",
+    "textM": {
+      "en": "The same strategic thinking and design standard, carried into your wider content and brand communications.",
+      "id": "Pemikiran strategis dan standar desain yang sama, dibawa ke konten dan komunikasi merek Anda yang lebih luas."
+    }
   },
   "approach": {
     "title": {
@@ -505,7 +549,11 @@
         },
         "photo": "/assets/img/photos/approach-stage-5.webp"
       }
-    ]
+    ],
+    "textM": {
+      "en": "One senior point of contact, a structured process and a team that works in the background.",
+      "id": "Satu titik kontak senior, proses terstruktur, dan tim yang bekerja di latar belakang."
+    }
   },
   "advisory": {
     "title": {
@@ -515,6 +563,10 @@
     "text": {
       "en": "Two advisory practices supply the analysis every story is built on: for companies entering Indonesia, and for boards deciding where the money goes.",
       "id": "Dua praktik advisory menyediakan analisis yang menjadi dasar setiap kisah: bagi perusahaan yang memasuki Indonesia, dan bagi dewan yang memutuskan ke mana dana dialokasikan."
+    },
+    "textM": {
+      "en": "Two advisory practices supply the analysis every story is built on: entering Indonesia, and deciding where the money goes.",
+      "id": "Dua praktik advisory menyediakan analisis di balik setiap kisah: memasuki Indonesia, dan memutuskan ke mana dana dialokasikan."
     }
   },
   "cta": {
@@ -586,6 +638,10 @@
         "en": "Localization, go-to-market and market representation",
         "id": "Lokalisasi, go-to-market, dan representasi pasar"
       }
-    ]
+    ],
+    "textM": {
+      "en": "Local market knowledge to localize your offer, navigate complexity and enter Indonesia with confidence.",
+      "id": "Pengetahuan pasar lokal untuk melokalkan penawaran Anda, menavigasi kompleksitas, dan memasuki Indonesia dengan percaya diri."
+    }
   }
 }

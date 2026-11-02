@@ -97,5 +97,13 @@
   "factPhotos": [
     "/assets/img/photos/adv-1.webp",
     "/assets/img/photos/board-lng-1000.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "A feasibility study with a model investors can interrogate, and a recommendation that says what would change our mind.",
+    "id": "Studi kelayakan dengan model yang dapat diuji investor, dan rekomendasi yang menyatakan apa yang akan mengubah pandangan kami."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

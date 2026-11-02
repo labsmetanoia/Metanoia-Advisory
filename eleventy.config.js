@@ -32,6 +32,13 @@ export default function (eleventyConfig) {
     if (cur === undefined) throw new Error(`Missing UI string "${key}" for lang "${lang}"`);
     return cur;
   });
+  // Mobile copy: render the full text for desktop and a shorter variant for phones (CSS swaps them at ≤767px).
+  const esc = (v) => String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  eleventyConfig.addFilter("mc", (full, short, html) => {
+    if (!short || short === full) return html ? full : esc(full);
+    const f = html ? full : esc(full), m = html ? short : esc(short);
+    return `<span class="dcopy">${f}</span><span class="mcopy">${m}</span>`;
+  });
   eleventyConfig.addFilter("L", (obj, lang) => {
     // Pick a localised value from {en, id} or return the value itself.
     if (obj && typeof obj === "object" && !Array.isArray(obj) && (lang in obj)) return obj[lang];

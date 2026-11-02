@@ -4,8 +4,8 @@
     <div class="col-7">
       <span class="pill">{{ ai.pill | L(lang) }}</span>
       <h2 id="ai-title" class="gold-em">{{ ai.title | L(lang) | mdInline | safe }}</h2>
-      <p class="lede" style="color:inherit">{{ ai.text | L(lang) }}</p>
-      <ol class="ai-steps">{% for st in ai.steps %}<li><h3>{% set icon = st.icon %}{% include "components/icon.njk" %}{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></li>{% endfor %}</ol>
+      <p class="lede" style="color:inherit">{{ ai.text | L(lang) | mc(ai.textM | L(lang)) | safe }}</p>
+      <ol class="ai-steps">{% for st in ai.steps %}<li><h3>{% set icon = st.icon %}{% include "components/icon.njk" %}{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) | mc(st.textM | L(lang)) | safe }}</p></li>{% endfor %}</ol>
     </div>
     <div class="col-5 ai-side">
       <div class="guard"><strong>{{ ai.guardTitle | L(lang) }}</strong><ul>{% for g in ai.guards %}<li>{% set icon = g.icon %}{% include "components/icon.njk" %}<span>{{ g.text | L(lang) }}</span></li>{% endfor %}</ul></div>

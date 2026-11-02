@@ -16,7 +16,11 @@
       "en": "The fastest route is a 45-minute working session with a senior member of the team: pick a time. If you would rather write first, the form below is answered within two working days.",
       "id": "Jalur tercepat adalah sesi kerja 45 menit bersama anggota senior tim kami: pilih waktunya. Jika Anda lebih suka menulis dahulu, formulir di bawah dijawab dalam dua hari kerja."
     },
-    "photo": "/assets/img/photos/contact-hero.webp"
+    "photo": "/assets/img/photos/contact-hero.webp",
+    "textM": {
+      "en": "The fastest route is a 45-minute working session with a senior member of the team. Prefer to write first? The form below is answered within two working days.",
+      "id": "Jalur tercepat adalah sesi kerja 45 menit bersama anggota senior tim kami. Lebih suka menulis dahulu? Formulir di bawah dijawab dalam dua hari kerja."
+    }
   },
   "book": {
     "title": {
@@ -76,6 +80,10 @@
     "button": {
       "en": "Book a time",
       "id": "Pilih waktu"
+    },
+    "textM": {
+      "en": "Bring the decision or the deck you are working on. Confirmation in your language within five minutes.",
+      "id": "Bawa keputusan atau dek yang sedang Anda kerjakan. Konfirmasi dalam bahasa Anda dalam lima menit."
     }
   },
   "form": {
@@ -178,7 +186,11 @@
           "id": "Contoh konkret untuk memajukan kisah Anda"
         }
       }
-    ]
+    ],
+    "textM": {
+      "en": "Send a link or a file. Within two working days a senior designer replies with three observations and the one page we would rebuild first.",
+      "id": "Kirimkan tautan atau berkas. Dalam dua hari kerja desainer senior membalas dengan tiga pengamatan dan satu halaman yang akan kami bangun ulang lebih dahulu."
+    }
   },
   "confidentiality": {
     "en": "Everything you share with us, including in a working session, is treated as confidential and never used in our own materials without written permission. We run a conflict check before any engagement that touches a listed company's market-facing materials.",

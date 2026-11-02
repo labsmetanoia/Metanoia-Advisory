@@ -76,5 +76,21 @@
   "factPhotos": [
     "/assets/img/photos/me-2.webp",
     "/assets/img/photos/how-2.webp"
-  ]
+  ],
+  "promiseM": {
+    "en": "The partner, distributor or site chosen on diligence, with part of our fee paid only on signing.",
+    "id": "Mitra, distributor, atau lokasi yang dipilih berdasarkan uji tuntas, dengan sebagian imbalan kami dibayar hanya saat penandatanganan."
+  },
+  "howM": {
+    "en": "A fixed retainer plus a fee paid only when the agreement is signed.",
+    "id": "Retainer tetap ditambah imbalan yang dibayar hanya saat perjanjian ditandatangani."
+  },
+  "nextM": {
+    "en": "Licensing coordination through our partners, then market representation while the partnership beds in.",
+    "id": "Koordinasi perizinan melalui mitra kami, lalu representasi pasar sementara kemitraan berjalan."
+  },
+  "durationM": {
+    "en": "Scoped to the engagement: smaller pieces within a week, larger ones longer, with the timeline agreed before we start.",
+    "id": "Disesuaikan dengan penugasan: pekerjaan kecil dalam sepekan, yang lebih besar lebih lama, dengan jadwal disepakati sebelum dimulai."
+  }
 }

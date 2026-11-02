@@ -16,7 +16,11 @@
       "en": "Most advisors own the first and hand off the second. Most design studios own the second and never see the first. Metanoia Advisory was built to own both, with strategic storytelling and corporate communications at its core and two advisory practices behind it.",
       "id": "Sebagian besar penasihat menguasai yang pertama lalu menyerahkan yang kedua. Sebagian besar studio desain menguasai yang kedua tanpa pernah melihat yang pertama. Metanoia Advisory dibangun untuk menguasai keduanya, dengan strategic storytelling dan komunikasi korporat sebagai inti dan dua praktik advisory di belakangnya."
     },
-    "photo": "/assets/img/photos/about-hero-skyline.webp"
+    "photo": "/assets/img/photos/about-hero-skyline.webp",
+    "textM": {
+      "en": "Advisors own the analysis and hand off the story. Design studios own the story and never see the analysis. Metanoia Advisory was built to own both.",
+      "id": "Penasihat menguasai analisis lalu menyerahkan kisahnya. Studio desain menguasai kisah tanpa melihat analisisnya. Metanoia Advisory dibangun untuk menguasai keduanya."
+    }
   },
   "story": {
     "title": {

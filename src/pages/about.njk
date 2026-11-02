@@ -8,7 +8,7 @@ pageKey: about
     <div class="about-hero__copy">
       <span class="kicker kicker--rule">{{ ui | t(lang, "nav.about") }}</span>
       <h1 id="about-title" class="gold-em">{{ c.hero.title | L(lang) | mdInline | safe }}</h1>
-      <p class="lede">{{ c.hero.text | L(lang) }}</p>
+      <p class="lede">{{ c.hero.text | L(lang) | mc(c.hero.textM | L(lang)) | safe }}</p>
     </div>
   </div>
   {% if c.hero.photo %}<div class="about-hero__media" aria-hidden="true"><img src="{{ c.hero.photo }}" alt="" width="1400" height="753" fetchpriority="high" decoding="async"></div>{% endif %}

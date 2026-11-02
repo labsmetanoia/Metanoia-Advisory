@@ -8,7 +8,7 @@ pageKey: hub
   <div class="wrap hub-hero__inner">
     <span class="kicker hub-hero__kicker">{{ name }}</span>
     <h1 id="hub-title">{{ hub.hero.title | L(lang) | mdInline | safe }}</h1>
-    <p class="lede">{{ hub.hero.text | L(lang) }}</p>
+    <p class="lede">{{ hub.hero.text | L(lang) | mc(hub.hero.textM | L(lang)) | safe }}</p>
     <div class="page-hero__actions">
       <a class="btn btn--primary" href="{{ 'contact' | pageUrl(lang) }}#book" data-event="cta_click" data-location="hub-hero">{{ ui | t(lang, "cta.talk") }}</a>
       {% if pr.key == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="hub-hero-secondary">{{ ui | t(lang, "cta.deckReview") }}</a>
@@ -21,10 +21,10 @@ pageKey: hub
 <section class="section fade-up{% if not pr.flagship %} svc4-section{% endif %}" aria-labelledby="services-title">
   <div class="wrap">
     {% set list = services | where("practice", pr.key) %}
-    {% if pr.flagship %}<div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) }}</p></div>
+    {% if pr.flagship %}<div class="section-head"><h2 id="services-title">{{ hub.servicesTitle | L(lang) }}</h2><p class="meta measure">{{ hub.servicesText | L(lang) | mc(hub.servicesTextM | L(lang)) | safe }}</p></div>
     <div class="svc-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>
     {% include "components/services-folder.njk" %}
-    {% else %}<div class="svc4-head"><h2 id="services-title" class="gold-em">{{ hub.servicesTitle | L(lang) | mdInline | safe }}</h2><p>{{ hub.servicesText | L(lang) }}</p></div>
+    {% else %}<div class="svc4-head"><h2 id="services-title" class="gold-em">{{ hub.servicesTitle | L(lang) | mdInline | safe }}</h2><p>{{ hub.servicesText | L(lang) | mc(hub.servicesTextM | L(lang)) | safe }}</p></div>
     <div class="svc4-grid stagger">{% for s in list %}{% set num = loop.index %}{% include "components/service-card.njk" %}{% endfor %}</div>{% endif %}
   </div>
 </section>
@@ -33,7 +33,7 @@ pageKey: hub
 
 <section class="band fade-up" aria-labelledby="process-title">
   <div class="wrap">
-    <div class="section-head"><h2 id="process-title">{{ ui | t(lang, "labels.process") }}</h2><p class="meta measure">{{ hub.processText | L(lang) }}</p></div>
+    <div class="section-head"><h2 id="process-title">{{ ui | t(lang, "labels.process") }}</h2><p class="meta measure">{{ hub.processText | L(lang) | mc(hub.processTextM | L(lang)) | safe }}</p></div>
     {% set steps = hub.process %}{% include "components/process-strip.njk" %}
   </div>
 </section>
@@ -57,7 +57,7 @@ pageKey: hub
 <section class="section fade-up" aria-labelledby="comp-title">
   <div class="wrap">
     <div class="section-head"><h2 id="comp-title" class="gold-em">{{ pages.home.complementary.title | L(lang) | mdInline | safe }}</h2></div>
-    <div class="grid"><div class="col-4"><p class="muted">{{ pages.home.complementary.text | L(lang) }}</p></div><div class="col-8"><div class="comp-grid stagger">{% for it in pages.home.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo"><img src="{{ it.photo }}" alt="" loading="lazy" decoding="async"></div></div></div>{% endfor %}</div></div></div>
+    <div class="grid"><div class="col-4"><p class="muted">{{ pages.home.complementary.text | L(lang) | mc(pages.home.complementary.textM | L(lang)) | safe }}</p></div><div class="col-8"><div class="comp-grid stagger">{% for it in pages.home.complementary.items %}<div class="card-cut comp-card">{% set icon = it.icon %}{% include "components/icon.njk" %}<h3>{{ it.title | L(lang) }}</h3><p>{{ it.text | L(lang) }}</p><a class="arrow-btn" href="{{ 'contact' | pageUrl(lang) }}#form" aria-label="{{ it.title | L(lang) }}">→</a><div class="cut" aria-hidden="true"><div class="cut__gold"></div><div class="cut__art cut__art--photo"><img src="{{ it.photo }}" alt="" loading="lazy" decoding="async"></div></div></div>{% endfor %}</div></div></div>
   </div>
 </section>
 {% endif %}

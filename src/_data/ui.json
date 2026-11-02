@@ -49,7 +49,8 @@
     },
     "closing": {
       "title": "Start with a 45-minute working session with a partner.",
-      "text": "Bring the decision or the deck you are working on. You leave with a view on what it would take, who would do it and how long it would run. No proposal unless you ask for one."
+      "text": "Bring the decision or the deck you are working on. You leave with a view on what it would take, who would do it and how long it would run. No proposal unless you ask for one.",
+      "textM": "Bring the decision or the deck you are working on. You leave with a view on what it would take and how long it would run. No proposal unless you ask."
     },
     "labels": {
       "who": "Who it is for",
@@ -245,7 +246,8 @@
     },
     "closing": {
       "title": "Mulai dengan sesi kerja 45 menit bersama partner kami.",
-      "text": "Bawa keputusan atau dek yang sedang Anda kerjakan. Anda akan pulang dengan gambaran tentang apa yang dibutuhkan, siapa yang mengerjakannya, dan berapa lama prosesnya. Tanpa proposal, kecuali Anda memintanya."
+      "text": "Bawa keputusan atau dek yang sedang Anda kerjakan. Anda akan pulang dengan gambaran tentang apa yang dibutuhkan, siapa yang mengerjakannya, dan berapa lama prosesnya. Tanpa proposal, kecuali Anda memintanya.",
+      "textM": "Bawa keputusan atau dek yang sedang Anda kerjakan. Anda pulang dengan gambaran tentang apa yang dibutuhkan dan berapa lama prosesnya. Tanpa proposal, kecuali Anda memintanya."
     },
     "labels": {
       "who": "Untuk siapa",
