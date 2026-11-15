@@ -1,0 +1,18 @@
+{# FAQ accordion with FAQPage structured data. expects `faqKey` (general | storytelling), `lang` #}
+{% set fq = pages.faq[faqKey] %}
+<section class="section faq-section fade-up" aria-labelledby="faq-{{ faqKey }}-title">
+  <div class="wrap faq">
+    <div class="faq__head"><span class="kicker kicker--rule">{{ pages.faq.kicker | L(lang) }}</span><h2 id="faq-{{ faqKey }}-title">{{ fq.title | L(lang) }}</h2></div>
+    <div class="faq__list">
+      {% for it in fq.items %}
+      <details class="faq__item"{% if loop.first %} open{% endif %}>
+        <summary><span>{{ it.q | L(lang) }}</span><span class="faq__chev" aria-hidden="true"></span></summary>
+        <div class="faq__a"><p>{{ it.a | L(lang) }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% set faqLd = [] %}
+{% for it in fq.items %}{% set faqLd = (faqLd.push({ "@type": "Question", "name": it.q | L(lang), "acceptedAnswer": { "@type": "Answer", "text": it.a | L(lang) } }), faqLd) %}{% endfor %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqLd } | json | safe }}</script>

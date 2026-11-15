@@ -1,0 +1,13 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: thanks
+showCta: false
+---
+<section class="section thanks">
+  <div class="wrap">
+    <span class="kicker kicker--rule">{{ ui | t(lang, "nav.contact") }}</span>
+    <h1 class="gold-em">{{ ui | t(lang, "thanks.title") }}</h1>
+    <p class="lede measure">{{ ui | t(lang, "thanks.text") }}</p>
+    <p class="cluster" style="margin-top:24px"><a class="btn btn--primary" href="{{ 'home' | pageUrl(lang) }}">{{ ui | t(lang, "thanks.back") }}</a>{% if site.email %}<a class="btn btn--secondary" href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+  </div>
+</section>

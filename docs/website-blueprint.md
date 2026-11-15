@@ -642,3 +642,23 @@ Phones only (≤767 px); the desktop build was compared pixel by pixel before an
 | 5 | Footer | Centred stacked lockup and tagline, a full-width "Talk to Our Team" pill, a hairline, two tidy link columns with smaller tracked headings, a lighter legal strip, and a bottom row with the copyright, the language flag and a "Back to top" pill | Phone stylesheet block; the back-to-top link is rendered on every build and shown on phones only |
 
 **Measured after the revision.** No broken links, bilingual parity 100%, axe-core zero issues on the twelve tested templates, no horizontal overflow.
+
+---
+
+## 38. Revision 3.0 — platform audit, working forms, finder, FAQ, credentials, automation (15 November 2026)
+
+A full audit of the production build (findings, measurements and next steps in `docs/audit-2026-11.md`) followed by the fixes and features below. Day-to-day operation is described in `docs/operations-playbook.md`.
+
+| Area | What changed |
+| --- | --- |
+| Forms | Provider-agnostic pipeline: Netlify Forms (default, no keys), Formspree or HubSpot via `site.config.json` → `forms.provider`. Contact, deck review (file upload to 10 MB), newsletter and credentials forms are live; hidden context fields carry page, referrer, UTM values, language and `topic`; thank-you pages at `/en/contact/thank-you/` and `/id/kontak/terima-kasih/` (noindex); service-page CTAs pass `?topic=<service>` which pre-selects the situation |
+| Service finder | `content/pages/finder.json`; `components/finder.njk`; shown on the Strategic Storytelling page and the Contact page; linked from the home services head |
+| FAQ | `content/pages/faq.json` with `general` (Contact) and `storytelling` (practice page) sets; accordion plus FAQPage JSON-LD |
+| Credentials | `scripts/credentials-pdf.mjs` renders eight A4 pages per language from the content files into `src/root/downloads/`; About page offers the PDF behind an email form; footer links to it |
+| AI and automation | `netlify/functions/deck-diagnostic.mjs` (visitor-facing, flag `ai.deckDiagnostic`) and `netlify/functions/submission-created.mjs` (lead triage on every submission); both use the Anthropic SDK with `claude-opus-5-5`, structured JSON output and server-side fallbacks; all delivery targets are environment-variable gated |
+| Analytics | Plausible support (`analytics.plausibleDomain`) next to GA4; events mirrored to both; UTM capture into forms |
+| Performance | Build-time minification (`scripts/postbuild.mjs`, esbuild); 600 px hero-slide variants with `srcset`; hero background preload on the home page; unused video and Inter Tight fonts removed |
+| Security and reliability | CSP without `'unsafe-inline'` for scripts (site config moved to a `data-site` attribute); `/.well-known/security.txt`; `favicon.ico`; `site.webmanifest`; forced root language redirects (`302!`); build stamp (`/version.txt`, build meta); GitHub Actions CI (`npm test` with html-validate) keeping the build as an artifact |
+| Accessibility | Insights heading order fixed; `[hidden]` always wins over component display rules; tab labels darkened to pass contrast at small sizes |
+
+**Measured after the revision.** 59 pages valid HTML; no broken links; bilingual parity 100%; axe-core zero issues on thirteen templates; no overflow at 320–1920 px; Lighthouse accessibility, best-practices and SEO at 97–100.

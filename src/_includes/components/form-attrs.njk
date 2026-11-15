@@ -1,0 +1,7 @@
+{#- Provider-specific form attributes. expects `formKey` (contact | deckReview | newsletter | credentials), `lang`; outputs attributes for the <form> tag. -#}
+{%- set provider = site.forms.provider -%}
+{%- if provider == "netlify" -%}name="{{ formKey }}" method="POST" action="{{ 'thanks' | pageUrl(lang) }}" data-netlify="true" netlify-honeypot="website" data-provider="netlify"
+{%- elif provider == "formspree" -%}method="POST" action="https://formspree.io/f/{{ site.forms.formspree[formKey] or site.forms.formspree.contact }}" data-provider="formspree"
+{%- elif provider == "hubspot" -%}data-provider="hubspot" data-hubspot="{{ site.hubspot[formKey + 'FormGuid'] or site.hubspot.contactFormGuid }}"
+{%- else -%}data-provider="none"
+{%- endif -%}

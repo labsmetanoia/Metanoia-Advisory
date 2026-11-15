@@ -32,6 +32,6 @@ pageKey: insights
       {% endfor %}
       {% elif not flagship %}<div class="empty"><p>{{ ui | t(lang, "labels.emptyInsights") }}</p></div>{% endif %}
     </div>
-    <div class="col-4"><span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span><h3>{{ c.newsletter.title | L(lang) }}</h3><p class="muted">{{ c.newsletter.text | L(lang) }}</p>{% set uid = "nl-insights" %}{% include "components/newsletter.njk" %}</div>
+    <div class="col-4"><span class="kicker">{{ ui | t(lang, "labels.newsletter") }}</span><h2 class="h3">{{ c.newsletter.title | L(lang) }}</h2><p class="muted">{{ c.newsletter.text | L(lang) }}</p>{% set uid = "nl-insights" %}{% include "components/newsletter.njk" %}</div>
   </div>
 </section>

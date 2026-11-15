@@ -1,0 +1,52 @@
+{
+  "_comment": "Service finder: three questions, each answer carries tags; every service lists the tags it matches. Shown on the Strategic Storytelling page and the Contact page.",
+  "kicker": { "en": "Service finder", "id": "Pencari layanan" },
+  "title": { "en": "Not sure which service? *Three questions.*", "id": "Belum yakin layanan mana? *Tiga pertanyaan.*" },
+  "text": { "en": "Tell us who will read the document, what you need and when. We point you to the closest service; a working session settles the rest.", "id": "Beri tahu siapa pembacanya, apa yang Anda butuhkan, dan kapan. Kami tunjukkan layanan terdekat; sesi kerja menyelesaikan sisanya." },
+  "resultTitle": { "en": "Closest match", "id": "Paling sesuai" },
+  "resultAlt": { "en": "Also worth a look", "id": "Layak dilihat juga" },
+  "resultEmpty": { "en": "Answer the three questions to see a recommendation.", "id": "Jawab tiga pertanyaan untuk melihat rekomendasi." },
+  "talk": { "en": "Discuss this with the team", "id": "Diskusikan dengan tim kami" },
+  "reset": { "en": "Start again", "id": "Ulangi" },
+  "questions": [
+    { "key": "audience", "label": { "en": "Who will read it?", "id": "Siapa pembacanya?" }, "options": [
+      { "tag": "board", "label": { "en": "Board or executive team", "id": "Dewan atau tim eksekutif" } },
+      { "tag": "investors", "label": { "en": "Investors, lenders or the market", "id": "Investor, pemberi pinjaman, atau pasar" } },
+      { "tag": "clients", "label": { "en": "Clients or buyers", "id": "Klien atau pembeli" } },
+      { "tag": "employees", "label": { "en": "Employees or stakeholders", "id": "Karyawan atau pemangku kepentingan" } }
+    ] },
+    { "key": "output", "label": { "en": "What do you need?", "id": "Apa yang Anda butuhkan?" }, "options": [
+      { "tag": "deck", "label": { "en": "A deck or presentation", "id": "Dek atau presentasi" } },
+      { "tag": "document", "label": { "en": "A report, study or document", "id": "Laporan, studi, atau dokumen" } },
+      { "tag": "proposal", "label": { "en": "A proposal or pitch", "id": "Proposal atau pitch" } },
+      { "tag": "system", "label": { "en": "A template system or recurring content", "id": "Sistem templat atau konten rutin" } },
+      { "tag": "decision", "label": { "en": "A decision on Indonesia: enter, invest or restructure", "id": "Keputusan tentang Indonesia: masuk, berinvestasi, atau restrukturisasi" } }
+    ] },
+    { "key": "timing", "label": { "en": "When do you need it?", "id": "Kapan Anda membutuhkannya?" }, "options": [
+      { "tag": "hours", "label": { "en": "Within days", "id": "Dalam hitungan hari" } },
+      { "tag": "weeks", "label": { "en": "Within weeks", "id": "Dalam hitungan minggu" } },
+      { "tag": "ongoing", "label": { "en": "On an ongoing rhythm", "id": "Secara berkala" } }
+    ] }
+  ],
+  "services": {
+    "pres-board-decks": { "audience": ["board", "investors"], "output": ["deck"], "timing": ["weeks"] },
+    "pres-consulting": { "audience": ["board"], "output": ["deck", "document"], "timing": ["weeks"] },
+    "pres-sales": { "audience": ["clients"], "output": ["proposal", "deck"], "timing": ["weeks", "hours"] },
+    "pres-newsletters": { "audience": ["employees", "investors"], "output": ["system"], "timing": ["ongoing"] },
+    "pres-templates": { "audience": ["employees", "board"], "output": ["system"], "timing": ["weeks"] },
+    "pres-pitch": { "audience": ["investors"], "output": ["proposal", "deck"], "timing": ["weeks"] },
+    "pres-earnings": { "audience": ["investors"], "output": ["deck", "system"], "timing": ["ongoing", "hours"] },
+    "pres-educational": { "audience": ["employees"], "output": ["deck", "document"], "timing": ["weeks"] },
+    "pres-marketing": { "audience": ["clients"], "output": ["deck"], "timing": ["weeks"] },
+    "pres-reports": { "audience": ["investors"], "output": ["document"], "timing": ["weeks", "ongoing"] },
+    "pres-ai-express": { "audience": ["board", "clients", "employees", "investors"], "output": ["deck"], "timing": ["hours"] },
+    "me-assessment": { "audience": ["board"], "output": ["decision", "document"], "timing": ["weeks"] },
+    "me-partner-search": { "audience": ["board"], "output": ["decision"], "timing": ["weeks"] },
+    "me-localisation": { "audience": ["board", "clients"], "output": ["decision", "document"], "timing": ["weeks"] },
+    "me-representation": { "audience": ["board"], "output": ["decision"], "timing": ["ongoing"] },
+    "adv-feasibility": { "audience": ["investors", "board"], "output": ["document", "decision"], "timing": ["weeks"] },
+    "adv-business-case": { "audience": ["investors"], "output": ["document", "deck", "decision"], "timing": ["weeks"] },
+    "adv-strategy": { "audience": ["board"], "output": ["document", "decision"], "timing": ["weeks"] },
+    "adv-documentation": { "audience": ["investors"], "output": ["document"], "timing": ["weeks"] }
+  }
+}

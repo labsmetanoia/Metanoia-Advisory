@@ -36,10 +36,10 @@ showCta: false
       <h2 id="form-title">{{ c.form.title | L(lang) }}</h2>
       <p class="ccard__text">{{ c.form.text | L(lang) }}</p>
       {% set ph = c.form.placeholders %}
-      {% if site.hubspot.portalId and site.hubspot.contactFormGuid %}
-      <form class="form form--compact" data-hubspot="{{ site.hubspot.contactFormGuid }}" data-form-type="contact" novalidate>
+      {% if site.forms.provider != "none" %}
+      <form class="form form--compact" {% set formKey = "contact" %}{% include "components/form-attrs.njk" %} data-form-type="contact" novalidate>
         <div class="form__row">
-          <div class="field"><label for="f-name" class="visually-hidden">{{ ui | t(lang, "form.name") }}</label><input id="f-name" name="firstname" type="text" required autocomplete="name" placeholder="{{ ph.name | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+          <div class="field"><label for="f-name" class="visually-hidden">{{ ui | t(lang, "form.name") }}</label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="{{ ph.name | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
           <div class="field"><label for="f-company" class="visually-hidden">{{ ui | t(lang, "form.company") }}</label><input id="f-company" name="company" type="text" required autocomplete="organization" placeholder="{{ ph.company | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
         </div>
         <div class="form__row">
@@ -50,10 +50,11 @@ showCta: false
         </div>
         <div class="field"><label for="f-message" class="visually-hidden">{{ ui | t(lang, "form.message") }}</label><textarea id="f-message" name="message" maxlength="500" placeholder="{{ ph.message | L(lang) }}"></textarea></div>
         <div class="field field--check"><input id="f-consent" name="consent" type="checkbox" required><label for="f-consent">{{ ui | t(lang, "form.consent") }} <a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "consent.privacy") }}</a></label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
-        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        {% set formKey = "contact" %}{% include "components/form-hidden.njk" %}
         <div><button class="btn btn--primary" type="submit" data-label="{{ c.form.submit | L(lang) }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}"><span>{{ c.form.submit | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
       </form>
+
       <div class="form__success" data-success hidden><h3>{{ ui | t(lang, "form.success.title") }}</h3><p>{{ ui | t(lang, "form.success.text") }}</p>{% if cal %}<a class="btn btn--primary" href="{{ cal }}" rel="noopener" data-event="outbound_calendar" data-location="form-success">{{ ui | t(lang, "cta.book") }}</a>{% endif %}</div>
       {% else %}
       <form class="form form--compact form--preview" aria-disabled="true">
@@ -71,6 +72,8 @@ showCta: false
   </div>
 </section>
 
+{% include "components/finder.njk" %}
+
 <section class="svc-hero deck-hero" id="deck-review" aria-labelledby="deck-title">
   <div class="svc-hero__grid">
     <div class="svc-hero__copy">
@@ -79,7 +82,7 @@ showCta: false
       <h2 id="deck-title" class="gold-em">{{ c.deckReview.title | L(lang) | mdInline | safe }}</h2>
       <p class="lede">{{ c.deckReview.text | L(lang) | mc(c.deckReview.textM | L(lang)) | safe }}</p>
       <div class="deck-hero__actions">
-        <div>{% if site.hubspot.portalId and site.hubspot.deckReviewFormGuid %}<a class="btn btn--primary" href="#deck-form"><span>{{ c.deckReview.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% elif site.email %}<a class="btn btn--primary" href="mailto:{{ site.email }}?subject={{ (c.deckReview.title | L(lang)) | replace('*', '') | urlencode }}" data-event="cta_click" data-location="deck-review"><span>{{ c.deckReview.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}<p class="deck-hero__note">{{ c.deckReview.note | L(lang) }}</p></div>
+        <div>{% if site.forms.provider != "none" %}<a class="btn btn--primary" href="#deck-form"><span>{{ c.deckReview.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% elif site.email %}<a class="btn btn--primary" href="mailto:{{ site.email }}?subject={{ (c.deckReview.title | L(lang)) | replace('*', '') | urlencode }}" data-event="cta_click" data-location="deck-review"><span>{{ c.deckReview.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}<p class="deck-hero__note">{{ c.deckReview.note | L(lang) }}</p></div>
         <div class="deck-hero__response"><span class="disc-outline">{% set icon = "clock" %}{% include "components/icon.njk" %}</span><strong>{{ c.deckReview.response | L(lang) | replace("\n", "<br>") | safe }}</strong></div>
       </div>
     </div>
@@ -89,18 +92,19 @@ showCta: false
 <div class="section deck-steps-wrap">
   <div class="wrap">
     <ol class="deck-steps">{% for st in c.deckReview.steps %}<li><div class="fact__index" aria-hidden="true"><span>{{ loop.index | pad2 }}</span></div><div class="deck-steps__body"><span class="disc-tint">{% set icon = st.icon %}{% include "components/icon.njk" %}</span><div><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div></div></li>{% endfor %}</ol>
-    {% if site.hubspot.portalId and site.hubspot.deckReviewFormGuid %}
-    <form class="form form--compact deck-form" id="deck-form" data-hubspot="{{ site.hubspot.deckReviewFormGuid }}" data-form-type="deck_review" novalidate>
+    {% if site.forms.provider != "none" %}
+    <form class="form form--compact deck-form" id="deck-form" {% set formKey = "deckReview" %}{% include "components/form-attrs.njk" %}{% if site.forms.provider == "netlify" %} enctype="multipart/form-data"{% endif %} data-form-type="deck_review" novalidate>
       <div class="form__row">
-        <div class="field"><label for="d-name" class="visually-hidden">{{ ui | t(lang, "form.name") }}</label><input id="d-name" name="firstname" type="text" required autocomplete="name" placeholder="{{ c.form.placeholders.name | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+        <div class="field"><label for="d-name" class="visually-hidden">{{ ui | t(lang, "form.name") }}</label><input id="d-name" name="name" type="text" required autocomplete="name" placeholder="{{ c.form.placeholders.name | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
         <div class="field"><label for="d-company" class="visually-hidden">{{ ui | t(lang, "form.company") }}</label><input id="d-company" name="company" type="text" required autocomplete="organization" placeholder="{{ c.form.placeholders.company | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
       </div>
       <div class="form__row">
         <div class="field"><label for="d-email" class="visually-hidden">{{ ui | t(lang, "form.email") }}</label><input id="d-email" name="email" type="email" required autocomplete="email" placeholder="{{ c.form.placeholders.email | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
         <div class="field"><label for="d-link" class="visually-hidden">{{ ui | t(lang, "form.deckLink") }}</label><input id="d-link" name="deck_link" type="url" placeholder="{{ ui | t(lang, 'form.deckLink') }}"></div>
       </div>
+      {% if site.forms.provider == "netlify" %}<div class="field field--file"><label for="d-file">{{ ui | t(lang, "form.deckFile") }}</label><input id="d-file" name="deck" type="file" accept=".pdf,.ppt,.pptx,.key,application/pdf"></div>{% endif %}
       <div class="field field--check"><input id="d-consent" name="consent" type="checkbox" required><label for="d-consent">{{ ui | t(lang, "form.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
-      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      {% set formKey = "deckReview" %}{% include "components/form-hidden.njk" %}
       <div><button class="btn btn--primary" type="submit" data-label="{{ c.deckReview.button | L(lang) }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ c.deckReview.button | L(lang) }}</button></div>
       <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
     </form>
@@ -108,6 +112,31 @@ showCta: false
     {% endif %}
   </div>
 </div>
+
+{% if site.ai.deckDiagnostic %}
+<section class="section diag-section fade-up" id="deck-diagnostic" aria-labelledby="diag-title">
+  <div class="wrap diag">
+    <div class="diag__intro"><span class="kicker kicker--rule">{{ ui | t(lang, "diag.kicker") }}</span><h2 id="diag-title" class="gold-em">{{ ui | t(lang, "diag.title") | mdInline | safe }}</h2><p class="muted">{{ ui | t(lang, "diag.text") }}</p></div>
+    <form class="diag__form" data-diag novalidate>
+      <div class="field"><label for="diag-text" class="visually-hidden">{{ ui | t(lang, "diag.placeholder") }}</label><textarea id="diag-text" name="text" maxlength="4000" rows="8" required placeholder="{{ ui | t(lang, 'diag.placeholder') }}"></textarea><span class="diag__count" aria-live="polite"><span data-count>0</span> / 4000</span></div>
+      <div class="field"><label for="diag-email" class="visually-hidden">{{ ui | t(lang, "diag.email") }}</label><input id="diag-email" name="email" type="email" autocomplete="email" placeholder="{{ ui | t(lang, 'diag.email') }}"></div>
+      <div class="field field--check"><input id="diag-consent" name="consent" type="checkbox" required><label for="diag-consent">{{ ui | t(lang, "diag.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div><button class="btn btn--primary" type="submit" data-label="{{ ui | t(lang, 'diag.button') }}" data-submitting="{{ ui | t(lang, 'diag.running') }}">{{ ui | t(lang, "diag.button") }}</button></div>
+      <p class="form__status" role="alert" data-errors='{{ ui[lang].diag.errors | json }}'></p>
+    </form>
+    <div class="diag__result" data-diag-result hidden aria-live="polite">
+      <div class="diag__card diag__card--summary"><span class="kicker">{{ ui | t(lang, "diag.summary") }}</span><p data-summary></p><p class="meta"><span>{{ ui | t(lang, "diag.audience") }}:</span> <span data-audience></span></p></div>
+      <ol class="diag__obs" data-observations></ol>
+      <div class="diag__card diag__card--rebuild"><span class="kicker">{{ ui | t(lang, "diag.rebuild") }}</span><h3 data-page></h3><p data-why></p><p class="diag__action"><span class="kicker">{{ ui | t(lang, "diag.actionTitle") }}</span><strong data-action></strong></p></div>
+      <a class="btn btn--primary" href="#deck-form">{{ ui | t(lang, "diag.next") }} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+<form name="deckDiagnostic" data-netlify="true" netlify-honeypot="website" hidden aria-hidden="true"><input type="hidden" name="form-name" value="deckDiagnostic"><input type="email" name="email"><input type="text" name="language"><input type="text" name="page"><input type="text" name="audience"><input type="text" name="summary"><input type="text" name="website"></form>
+{% endif %}
+
+{% set faqKey = "general" %}{% include "components/faq.njk" %}
 
 <section class="section fade-up contact-info" aria-label="{{ ui | t(lang, 'labels.office') }}">
   <div class="wrap contact-info__grid">

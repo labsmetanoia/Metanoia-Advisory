@@ -11,7 +11,10 @@
   "addressJakarta": "Jakarta, Indonesia",
   "addressSingapore": "",
   "calendarUrl": "",
-  "credentialsPdf": "",
+  "credentialsPdf": {
+    "en": "/downloads/metanoia-advisory-credentials-en.pdf",
+    "id": "/downloads/metanoia-advisory-credentials-id.pdf"
+  },
   "hubspot": {
     "portalId": "",
     "contactFormGuid": "",
@@ -20,5 +23,23 @@
   },
   "ga4MeasurementId": "",
   "linkedinPartnerId": "",
-  "engagementsFromLine": false
+  "engagementsFromLine": false,
+  "forms": {
+    "_comment": "provider: netlify (default on Netlify hosting, no keys needed), formspree (paste the form IDs from formspree.io), hubspot (uses the hubspot block above) or none.",
+    "provider": "netlify",
+    "formspree": {
+      "contact": "",
+      "deckReview": "",
+      "newsletter": "",
+      "credentials": ""
+    }
+  },
+  "analytics": {
+    "_comment": "Optional cookieless analytics: the site domain registered at plausible.io (or leave empty).",
+    "plausibleDomain": ""
+  },
+  "ai": {
+    "_comment": "Set deckDiagnostic to true after adding ANTHROPIC_API_KEY to the host's environment variables; the function lives in netlify/functions/deck-diagnostic.mjs.",
+    "deckDiagnostic": false
+  }
 }

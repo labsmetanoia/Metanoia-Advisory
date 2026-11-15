@@ -21,6 +21,11 @@ if (!cfg.hubspot.portalId) { warn.push("hubspot.portalId"); if (PREVIEW) cfg.hub
 if (!cfg.hubspot.contactFormGuid) { warn.push("hubspot.contactFormGuid"); if (PREVIEW) cfg.hubspot.contactFormGuid = "00000000-0000-0000-0000-000000000000"; }
 if (!cfg.hubspot.deckReviewFormGuid) { warn.push("hubspot.deckReviewFormGuid"); if (PREVIEW) cfg.hubspot.deckReviewFormGuid = "00000000-0000-0000-0000-000000000001"; }
 if (!cfg.hubspot.newsletterFormGuid) { warn.push("hubspot.newsletterFormGuid"); if (PREVIEW) cfg.hubspot.newsletterFormGuid = "00000000-0000-0000-0000-000000000002"; }
+const hubspotReady = Boolean(cfg.hubspot.portalId && cfg.hubspot.contactFormGuid);
+const formsCfg = cfg.forms || {};
+let formsProvider = formsCfg.provider || (hubspotReady ? "hubspot" : "netlify");
+if (formsProvider === "hubspot" && !hubspotReady) formsProvider = "netlify";
+if (formsProvider === "formspree" && !(formsCfg.formspree && formsCfg.formspree.contact)) { warn.push("forms.formspree.contact"); formsProvider = "none"; }
 if (!cfg.ga4MeasurementId) warn.push("ga4MeasurementId");
 if (!cfg.linkedinPartnerId) warn.push("linkedinPartnerId");
 
@@ -32,6 +37,9 @@ export default {
   ...cfg,
   phase,
   preview: PREVIEW,
+  forms: { provider: formsProvider, formspree: (formsCfg.formspree || {}) },
+  analytics: cfg.analytics || {},
+  ai: cfg.ai || {},
   baseUrl: cfg.domain ? cfg.domain.replace(/\/$/, "") : "",
   buildDate: new Date().toISOString(),
   practiceNames: {

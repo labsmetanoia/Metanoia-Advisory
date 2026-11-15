@@ -29,7 +29,7 @@ pageKey: hub
   </div>
 </section>
 
-{% if pr.flagship %}{% set ai = pages.home.ai %}{% set aiService = services | find("key", "pres-ai-express") %}{% include "components/ai-band.njk" %}{% endif %}
+{% if pr.flagship %}{% include "components/finder.njk" %}{% set ai = pages.home.ai %}{% set aiService = services | find("key", "pres-ai-express") %}{% include "components/ai-band.njk" %}{% endif %}
 
 <section class="band fade-up" aria-labelledby="process-title">
   <div class="wrap">
@@ -63,6 +63,8 @@ pageKey: hub
 {% endif %}
 {% set lead = people | whereIncludes("practices", pr.key) | where("seniority", "partner") | first %}
 {% if lead %}
+{% if pr.flagship %}{% set faqKey = "storytelling" %}{% include "components/faq.njk" %}{% endif %}
+
 <section class="section fade-up" aria-labelledby="lead-title">
   <div class="wrap">
     <h2 id="lead-title" class="kicker">{{ ui | t(lang, "labels.lead") }}</h2>

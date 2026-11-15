@@ -1,0 +1,33 @@
+{# Service finder: three questions, a recommendation computed in the browser. expects `lang`; uses pages.finder, services #}
+{% set fd = pages.finder %}
+{% set finderData = [] %}
+{% for s in services %}{% if fd.services[s.key] %}{% set finderData = (finderData.push({ key: s.key, title: s.title | L(lang), url: s | serviceUrl(lang), line: (s.promiseM or s.promise) | L(lang), tags: fd.services[s.key] }), finderData) %}{% endif %}{% endfor %}
+<section class="section finder-section fade-up" id="finder" aria-labelledby="finder-title">
+  <div class="wrap">
+    <div class="finder" data-finder='{{ finderData | json }}'>
+      <div class="finder__intro">
+        <span class="kicker kicker--rule">{{ fd.kicker | L(lang) }}</span>
+        <h2 id="finder-title" class="gold-em">{{ fd.title | L(lang) | mdInline | safe }}</h2>
+        <p class="muted">{{ fd.text | L(lang) }}</p>
+      </div>
+      <div class="finder__form" role="group" aria-labelledby="finder-title">
+        {% for q in fd.questions %}
+        <fieldset class="finder__q"><legend><span class="finder__num">{{ loop.index | pad2 }}</span>{{ q.label | L(lang) }}</legend>
+          <div class="finder__opts">{% for o in q.options %}<label class="finder__opt"><input type="radio" name="{{ q.key }}" value="{{ o.tag }}"><span>{{ o.label | L(lang) }}</span></label>{% endfor %}</div>
+        </fieldset>
+        {% endfor %}
+        <button class="finder__reset" type="button" data-finder-reset>{{ fd.reset | L(lang) }}</button>
+      </div>
+      <div class="finder__result" aria-live="polite">
+        <p class="finder__empty">{{ fd.resultEmpty | L(lang) }}</p>
+        <div class="finder__cards" hidden>
+          <span class="kicker finder__label" data-primary-label>{{ fd.resultTitle | L(lang) }}</span>
+          <a class="finder__card finder__card--primary" data-primary href="#"><strong></strong><span></span><em class="arrow-link">{{ ui | t(lang, "cta.explore") }} →</em></a>
+          <span class="kicker finder__label" data-alt-label>{{ fd.resultAlt | L(lang) }}</span>
+          <a class="finder__card" data-alt href="#"><strong></strong><span></span></a>
+          <a class="btn btn--primary finder__talk" data-talk href="{{ 'contact' | pageUrl(lang) }}#form">{{ fd.talk | L(lang) }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

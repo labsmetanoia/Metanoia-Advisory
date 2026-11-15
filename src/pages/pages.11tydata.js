@@ -31,6 +31,7 @@ export default {
       if (data.pageKey === "service") return p.service.practice;
       if (data.pageKey === "person") return "about";
       if (data.pageKey === "article") return "insights";
+      if (data.pageKey === "thanks") return "contact";
       return data.pageKey;
     }),
     pageTitle: guard((data) => {
@@ -43,11 +44,12 @@ export default {
         case "article": return `${L(p.item.title, lang)} — ${name}`;
         case "legal": return `${L(pages.legal[p.key].title, lang)} — ${name}`;
         case "notfound": return `404 — ${name}`;
+        case "thanks": return `${L(ui[lang].thanks.title, lang)} — ${name}`;
         default: return `${L(pages[data.pageKey].seoTitle, lang)} — ${name}`;
       }
     }),
     pageDescription: guard((data) => {
-      const { p, pages } = data; const lang = p.lang;
+      const { p, pages, ui } = data; const lang = p.lang;
       switch (data.pageKey) {
         case "hub": return L(pages.hubs[p.practice.key].metaDescription, lang);
         case "service": return L(p.service.metaDescription, lang);
@@ -55,10 +57,11 @@ export default {
         case "article": return L(p.item.metaDescription, lang);
         case "legal": return L(pages.legal[p.key].metaDescription, lang);
         case "notfound": return "";
+        case "thanks": return ui[lang].thanks.text;
         default: return L(pages[data.pageKey].metaDescription, lang);
       }
     }),
-    noindex: guard((data) => data.pageKey === "notfound" || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
+    noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
     ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
       const map = { home: "home", hub: "hub", service: "service", article: "insight", person: "person" };

@@ -1,0 +1,9 @@
+{
+  "name": "Metanoia Advisory",
+  "short_name": "Metanoia",
+  "icons": [{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }, { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#FAF8F4",
+  "background_color": "#FAF8F4",
+  "display": "browser",
+  "start_url": "/"
+}

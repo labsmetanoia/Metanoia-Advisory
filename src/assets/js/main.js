@@ -3,7 +3,7 @@
    GA4/LinkedIn loading after consent, event tracking, forms (HubSpot v3), before/after slider, Work filters. */
 (function () {
   "use strict";
-  var cfg = window.__SITE__ || {};
+  var cfg = {}; try { cfg = JSON.parse(document.body.getAttribute("data-site") || "{}"); } catch (e) {}
   var d = document, w = window;
   var reduced = w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches;
   d.documentElement.classList.remove("no-js");
@@ -94,8 +94,14 @@
   }
   loadTags();
 
-  /* ---- Event tracking ---- */
-  function track(name, params) { if (w.gtag && consent && consent.analytics) w.gtag("event", name, params || {}); }
+  /* ---- Cookieless analytics (Plausible): loads without consent because it stores nothing on the device ---- */
+  if (cfg.plausible) { var ps = d.createElement("script"); ps.defer = true; ps.setAttribute("data-domain", cfg.plausible); ps.src = "https://plausible.io/js/script.outbound-links.tagged-events.js"; d.head.appendChild(ps); w.plausible = w.plausible || function () { (w.plausible.q = w.plausible.q || []).push(arguments); }; }
+
+  /* ---- Event tracking: GA4 after consent, Plausible always when configured ---- */
+  function track(name, params) {
+    if (w.gtag && consent && consent.analytics) w.gtag("event", name, params || {});
+    if (cfg.plausible && w.plausible) w.plausible(name, { props: params || {} });
+  }
   d.addEventListener("click", function (e) {
     var el = e.target.closest("[data-event]"); if (!el) return;
     var p = {}; var loc = el.getAttribute("data-location"); if (loc) p.location = loc;
@@ -112,11 +118,18 @@
     if (found) sessionStorage.setItem("utm", JSON.stringify(utm)); else utm = JSON.parse(sessionStorage.getItem("utm") || "{}");
   } catch (e) {}
 
-  /* ---- Forms → HubSpot Forms API v3 ---- */
-  qsa("form[data-hubspot]").forEach(function (form) {
-    var portal = cfg.hubspotPortalId, guid = form.getAttribute("data-hubspot");
+  /* ---- Forms: Netlify Forms, Formspree or HubSpot, chosen in site.config.json ---- */
+  var topicParam = (function () { try { return new URLSearchParams(location.search).get("topic") || ""; } catch (e) { return ""; } })();
+  qsa("form[data-provider]").forEach(function (form) {
+    var provider = form.getAttribute("data-provider"); if (provider === "none") return;
     var status = qs(".form__status", form), success = qs("[data-success]", form.parentNode) || null;
     var btn = qs("button[type=submit]", form);
+    /* Context fields: page, referrer, campaign, topic (from ?topic= on the service pages) */
+    var setHidden = function (name, value) { var i = qs("input[type=hidden][name=" + name + "]", form); if (i && value) i.value = value; };
+    setHidden("page", location.href); setHidden("referrer", d.referrer); setHidden("topic", topicParam);
+    Object.keys(utm).forEach(function (k) { setHidden(k, utm[k]); });
+    var situation = qs("select[name=situation]", form);
+    if (situation && topicParam && !situation.value) { var map = { pres: "reporting", me: "entering", adv: "raising" }; var key = map[topicParam.split("-")[0]]; if (key && qs("option[value=" + key + "]", situation)) situation.value = key; }
     function fieldError(input, show) {
       var field = input.closest(".field"); if (!field) return;
       field.classList.toggle("has-error", show);
@@ -128,31 +141,41 @@
         var bad = inp.type === "checkbox" ? !inp.checked : inp.type === "email" ? !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value) : !inp.value.trim();
         fieldError(inp, bad); if (bad && ok) { inp.focus(); ok = false; }
       });
+      var file = qs("input[type=file]", form);
+      if (file && file.files && file.files[0] && file.files[0].size > 10 * 1024 * 1024) { fieldError(file, true); status.textContent = status.getAttribute("data-generic"); ok = false; }
       return ok;
     }
     qsa("[required]", form).forEach(function (inp) { inp.addEventListener("input", function () { fieldError(inp, false); }); inp.addEventListener("change", function () { fieldError(inp, false); }); });
+    function done() {
+      store("lastSubmit", String(Date.now()));
+      track(form.getAttribute("data-event-name") || "form_submit", { type: form.getAttribute("data-form-type") || "contact" });
+      form.hidden = true; if (success) { success.hidden = false; success.setAttribute("tabindex", "-1"); success.focus(); }
+    }
+    function fail() { status.textContent = status.getAttribute("data-generic"); btn.disabled = false; btn.textContent = btn.getAttribute("data-label"); }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (qs(".hp input", form) && qs(".hp input", form).value) return; // honeypot
       if (!validate()) return;
       var last = Number(store("lastSubmit") || 0); if (Date.now() - last < 15000) return; // client-side rate limit
-      var fields = [];
-      qsa("input, select, textarea", form).forEach(function (inp) {
-        if (!inp.name || inp.closest(".hp") || inp.type === "checkbox") return;
-        fields.push({ name: inp.name, value: inp.value });
-      });
-      Object.keys(utm).forEach(function (k) { fields.push({ name: k, value: utm[k] }); });
-      fields.push({ name: "site_language", value: lang });
-      var consentBox = qs("input[type=checkbox][name=consent]", form);
-      var body = { fields: fields, context: { pageUri: location.href, pageName: d.title },
-        legalConsentOptions: consentBox ? { consent: { consentToProcess: true, text: qs("label[for=" + consentBox.id + "]") ? qs("label[for=" + consentBox.id + "]").textContent.trim() : "", communications: [] } } : undefined };
-      btn.disabled = true; btn.textContent = btn.getAttribute("data-submitting");
-      fetch("https://api.hsforms.com/submissions/v3/integration/submit/" + encodeURIComponent(portal) + "/" + encodeURIComponent(guid), {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); store("lastSubmit", String(Date.now()));
-        track(form.getAttribute("data-event-name") || "form_submit", { type: form.getAttribute("data-form-type") || "contact" });
-        form.hidden = true; if (success) { success.hidden = false; success.focus && success.setAttribute("tabindex", "-1"); success.focus(); } })
-      .catch(function () { status.textContent = status.getAttribute("data-generic"); btn.disabled = false; btn.textContent = btn.getAttribute("data-label"); });
+      status.textContent = ""; btn.disabled = true; btn.textContent = btn.getAttribute("data-submitting");
+      var req;
+      if (provider === "netlify") {
+        var fd = new FormData(form); fd.delete("website");
+        var hasFile = qs("input[type=file]", form) && qs("input[type=file]", form).files.length > 0;
+        req = fetch(form.getAttribute("action") || location.pathname, { method: "POST", body: hasFile ? fd : new URLSearchParams(fd) });
+      } else if (provider === "formspree") {
+        var payload = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && typeof v === "string") payload[k] = v; });
+        payload._language = lang;
+        req = fetch(form.getAttribute("action"), { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      } else { /* hubspot */
+        var portal = cfg.hubspotPortalId, guid = form.getAttribute("data-hubspot"), fields = [];
+        qsa("input, select, textarea", form).forEach(function (inp) { if (!inp.name || inp.closest(".hp") || inp.type === "checkbox" || inp.type === "file" || inp.name === "form-name") return; fields.push({ name: inp.name === "name" ? "firstname" : inp.name, value: inp.value }); });
+        var consentBox = qs("input[type=checkbox][name=consent]", form);
+        var body = { fields: fields, context: { pageUri: location.href, pageName: d.title },
+          legalConsentOptions: consentBox ? { consent: { consentToProcess: true, text: qs("label[for=" + consentBox.id + "]") ? qs("label[for=" + consentBox.id + "]").textContent.trim() : "", communications: [] } } : undefined };
+        req = fetch("https://api.hsforms.com/submissions/v3/integration/submit/" + encodeURIComponent(portal) + "/" + encodeURIComponent(guid), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      }
+      req.then(function (r) { if (!r.ok) throw new Error(r.status); done(); }).catch(fail);
     });
   });
 
@@ -411,4 +434,59 @@
       io.observe(pts[0].parentNode);
     } else start();
   }
+})();
+
+/* ---- Service finder ---- */
+(function () {
+  var roots = Array.prototype.slice.call(document.querySelectorAll("[data-finder]"));
+  roots.forEach(function (root) {
+    var data; try { data = JSON.parse(root.getAttribute("data-finder")); } catch (e) { return; }
+    var form = root.querySelector(".finder__form"), empty = root.querySelector(".finder__empty"), cards = root.querySelector(".finder__cards");
+    var primary = root.querySelector("[data-primary]"), alt = root.querySelector("[data-alt]"), altLabel = root.querySelector("[data-alt-label]"), talk = root.querySelector("[data-talk]");
+    var talkBase = talk.getAttribute("href");
+    function answers() { var a = {}; ["audience", "output", "timing"].forEach(function (k) { var c = form.querySelector("input[name=" + k + "]:checked"); if (c) a[k] = c.value; }); return a; }
+    function fill(card, s) { card.href = s.url; card.querySelector("strong").textContent = s.title; card.querySelector("span").textContent = s.line; }
+    function update() {
+      var a = answers(), n = Object.keys(a).length;
+      if (n < 3) { cards.hidden = true; empty.hidden = false; return; }
+      var scored = data.map(function (s) { var sc = 0; if (s.tags.output.indexOf(a.output) >= 0) sc += 3; if (s.tags.audience.indexOf(a.audience) >= 0) sc += 2; if (s.tags.timing.indexOf(a.timing) >= 0) sc += 1; return { s: s, sc: sc }; }).sort(function (x, y) { return y.sc - x.sc; });
+      fill(primary, scored[0].s);
+      if (scored[1] && scored[1].sc > 0) { fill(alt, scored[1].s); alt.hidden = false; altLabel.hidden = false; } else { alt.hidden = true; altLabel.hidden = true; }
+      talk.href = talkBase.replace(/\?topic=[^#]*/, "").replace("#", "?topic=" + encodeURIComponent(scored[0].s.key) + "#");
+      empty.hidden = true; cards.hidden = false; cards.classList.remove("is-in"); void cards.offsetWidth; cards.classList.add("is-in");
+    }
+    form.addEventListener("change", update);
+    var reset = root.querySelector("[data-finder-reset]");
+    if (reset) reset.addEventListener("click", function () { Array.prototype.forEach.call(form.querySelectorAll("input[type=radio]"), function (r) { r.checked = false; }); update(); });
+  });
+})();
+
+/* ---- Deck diagnostic (calls the site's own function; shown only when enabled in site.config.json) ---- */
+(function () {
+  var form = document.querySelector("[data-diag]"); if (!form) return;
+  var result = document.querySelector("[data-diag-result]"), status = form.querySelector(".form__status"), btn = form.querySelector("button[type=submit]");
+  var errors = {}; try { errors = JSON.parse(status.getAttribute("data-errors") || "{}"); } catch (e) {}
+  var text = form.querySelector("textarea"), count = form.querySelector("[data-count]"), consent = form.querySelector("input[type=checkbox]");
+  text.addEventListener("input", function () { count.textContent = text.value.length; });
+  function esc(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); status.textContent = "";
+    var v = text.value.trim();
+    if (!consent.checked) { consent.closest(".field").classList.add("has-error"); return; } consent.closest(".field").classList.remove("has-error");
+    if (v.length < 120) { status.textContent = errors.short || ""; return; }
+    if (v.length > 4000) { status.textContent = errors.long || ""; return; }
+    btn.disabled = true; btn.textContent = btn.getAttribute("data-submitting");
+    fetch("/api/deck-diagnostic", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: v, email: form.querySelector("input[type=email]").value, language: document.documentElement.lang, page: location.href, website: form.querySelector(".hp input").value }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || r.status); return j; }); })
+      .then(function (j) {
+        var res = j.result;
+        result.querySelector("[data-summary]").textContent = res.summary; result.querySelector("[data-audience]").textContent = res.audienceGuess;
+        result.querySelector("[data-observations]").innerHTML = res.observations.map(function (o) { return "<li><strong>" + esc(o.title) + "</strong><p>" + esc(o.detail) + "</p></li>"; }).join("");
+        result.querySelector("[data-page]").textContent = res.rebuildFirst.page; result.querySelector("[data-why]").textContent = res.rebuildFirst.why; result.querySelector("[data-action]").textContent = res.rebuildFirst.actionTitle;
+        result.hidden = false; result.classList.remove("is-in"); void result.offsetWidth; result.classList.add("is-in"); result.scrollIntoView({ behavior: "smooth", block: "start" });
+        btn.disabled = false; btn.textContent = btn.getAttribute("data-label");
+        if (window.plausible) window.plausible("deck_diagnostic"); if (window.gtag) window.gtag("event", "deck_diagnostic");
+      })
+      .catch(function (err) { var k = String(err.message); status.textContent = k === "rate_limited" || k === "busy" ? (errors.busy || "") : k === "too_short" ? errors.short : k === "too_long" ? errors.long : (errors.generic || ""); btn.disabled = false; btn.textContent = btn.getAttribute("data-label"); });
+  });
 })();

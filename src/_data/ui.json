@@ -161,9 +161,15 @@
       "success": {
         "title": "Thank you. A partner will reply within two working days.",
         "text": "If you would rather talk sooner, book a 45-minute working session directly.",
-        "newsletter": "Thank you. Please confirm your subscription in the email we have just sent."
+        "newsletter": "Thank you. You are on the list. The first note arrives with next month's edition."
       },
-      "unavailable": "The form is not connected yet. Please email us or book a time directly."
+      "unavailable": "The form is not connected yet. Please email us or book a time directly.",
+      "deckFile": "Attach the deck (PDF or PowerPoint, up to 10 MB), or share a link below",
+      "topic": "Service of interest",
+      "credentialsLead": "Leave a work email and the eight-page credentials document (PDF, both languages available) is yours.",
+      "credentialsButton": "Get the credentials",
+      "credentialsReady": "Thank you. Your copy is ready.",
+      "credentialsDownload": "Download the PDF"
     },
     "consent": {
       "text": "We use strictly necessary cookies to remember your language. With your consent we also measure visits (analytics) and matched audiences on LinkedIn (marketing).",
@@ -195,6 +201,32 @@
     "langChooser": {
       "title": "Choose your language",
       "text": "Pilih bahasa Anda"
+    },
+    "thanks": {
+      "title": "Thank you. Your message has reached us.",
+      "text": "A senior member of the team replies within two working days, in the language you wrote in. If the matter is urgent, email us directly.",
+      "back": "Back to the home page"
+    },
+    "diag": {
+      "kicker": "Instant deck diagnostic",
+      "title": "Paste your storyline. *Get three observations.*",
+      "text": "Paste the executive summary or the page titles of a deck you are working on, up to 4,000 characters. In about a minute you receive three observations and the one page to rebuild first, in the shape of our human deck review. Nothing you paste is stored.",
+      "placeholder": "Executive summary, agenda or page titles of the deck…",
+      "email": "Work email (optional, to receive the human review next)",
+      "consent": "I understand this is an automated first read, not advice, and that the text is sent to an AI model for analysis.",
+      "button": "Run the diagnostic",
+      "running": "Reading the storyline…",
+      "summary": "What the deck says now",
+      "audience": "Written for",
+      "rebuild": "Rebuild this page first",
+      "actionTitle": "Proposed action title",
+      "next": "Request the human review",
+      "errors": {
+        "short": "Please paste at least a few sentences (120 characters).",
+        "long": "Please keep it under 4,000 characters.",
+        "busy": "The diagnostic is busy right now. Please try again in a few minutes, or send the deck to the team.",
+        "generic": "Something went wrong. Please try again, or send the deck to the team."
+      }
     }
   },
   "id": {
@@ -359,9 +391,15 @@
       "success": {
         "title": "Terima kasih. Seorang partner akan membalas dalam dua hari kerja.",
         "text": "Jika ingin berbicara lebih cepat, jadwalkan sesi kerja 45 menit secara langsung.",
-        "newsletter": "Terima kasih. Mohon konfirmasi langganan Anda melalui email yang baru kami kirim."
+        "newsletter": "Terima kasih. Anda sudah terdaftar. Catatan pertama tiba bersama edisi bulan depan."
       },
-      "unavailable": "Formulir belum terhubung. Silakan kirim email atau pilih waktu secara langsung."
+      "unavailable": "Formulir belum terhubung. Silakan kirim email atau pilih waktu secara langsung.",
+      "deckFile": "Lampirkan dek (PDF atau PowerPoint, maksimal 10 MB), atau bagikan tautan di bawah",
+      "topic": "Layanan yang diminati",
+      "credentialsLead": "Tinggalkan email kantor Anda dan dokumen kredensial delapan halaman (PDF, tersedia dua bahasa) menjadi milik Anda.",
+      "credentialsButton": "Dapatkan kredensial",
+      "credentialsReady": "Terima kasih. Salinan Anda sudah siap.",
+      "credentialsDownload": "Unduh PDF"
     },
     "consent": {
       "text": "Kami menggunakan cookie yang diperlukan untuk mengingat bahasa Anda. Dengan persetujuan Anda, kami juga mengukur kunjungan (analitik) dan audiens yang dipadankan di LinkedIn (pemasaran).",
@@ -393,6 +431,32 @@
     "langChooser": {
       "title": "Pilih bahasa Anda",
       "text": "Choose your language"
+    },
+    "thanks": {
+      "title": "Terima kasih. Pesan Anda sudah kami terima.",
+      "text": "Anggota senior tim kami membalas dalam dua hari kerja, dalam bahasa yang Anda gunakan. Jika mendesak, kirim email langsung kepada kami.",
+      "back": "Kembali ke beranda"
+    },
+    "diag": {
+      "kicker": "Diagnostik dek instan",
+      "title": "Tempel alur cerita Anda. *Dapatkan tiga pengamatan.*",
+      "text": "Tempelkan ringkasan eksekutif atau judul halaman dek yang sedang Anda kerjakan, maksimal 4.000 karakter. Dalam sekitar satu menit Anda menerima tiga pengamatan dan satu halaman yang perlu dibangun ulang lebih dahulu, dalam bentuk yang sama dengan tinjauan dek kami. Teks yang Anda tempel tidak disimpan.",
+      "placeholder": "Ringkasan eksekutif, agenda, atau judul halaman dek…",
+      "email": "Email kantor (opsional, untuk menerima tinjauan manusia berikutnya)",
+      "consent": "Saya memahami ini adalah pembacaan awal otomatis, bukan nasihat, dan teks dikirim ke model AI untuk dianalisis.",
+      "button": "Jalankan diagnostik",
+      "running": "Membaca alur cerita…",
+      "summary": "Apa yang dikatakan dek saat ini",
+      "audience": "Ditulis untuk",
+      "rebuild": "Bangun ulang halaman ini lebih dahulu",
+      "actionTitle": "Usulan judul tindakan",
+      "next": "Minta tinjauan manusia",
+      "errors": {
+        "short": "Tempelkan setidaknya beberapa kalimat (120 karakter).",
+        "long": "Maksimal 4.000 karakter.",
+        "busy": "Diagnostik sedang sibuk. Coba lagi beberapa menit lagi, atau kirimkan dek kepada tim.",
+        "generic": "Terjadi kesalahan. Coba lagi, atau kirimkan dek kepada tim."
+      }
     }
   }
 }

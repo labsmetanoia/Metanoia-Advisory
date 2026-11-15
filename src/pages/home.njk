@@ -17,7 +17,7 @@ pageKey: home
       </div>
     </div>
     <div class="fan fan--live" role="img" aria-label="{{ c.hero.fanCaption | L(lang) }}">
-      {% for sl in c.hero.slides %}<div class="fan__card fan__card--img"><img src="{{ sl }}" alt="" width="1200" height="675" {% if loop.index == 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async"></div>{% endfor %}
+      {% for sl in c.hero.slides %}<div class="fan__card fan__card--img"><img src="{{ sl }}" srcset="{{ sl | replace('.webp', '-600.webp') }} 600w, {{ sl }} 1200w" sizes="(max-width: 767px) 240px, 340px" alt="" width="1200" height="675" {% if loop.index == 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async"></div>{% endfor %}
     </div>
   </div>
   <div class="arch">
@@ -38,7 +38,7 @@ pageKey: home
 <section class="section" aria-labelledby="portfolio-title" style="padding-top:var(--section)">
   <div class="wrap">
     <div class="svc-head fade-up">
-      <div><span class="kicker kicker--rule">{{ "Our services" if lang == "en" else "Layanan kami" }}</span><h2 id="portfolio-title" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.portfolio.title | L(lang) }}</h2><p class="lede">{{ c.portfolio.text | L(lang) | mc(c.portfolio.textM | L(lang)) | safe }}</p></div>
+      <div><span class="kicker kicker--rule">{{ "Our services" if lang == "en" else "Layanan kami" }}</span><h2 id="portfolio-title" style="font-size:clamp(34px,4.6vw,52px);line-height:1.05">{{ c.portfolio.title | L(lang) }}</h2><p class="lede">{{ c.portfolio.text | L(lang) | mc(c.portfolio.textM | L(lang)) | safe }}</p><a class="arrow-link svc-head__finder" href="{{ 'presentation' | pageUrl(lang) }}#finder">{{ pages.finder.title | L(lang) | replace("*", "") }} →</a></div>
       <div class="pillars">{% for pl in c.portfolio.pillars %}<div>{% set icon = pl.icon %}{% include "components/icon.njk" %}<div><strong>{{ pl.title | L(lang) }}</strong><span>{{ pl.text | L(lang) }}</span></div></div>{% endfor %}</div>
     </div>
     <div class="svc-grid stagger">{% for s in services | where("practice", "presentation") %}{% set num = loop.index %}{% include "components/service-tile.njk" %}{% endfor %}</div>

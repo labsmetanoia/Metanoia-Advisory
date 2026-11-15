@@ -79,11 +79,27 @@ pageKey: about
       </li>
       {% endfor %}
     </ul>
-    {% if site.credentialsPdf %}
-    <div class="cred-band">
+    {% if site.credentialsPdf %}{% set pdf = site.credentialsPdf | L(lang) %}
+    <div class="cred-band" id="credentials">
       <div class="cred-band__title"><span class="kicker">{{ c.credentials.kicker | L(lang) }}</span><h3 class="gold-em">{{ c.credentials.title | L(lang) | mdInline | safe }}</h3></div>
       <p class="cred-band__text">{{ c.credentials.text | L(lang) }}</p>
-      <a class="btn btn--primary cred-band__btn" href="{{ site.credentialsPdf }}" data-event="download" data-asset="credentials-pdf"><span class="cred-band__ico" aria-hidden="true">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><span>{{ ui | t(lang, "cta.credentials") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+      {% if site.forms.provider != "none" %}
+      <div class="cred-band__form">
+        <form class="cred-form" {% set formKey = "credentials" %}{% include "components/form-attrs.njk" %} data-form-type="credentials" data-event-name="credentials_request" novalidate>
+          <p class="cred-form__lead">{{ ui | t(lang, "form.credentialsLead") }}</p>
+          <div class="cred-form__row">
+            <div class="field"><label for="cred-email" class="visually-hidden">{{ ui | t(lang, "form.email") }}</label><input id="cred-email" name="email" type="email" required autocomplete="email" placeholder="{{ ui | t(lang, 'form.emailPlaceholder') }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
+            <button class="btn btn--primary" type="submit" data-label="{{ ui | t(lang, 'form.credentialsButton') }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ ui | t(lang, "form.credentialsButton") }}</button>
+          </div>
+          <input type="hidden" name="document" value="{{ pdf }}">
+          {% set formKey = "credentials" %}{% include "components/form-hidden.njk" %}
+          <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+        </form>
+        <div class="form__success cred-form__success" data-success hidden><p>{{ ui | t(lang, "form.credentialsReady") }}</p><a class="btn btn--primary" href="{{ pdf }}" download data-event="download" data-asset="credentials-pdf"><span class="cred-band__ico" aria-hidden="true">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><span>{{ ui | t(lang, "form.credentialsDownload") }}</span></a></div>
+      </div>
+      {% else %}
+      <a class="btn btn--primary cred-band__btn" href="{{ pdf }}" download data-event="download" data-asset="credentials-pdf"><span class="cred-band__ico" aria-hidden="true">{% set icon = "doc" %}{% include "components/icon.njk" %}</span><span>{{ ui | t(lang, "cta.credentials") }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+      {% endif %}
     </div>
     {% endif %}
   </div>
