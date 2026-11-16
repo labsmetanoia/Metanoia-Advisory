@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magic Layers — Metanoia Advisory</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script src="/vendor/tesseract/tesseract.min.js" defer></script>
+<script src="/vendor/pptxgen/pptxgen.bundle.js" defer></script>
+<script src="/vendor/ag-psd/bundle.js" defer></script>
+<script type="module" src="/js/app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand" title="Metanoia Advisory"><span class="lockup"><span>Metanoia</span><i></i><b>Advisory</b></span><span class="product">Magic Layers</span></div>
+  <div class="doc"><span id="doc-name" class="doc__name"></span><span id="doc-meta" class="doc__meta"></span></div>
+  <div class="tools" role="toolbar" aria-label="Tools" id="toolbar">
+    <button class="tool is-active" data-tool="select" title="Select and move (V)"><svg viewBox="0 0 20 20"><path d="M4 2.5l11 6.2-5 1.3-1.6 5z"/></svg></button>
+    <button class="tool" data-tool="text" title="Add text (T)"><svg viewBox="0 0 20 20"><path d="M4 5V3.5h12V5M10 3.5v13M7.5 16.5h5"/></svg></button>
+    <button class="tool" data-action="insert" title="Add a shape"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="9" height="9" rx="1.5"/><circle cx="13" cy="13" r="4.5"/></svg></button>
+    <button class="tool" data-tool="lift" title="Lift an area into its own layer (L): drag a rectangle around anything the analysis left in a picture"><svg viewBox="0 0 20 20"><path d="M3 6V3h3M14 3h3v3M17 14v3h-3M6 17H3v-3" /><path d="M10 13V6.5M7.5 9L10 6.5 12.5 9"/></svg></button>
+    <button class="tool" data-tool="hand" title="Pan (H or hold Space)"><svg viewBox="0 0 20 20"><path d="M7 9.5V4.2a1.2 1.2 0 012.4 0V9M9.4 8.6V3.4a1.2 1.2 0 012.4 0v5.2M11.8 8.8V4.6a1.2 1.2 0 012.4 0v6.9c0 3.3-2 5.5-5 5.5-2.3 0-3.4-1-4.6-3.2L3.2 11a1.2 1.2 0 012-1.3l1.8 2"/></svg></button>
+    <span class="sep"></span>
+    <button class="tool" data-action="undo" title="Undo (Ctrl+Z)" id="btn-undo"><svg viewBox="0 0 20 20"><path d="M7 5L3.5 8.5 7 12M3.5 8.5H12a4.5 4.5 0 010 9H9"/></svg></button>
+    <button class="tool" data-action="redo" title="Redo (Ctrl+Shift+Z)" id="btn-redo"><svg viewBox="0 0 20 20"><path d="M13 5l3.5 3.5L13 12M16.5 8.5H8a4.5 4.5 0 000 9h3"/></svg></button>
+    <span class="sep"></span>
+    <button class="tool" data-action="zoom-out" title="Zoom out"><svg viewBox="0 0 20 20"><path d="M5 10h10"/></svg></button>
+    <button class="zoom" data-action="zoom-fit" title="Fit to window (1)" id="zoom-label">100%</button>
+    <button class="tool" data-action="zoom-in" title="Zoom in"><svg viewBox="0 0 20 20"><path d="M5 10h10M10 5v10"/></svg></button>
+    <span class="sep"></span>
+    <button class="chip" data-action="compare" id="btn-compare" title="Hold to see the original (or press \)">Original</button>
+  </div>
+  <div class="actions">
+    <button class="btn" id="btn-open" title="Open a file (Ctrl+O)">Open</button>
+    <button class="btn" id="btn-analyse" title="Analysis settings and re-run">Analyse</button>
+    <button class="btn btn--ai" id="btn-ai" hidden title="Check the text and name the layers with Claude">AI assist</button>
+    <button class="btn btn--primary" id="btn-export">Export</button>
+  </div>
+</header>
+
+<main class="work">
+  <aside class="side side--left" aria-label="Pages and layers">
+    <section class="panel panel--pages" id="pages-panel" hidden>
+      <header class="panel__head"><h2>Pages</h2><button class="link" id="btn-analyse-all" title="Analyse every page">Analyse all</button></header>
+      <div class="pages" id="pages"></div>
+    </section>
+    <section class="panel panel--layers">
+      <header class="panel__head"><h2>Layers</h2><span class="count" id="layer-count"></span></header>
+      <div class="layers" id="layers" role="listbox" aria-label="Layers" aria-multiselectable="true"></div>
+    </section>
+  </aside>
+
+  <section class="canvas" id="viewport" aria-label="Canvas">
+    <div class="stage" id="stage"><div class="page" id="page"></div><div class="overlay" id="overlay"></div></div>
+    <div class="empty" id="empty">
+      <div class="empty__card">
+        <span class="kicker">Magic Layers</span>
+        <h1>Turn a flat slide into <em>editable layers</em></h1>
+        <p>Drop a slide image, a PDF or a PowerPoint with picture slides. Text becomes live text, shapes and pictures become separate objects, and the result exports to an editable PowerPoint.</p>
+        <div class="empty__actions"><button class="btn btn--primary btn--lg" id="btn-open-2">Choose a file</button><button class="btn btn--lg" id="btn-sample">Try the sample slide</button></div>
+        <p class="empty__formats">PNG, JPG, WebP, PDF (all pages), PPTX picture slides, saved .mlayers projects</p>
+        <p class="empty__privacy"><svg viewBox="0 0 20 20"><path d="M10 2.5l6 2.3v4.4c0 3.9-2.5 6.9-6 8.3-3.5-1.4-6-4.4-6-8.3V4.8z"/><path d="M7.3 10l1.9 1.9 3.5-3.6"/></svg>Everything runs on this computer. Your files are not uploaded anywhere.</p>
+      </div>
+    </div>
+    <div class="dropveil" id="dropveil"><div>Drop to open</div></div>
+  </section>
+
+  <aside class="side side--right" id="props" aria-label="Properties"></aside>
+</main>
+
+<div class="progress" id="progress" hidden><div class="progress__card"><div class="progress__title" id="progress-title">Working</div><div class="progress__bar"><i id="progress-bar"></i></div><div class="progress__step" id="progress-step"></div></div></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="menu" id="menu" hidden></div>
+<input type="file" id="file" hidden multiple accept=".png,.jpg,.jpeg,.webp,.gif,.bmp,.pdf,.pptx,.mlayers,.json,image/*,application/pdf">
+<input type="file" id="file-image" hidden accept="image/*">
+</body>
+</html>

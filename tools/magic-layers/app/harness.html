@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>harness</title>
+<style>@font-face{font-family:"Inter";src:url(/fonts/inter-normal-latin.woff2) format("woff2");font-weight:400 600}@font-face{font-family:"Fraunces";src:url(/fonts/fraunces-normal-latin.woff2) format("woff2");font-weight:500 600}@font-face{font-family:"Fraunces";font-style:italic;src:url(/fonts/fraunces-italic-latin.woff2) format("woff2");font-weight:500 600}@font-face{font-family:"Manrope";src:url(/fonts/manrope-normal-latin.woff2) format("woff2");font-weight:200 800}@font-face{font-family:"Cormorant Garamond";src:url(/fonts/cormorant-garamond-normal-latin.woff2) format("woff2");font-weight:300 700}</style>
+<script src="/vendor/tesseract/tesseract.min.js"></script>
+<script type="module">
+import { analyzePage } from "/js/pipeline.js"; import { renderPage } from "/js/render.js"; import { loadImage, makeCanvas } from "/js/util.js";
+window.run = async (dataUrl, options) => {
+  const img = await loadImage(dataUrl); const t0 = performance.now();
+  const page = await analyzePage(img, options || {}); const ms = Math.round(performance.now() - t0);
+  const comp = renderPage(page, makeCanvas(1, 1));
+  // debug view: element outlines on a dimmed composite
+  const dbg = makeCanvas(page.width, page.height), c = dbg.getContext("2d"); c.drawImage(comp, 0, 0); c.fillStyle = "rgba(255,255,255,.55)"; c.fillRect(0, 0, page.width, page.height); c.lineWidth = 2; c.font = "12px sans-serif";
+  for (const l of page.layers) { if (l.type === "background") continue; c.strokeStyle = l.type === "text" ? "#d00" : l.type === "shape" ? "#06c" : "#0a0"; c.strokeRect(l.x, l.y, l.w, l.h); c.fillStyle = c.strokeStyle; c.fillText(l.type === "text" ? `${l.fontFamily} ${Math.round(l.fontSize)} w${l.fontWeight}` : l.name, l.x + 2, l.y - 3); }
+  const bgc = page.layers[0].canvas;
+  window.__page = page;
+  return { ms, stats: page.stats, composite: comp.toDataURL("image/png"), debug: dbg.toDataURL("image/png"), plate: bgc.toDataURL("image/png"), layers: page.layers.map((l) => ({ type: l.type, name: l.name, x: Math.round(l.x), y: Math.round(l.y), w: Math.round(l.w), h: Math.round(l.h), shape: l.shape, fill: l.fill, radius: l.radius, font: l.type === "text" ? `${l.fontFamily} ${l.fontSize} w${l.fontWeight} ls${l.letterSpacing} lh${l.lineHeight} ${l.align} fit${l.meta.fit} conf${l.meta.confidence}` : undefined, text: l.text, runs: l.runs ? l.runs.length : undefined })) };
+};
+window.ready = true;
+</script>

@@ -5,3 +5,7 @@ _site/
 .DS_Store
 screenshots/*.png
 artifact-export/
+
+# Magic Layers (local tool): libraries are fetched by npm install, keys stay local
+tools/magic-layers/app/vendor/
+tools/magic-layers/.env

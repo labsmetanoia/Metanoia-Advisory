@@ -1,0 +1,5 @@
+{
+  "name": "Metanoia Advisory",
+  "fonts": { "heading": "Fraunces", "body": "Inter" },
+  "colors": ["#000000", "#FAF8F4", "#EEE7DA", "#EAB200", "#C09200", "#7A5B00", "#5F5E5C", "#FFFFFF"]
+}

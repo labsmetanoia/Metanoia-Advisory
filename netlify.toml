@@ -2,6 +2,8 @@
 [build]
   command = "npm run build"
   publish = "_site"
+  # Pushes that only touch the local tools or the documentation do not rebuild the site (saves build credits).
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)tools' ':(exclude)docs'"
 
 [build.environment]
   NODE_VERSION = "22"

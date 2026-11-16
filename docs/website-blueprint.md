@@ -662,3 +662,22 @@ A full audit of the production build (findings, measurements and next steps in `
 | Accessibility | Insights heading order fixed; `[hidden]` always wins over component display rules; tab labels darkened to pass contrast at small sizes |
 
 **Measured after the revision.** 59 pages valid HTML; no broken links; bilingual parity 100%; axe-core zero issues on thirteen templates; no overflow at 320–1920 px; Lighthouse accessibility, best-practices and SEO at 97–100.
+
+---
+
+## 39. Magic Layers — local layer-separation tool (16 November 2026)
+
+A desktop tool for the Strategic Storytelling practice, kept in `tools/magic-layers/` and separate from the website (it is not built or deployed with the site; pushes that touch only `tools/` or `docs/` skip the Netlify build). It converts flattened slides into editable layers, with Canva's Magic Layers as the reference. User instructions are in `tools/magic-layers/README.md`.
+
+| Area | How it is built |
+| --- | --- |
+| Shape | A dependency-free Node server (`server.mjs`) serves the app on `127.0.0.1:4517` only; all processing happens in the browser, so files never leave the computer. Launchers for Windows, macOS and Linux |
+| Input | Images; PDF (pdf.js 6, every page, the file's own text and type sizes); PowerPoint files whose slides are pictures (JSZip); saved `.mlayers` projects |
+| Text | Tesseract OCR (English and Indonesian bundled) in three passes; per-word ink masks; typeface, weight, size and tracking chosen by drawing candidates at real size and comparing pixels and ink density; paragraphs, colour runs, sibling labels harmonised; unsure short readings stay in their picture |
+| Objects | A Web Worker (`app/js/analyze-worker.js`) removes text, models the background (solid, gradient, complex, photo), and segments the rest into rectangles with corner radii, ellipses, lines, frames and cut-out pictures; charts are decomposed into bars and gridlines; the background is repaired behind everything lifted |
+| Editor | Select, move with snapping, resize, in-place text editing, add text and shapes, Lift tool for anything missed, layer list, undo/redo, compare with original, one-click brand fonts (`app/brand.json`) |
+| Output | Editable PowerPoint (PptxGenJS: live text boxes, native shapes, pictures), layered PSD (ag-psd), SVG, PNG, project file |
+| Optional AI | `ai-assist.mjs`: with an Anthropic API key in `.env`, Claude corrects misreadings, recovers missed text and names layers. Off by default; only then is a slide image sent out |
+| Checks | `npm test` in the tool folder: server checks, and with Playwright a full run over the sample slide, a picture deck and an eight-page PDF, verifying every export |
+
+**Verified.** 38 automated checks pass on Linux with Chromium. Exported PowerPoint files were opened with python-pptx and rendered with LibreOffice against the originals. The Windows and macOS launchers and the live AI assist call could not be exercised in the build environment.

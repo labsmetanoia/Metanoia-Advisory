@@ -1,0 +1,26 @@
+{
+  "name": "metanoia-magic-layers",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Magic Layers: turns flattened slides and design files into editable layers. Runs locally; files never leave the computer.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node test/run.mjs",
+    "postinstall": "node scripts/vendor.mjs",
+    "vendor": "node scripts/vendor.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "@tesseract.js-data/eng": "^1.0.0",
+    "@tesseract.js-data/ind": "^1.0.0",
+    "ag-psd": "^28.0.0",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^6.5.438",
+    "pptxgenjs": "^3.12.0",
+    "tesseract.js": "^6.0.1"
+  }
+}
