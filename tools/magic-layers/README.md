@@ -78,9 +78,28 @@ How to work with it:
 - **Findings** are on the right, sorted Fix, Check, Polish. Click one for the detail and the slide numbers; click a slide number to see the slide with the area outlined. "Set aside" removes a finding you have judged not to be an issue; it leaves the report.
 - **Storyline** lists every title in order with a verdict, which is the "read the titles alone" test. "Copy the titles" puts them on the clipboard.
 - **Numbers** is a ledger of every figure that appears more than once, disagreements first, with a search box.
-- **Compare with…** opens the previous version of the deck. Slides are paired even when pages were added, removed or moved; every change to wording and figures is shown, and "Copy the change log" gives a text version to send to the client.
+- **Sources** checks the deck against its source of truth: see "Source Check" below.
+- **Compare** opens the previous version of the deck. Slides are paired even when pages were added, removed or moved; every change to wording and figures is shown, and "Copy the change log" gives a text version to send to the client.
 - **Report** saves a one-page audit report (open it and print to PDF), the findings as a spreadsheet, or the change log.
 - Tick "This is a Metanoia deck" on the Overview to flag every typeface other than the house fonts.
+
+### Source Check
+
+Open the **Sources** tab and choose the file the figures came from: the client's Excel model (`.xlsx`) or a CSV export, or a second document that must say the same thing, such as the annual report or a press release (PDF, Word `.docx`, or another PowerPoint). Several sources can be open at once. With the sample deck, "Use the sample model" shows it working.
+
+![Every figure in the deck looked up in the Excel model](docs/auditor-sources.jpg)
+
+Every figure in the deck is looked up in the source and gets one status:
+
+| Status | Meaning |
+| --- | --- |
+| Confirmed | The source holds the same value under labels that agree (the row and column heads in a workbook, the sentence or table in a document). Amounts are matched across scales, so a model in Rp million confirms a deck in Rp trillion, and rounded to the precision the deck shows |
+| Differs | The source holds the same metric and period with another value. These become "Fix" findings, with the cell reference or page |
+| Derived | A percentage that equals the growth between two values in a row of the model, or a row's share of the total |
+| Value found | The number is in the source, but under labels that could not be matched. Look before relying on it |
+| Not found | Nothing in the source corresponds. The figure may be calculated, come from elsewhere, or be worded differently there |
+
+The results join the findings list and the audit report. Keep in mind: matching is by labels, so a model with terse or coded row names confirms less; a workbook's formula cells are read from their last saved result; and when the source is a document that covers only part of the deck, many "not found" figures are expected.
 
 What to keep in mind:
 
@@ -154,7 +173,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, and compares it with its previous version. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, compares it with its previous version, and reconciles it against an Excel model and a Word document. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
 
 ## Files
 

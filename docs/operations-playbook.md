@@ -75,3 +75,5 @@ The site is static; GitHub Pages or Cloudflare Pages host it for free. Change `f
 The same app has a second tab, **Deck Auditor**: open a finished deck before it goes to a client and it lists figures that disagree, totals that do not add up, titles that are labels, draft markers, stray fonts and stretched pictures, and it compares the deck with its previous version to produce a change log. Make it the last step before every delivery; the report it saves can go in the engagement file.
 
 The third tab, **Chart Builder**, makes the charts: paste a range from Excel, choose the chart type, write the action title and source line, and export a slide with a native PowerPoint chart in the house style. It warns when the figure in the title is not in the data.
+
+Before a deck with numbers goes out, open the Deck Auditor's **Sources** tab and load the client's Excel model (or the report the deck must agree with). Figures that differ from the source are listed with the cell they should match.

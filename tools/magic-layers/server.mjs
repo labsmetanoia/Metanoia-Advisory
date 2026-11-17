@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/status") {
       const m = await ai();
-      return json(res, 200, { ok: true, version: "1.2.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
+      return json(res, 200, { ok: true, version: "1.3.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
     }
     if (url.pathname === "/api/ai-assist" && req.method === "POST") {
       const m = await ai();

@@ -5,11 +5,12 @@ import { readPdf } from "./pdfdeck.js";
 import { audit } from "./checks.js";
 import { compareDecks } from "./compare.js";
 import { reportHtml, findingsCsv, labels } from "./report.js";
+import { readSource, reconcile, sourceFindings, sourceLocation } from "./sources.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 const { PILLAR, SEV, KIND } = labels;
-const S = { deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
+const S = { sources: [], recon: null, srcFilter: "all", deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
 
 /* ---------- feedback ---------- */
 function toast(msg, kind = "") { const t = el("div", `toast${kind ? ` toast--${kind}` : ""}`, msg); $("toasts").appendChild(t); setTimeout(() => t.remove(), kind === "error" ? 7000 : 3600); }
@@ -23,11 +24,42 @@ async function open(file) {
   if (!file) return;
   const deck = await busy("Reading the deck", async () => { const d = await read(file, "Reading the deck"); if (!d.slides.length) throw new Error("This file has no slides."); progress("Auditing", "Comparing figures, titles and design", 0.95); await new Promise((r) => setTimeout(r, 30)); return d; });
   if (!deck) return;
-  Object.assign(S, { deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
+  Object.assign(S, { sources: [], recon: null, deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
   run(); const r = S.result, hi = r.findings.filter((f) => f.severity === "high").length;
   toast(`${deck.slides.length} slides audited: ${r.findings.length} finding${r.findings.length === 1 ? "" : "s"}${hi ? `, ${hi} to fix` : ""}.`);
 }
-function run() { S.result = audit(S.deck, { brand: S.useBrand ? S.brand : null }); if (S.prev) S.cmp = compareDecks(S.prev, S.deck, S.result.lang); render(); }
+function run() {
+  S.result = audit(S.deck, { brand: S.useBrand ? S.brand : null }); if (S.prev) S.cmp = compareDecks(S.prev, S.deck, S.result.lang);
+  S.recon = S.sources.length ? reconcile(S.result.facts, S.sources) : null;
+  if (S.recon) { const order = { high: 0, medium: 1, low: 2 }; sourceFindings(S.recon).forEach((f, i) => S.result.findings.push({ id: `src${i + 1}`, pillar: "numbers", slides: f.slide ? [f.slide] : [], refs: f.slide && f.shapeId ? [{ slide: f.slide, shapeId: f.shapeId }] : [], ...f })); S.result.findings.sort((a, b) => order[a.severity] - order[b.severity] || (a.slides[0] || 0) - (b.slides[0] || 0)); }
+  render();
+}
+async function openSources(files) {
+  if (!files.length || !S.deck) return; const got = await busy("Reading the source", async () => { const out = []; for (const f of files) { progress("Reading the source", f.name, 0.4); out.push(await readSource(f, (st, fr) => progress("Reading the source", `${f.name}: ${st}`, fr * 0.9))); } return out; }); if (!got) return;
+  const empty = got.filter((g) => !g.facts.length); if (empty.length) toast(`No figures could be read from ${empty.map((g) => g.name).join(", ")}.`, "error");
+  S.sources = S.sources.filter((x) => !got.some((g) => g.name === x.name)).concat(got.filter((g) => g.facts.length)); if (!S.sources.length) return; S.view = "sources"; S.srcFilter = "all"; run();
+  const c = S.recon.summary; toast(`${c.total} figures checked: ${c.confirmed + c.derived} traced, ${c.differs} differ, ${c.missing} not found.`);
+}
+const STATUS = { differs: "Differs", missing: "Not found", found: "Value found", derived: "Derived", confirmed: "Confirmed" };
+function viewSources(v) {
+  if (!S.recon) { v.appendChild(el("h1", "", "Check the deck against its source")); v.appendChild(el("p", "lede", "Open the Excel model the figures came from, or a second document that must say the same thing: the annual report, a press release, another deck. Every figure in the deck is looked up in it. Amounts are matched across scales (a model in Rp million against a deck in Rp trillion) and rounded to the precision the deck shows."));
+    const tb = el("div", "toolbar2"), b = el("button", "btn btn--primary btn--lg", "Open a source"); b.addEventListener("click", () => $("file-src").click()); tb.appendChild(b);
+    if (/^audit-sample\.pptx$/i.test(S.deck.name)) { const sm = el("button", "btn btn--lg", "Use the sample model"); sm.addEventListener("click", async () => openSources([new File([await (await fetch("/sample/audit-sample-model.xlsx")).blob()], "audit-sample-model.xlsx")])); tb.appendChild(sm); }
+    v.appendChild(tb); v.appendChild(el("p", "previewnote", "Excel (.xlsx), CSV, PDF, Word (.docx) or PowerPoint (.pptx). Several sources can be open at once.")).style.textAlign = "left"; return; }
+  const c = S.recon.summary, traced = c.confirmed + c.derived;
+  v.appendChild(el("h1", "", c.differs ? `${c.differs} figure${c.differs > 1 ? "s" : ""} in the deck differ${c.differs > 1 ? "" : "s"} from the source` : `${traced} of ${c.total} figures are traced to the source`));
+  v.appendChild(el("p", "lede", `Checked against ${S.recon.sources.map((x) => `${x.name} (${x.figures.toLocaleString("en")} figures, ${x.note})`).join(" and ")}. ${c.confirmed} confirmed, ${c.derived} derived from it, ${c.found} found by value only, ${c.missing} not found. A figure is confirmed when the source holds the same value under labels that agree; "value only" means the number is there but its labels could not be matched, so look before relying on it.`));
+  const tb = el("div", "toolbar2"); for (const k of ["all", "differs", "missing", "found", "derived", "confirmed"]) { const n = k === "all" ? c.total : c[k], b = el("button", `btn${S.srcFilter === k ? " btn--primary" : ""}`, `${k === "all" ? "All" : STATUS[k]} ${n}`); b.addEventListener("click", () => { S.srcFilter = k; render(); }); tb.appendChild(b); }
+  const add = el("button", "link", "Add a source"), clr = el("button", "link", "Remove the sources"); add.addEventListener("click", () => $("file-src").click()); clr.addEventListener("click", () => { S.sources = []; run(); }); tb.appendChild(add); tb.appendChild(clr); v.appendChild(tb);
+  const t = el("table", "tbl"); t.innerHTML = "<thead><tr><th>Slide</th><th>Figure</th><th>Described as</th><th>Status</th><th>In the source</th></tr></thead>"; const body = el("tbody"), order = { differs: 0, missing: 1, found: 2, derived: 3, confirmed: 4 }, cls = { differs: "mismatch", missing: "label", found: "precision", derived: "precision", confirmed: "action" };
+  const items = S.recon.items.filter((i) => S.srcFilter === "all" || i.status === S.srcFilter).sort((a, b) => order[a.status] - order[b.status] || a.fact.slide - b.fact.slide);
+  if (!items.length) { const tr = el("tr"), td = el("td", "none", "Nothing under this filter."); td.colSpan = 5; tr.appendChild(td); body.appendChild(tr); }
+  for (const i of items.slice(0, 600)) { const tr = el("tr"); tr.style.cursor = "default"; const a = el("td", "n"); a.appendChild(slideChip(i.fact.slide)); tr.appendChild(a); const fg = el("td", "", i.fact.raw); fg.style.fontWeight = "600"; fg.style.whiteSpace = "nowrap"; tr.appendChild(fg);
+    const d = el("td", "", i.fact.context.length > 84 ? `${i.fact.context.slice(0, 82)}…` : i.fact.context); d.title = i.fact.context; tr.appendChild(d);
+    const st = el("td"); st.appendChild(el("span", `chipk chipk--${cls[i.status]}`, STATUS[i.status])); tr.appendChild(st);
+    const so = el("td"); if (i.source) { so.appendChild(document.createTextNode(i.status === "differs" ? `${i.sourceValue} — ${i.note}` : i.note)); const sm = el("div", "doc__meta", sourceLocation(i.source)); sm.style.whiteSpace = "normal"; so.appendChild(sm); } else so.appendChild(el("span", "doc__meta", "—")); tr.appendChild(so); body.appendChild(tr); }
+  t.appendChild(body); v.appendChild(t);
+}
 async function openPrevious(file) {
   if (!file || !S.deck) return; const prev = await busy("Reading the previous version", () => read(file, "Reading the previous version")); if (!prev) return;
   S.prev = prev; S.cmp = compareDecks(prev, S.deck, S.result.lang); S.view = "compare"; render(); const c = S.cmp.summary; toast(`Compared with ${prev.name}: ${c.changed} changed, ${c.added} added, ${c.removed} removed.`);
@@ -156,18 +188,18 @@ async function aiReview() {
 
 /* ---------- frame ---------- */
 function render() {
-  const has = Boolean(S.deck); $("empty").hidden = has; $("audit").hidden = !has; $("tabs").hidden = !has; $("btn-export").disabled = !has; $("btn-compare").disabled = !has;
+  const has = Boolean(S.deck); $("empty").hidden = has; $("audit").hidden = !has; $("tabs").hidden = !has; $("btn-export").disabled = !has; $("btn-compare").disabled = !has; $("btn-source").disabled = !has;
   if (!has) return; const d = S.deck;
   $("doc-name").textContent = d.name; $("doc-meta").textContent = `${d.slides.length} slides · ${d.kind === "pdf" ? "PDF" : "PowerPoint"}`; document.title = `${d.name} — Deck Auditor`;
-  document.querySelectorAll("#tabs button").forEach((b) => { b.classList.toggle("is-on", b.dataset.view === S.view); if (b.dataset.view === "compare") b.innerHTML = S.cmp ? `Compare<sup>${S.cmp.summary.changed + S.cmp.summary.added + S.cmp.summary.removed}</sup>` : "Compare"; });
+  document.querySelectorAll("#tabs button").forEach((b) => { b.classList.toggle("is-on", b.dataset.view === S.view); if (b.dataset.view === "sources") b.innerHTML = S.recon && S.recon.summary.differs ? `Sources<sup>${S.recon.summary.differs}</sup>` : "Sources"; if (b.dataset.view === "compare") b.innerHTML = S.cmp ? `Compare<sup>${S.cmp.summary.changed + S.cmp.summary.added + S.cmp.summary.removed}</sup>` : "Compare"; });
   const v = $("view"), keep = v.dataset.view === S.view ? v.scrollTop : 0; v.textContent = ""; v.dataset.view = S.view;
-  ({ overview: viewOverview, slides: viewSlides, storyline: viewStoryline, numbers: viewNumbers, compare: viewCompare })[S.view](v); v.scrollTop = keep;
+  ({ overview: viewOverview, slides: viewSlides, storyline: viewStoryline, numbers: viewNumbers, sources: viewSources, compare: viewCompare })[S.view](v); v.scrollTop = keep;
   renderRail(); renderSide();
 }
 function exportMenu(anchor) {
   const m = $("menu"); m.textContent = ""; const item = (t, sub, fn) => { const b = el("button", "menu__item"); b.appendChild(el("b", "", t)); b.appendChild(el("small", "", sub)); b.addEventListener("click", () => { m.hidden = true; fn(); }); m.appendChild(b); };
   const stem = S.deck.name.replace(/\.(pptx|pdf)$/i, "");
-  item("Audit report", "One page to print or save as PDF; open findings only", () => download(new Blob([reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, ai: S.aiReview })], { type: "text/html" }), `${stem} - audit.html`));
+  item("Audit report", "One page to print or save as PDF; open findings only", () => download(new Blob([reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon, ai: S.aiReview })], { type: "text/html" }), `${stem} - audit.html`));
   item("Findings as a spreadsheet", "CSV for a tracker or a shared checklist", () => download(new Blob(["﻿" + findingsCsv(S.result, S.dismissed)], { type: "text/csv" }), `${stem} - findings.csv`));
   if (S.cmp) item("Change log", "What changed since the previous version, as text", () => download(new Blob([changeLog()], { type: "text/plain" }), `${stem} - changes.txt`));
   m.hidden = false; const r = anchor.getBoundingClientRect(); m.style.top = `${r.bottom + 6}px`; m.style.left = `${Math.max(8, r.right - m.offsetWidth)}px`;
@@ -177,6 +209,7 @@ async function boot() {
   try { const st = await (await fetch("/api/status")).json(); S.ai.available = Boolean(st.ai); } catch (e) { /* offline is fine */ }
   $("btn-open").addEventListener("click", () => $("file").click()); $("btn-open-2").addEventListener("click", () => $("file").click()); $("btn-sample").addEventListener("click", sample);
   $("file").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; open(f); }); $("file-prev").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; openPrevious(f); });
+  $("btn-source").addEventListener("click", () => $("file-src").click()); $("file-src").addEventListener("change", (e) => { const fs = [...e.target.files]; e.target.value = ""; openSources(fs); });
   $("btn-compare").addEventListener("click", () => $("file-prev").click()); $("btn-export").addEventListener("click", (e) => exportMenu(e.currentTarget));
   $("tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; S.view = b.dataset.view; S.focus = null; if (S.view !== "slides") S.filter.slideOnly = false; render(); });
   document.addEventListener("pointerdown", (e) => { if (!$("menu").hidden && !$("menu").contains(e.target) && !e.target.closest("#btn-export")) $("menu").hidden = true; }, true);
@@ -184,7 +217,7 @@ async function boot() {
   window.addEventListener("dragover", (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes("Files")) e.preventDefault(); }); window.addEventListener("drop", (e) => { if (!e.dataTransfer || !e.dataTransfer.files.length) return; e.preventDefault(); depth = 0; document.body.classList.remove("is-drop"); const fs = [...e.dataTransfer.files]; if (S.deck && e.shiftKey) openPrevious(fs[0]); else open(fs[0]); });
   window.addEventListener("keydown", (e) => { if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return; const mod = e.ctrlKey || e.metaKey; if (mod && e.key.toLowerCase() === "o") { e.preventDefault(); $("file").click(); } else if (e.key === "Escape") $("menu").hidden = true; else if (S.deck && S.view === "slides" && e.key === "ArrowRight" && S.slide < S.deck.slides.length) goSlide(S.slide + 1); else if (S.deck && S.view === "slides" && e.key === "ArrowLeft" && S.slide > 1) goSlide(S.slide - 1); });
   let rz = 0; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (S.deck && S.view === "slides") render(); }, 120); });
-  render(); window.__audit = { S, open, openPrevious, changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null }), csv: () => findingsCsv(S.result, S.dismissed) };
+  render(); window.__audit = { S, open, openPrevious, openSources, changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon }), csv: () => findingsCsv(S.result, S.dismissed) };
   document.documentElement.dataset.ready = "1";
 }
 boot();

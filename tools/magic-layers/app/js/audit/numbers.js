@@ -1,7 +1,7 @@
 // Deck Auditor — "numbers that match". Finds every figure in a deck with the words that describe it, then checks:
 // the same metric shown with different values, totals that do not add up, shares that do not make 100%,
 // growth rates that do not follow from their own figures, and headline figures missing from their exhibit.
-const PERIOD = /\b(?:FY\s?'?\d{2,4}[EFA]?|[1-4]Q\s?'?\d{2,4}|Q[1-4](?:\s?'?\d{2,4})?|[12]H\s?'?\d{2,4}|H[12](?:\s?'?\d{2,4})?|9M\s?'?\d{2,4}|(?:Jan|Feb|Mar|Apr|May|Mei|Jun|Jul|Aug|Agu|Sep|Oct|Okt|Nov|Dec|Des)[a-z]*\.?(?:\s*[-–]\s*[A-Z][a-z]+)?\s+(?:\d{1,2},?\s+)?(?:19|20)\d{2}|(?:19|20)\d{2}(?:\s?[/–-]\s?(?:(?:19|20)\d{2}|\d{2}))?[EFA]?|LTM|YTD|TTM)(?![\w%])/gi;
+export const PERIOD = /\b(?:FY\s?'?\d{2,4}[EFA]?|[1-4]Q\s?'?\d{2,4}|Q[1-4](?:\s?'?\d{2,4})?|[12]H\s?'?\d{2,4}|H[12](?:\s?'?\d{2,4})?|9M\s?'?\d{2,4}|(?:Jan|Feb|Mar|Apr|May|Mei|Jun|Jul|Aug|Agu|Sep|Oct|Okt|Nov|Dec|Des)[a-z]*\.?(?:\s*[-–]\s*[A-Z][a-z]+)?\s+(?:\d{1,2},?\s+)?(?:19|20)\d{2}|(?:19|20)\d{2}(?:\s?[/–-]\s?(?:(?:19|20)\d{2}|\d{2}))?[EFA]?|LTM|YTD|TTM)(?![\w%])/gi;
 const NUMBER = /(?<![\p{L}\p{N}.,])([+\-−–]?)\s?(Rp\.?|IDR|USD|US\$|S\$|SGD|EUR|\$|€|£)?\s?(\d{1,3}(?:[.,]\d{3})+(?:[.,]\d+)?|\d+(?:[.,]\d+)?)\s?(%|pp\b|bps\b|x\b|bn\b|billion\b|mn\b|million\b|mio\b|tn\b|trillion\b|triliun\b|miliar\b|milyar\b|juta\b|jt\b|ribu\b|rb\b|k\b|m\b|M\b|B\b|T\b|K\b)?/gu;
 const UNIT = { "%": "%", pp: "pp", bps: "bps", x: "x", bn: "bn", billion: "bn", b: "bn", miliar: "bn", milyar: "bn", mn: "m", million: "m", mio: "m", m: "m", juta: "m", jt: "m", tn: "tn", trillion: "tn", triliun: "tn", t: "tn", ribu: "k", rb: "k", k: "k" };
 const CURRENCY = { "rp": "IDR", "rp.": "IDR", idr: "IDR", usd: "USD", "us$": "USD", "$": "USD", "s$": "SGD", sgd: "SGD", eur: "EUR", "€": "EUR", "£": "GBP" };
@@ -23,10 +23,10 @@ export function parseNumber(raw, lang = "en") {
   return { value: Number(clean), decimals: dec ? clean.split(".")[1].length : 0 };
 }
 const stem = (w) => (w.length > 4 && /[^s]s$/.test(w) ? w.slice(0, -1) : w);
-const wordsOf = (s) => (s.toLowerCase().match(/\p{L}[\p{L}'’-]*/gu) || []).map((w) => w.replace(/['’-]/g, "")).filter((w) => w.length >= 2 && !STOP.has(w) && !UNITWORD.has(w)).map(stem);
+export const wordsOf = (s) => (s.toLowerCase().match(/\p{L}[\p{L}'’-]*/gu) || []).map((w) => w.replace(/['’-]/g, "")).filter((w) => w.length >= 2 && !STOP.has(w) && !UNITWORD.has(w)).map(stem);
 // "Q3 2025", "Q3'25" and "Q3 25" are one period
 const normPeriod = (p) => p.toUpperCase().replace(/[\s'.,]/g, "").replace(/^(FY|[1-4]Q|Q[1-4]|[12]H|H[12]|9M)20(\d{2})([EFA]?)$/, "$1$2$3").replace(/^(Q[1-4]|[1-4]Q|H[12]|[12]H|9M)(\d{2})$/, "$1 $2");
-const periodsOf = (s) => new Set((s.match(PERIOD) || []).map(normPeriod));
+export const periodsOf = (s) => new Set((s.match(PERIOD) || []).map(normPeriod));
 export const sameValue = (a, b) => { const d = Math.min(a.decimals, b.decimals), r = (v) => Math.round(v.value * 10 ** d) / 10 ** d; return Math.abs(r(a) - r(b)) < 1e-9; };
 export const fmt = (f) => f.raw;
 
@@ -44,7 +44,7 @@ export function factsInText(text, lang, base, opts = {}) {
       const { value, decimals } = parseNumber(m[3], lang), sign = /[-−–]/.test(m[1]) && /[\s(]/.test(masked[m.index - 1] || " ") ? -1 : 1;
       if (/^\s*$/.test(masked.slice(0, m.index)) && /^[.)]/.test(masked.slice(m.index + m[0].length)) && !unit && !cur) continue;      // "1." list marker
       if (!opts.all && !unit && !cur && decimals === 0 && !/[.,]/.test(m[3]) && value < 100) continue;                                   // bare small counts
-      found.push({ at, end: m.index + m[0].length, raw: (m[1] && sign < 0 ? "−" : "") + [m[2], m[3]].filter(Boolean).join(" ") + (m[4] ? (m[4] === "%" ? "%" : ` ${m[4]}`) : ""), value: value * sign, decimals, unit: unit || "", currency: cur || "" });
+      found.push({ at, end: m.index + m[0].length, raw: (m[1] && sign < 0 ? "−" : "") + [m[2], m[3]].filter(Boolean).join(" ") + (m[4] ? (/^(%|x)$/i.test(m[4]) ? m[4] : ` ${m[4]}`) : ""), value: value * sign, decimals, unit: unit || "", currency: cur || "" });
     }
     found.forEach((f, i) => {
       const before = wordsOf(masked.slice(i ? found[i - 1].end : 0, f.at)), after = wordsOf(masked.slice(f.end, found[i + 1] ? found[i + 1].at : masked.length));

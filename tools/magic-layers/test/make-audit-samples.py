@@ -75,5 +75,19 @@ def build(path, previous=False):
     bullets(s, ["Approve the FY26 budget at the December meeting", "Confirm the warehouse programme in East Java", "Review covenant headroom with the lenders in Q1 26"] + ([] if previous else ["Publish the investor update after the board meeting"]), size=22)
     prs.save(path)
 
-build("app/sample/audit-sample.pptx"); build("app/sample/audit-sample-previous.pptx", previous=True)
+def model(path):
+    # The "source of truth" for Source Check: amounts in Rp million, margins as percentages.
+    import openpyxl
+    wb = openpyxl.Workbook(); ws = wb.active; ws.title = "Summary"
+    ws.append(["Nusantara Logistics (invented company): management accounts, Rp million"]); ws.append([])
+    ws.append(["Revenue by segment", "FY24", "FY25"])
+    for name, a, b in [("Consumer", 21000000, 24000000), ("Industrial", 19000000, 22000000), ("Other", 10000000, 12000000), ("Total revenue", 50000000, 58000000)]: ws.append([name, a, b])
+    ws.append([]); ws.append(["Leverage", "FY24", "FY25"]); ws.append(["Net debt to EBITDA (x)", 2.6, 2.3]); ws.append(["Covenant (x)", 3.0, 3.0])
+    for row in ws.iter_rows(min_row=4, max_row=7, min_col=2, max_col=3):
+        for c in row: c.number_format = "#,##0"
+    m = wb.create_sheet("Margins"); m.append(["", "Q2 24", "Q3 24", "Q4 24", "Q1 25", "Q2 25", "Q3 25"]); m.append(["EBITDA margin", 0.11, 0.12, 0.09, 0.10, 0.13, 0.14])
+    for c in m[2][1:]: c.number_format = "0.0%"
+    wb.save(path)
+
+build("app/sample/audit-sample.pptx"); build("app/sample/audit-sample-previous.pptx", previous=True); model("app/sample/audit-sample-model.xlsx")
 print("ok")

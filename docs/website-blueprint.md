@@ -718,3 +718,18 @@ A third tool in the local app (`tools/magic-layers/`, tab "Chart Builder", page 
 Building it also tightened the Deck Auditor: series and row names alone ("Consumer", "Total") no longer pair figures across unrelated charts and tables, and the action-title share is computed on judged titles only.
 
 **Verified.** `npm test` in the tool folder now runs 79 checks: a workbook is read, five chart types are exported, the chart parts are inspected, and the exported deck passes the Deck Auditor with its chart data read. Exports were rendered with LibreOffice and compared with the preview. Not exercised: opening the exported charts in PowerPoint itself, including Edit Data.
+
+---
+
+## 42. Source Check — the deck reconciled against its model (17 November 2026)
+
+An extension of the Deck Auditor (`tools/magic-layers/app/js/audit/sources.js`, tab "Sources"). It checks every figure in a deck against a source of truth: the client's Excel model or a CSV export, or a second document (PDF, Word, PowerPoint).
+
+| Area | How it is built |
+| --- | --- |
+| Sources | Workbooks through the Chart Builder's `.xlsx` reader, now also returning the stored number behind each cell and its address; every numeric cell is labelled by the text to its left and the headers above it (rows of years count as headers). CSV the same way. PDF and PowerPoint through the Auditor's readers; Word through a small `document.xml` reader (paragraphs and tables) |
+| Matching | A deck figure matches a source number when the source, rounded to the deck's precision, equals it; amounts are tried across scales (thousands to trillions), percentages against both 0.14 and 14. Labels and periods must agree for "confirmed" |
+| Statuses | Confirmed; differs (same metric and period, another value); derived (growth along a row, share of the total row); value found (number present, labels unmatched); not found |
+| Output | A Sources view with filters and cell references; "differs" as high-priority findings; a "not traced" finding; a section in the audit report |
+
+**Verified.** `npm test` runs 86 checks. On the sample deck and model: 24 figures, 16 confirmed, 2 different (with the cell reference), 2 derived, 4 not found, as planted; a Word press release as source gives 7 confirmed and 3 different. Not exercised: a real client model. Models with terse or coded row labels will confirm less.

@@ -25,13 +25,15 @@ export async function readXlsx(file) {
   const col = (ref) => { let n = 0; for (const ch of ref.replace(/\d+/g, "")) n = n * 26 + ch.charCodeAt(0) - 64; return n - 1; };
   const sheets = [];
   for (const s of by(wb, "sheet")) {
-    const d = await xml(target.get(s.getAttribute("r:id")) || ""); if (!d) continue; const rows = [];
+    const d = await xml(target.get(s.getAttribute("r:id")) || ""); if (!d) continue; const rows = [], nums = [];
     for (const r of by(d, "row")) { const ri = Number(r.getAttribute("r")) - 1; for (const c of by(r, "c")) { const v = by(c, "v")[0], t = c.getAttribute("t"); let val = t === "inlineStr" ? by(c, "t").map((x) => x.textContent).join("") : v ? v.textContent : ""; if (!val) continue;
-        if (t === "s") val = shared[Number(val)] ?? ""; else if (t !== "str" && t !== "inlineStr" && t !== "b" && t !== "e") { const k = kind(c.getAttribute("s") || "0"), n = Number(val); if (k === "pct") val = `${Math.round(n * 1e6) / 1e4}%`; else if (k === "date") { const dt = new Date(Date.UTC(1899, 11, 30) + n * 864e5); val = dt.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }); } else val = String(Math.round(n * 1e10) / 1e10); }
+        if (t === "s") val = shared[Number(val)] ?? ""; else if (t !== "str" && t !== "inlineStr" && t !== "b" && t !== "e") { const k = kind(c.getAttribute("s") || "0"), n = Number(val); if (k === "pct") val = `${Math.round(n * 1e6) / 1e4}%`; else if (k === "date") { const dt = new Date(Date.UTC(1899, 11, 30) + n * 864e5); val = dt.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }); } else val = String(Math.round(n * 1e10) / 1e10); if (k !== "date" && Number.isFinite(n)) (nums[ri] ||= [])[col(c.getAttribute("r"))] = { n, pct: k === "pct" }; }
         (rows[ri] ||= [])[col(c.getAttribute("r"))] = String(val).trim(); } }
     // trim to the used block
     const used = rows.map((r, i) => (r && r.some((x) => x) ? i : -1)).filter((i) => i >= 0); if (!used.length) continue; const cols = rows.flatMap((r) => (r ? r.map((x, i) => (x ? i : -1)).filter((i) => i >= 0) : [])), c0 = Math.min(...cols), c1 = Math.max(...cols);
-    sheets.push({ name: s.getAttribute("name"), grid: rows.slice(used[0], used[used.length - 1] + 1).map((r) => Array.from({ length: c1 - c0 + 1 }, (_, i) => (r && r[c0 + i]) || "")) });
+    const block = (src, empty) => src.slice(used[0], used[used.length - 1] + 1).concat(Array(Math.max(0, used[used.length - 1] + 1 - src.length)).fill(null)).slice(0, used[used.length - 1] - used[0] + 1).map((r) => Array.from({ length: c1 - c0 + 1 }, (_, i) => (r && r[c0 + i]) || empty));
+    // grid: what each cell shows; nums: the stored number behind it (for reconciling figures); origin: where the block starts in the sheet
+    sheets.push({ name: s.getAttribute("name"), grid: block(rows, ""), nums: block(nums, null), origin: { r: used[0], c: c0 } });
   }
   if (!sheets.length) throw new Error("The workbook has no data."); return sheets;
 }

@@ -19,11 +19,13 @@
     <button role="tab" data-view="slides">Slides</button>
     <button role="tab" data-view="storyline">Storyline</button>
     <button role="tab" data-view="numbers">Numbers</button>
+    <button role="tab" data-view="sources">Sources</button>
     <button role="tab" data-view="compare">Compare</button>
   </nav>
   <div class="actions">
     <button class="btn" id="btn-open" title="Open a deck (Ctrl+O)">Open</button>
-    <button class="btn" id="btn-compare" disabled title="Open the previous version of this deck to see what changed">Compare with…</button>
+    <button class="btn" id="btn-source" hidden disabled title="Open the Excel model or another document and check every figure in the deck against it">Check against source…</button>
+    <button class="btn" id="btn-compare" hidden disabled title="Open the previous version of this deck to see what changed">Compare with…</button>
     <button class="btn btn--primary" id="btn-export" disabled>Report</button>
   </div>
 </header>
@@ -52,5 +54,6 @@
 <div class="menu" id="menu" hidden></div>
 <input type="file" id="file" accept=".pptx,.pdf" hidden>
 <input type="file" id="file-prev" accept=".pptx,.pdf" hidden>
+<input type="file" id="file-src" accept=".xlsx,.csv,.tsv,.pdf,.pptx,.docx" multiple hidden>
 </body>
 </html>

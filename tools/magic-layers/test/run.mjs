@@ -46,6 +46,13 @@ try {
   check("numbers: rounding is not a mismatch, another period is another metric", g2.length === 1 && g2[0].status === "precision" && g2[0].facts.length === 2);
   check("titles: a conclusion is an action title", C.classifyTitle("EBITDA margin recovered to 14% as logistics costs normalised", "en").kind === "action" && C.classifyTitle("Pendapatan naik karena volume logistik yang lebih tinggi", "id").kind === "action");
   check("titles: a topic is a label", C.classifyTitle("Market overview", "en").kind === "label" && C.classifyTitle("Strategic Storytelling & Corporate Communications", "en").kind !== "action" && C.classifyTitle("Executive summary", "en").kind === "exempt");
+  const SRC = await import("../app/js/audit/sources.js");
+  const cell = (o) => ({ source: "model.xlsx", where: "sheet", pct: false, unitHint: "", shown: String(o.value), sheet: "Summary", row: 1, col: 1, at: "Summary!B2", rowLabel: "", colLabel: "", ...o });
+  const src = [{ name: "model.xlsx", kind: "workbook", note: "1 sheet", facts: [cell({ value: 14, pct: true, label: ["ebitda", "margin"], periods: ["Q3 25"], rowLabel: "EBITDA margin", colLabel: "Q3 25", shown: "14%" }), cell({ value: 57412000, label: ["total", "revenue"], periods: ["FY25"], rowLabel: "Total revenue", colLabel: "FY25", row: 2, col: 2 }), cell({ value: 50000000, label: ["total", "revenue"], periods: ["FY24"], rowLabel: "Total revenue", colLabel: "FY24", row: 2, col: 1 })] }];
+  const st = (t) => SRC.reconcile(N.factsInText(t, "en", { slide: 1, shapeId: "a", where: "body" }), src).items.map((i) => i.status).join();
+  check("source check: a figure that agrees is confirmed, across scales", st("EBITDA margin reached 14% in Q3 25") === "confirmed" && st("Total revenue of Rp 57.4 tn in FY25") === "confirmed");
+  check("source check: same metric and period with another value differs", st("EBITDA margin reached 15% in Q3 25") === "differs" && SRC.sourceFindings(SRC.reconcile(N.factsInText("EBITDA margin reached 15% in Q3 25", "en", { slide: 3, shapeId: "a", where: "body" }), src))[0].code === "source-differs");
+  check("source check: a growth rate is derived from the row, an unknown figure is not found", st("Revenue grew 14.8% in FY25") === "derived" && st("Headcount of 4,820 in FY25") === "missing");
 } catch (e) { check("rules load in Node", false, e.message); }
 
 console.log("\nChart Builder rules");
@@ -107,7 +114,15 @@ else {
     await pg.setInputFiles("#file-prev", join(root, "app/sample/audit-sample-previous.pptx")); await pg.waitForFunction("window.__audit.S.cmp && !window.__audit.S.busy", null, { timeout: 60000 });
     const cmp = await pg.evaluate(() => window.__audit.S.cmp.summary); check("compare: slides paired, changes counted", cmp.changed === 5 && cmp.added === 1 && cmp.removed === 1 && cmp.same === 2 && cmp.figures === 4, JSON.stringify(cmp));
     const rep = await pg.evaluate(() => [window.__audit.report(), window.__audit.csv(), window.__audit.changeLog()]); check("report, spreadsheet and change log are produced", /Numbers that match/.test(rep[0]) && /Changes since the previous version/.test(rep[0]) && rep[1].split("\n").length === codes.length + 1 && /12% → 16%/.test(rep[2]));
-    for (const v of ["slides", "storyline", "numbers", "compare", "overview"]) await pg.click(`#tabs [data-view=${v}]`);
+    // Source Check: the deck against its Excel model, then against a Word document
+    await pg.click("#tabs [data-view=sources]"); await pg.setInputFiles("#file-src", join(root, "app/sample/audit-sample-model.xlsx")); await pg.waitForFunction("window.__audit.S.recon && !window.__audit.S.busy", null, { timeout: 60000 });
+    const rc = await pg.evaluate(() => { const S = window.__audit.S, by = (raw, slide) => (S.recon.items.find((i) => i.fact.raw === raw && i.fact.slide === slide) || {}).status; return { s: S.recon.summary, a: by("14%", 2), b: by("15%", 3), c: by("2.1x", 2), d: by("16%", 2), e: by("41", 5), f: by("24", 4), codes: S.result.findings.filter((x) => x.code.startsWith("source")).map((x) => x.code), at: S.recon.items.find((i) => i.fact.raw === "15%").source.at }; });
+    check("source check: every figure of the deck is looked up in the workbook", rc.s.total === 24 && rc.s.confirmed === 16 && rc.s.differs === 2 && rc.s.derived === 2 && rc.s.missing === 4, JSON.stringify(rc.s));
+    check("source check: agreement, difference, scale and derivation are told apart", rc.a === "confirmed" && rc.b === "differs" && rc.c === "differs" && rc.d === "derived" && rc.e === "derived" && rc.f === "confirmed" && rc.at === "Margins!G2", JSON.stringify(rc));
+    check("source check: differences become findings and enter the report", rc.codes.filter((x) => x === "source-differs").length === 2 && rc.codes.includes("source-missing") && /Checked against the source/.test(await pg.evaluate(() => window.__audit.report())));
+    await pg.evaluate(() => { window.__audit.S.sources = []; }); await pg.setInputFiles("#file-src", join(root, "test/samples/press-release.docx")); await pg.waitForFunction("window.__audit.S.recon && window.__audit.S.recon.sources[0].kind === 'document' && !window.__audit.S.busy", null, { timeout: 60000 });
+    const rd = await pg.evaluate(() => window.__audit.S.recon.summary); check("source check: a Word document as the source", rd.confirmed === 7 && rd.differs === 3, JSON.stringify(rd));
+    for (const v of ["slides", "storyline", "numbers", "sources", "compare", "overview"]) await pg.click(`#tabs [data-view=${v}]`);
     await pg.setInputFiles("#file", join(root, "test/samples/credentials.pdf")); await pg.waitForFunction("window.__audit.S.deck && window.__audit.S.deck.kind === 'pdf' && !window.__audit.S.busy", null, { timeout: 120000 });
     const pdf = await pg.evaluate(() => ({ n: window.__audit.S.deck.slides.length, t: window.__audit.S.deck.slides[0].title && window.__audit.S.deck.slides[0].title.text, doc: window.__audit.S.result.document })); check("auditor reads a PDF", pdf.n === 8 && pdf.t === "Firm credentials" && pdf.doc === true, JSON.stringify(pdf));
     // 7. the Chart Builder: data in, every chart type out as a native chart, and the result passes the Deck Auditor
