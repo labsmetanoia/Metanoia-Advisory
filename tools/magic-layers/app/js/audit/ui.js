@@ -6,6 +6,7 @@ import { audit } from "./checks.js";
 import { compareDecks } from "./compare.js";
 import { reportHtml, findingsCsv, labels } from "./report.js";
 import { readSource, reconcile, sourceFindings, sourceLocation } from "./sources.js";
+import { fixPlan, applyFixes } from "./fix.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
@@ -24,6 +25,7 @@ async function open(file) {
   if (!file) return;
   const deck = await busy("Reading the deck", async () => { const d = await read(file, "Reading the deck"); if (!d.slides.length) throw new Error("This file has no slides."); progress("Auditing", "Comparing figures, titles and design", 0.95); await new Promise((r) => setTimeout(r, 30)); return d; });
   if (!deck) return;
+  if (!S.keepFix) S.fixLog = null; S.file = file;
   Object.assign(S, { sources: [], recon: null, deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
   run(); const r = S.result, hi = r.findings.filter((f) => f.severity === "high").length;
   toast(`${deck.slides.length} slides audited: ${r.findings.length} finding${r.findings.length === 1 ? "" : "s"}${hi ? `, ${hi} to fix` : ""}.`);
@@ -33,6 +35,23 @@ function run() {
   S.recon = S.sources.length ? reconcile(S.result.facts, S.sources) : null;
   if (S.recon) { const order = { high: 0, medium: 1, low: 2 }; sourceFindings(S.recon).forEach((f, i) => S.result.findings.push({ id: `src${i + 1}`, pillar: "numbers", slides: f.slide ? [f.slide] : [], refs: f.slide && f.shapeId ? [{ slide: f.slide, shapeId: f.shapeId }] : [], ...f })); S.result.findings.sort((a, b) => order[a.severity] - order[b.severity] || (a.slides[0] || 0) - (b.slides[0] || 0)); }
   render();
+}
+// One-click fixes: choose what to repair, save a corrected copy, then show the audit of that copy against the original.
+function fixMenu(anchor) {
+  const plan = fixPlan(S.deck, S.result, S.dismissed), m = $("menu"); m.textContent = ""; const f = el("div", "menu__form"); f.style.minWidth = "420px";
+  f.appendChild(el("b", "", "Save a corrected copy"));
+  if (!plan.length) f.appendChild(el("p", "doc__meta", S.deck.kind !== "pptx" ? "Fixes are written into PowerPoint files. Open the .pptx to use them." : "None of the open findings has a mechanical fix. The rest need a decision: wording, figures, sources."));
+  const boxes = plan.map((p) => { const l = el("label"), c = el("input"); c.type = "checkbox"; c.checked = true; c.value = p.code; l.style.cssText = "display:flex;gap:8px;align-items:flex-start;white-space:normal;line-height:1.35"; l.appendChild(c); l.appendChild(document.createTextNode(p.label)); f.appendChild(l); return c; });
+  if (plan.length) { const go = el("button", "btn btn--primary btn--block", "Save the corrected copy"); go.addEventListener("click", () => { m.hidden = true; fix(boxes.filter((c) => c.checked).map((c) => c.value)); }); f.appendChild(go); const note = el("p", "doc__meta", "The original file is not changed. Findings about wording, figures and sources are left for you."); note.style.whiteSpace = "normal"; f.appendChild(note); }
+  m.appendChild(f); m.hidden = false; const r = anchor.getBoundingClientRect(); m.style.top = `${r.bottom + 6}px`; m.style.left = `${Math.max(8, r.right - m.offsetWidth)}px`;
+}
+async function fix(codes) {
+  if (!codes.length) return; const before = S.deck, n0 = S.result.findings.filter((x) => !S.dismissed.has(x.id)).length, sources = S.sources;
+  const out = await busy("Fixing", async () => { progress("Fixing", "Writing the corrected copy", 0.5); return applyFixes(S.file, S.deck, S.result, codes); }); if (!out) return;
+  if (!out.log.length) return toast("Nothing needed changing.", "error");
+  const name = S.deck.name.replace(/( - fixed)?\.pptx$/i, " - fixed.pptx"), fixed = new File([out.blob], name); download(out.blob, name);
+  S.keepFix = true; S.fixLog = { log: out.log, from: before.name, before: n0 }; try { await open(fixed); } finally { S.keepFix = false; }
+  if (S.deck && S.deck.name === name) { S.prev = before; S.sources = sources; run(); toast(`${name} saved. ${out.log.length} kind${out.log.length > 1 ? "s" : ""} of fix applied; ${S.result.findings.length} finding${S.result.findings.length === 1 ? "" : "s"} remain.`); }
 }
 async function openSources(files) {
   if (!files.length || !S.deck) return; const got = await busy("Reading the source", async () => { const out = []; for (const f of files) { progress("Reading the source", f.name, 0.4); out.push(await readSource(f, (st, fr) => progress("Reading the source", `${f.name}: ${st}`, fr * 0.9))); } return out; }); if (!got) return;
@@ -128,6 +147,7 @@ function viewOverview(v) {
   const r = S.result, d = S.deck, open = r.findings.filter((f) => !S.dismissed.has(f.id)), hi = open.filter((f) => f.severity === "high").length;
   v.appendChild(el("h1", "", hi ? `${hi} thing${hi > 1 ? "s" : ""} to fix before this deck goes out` : open.length ? "Nothing critical; a few points to check" : "No issues detected"));
   v.appendChild(el("p", "lede", `${r.stats.slides} slides, ${r.stats.words.toLocaleString("en")} words and ${r.stats.figures} figures were read${d.kind === "pdf" ? " from the PDF. Table totals, chart data and typefaces can only be checked in the PowerPoint file." : "."}${r.document ? " The pages are portrait, so this was read as a report: the slide rules for density and type size were not applied." : ""} Findings are prompts to look, sorted by how much a reader would mind.`));
+  if (S.fixLog) { const c = el("div", "card"); c.style.cssText = "margin-bottom:14px;border-left:4px solid #2E6B3A"; c.appendChild(el("h2", "", "This is the corrected copy")).style.marginTop = "0"; const ul = el("ul"); ul.style.cssText = "margin:0 0 8px;padding-left:18px"; S.fixLog.log.forEach((t) => ul.appendChild(el("li", "", t))); c.appendChild(ul); c.appendChild(el("p", "doc__meta", `Made from ${S.fixLog.from}, which is unchanged. ${S.fixLog.before} findings before, ${open.length} now. Open the Compare tab to see what moved; check the corrected slides in PowerPoint before sending.`)).style.whiteSpace = "normal"; v.appendChild(c); }
   const ps = el("div", "pillars"), blurb = { numbers: "Every figure agrees with every other mention of it and with its own arithmetic.", structure: "An answer-first storyline, carried by titles that state conclusions.", design: "One typographic system, one grid, nothing left over from drafting." };
   for (const p of ["numbers", "structure", "design"]) { const fs = open.filter((f) => f.pillar === p), c = (s) => fs.filter((f) => f.severity === s).length, b = el("button", "card pillar"); b.innerHTML = `<small>${PILLAR[p]}</small><strong>${fs.length}<i>finding${fs.length === 1 ? "" : "s"}</i></strong><div class="bar">${fs.length ? `<i class="h" style="flex:${c("high")}"></i><i class="m" style="flex:${c("medium")}"></i><i class="l" style="flex:${c("low")}"></i>` : ""}</div>`; b.appendChild(el("p", "", fs.length ? `${c("high")} to fix · ${c("medium")} to check · ${c("low")} to polish` : blurb[p])); b.addEventListener("click", () => { S.filter.pillar = p; S.filter.sev = "all"; render(); }); ps.appendChild(b); }
   v.appendChild(ps);
@@ -188,7 +208,7 @@ async function aiReview() {
 
 /* ---------- frame ---------- */
 function render() {
-  const has = Boolean(S.deck); $("empty").hidden = has; $("audit").hidden = !has; $("tabs").hidden = !has; $("btn-export").disabled = !has; $("btn-compare").disabled = !has; $("btn-source").disabled = !has;
+  const has = Boolean(S.deck); $("empty").hidden = has; $("audit").hidden = !has; $("tabs").hidden = !has; $("btn-fix").disabled = !has || S.deck.kind !== "pptx"; $("btn-export").disabled = !has; $("btn-compare").disabled = !has; $("btn-source").disabled = !has;
   if (!has) return; const d = S.deck;
   $("doc-name").textContent = d.name; $("doc-meta").textContent = `${d.slides.length} slides · ${d.kind === "pdf" ? "PDF" : "PowerPoint"}`; document.title = `${d.name} — Deck Auditor`;
   document.querySelectorAll("#tabs button").forEach((b) => { b.classList.toggle("is-on", b.dataset.view === S.view); if (b.dataset.view === "sources") b.innerHTML = S.recon && S.recon.summary.differs ? `Sources<sup>${S.recon.summary.differs}</sup>` : "Sources"; if (b.dataset.view === "compare") b.innerHTML = S.cmp ? `Compare<sup>${S.cmp.summary.changed + S.cmp.summary.added + S.cmp.summary.removed}</sup>` : "Compare"; });
@@ -210,14 +230,14 @@ async function boot() {
   $("btn-open").addEventListener("click", () => $("file").click()); $("btn-open-2").addEventListener("click", () => $("file").click()); $("btn-sample").addEventListener("click", sample);
   $("file").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; open(f); }); $("file-prev").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; openPrevious(f); });
   $("btn-source").addEventListener("click", () => $("file-src").click()); $("file-src").addEventListener("change", (e) => { const fs = [...e.target.files]; e.target.value = ""; openSources(fs); });
-  $("btn-compare").addEventListener("click", () => $("file-prev").click()); $("btn-export").addEventListener("click", (e) => exportMenu(e.currentTarget));
+  $("btn-compare").addEventListener("click", () => $("file-prev").click()); $("btn-export").addEventListener("click", (e) => exportMenu(e.currentTarget)); $("btn-fix").addEventListener("click", (e) => fixMenu(e.currentTarget));
   $("tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; S.view = b.dataset.view; S.focus = null; if (S.view !== "slides") S.filter.slideOnly = false; render(); });
-  document.addEventListener("pointerdown", (e) => { if (!$("menu").hidden && !$("menu").contains(e.target) && !e.target.closest("#btn-export")) $("menu").hidden = true; }, true);
+  document.addEventListener("pointerdown", (e) => { if (!$("menu").hidden && !$("menu").contains(e.target) && !e.target.closest("#btn-export,#btn-fix")) $("menu").hidden = true; }, true);
   let depth = 0; window.addEventListener("dragenter", (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes("Files")) { depth++; document.body.classList.add("is-drop"); } }); window.addEventListener("dragleave", () => { depth = Math.max(0, depth - 1); if (!depth) document.body.classList.remove("is-drop"); });
   window.addEventListener("dragover", (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes("Files")) e.preventDefault(); }); window.addEventListener("drop", (e) => { if (!e.dataTransfer || !e.dataTransfer.files.length) return; e.preventDefault(); depth = 0; document.body.classList.remove("is-drop"); const fs = [...e.dataTransfer.files]; if (S.deck && e.shiftKey) openPrevious(fs[0]); else open(fs[0]); });
   window.addEventListener("keydown", (e) => { if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return; const mod = e.ctrlKey || e.metaKey; if (mod && e.key.toLowerCase() === "o") { e.preventDefault(); $("file").click(); } else if (e.key === "Escape") $("menu").hidden = true; else if (S.deck && S.view === "slides" && e.key === "ArrowRight" && S.slide < S.deck.slides.length) goSlide(S.slide + 1); else if (S.deck && S.view === "slides" && e.key === "ArrowLeft" && S.slide > 1) goSlide(S.slide - 1); });
   let rz = 0; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (S.deck && S.view === "slides") render(); }, 120); });
-  render(); window.__audit = { S, open, openPrevious, openSources, changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon }), csv: () => findingsCsv(S.result, S.dismissed) };
+  render(); window.__audit = { S, open, openPrevious, openSources, fix, fixPlan: () => fixPlan(S.deck, S.result, S.dismissed), changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon }), csv: () => findingsCsv(S.result, S.dismissed) };
   document.documentElement.dataset.ready = "1";
 }
 boot();

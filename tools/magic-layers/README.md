@@ -80,8 +80,25 @@ How to work with it:
 - **Numbers** is a ledger of every figure that appears more than once, disagreements first, with a search box.
 - **Sources** checks the deck against its source of truth: see "Source Check" below.
 - **Compare** opens the previous version of the deck. Slides are paired even when pages were added, removed or moved; every change to wording and figures is shown, and "Copy the change log" gives a text version to send to the client.
+- **Fix…** repairs the findings that have a mechanical remedy and saves a corrected copy: see "One-click fixes" below.
 - **Report** saves a one-page audit report (open it and print to PDF), the findings as a spreadsheet, or the change log.
 - Tick "This is a Metanoia deck" on the Overview to flag every typeface other than the house fonts.
+
+### One-click fixes
+
+![Choosing what to repair](docs/auditor-fix.jpg)
+
+Press **Fix…** (PowerPoint files only). The findings that can be repaired without a decision are listed with a tick box each; untick any you want to leave, then press "Save the corrected copy". A file named like the original with " - fixed" added is saved, and the app switches to that copy so you see what remains. The original file is never changed.
+
+| Finding | What the fix does |
+| --- | --- |
+| Stray typefaces | Text in a stray typeface is set to the deck's own body typeface (titles to its title typeface); with "This is a Metanoia deck" ticked, to the house fonts |
+| Title in another size | The title is set to the size the other titles use. A title PowerPoint has shrunk to fit is left alone: it needs shortening, not resizing |
+| Title out of place | The title is moved to where the other titles start |
+| Stretched pictures | The picture keeps its place and size and is trimmed to its frame instead of being squeezed, so a little of its edges is cropped |
+| Empty placeholders | Deleted |
+
+Everything else (wording, figures, sources, draft markers, low-resolution pictures) needs a decision and is left as a finding. The Compare tab shows the corrected copy against the original. Look through the corrected slides in PowerPoint before sending: a moved title can meet other content, and a trimmed picture can lose something at its edge.
 
 ### Source Check
 
@@ -173,7 +190,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, compares it with its previous version, and reconciles it against an Excel model and a Word document. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with fifteen planted flaws, expects exactly those fifteen findings, compares it with its previous version, reconciles it against an Excel model and a Word document, and applies the one-click fixes, expecting the five mechanical findings to be gone from the corrected file and the other ten to remain. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
 
 ## Files
 

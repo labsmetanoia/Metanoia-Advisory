@@ -77,3 +77,5 @@ The same app has a second tab, **Deck Auditor**: open a finished deck before it 
 The third tab, **Chart Builder**, makes the charts: paste a range from Excel, choose the chart type, write the action title and source line, and export a slide with a native PowerPoint chart in the house style. It warns when the figure in the title is not in the data.
 
 Before a deck with numbers goes out, open the Deck Auditor's **Sources** tab and load the client's Excel model (or the report the deck must agree with). Figures that differ from the source are listed with the cell they should match.
+
+The Auditor's **Fix…** button repairs the mechanical findings (stray fonts, title size and position, stretched pictures, empty placeholders) and saves a corrected copy next to the original, which is left unchanged. Check the corrected slides in PowerPoint before sending.

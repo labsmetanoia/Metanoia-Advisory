@@ -47,12 +47,13 @@ def build(path, previous=False):
     source(s, "Source: company management accounts (illustrative figures). As of Q3 2025.")
 
     s = fit(prs.slides.add_slide(title_only)); s.shapes.title.text = "Revenue by segment"
+    t0 = s.shapes.title; t0.left, t0.top, t0.width = t0.left + Inches(0.6), t0.top + Inches(0.3), t0.width - Inches(0.6)   # the title sits off its usual place on purpose
     rows = [("Segment, Rp tn", "FY24", "FY25"), ("Consumer", "21", "24"), ("Industrial", "19", "22"), ("Other", "10", "12"), ("Total", "50", "56" if not previous else "58")]
     t = s.shapes.add_table(len(rows), 3, Inches(0.8), Inches(2.0), Inches(7.5), Inches(3.2)).table
     for r, row in enumerate(rows):
         for c, v in enumerate(row): t.cell(r, c).text = v
 
-    s = fit(prs.slides.add_slide(title_only)); s.shapes.title.text = "Consumer now supplies two-fifths of revenue"
+    s = fit(prs.slides.add_slide(title_body)); s.shapes.title.text = "Consumer now supplies two-fifths of revenue"   # the body placeholder is left empty on purpose
     cd = CategoryChartData(); cd.categories = ["Consumer", "Industrial", "Other"]; cd.add_series("Share of FY25 revenue", (41, 36, 20))
     s.shapes.add_chart(XL_CHART_TYPE.PIE, Inches(0.8), Inches(1.9), Inches(6), Inches(4.6), cd)
     tb = s.shapes.add_textbox(Inches(7.4), Inches(2.4), Inches(5), Inches(1.6)); tb.text_frame.word_wrap = True

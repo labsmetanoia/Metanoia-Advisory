@@ -733,3 +733,23 @@ An extension of the Deck Auditor (`tools/magic-layers/app/js/audit/sources.js`, 
 | Output | A Sources view with filters and cell references; "differs" as high-priority findings; a "not traced" finding; a section in the audit report |
 
 **Verified.** `npm test` runs 86 checks. On the sample deck and model: 24 figures, 16 confirmed, 2 different (with the cell reference), 2 derived, 4 not found, as planted; a Word press release as source gives 7 confirmed and 3 different. Not exercised: a real client model. Models with terse or coded row labels will confirm less.
+
+---
+
+## 43. One-click fixes — a corrected copy from the audit (17 November 2026)
+
+The Deck Auditor can now repair the findings whose remedy is mechanical (`tools/magic-layers/app/js/audit/fix.js`, button "Fix…"). It writes a corrected copy of the PowerPoint file; the original is never changed.
+
+| Finding | Fix written into the slide XML |
+| --- | --- |
+| Stray typefaces | `a:latin` typefaces in the stray set are replaced by the deck's body typeface (title typeface in titles), or the house fonts when the deck is marked as a Metanoia deck |
+| Title in another size | Explicit `sz` on the title's runs is set to the dominant title size; titles shrunk by PowerPoint's autofit are left alone |
+| Title out of place | The title's `a:off` is set to the most common title position |
+| Stretched pictures | `a:srcRect` is set so the picture is cropped to its frame's proportions instead of being scaled unevenly |
+| Empty placeholders | The shape is removed |
+
+Only the slide parts that change are re-serialised; masters, media, charts and notes are carried over untouched. After saving, the app audits the corrected copy and keeps the original as the "previous version", so the Compare tab shows what moved. Findings that need a decision (wording, figures, sources, draft markers, low-resolution pictures) are not touched.
+
+The sample deck now carries fifteen planted flaws (an empty placeholder and a title out of place were added).
+
+**Verified.** `npm test` runs 92 checks: the five mechanical findings are offered, the corrected file contains the described changes, its audit shows exactly the ten remaining findings. The same flow was run on the deck re-saved by LibreOffice; both corrected files open in python-pptx and convert in LibreOffice. Not exercised: opening a corrected file in PowerPoint itself.

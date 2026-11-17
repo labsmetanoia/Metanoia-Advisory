@@ -124,7 +124,7 @@ export async function readPptx(file, onProgress = () => {}) {
       }
     };
     await walk(dig(root, "cSld", "spTree"), (b) => b);
-    slides.push({ index: n + 1, hidden: root.getAttribute("show") === "0", background: bgOf(sp.doc) || (layout && bgOf(layout.doc)) || (master && bgOf(master.doc)) || "#FFFFFF", layoutName: layout ? (dig(layout.doc.documentElement, "cSld") || { getAttribute: () => "" }).getAttribute("name") || "" : "", shapes });
+    slides.push({ index: n + 1, part: order[n].target, hidden: root.getAttribute("show") === "0", background: bgOf(sp.doc) || (layout && bgOf(layout.doc)) || (master && bgOf(master.doc)) || "#FFFFFF", layoutName: layout ? (dig(layout.doc.documentElement, "cSld") || { getAttribute: () => "" }).getAttribute("name") || "" : "", shapes });
   }
   return finishDeck({ name: file.name, kind: "pptx", width: W, height: H, theme, slides });
 }
