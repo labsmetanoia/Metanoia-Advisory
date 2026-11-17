@@ -28,6 +28,7 @@ try {
   check("refuses another site's origin", (await fetch(`${base}/api/status`, { headers: { origin: "https://example.com" } })).status === 403);
   const ai = await fetch(`${base}/api/ai-assist`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
   check("AI assist is off without a key (or answers when configured)", st.ai ? ai.status !== 404 : ai.status === 503);
+  check("serves the Chart Builder", (await (await fetch(`${base}/charts.html`)).text()).includes("Chart Builder"));
   check("serves the Deck Auditor", (await (await fetch(`${base}/auditor.html`)).text()).includes("Deck Auditor"));
   for (const f of ["/js/audit/ui.js", "/sample/audit-sample.pptx", "/sample/audit-sample-previous.pptx"]) { const r = await fetch(base + f, { method: "HEAD" }); check(`serves ${f}`, r.ok, String(r.status)); }
 } catch (e) { check("server reachable", false, e.message); }
@@ -46,6 +47,19 @@ try {
   check("titles: a conclusion is an action title", C.classifyTitle("EBITDA margin recovered to 14% as logistics costs normalised", "en").kind === "action" && C.classifyTitle("Pendapatan naik karena volume logistik yang lebih tinggi", "id").kind === "action");
   check("titles: a topic is a label", C.classifyTitle("Market overview", "en").kind === "label" && C.classifyTitle("Strategic Storytelling & Corporate Communications", "en").kind !== "action" && C.classifyTitle("Executive summary", "en").kind === "exempt");
 } catch (e) { check("rules load in Node", false, e.message); }
+
+console.log("\nChart Builder rules");
+try {
+  const D = await import("../app/js/charts/data.js"), R = await import("../app/js/charts/render.js");
+  const en = D.gridToData(D.parseDelimited("Quarter\tEBITDA margin\nQ2 24\t11%\nQ3 25\t14%")), id = D.gridToData(D.parseDelimited("Segmen;FY24;FY25\nKonsumen;1.250,5;1.410,0\nIndustri;980,2;(1.020,4)"));
+  check("data: a pasted Excel range becomes categories and series", en.categories.join() === "Q2 24,Q3 25" && en.series[0].values.join() === "11,14" && en.unit === "%");
+  check("data: Indonesian separators and bracketed negatives", id.lang === "id" && id.series[0].values[0] === 1250.5 && id.series[1].values[1] === -1020.4);
+  const b = R.bridge({ data: { categories: ["FY24", "Volume", "Price", "Cost", "FY25"], series: [{ values: [50, 6, 3, -2, 58] }] }, lastIsTotal: true });
+  check("bridge: steps are summed and compared with the stated total", b.end === 57 && b.stated === 58 && b.steps.length === 5);
+  check("growth note: change in points for percentages, CAGR for amounts", R.growthNote({ type: "column", growth: "change", format: { suffix: "%" }, data: en }) === "+3.0 pp vs Q2 24" && /^CAGR \+10% \(FY23–FY25\)$/.test(R.growthNote({ type: "column", growth: "cagr", format: {}, data: { categories: ["FY23", "FY24", "FY25"], series: [{ name: "x", values: [100, 110, 121] }] } })));
+  const two = { categories: ["A", "B", "C"], series: [{ name: "X", values: [3, 5, 2] }, { name: "Y", values: [1, 2, 4] }] };
+  check("preview: every chart type draws", ["column", "bar", "stacked", "stacked100", "line", "pie", "waterfall"].every((t) => /<svg[\s\S]*(rect|path|polyline)/.test(R.renderChart({ type: t, data: two, highlight: { kind: "none" } }))));
+} catch (e) { check("chart rules load in Node", false, e.message); }
 
 let chromium = null;
 for (const from of [join(root, "package.json"), join(root, "..", "..", "package.json"), join(process.cwd(), "package.json")]) { try { chromium = createRequire(from)("playwright").chromium; break; } catch (e) { /* try next */ } }
@@ -96,6 +110,27 @@ else {
     for (const v of ["slides", "storyline", "numbers", "compare", "overview"]) await pg.click(`#tabs [data-view=${v}]`);
     await pg.setInputFiles("#file", join(root, "test/samples/credentials.pdf")); await pg.waitForFunction("window.__audit.S.deck && window.__audit.S.deck.kind === 'pdf' && !window.__audit.S.busy", null, { timeout: 120000 });
     const pdf = await pg.evaluate(() => ({ n: window.__audit.S.deck.slides.length, t: window.__audit.S.deck.slides[0].title && window.__audit.S.deck.slides[0].title.text, doc: window.__audit.S.result.document })); check("auditor reads a PDF", pdf.n === 8 && pdf.t === "Firm credentials" && pdf.doc === true, JSON.stringify(pdf));
+    // 7. the Chart Builder: data in, every chart type out as a native chart, and the result passes the Deck Auditor
+    await pg.goto(`${base}/charts.html`); await pg.evaluate(() => localStorage.clear()); await pg.reload(); await pg.waitForFunction("document.documentElement.dataset.ready === '1'", null, { timeout: 20000 });
+    check("chart builder opens with a sample chart", await pg.evaluate(() => window.__charts.S.charts.length === 1 && document.querySelector("#chart svg rect") !== null));
+    await pg.setInputFiles("#file", join(root, "test/samples/chart-data.xlsx")); await pg.waitForFunction("window.__charts.S.sheets", null, { timeout: 20000 });
+    const xl = await pg.evaluate(() => { const c = window.__charts; return { grid: c.S.charts[0].grid, sheets: c.S.sheets.length, f: c.specOf(c.S.charts[0]).format }; }); check("an Excel workbook is read with its percentages", xl.sheets === 2 && xl.grid[1].join() === "Q2 24,11%,5%" && xl.f.suffix === "%", JSON.stringify(xl.grid[1]));
+    await pg.evaluate(() => { const c = window.__charts, mk = (o) => ({ ...c.blank(), source: "Source: illustrative figures.", ...o });
+      c.S.charts = [mk({ type: "column", title: "EBITDA margin recovered to 14% in Q3 25 as logistics costs normalised", grid: [["", "EBITDA margin"], ["Q2 25", "13%"], ["Q3 25", "14%"]], highlight: { kind: "last" } }),
+        mk({ type: "stacked", title: "Revenue reached Rp 58 tn as Consumer overtook Industrial", grid: [["", "Consumer", "Industrial", "Other"], ["FY24", "21", "19", "10"], ["FY25", "24", "22", "12"]] }),
+        mk({ type: "line", title: "Margin has widened in both segments", grid: [["", "Consumer", "Industrial"], ["FY24", "12.1%", "11.9%"], ["FY25", "14.0%", "12.6%"]] }),
+        mk({ type: "pie", title: "Consumer is the largest segment at 41% of revenue", grid: [["", "Share"], ["Consumer", "41%"], ["Industrial", "38%"], ["Other", "21%"]] }),
+        mk({ type: "waterfall", title: "Volume and price lifted EBITDA from Rp 50 bn to Rp 57 bn", grid: [["", "EBITDA"], ["FY24", "50"], ["Volume", "6"], ["Price", "3"], ["Cost", "-2"], ["FY25", "57"]], lastIsTotal: true })]; c.S.cur = 0; c.renderAll(); });
+    check("a correct chart raises no warning", await pg.evaluate(() => window.__charts.S.charts.every((c) => window.__charts.warningsOf(c).length === 0)));
+    const warn = await pg.evaluate(() => { const c = window.__charts, bad = { ...c.S.charts[0], title: "EBITDA margin recovered to 15% in Q3 25" }, br = { ...c.S.charts[4], grid: [["", "EBITDA"], ["FY24", "50"], ["Volume", "6"], ["FY25", "58"]] }, pie = { ...c.S.charts[3], grid: [["", "Share"], ["A", "41%"], ["B", "36%"], ["C", "20%"]], title: "A leads" }; return [c.warningsOf(bad), c.warningsOf(br), c.warningsOf(pie)].map((w) => w.map((x) => x.code).join()); });
+    check("warnings: a title figure not in the data, a bridge that does not add up, shares short of 100%", warn[0] === "title-figure" && warn[1].includes("bridge-total") && warn[2].includes("shares"), warn.join(" | "));
+    await pg.click("#btn-export"); const [cdl] = await Promise.all([pg.waitForEvent("download", { timeout: 60000 }), pg.click("#menu .menu__item")]); const cpath = join(out, "Charts.pptx"); await cdl.saveAs(cpath);
+    if (JSZip) { const z = await JSZip.loadAsync(readFileSync(cpath)), names = Object.keys(z.files), charts = names.filter((n) => /^ppt\/charts\/chart\d+\.xml$/.test(n)), all = (await Promise.all(charts.map((n) => z.file(n).async("string")))).join("\n");
+      check("PowerPoint: five native charts with their workbooks", charts.length === 5 && names.filter((n) => /embeddings\/.*\.xlsx$/.test(n)).length === 5, `${charts.length}`);
+      check("PowerPoint: bar, line and doughnut-or-pie chart parts", /<c:barChart>/.test(all) && /<c:lineChart>/.test(all) && /<c:(pie|doughnut)Chart>/.test(all));
+      check("PowerPoint: bridge base is invisible, stack totals sit above the stack", /<c:v>\(base\)<\/c:v>[\s\S]*?<a:noFill\/>/.test(all) && /inBase/.test(all) && /<c:legendEntry>/.test(all)); }
+    await pg.goto(`${base}/auditor.html`); await pg.waitForFunction("document.documentElement.dataset.ready === '1'"); await pg.setInputFiles("#file", cpath); await pg.waitForFunction("window.__audit.S.result && !window.__audit.S.busy", null, { timeout: 60000 });
+    const au = await pg.evaluate(() => ({ n: window.__audit.S.deck.slides.length, f: window.__audit.S.result.findings.map((x) => x.code), figs: window.__audit.S.result.stats.figures })); check("the exported charts pass the Deck Auditor with their data read", au.n === 5 && au.f.length === 0 && au.figs >= 20, JSON.stringify(au));
     check("no script errors", errors.length === 0, errors.slice(0, 2).join(" ; "));
   } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
   await browser.close(); console.log(`  (files written to ${out}: ${readdirSync(out).length})`);

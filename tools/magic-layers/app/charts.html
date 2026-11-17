@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chart Builder — Metanoia Advisory</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/auditor.css">
+<link rel="stylesheet" href="/css/charts.css">
+<script src="/vendor/jszip/jszip.min.js" defer></script>
+<script src="/vendor/pptxgen/pptxgen.bundle.js" defer></script>
+<script type="module" src="/js/charts/ui.js"></script>
+</head>
+<body class="auditor charts">
+<header class="top">
+  <div class="brand" title="Metanoia Advisory"><span class="lockup"><span>Metanoia</span><i></i><b>Advisory</b></span><nav class="switch" aria-label="Tools"><a href="/">Magic Layers</a><a href="/auditor.html">Deck Auditor</a><a href="/charts.html" class="is-on" aria-current="page">Chart Builder</a></nav></div>
+  <div class="doc"><span id="doc-meta" class="doc__meta"></span></div>
+  <span></span>
+  <div class="actions">
+    <button class="btn" id="btn-open" title="Open a spreadsheet, a CSV file or a saved chart set">Open</button>
+    <button class="btn" id="btn-save" title="Save every chart to a file you can reopen">Save</button>
+    <button class="btn btn--primary" id="btn-export">Export</button>
+  </div>
+</header>
+<main class="cb">
+  <aside class="rail" id="rail" aria-label="Charts"></aside>
+  <section class="view" id="view">
+    <div class="sheet" id="sheet">
+      <h1 id="f-title" contenteditable="plaintext-only" spellcheck="true" data-ph="Write the conclusion this chart proves"></h1>
+      <p id="f-subtitle" class="sub" contenteditable="plaintext-only" data-ph="What is shown, and in what unit"></p>
+      <div id="chart" class="chart"></div>
+      <p id="f-source" class="src" contenteditable="plaintext-only" data-ph="Source: …"></p>
+    </div>
+    <div id="warnings" class="warnings"></div>
+    <p class="previewnote">The preview is close to, not identical with, what PowerPoint draws. In PowerPoint the chart is a normal chart: right-click it and choose Edit Data.</p>
+  </section>
+  <aside class="side">
+    <div class="group"><h3>Chart type</h3><div class="types" id="types"></div></div>
+    <div class="group"><h3>Data <span class="hint">first row: series · first column: categories</span></h3>
+      <div class="gridwrap"><table class="grid" id="grid"></table></div>
+      <div class="gridacts"><button class="link" data-g="paste" title="Paste a range copied from Excel">Paste from Excel</button><button class="link" data-g="row">+ Row</button><button class="link" data-g="col">+ Column</button><button class="link" data-g="swap" title="Swap rows and columns">Swap</button><button class="link" data-g="clear">Clear</button></div>
+      <select id="sheets" hidden></select>
+    </div>
+    <div class="group" id="options"></div>
+  </aside>
+</main>
+<div class="dropveil" id="dropveil"><div>Drop a spreadsheet to chart it</div></div>
+<div class="toasts" id="toasts"></div>
+<div class="menu" id="menu" hidden></div>
+<input type="file" id="file" accept=".xlsx,.csv,.tsv,.txt,.mcharts,.json" hidden>
+</body>
+</html>

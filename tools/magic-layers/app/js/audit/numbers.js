@@ -63,10 +63,10 @@ export function collectFacts(deck, lang) {
     if (sh.kind === "table" && sh.rows) {
       const head = sh.rows[0] || [];
       sh.rows.forEach((row, r) => row.forEach((cell, c) => { if (!r || !c || !cell) return; const f = factsInText(cell, lang, { ...base, where: "table", cell: [r, c] }, { all: true })[0]; if (!f || f.context.replace(/[^\p{L}]/gu, "").length > 14) return;
-        const hd = `${row[0]} ${head[c] || ""}`; f.label = [...new Set(wordsOf(hd))]; f.periods = [...periodsOf(hd)]; if (!f.unit && /%/.test(head[c] || "")) f.unit = "%"; f.context = `${row[0]} · ${head[c] || ""}: ${cell}`; facts.push(f); }));
+        const hd = `${row[0]} ${head[c] || ""}`; f.label = [...new Set(wordsOf(`${hd} ${head[0] || ""}`.replace(PERIOD, " ")))]; f.periods = [...periodsOf(hd)]; if (!f.unit && /%/.test(head[c] || "")) f.unit = "%"; f.context = `${row[0]} · ${head[c] || ""}: ${cell}`; facts.push(f); }));
     } else if (sh.kind === "chart" && sh.chart) {
       for (const ser of sh.chart.series) ser.values.forEach((v, i) => { if (!Number.isFinite(v)) return; const raw = ser.raw[i], hd = `${ser.name} ${ser.categories[i] || ""}`; const pct = ser.percent && Math.abs(v) <= 1.5;
-        facts.push({ ...base, where: "chart", raw: pct ? `${Math.round(v * 1000) / 10}%` : String(Math.round(v * 100) / 100), value: pct ? v * 100 : v, decimals: Math.min(2, (String(pct ? Math.round(v * 1000) / 10 : raw).split(".")[1] || "").length), unit: ser.percent ? "%" : "", currency: "", label: [...new Set(wordsOf(hd))], periods: [...periodsOf(hd)], context: `${sh.chart.title || "Chart"} · ${ser.name} · ${ser.categories[i] || ""}`, chart: true }); });
+        facts.push({ ...base, where: "chart", raw: pct ? `${Math.round(v * 1000) / 10}%` : String(Math.round(v * 100) / 100), value: pct ? v * 100 : v, decimals: Math.min(2, (String(pct ? Math.round(v * 1000) / 10 : raw).split(".")[1] || "").length), unit: ser.percent ? "%" : "", currency: "", label: [...new Set(wordsOf(`${hd} ${sh.chart.title || ""}`.replace(PERIOD, " ")))], periods: [...periodsOf(hd)], context: `${sh.chart.title || "Chart"} · ${ser.name} · ${ser.categories[i] || ""}`, chart: true }); });
     } else if (sh.kind === "text" && sh.role !== "slidenum" && sh.role !== "date") {
       for (const p of sh.paras) if (p.text.trim() && !p.runs.some((r) => r.field)) facts.push(...factsInText(p.text, lang, { ...base, where: sh.isTitle ? "title" : sh.role === "footer" ? "footer" : "body" }));
     }
@@ -82,9 +82,11 @@ export function metricGroups(facts) {
   const parent = facts.map((_, i) => i), find = (i) => (parent[i] === i ? i : (parent[i] = find(parent[i])));
   for (let i = 0; i < facts.length; i++) for (let j = i + 1; j < facts.length; j++) {
     const a = facts[i], b = facts[j]; if (a.shapeId === b.shapeId && !(a.cell || b.cell)) continue; const loose = (f) => !f.unit && (f.where === "chart" || f.where === "table");   // units of chart and table values often live in a header
-    if ((a.unit !== b.unit && !loose(a) && !loose(b)) || (a.currency && b.currency && a.currency !== b.currency)) continue;
+    const data = (f) => f.where === "chart" || f.where === "table";
+    if ((a.unit !== b.unit && ((!loose(a) && !loose(b)) || (data(a) && data(b)))) || (a.currency && b.currency && a.currency !== b.currency)) continue;
     if (!a.label.length || !b.label.length || !sameSet(a.periods, b.periods)) continue;
-    const j2 = jaccard(a.label, b.label); if ((j2.common >= 2 && j2.score >= 0.75) || (j2.score === 1 && a.periods.length)) parent[find(i)] = find(j);
+    const j2 = jaccard(a.label, b.label); // one shared word is enough only between two sentences; a series or row name alone ("Consumer", "Total") recurs across unrelated exhibits
+    if ((j2.common >= 2 && j2.score >= 0.75) || (j2.score === 1 && a.periods.length && !data(a) && !data(b))) parent[find(i)] = find(j);
   }
   const groups = new Map(); facts.forEach((f, i) => { const r = find(i); if (!groups.has(r)) groups.set(r, []); groups.get(r).push(f); });
   return [...groups.values()].filter((g) => g.length > 1).map((g) => { const distinct = []; for (const f of g) if (!distinct.some((d) => sameValue(d, f))) distinct.push(f); const exact = new Set(g.map((f) => `${f.value}`)).size;

@@ -699,3 +699,22 @@ A second tool in the same local app as Magic Layers (`tools/magic-layers/`, tab 
 | Optional AI | `ai-storyline.mjs` (`/api/storyline`): with an API key, a partner-style review of the argument from titles and slide text. Off by default |
 
 **Verified.** `npm test` in the tool folder now runs 65 checks. The sample deck carries thirteen planted flaws; the audit reports exactly those thirteen, and the same result on the deck re-saved by LibreOffice. Not exercised: decks authored in PowerPoint itself beyond the python-pptx and LibreOffice files available in the build environment, and the live AI review.
+
+---
+
+## 41. Chart Builder — native PowerPoint charts from spreadsheet data (17 November 2026)
+
+A third tool in the local app (`tools/magic-layers/`, tab "Chart Builder", page `app/charts.html`). It turns a range pasted from Excel, an `.xlsx` workbook or a CSV file into native, editable PowerPoint charts in the house style. User instructions are in the tool's README.
+
+| Area | How it is built |
+| --- | --- |
+| Data in | `app/js/charts/data.js`: delimited text (tab, comma, semicolon) and a small `.xlsx` reader (JSZip + XML: cached cell values, percent and date formats, sheet picker); English and Indonesian number formats via the Auditor's parser; an editable grid with paste, add row and column, swap |
+| Chart types | Columns, bars, stacked, 100% stacked, line, pie and doughnut, bridge. Highlight one point or series in gold, order by size, number format and unit, growth note (change or CAGR) |
+| Preview | `render.js` draws the chart as SVG in the house palette; the same colour and scale rules feed the export. PNG and SVG export come from this renderer |
+| PowerPoint | `pptx.js`: PptxGenJS native charts with embedded workbooks (Edit Data works), action title, unit line, growth note and source line on a 16:9 slide. The chart XML is patched afterwards for what the library cannot express: the invisible base of a bridge, per-series label formats, stack totals carried by a hidden series capped by the axis, last-point labels on multi-line charts |
+| Checks | Warnings under the preview: a figure in the title that is not in the data, shares short of 100%, a bridge that does not add up to its stated total, missing title or source |
+| Storage | The chart set is kept in the browser's local storage and can be saved to a `.mcharts` file |
+
+Building it also tightened the Deck Auditor: series and row names alone ("Consumer", "Total") no longer pair figures across unrelated charts and tables, and the action-title share is computed on judged titles only.
+
+**Verified.** `npm test` in the tool folder now runs 79 checks: a workbook is read, five chart types are exported, the chart parts are inspected, and the exported deck passes the Deck Auditor with its chart data read. Exports were rendered with LibreOffice and compared with the preview. Not exercised: opening the exported charts in PowerPoint itself, including Edit Data.

@@ -1,11 +1,12 @@
-# Magic Layers and Deck Auditor
+# Magic Layers, Deck Auditor and Chart Builder
 
-Two desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
+Three desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
 
 - **Magic Layers** takes a flattened slide (a screenshot, an exported image, a PDF page, a PowerPoint made of pictures) and separates it into editable layers: live text boxes, shapes, lines and pictures on a repaired background. The result is edited in the app or exported as a normal, editable PowerPoint.
 - **Deck Auditor** reads a finished PowerPoint or PDF and checks it against the firm's three promises before it goes out: consulting structure, executive-grade design, numbers that match. It also compares two versions of a deck and writes the change log.
+- **Chart Builder** turns a range pasted from Excel, a workbook or a CSV file into native, editable PowerPoint charts in the house style, with the action title, unit line and source line in place.
 
-Switch between them with the two tabs at the top left.
+Switch between them with the tabs at the top left.
 
 ![A flat slide separated into text, shapes and pictures](docs/editing-text.jpg)
 
@@ -89,6 +90,30 @@ What to keep in mind:
 - A PDF has no placeholders, tables or chart data, so totals, chart figures and typefaces are checked only in the PowerPoint file. Portrait PDFs are read as reports and the slide rules for density and type size are skipped.
 - Old `.ppt` files must be saved as `.pptx` first.
 
+## Chart Builder
+
+Open the Chart Builder tab. It starts with a sample chart; replace its data and wording, or press "+ New chart".
+
+![A stacked chart with totals and a growth note](docs/charts-stacked.jpg)
+
+1. **Data.** Copy a range in Excel, click the first cell of the grid and press Ctrl+V. Or press Open for an `.xlsx` workbook (pick the sheet under the grid) or a CSV file, or type into the grid. The first row holds the series names, the first column the categories; "Swap" turns the table round. Percentages, thousands separators, brackets for negatives and Indonesian number formats are understood.
+2. **Chart type.** Columns, bars, stacked, 100% stacked, line, pie or doughnut, and bridge (waterfall).
+3. **Wording.** Click the title, the unit line and the source line on the preview and type. The title should state the conclusion the chart proves.
+4. **Options.** Highlight one bar or one series in gold and mute the rest; order bars by size; number format and unit; a growth note (change from first to last, or CAGR); values on or off.
+5. **Export.** PowerPoint (this chart, or all charts as one deck), PNG or SVG. Save keeps the whole set as a file; the set is also kept in this browser between sessions.
+
+In PowerPoint each chart is a normal chart: right-click it and choose Edit Data to change the numbers, and restyle it with PowerPoint's own tools. Colours, labels and totals follow the data.
+
+Before a chart leaves, the builder checks it and shows a warning under the preview when a figure in the title is not in the data, when pie shares do not make 100%, when a bridge's steps do not add up to its closing total, or when the title or source line is missing. Charts made here carry their data, so the Deck Auditor can check them against the rest of the deck.
+
+What to keep in mind:
+
+- The data is embedded in the chart, not linked to the workbook. When the source changes, paste the new range and export again, or edit the data in PowerPoint.
+- The preview is close to, not identical with, what PowerPoint draws: axis scaling and label placement are PowerPoint's own.
+- A bridge is built as a stacked chart with an invisible base, the usual technique. Its labels sit inside the bars, and a bridge that passes below zero is not drawn correctly.
+- In a stacked chart the totals above the bars come from a hidden "Total" series: if you edit the data in PowerPoint, update that column as well. A 100% chart stores the shares, not the amounts.
+- A formula cell in a workbook is read from its last saved result. Old `.xls` files must be saved as `.xlsx` first.
+
 ## Brand kit
 
 `app/brand.json` holds the house typefaces and colour swatches shown in the editor. Edit it to add colours or to change the heading and body typefaces.
@@ -129,7 +154,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, and compares it with its previous version.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, and compares it with its previous version. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
 
 ## Files
 
@@ -139,6 +164,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 | `server.mjs` | Local server (answers only to this computer) |
 | `ai-assist.mjs`, `ai-storyline.mjs` | Optional AI endpoints (Magic Layers text check, Deck Auditor storyline review) |
 | `app/auditor.html`, `app/js/audit/` | The Deck Auditor: PowerPoint and PDF readers, the checks, version compare, report |
+| `app/charts.html`, `app/js/charts/` | The Chart Builder: data readers, preview, PowerPoint export |
 | `app/` | The application: interface, analysis worker, importers, exporters |
 | `app/vendor/` | Bundled libraries: Tesseract OCR with English and Indonesian data, pdf.js, PptxGenJS, JSZip, ag-psd |
 | `app/brand.json` | House typefaces and colours |

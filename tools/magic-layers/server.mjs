@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/status") {
       const m = await ai();
-      return json(res, 200, { ok: true, version: "1.1.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
+      return json(res, 200, { ok: true, version: "1.2.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
     }
     if (url.pathname === "/api/ai-assist" && req.method === "POST") {
       const m = await ai();
@@ -65,6 +65,7 @@ const server = http.createServer(async (req, res) => {
     let p = decodeURIComponent(url.pathname);
     if (p === "/") p = "/index.html";
     if (p === "/auditor") p = "/auditor.html";
+    if (p === "/charts") p = "/charts.html";
     const file = normalize(join(appDir, p));
     if (!file.startsWith(appDir + sep)) return send(res, 403, "Forbidden");
     let st; try { st = await stat(file); } catch (e) { return send(res, 404, "Not found"); }
@@ -97,7 +98,7 @@ if (!existsSync(join(appDir, "vendor", "tesseract", "tesseract.min.js"))) {
   console.error("\n  The app's libraries are not installed yet.\n  Run this once in this folder (needs an internet connection):  npm install\n"); process.exit(1);
 }
 server.listen(PORT, HOST, () => {
-  console.log(`\n  Magic Layers and Deck Auditor are running.\n  Open ${address} in your browser.\n  Files stay on this computer. Close this window (or press Ctrl+C) to stop.\n`);
+  console.log(`\n  Magic Layers, Deck Auditor and Chart Builder are running.\n  Open ${address} in your browser.\n  Files stay on this computer. Close this window (or press Ctrl+C) to stop.\n`);
   if (!process.env.ANTHROPIC_API_KEY) console.log("  AI assist is off (optional). See README.md to switch it on.\n");
   openBrowser();
 });

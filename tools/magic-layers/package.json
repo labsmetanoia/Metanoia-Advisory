@@ -1,8 +1,8 @@
 {
   "name": "metanoia-magic-layers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "Magic Layers and Deck Auditor: turn flattened slides into editable layers, and audit decks for structure, design and matching numbers. Runs locally; files never leave the computer.",
+  "description": "Magic Layers, Deck Auditor and Chart Builder: local tools for deck production. Files never leave the computer.",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
