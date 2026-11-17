@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deck Auditor — Metanoia Advisory</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/auditor.css">
+<script src="/vendor/jszip/jszip.min.js" defer></script>
+<script type="module" src="/js/audit/ui.js"></script>
+</head>
+<body class="auditor">
+<header class="top">
+  <div class="brand" title="Metanoia Advisory"><span class="lockup"><span>Metanoia</span><i></i><b>Advisory</b></span><nav class="switch" aria-label="Tools"><a href="/">Magic Layers</a><a href="/auditor.html" class="is-on" aria-current="page">Deck Auditor</a></nav></div>
+  <div class="doc"><span id="doc-name" class="doc__name"></span><span id="doc-meta" class="doc__meta"></span></div>
+  <nav class="tabs" id="tabs" role="tablist" hidden>
+    <button role="tab" data-view="overview" class="is-on">Overview</button>
+    <button role="tab" data-view="slides">Slides</button>
+    <button role="tab" data-view="storyline">Storyline</button>
+    <button role="tab" data-view="numbers">Numbers</button>
+    <button role="tab" data-view="compare">Compare</button>
+  </nav>
+  <div class="actions">
+    <button class="btn" id="btn-open" title="Open a deck (Ctrl+O)">Open</button>
+    <button class="btn" id="btn-compare" disabled title="Open the previous version of this deck to see what changed">Compare with…</button>
+    <button class="btn btn--primary" id="btn-export" disabled>Report</button>
+  </div>
+</header>
+<main class="audit" id="audit" hidden>
+  <aside class="rail" id="rail" aria-label="Slides"></aside>
+  <section class="view" id="view" aria-live="polite"></section>
+  <aside class="side" aria-label="Findings">
+    <header class="side__head"><h2>Findings</h2><span id="find-count" class="doc__meta"></span></header>
+    <div class="filters" id="filters"></div>
+    <div class="findings" id="findings"></div>
+  </aside>
+</main>
+<section class="empty" id="empty">
+  <div class="empty__card">
+    <span class="eyebrow">Deck Auditor</span>
+    <h1>Check a deck before <em>the board does</em></h1>
+    <p>Open a presentation. Every figure is read and compared, every title is tested as a conclusion, and the design is checked for anything that drifted or was left over from drafting.</p>
+    <div class="empty__actions"><button class="btn btn--primary btn--lg" id="btn-open-2">Choose a deck</button><button class="btn btn--lg" id="btn-sample">Try the sample deck</button></div>
+    <p class="empty__formats">PowerPoint (.pptx) for the full audit · PDF for wording, figures and titles</p>
+    <p class="empty__privacy"><svg viewBox="0 0 20 20"><path d="M10 2.5l6 2.2v4.6c0 3.9-2.5 6.8-6 8.2-3.5-1.4-6-4.3-6-8.2V4.700z"/><path d="M7.4 10.2l1.8 1.800 3.400-3.600"/></svg>Everything runs on this computer. The deck is not uploaded anywhere.</p>
+  </div>
+</section>
+<div class="dropveil" id="dropveil"><div>Drop a deck to audit it</div></div>
+<div class="progress" id="progress" hidden><div class="progress__card"><div class="progress__title" id="progress-title">Reading</div><div class="progress__bar"><i id="progress-bar"></i></div><div class="progress__step" id="progress-step"></div></div></div>
+<div class="toasts" id="toasts"></div>
+<div class="menu" id="menu" hidden></div>
+<input type="file" id="file" accept=".pptx,.pdf" hidden>
+<input type="file" id="file-prev" accept=".pptx,.pdf" hidden>
+</body>
+</html>

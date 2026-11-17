@@ -28,7 +28,24 @@ try {
   check("refuses another site's origin", (await fetch(`${base}/api/status`, { headers: { origin: "https://example.com" } })).status === 403);
   const ai = await fetch(`${base}/api/ai-assist`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
   check("AI assist is off without a key (or answers when configured)", st.ai ? ai.status !== 404 : ai.status === 503);
+  check("serves the Deck Auditor", (await (await fetch(`${base}/auditor.html`)).text()).includes("Deck Auditor"));
+  for (const f of ["/js/audit/ui.js", "/sample/audit-sample.pptx", "/sample/audit-sample-previous.pptx"]) { const r = await fetch(base + f, { method: "HEAD" }); check(`serves ${f}`, r.ok, String(r.status)); }
 } catch (e) { check("server reachable", false, e.message); }
+
+console.log("\nDeck Auditor rules");
+try {
+  const N = await import("../app/js/audit/numbers.js"), C = await import("../app/js/audit/checks.js");
+  const pn = (r, l) => N.parseNumber(r, l).value;
+  check("numbers: English and Indonesian separators", pn("1,250.5", "en") === 1250.5 && pn("1.250,5", "id") === 1250.5 && pn("12,6", "id") === 12.6 && pn("1.250", "id") === 1250 && pn("1,250", "en") === 1250);
+  const f = N.factsInText("EBITDA margin recovered to 14% in Q3 2025 as logistics costs normalised", "en", {})[0];
+  check("numbers: a figure keeps its metric, unit and period", f.value === 14 && f.unit === "%" && f.label.join(" ") === "ebitda margin" && f.periods[0] === "Q3 25", JSON.stringify([f.label, f.periods]));
+  const g = N.metricGroups([...N.factsInText("EBITDA margin reached 14% in Q3 25", "en", { slide: 2, shapeId: "a" }), ...N.factsInText("Q3'25 EBITDA margin of 15%", "en", { slide: 5, shapeId: "b" })]);
+  check("numbers: the same metric with two values is a mismatch", g.length === 1 && g[0].status === "mismatch");
+  const g2 = N.metricGroups([...N.factsInText("EBITDA margin reached 14% in Q3 25", "en", { slide: 2, shapeId: "a" }), ...N.factsInText("EBITDA margin of 14.2% in Q3 25", "en", { slide: 5, shapeId: "b" }), ...N.factsInText("EBITDA margin of 11% in Q3 24", "en", { slide: 6, shapeId: "c" })]);
+  check("numbers: rounding is not a mismatch, another period is another metric", g2.length === 1 && g2[0].status === "precision" && g2[0].facts.length === 2);
+  check("titles: a conclusion is an action title", C.classifyTitle("EBITDA margin recovered to 14% as logistics costs normalised", "en").kind === "action" && C.classifyTitle("Pendapatan naik karena volume logistik yang lebih tinggi", "id").kind === "action");
+  check("titles: a topic is a label", C.classifyTitle("Market overview", "en").kind === "label" && C.classifyTitle("Strategic Storytelling & Corporate Communications", "en").kind !== "action" && C.classifyTitle("Executive summary", "en").kind === "exempt");
+} catch (e) { check("rules load in Node", false, e.message); }
 
 let chromium = null;
 for (const from of [join(root, "package.json"), join(root, "..", "..", "package.json"), join(process.cwd(), "package.json")]) { try { chromium = createRequire(from)("playwright").chromium; break; } catch (e) { /* try next */ } }
@@ -66,6 +83,19 @@ else {
     const deck = await save("pptx", { all: true }); if (JSZip) { const z2 = await JSZip.loadAsync(readFileSync(deck)); check("picture deck: every slide exported as editable", Boolean(z2.file("ppt/slides/slide2.xml")) && /<a:t>/.test(await z2.file("ppt/slides/slide2.xml").async("string"))); }
     // 5. a PDF
     await pg.setInputFiles("#file", join(root, "test/samples/credentials.pdf")); await idle(); s = await stats(); check("PDF: all pages imported", s.pages === 8, `${s.pages}`); check("PDF: text taken exactly from the file", /Firm credentials/.test(s.words) && /NOVEMBER 2026 · INDONESIAN AND ENGLISH/.test(s.words), s.words.slice(0, 160));
+    // 6. the Deck Auditor on a deck with known flaws, then against its previous version
+    await pg.goto(`${base}/auditor.html`); await pg.waitForFunction("document.documentElement.dataset.ready === '1'", null, { timeout: 20000 });
+    await pg.click("#btn-sample"); await pg.waitForFunction("window.__audit.S.result && !window.__audit.S.busy", null, { timeout: 60000 });
+    const codes = await pg.evaluate(() => window.__audit.S.result.findings.map((f) => f.code));
+    const expect = { mismatch: "a figure shown with two values", growth: "a growth rate that does not follow from its figures", headline: "a headline figure missing from its chart", "total-row": "a table total that does not add up", shares: "pie shares that do not make 100%", "no-source": "a data slide without a source", "label-titles": "label titles", language: "a slide in the other language", "draft-marks": "draft markers", fonts: "a stray typeface", stretched: "a stretched picture", "low-res": "a coarse picture", "title-size": "a title in another size" };
+    for (const [code, what] of Object.entries(expect)) check(`auditor finds ${what}`, codes.includes(code));
+    check("auditor: no finding beyond the planted flaws", codes.length === Object.keys(expect).length, codes.join(","));
+    await pg.setInputFiles("#file-prev", join(root, "app/sample/audit-sample-previous.pptx")); await pg.waitForFunction("window.__audit.S.cmp && !window.__audit.S.busy", null, { timeout: 60000 });
+    const cmp = await pg.evaluate(() => window.__audit.S.cmp.summary); check("compare: slides paired, changes counted", cmp.changed === 5 && cmp.added === 1 && cmp.removed === 1 && cmp.same === 2 && cmp.figures === 4, JSON.stringify(cmp));
+    const rep = await pg.evaluate(() => [window.__audit.report(), window.__audit.csv(), window.__audit.changeLog()]); check("report, spreadsheet and change log are produced", /Numbers that match/.test(rep[0]) && /Changes since the previous version/.test(rep[0]) && rep[1].split("\n").length === codes.length + 1 && /12% → 16%/.test(rep[2]));
+    for (const v of ["slides", "storyline", "numbers", "compare", "overview"]) await pg.click(`#tabs [data-view=${v}]`);
+    await pg.setInputFiles("#file", join(root, "test/samples/credentials.pdf")); await pg.waitForFunction("window.__audit.S.deck && window.__audit.S.deck.kind === 'pdf' && !window.__audit.S.busy", null, { timeout: 120000 });
+    const pdf = await pg.evaluate(() => ({ n: window.__audit.S.deck.slides.length, t: window.__audit.S.deck.slides[0].title && window.__audit.S.deck.slides[0].title.text, doc: window.__audit.S.result.document })); check("auditor reads a PDF", pdf.n === 8 && pdf.t === "Firm credentials" && pdf.doc === true, JSON.stringify(pdf));
     check("no script errors", errors.length === 0, errors.slice(0, 2).join(" ; "));
   } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
   await browser.close(); console.log(`  (files written to ${out}: ${readdirSync(out).length})`);

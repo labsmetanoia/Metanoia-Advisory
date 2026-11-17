@@ -68,6 +68,8 @@ The site is static; GitHub Pages or Cloudflare Pages host it for free. Change `f
 - Check Search Console for crawl errors and the sitemap status.
 - Review the Netlify credit usage; batch content changes into fewer deploys if it runs tight.
 
-## 9. Magic Layers (local tool for deck work)
+## 9. Magic Layers and Deck Auditor (local tools for deck work)
 
 `tools/magic-layers/` holds a desktop tool that turns flattened slides, PDFs and picture decks into editable layers and exports an editable PowerPoint. It runs on your own computer and is not part of the website: start it with `start.bat` (Windows), `start.command` (macOS) or `./start.sh` (Linux). Instructions, limits and the optional AI assist are in `tools/magic-layers/README.md`. Changes to it do not trigger a website build.
+
+The same app has a second tab, **Deck Auditor**: open a finished deck before it goes to a client and it lists figures that disagree, totals that do not add up, titles that are labels, draft markers, stray fonts and stretched pictures, and it compares the deck with its previous version to produce a change log. Make it the last step before every delivery; the report it saves can go in the engagement file.

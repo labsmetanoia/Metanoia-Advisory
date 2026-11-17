@@ -1,8 +1,11 @@
-# Magic Layers
+# Magic Layers and Deck Auditor
 
-A desktop tool for Metanoia Advisory's Strategic Storytelling & Corporate Communications work. It takes a flattened slide (a screenshot, an exported image, a PDF page, a PowerPoint made of pictures) and separates it into editable layers: live text boxes, shapes, lines and pictures on a repaired background. The result is edited in the app or exported as a normal, editable PowerPoint.
+Two desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
 
-It runs on your computer. Files are not uploaded anywhere.
+- **Magic Layers** takes a flattened slide (a screenshot, an exported image, a PDF page, a PowerPoint made of pictures) and separates it into editable layers: live text boxes, shapes, lines and pictures on a repaired background. The result is edited in the app or exported as a normal, editable PowerPoint.
+- **Deck Auditor** reads a finished PowerPoint or PDF and checks it against the firm's three promises before it goes out: consulting structure, executive-grade design, numbers that match. It also compares two versions of a deck and writes the change log.
+
+Switch between them with the two tabs at the top left.
 
 ![A flat slide separated into text, shapes and pictures](docs/editing-text.jpg)
 
@@ -57,6 +60,35 @@ Other shortcuts: arrows nudge (Shift: 10 px), Ctrl+Z / Ctrl+Y undo and redo, Ctr
 - **PowerPoint fonts.** PowerPoint uses the fonts installed on the computer that opens the file. Install Fraunces and Inter (free from Google Fonts) to see the deck as designed, or choose "PowerPoint with Office fonts" when the file goes to someone without them.
 - **Higher resolution reads better.** A slide exported at 1920 px or wider gives cleaner text than a small screenshot.
 
+## Deck Auditor
+
+Open a `.pptx` (full audit) or a PDF (wording, figures and titles), or press "Try the sample deck" to see a deck with known flaws being caught. Nothing needs to be configured.
+
+![The audit overview: findings by pillar](docs/auditor-overview.jpg)
+
+| Pillar | What is checked |
+| --- | --- |
+| Numbers that match | The same metric and period shown with different values on different slides, in text, tables or chart data. Table totals and total columns that do not equal the sum of their parts. Shares and pie charts that do not make 100%. A growth rate that does not follow from the two figures next to it. A figure in a title that is not in the chart or table below it. Data slides without a source line. English and Indonesian number formats (1,250.5 and 1.250,5) are both understood |
+| Consulting structure | Titles that name a topic instead of stating a conclusion; missing, duplicated and over-long titles; no executive summary near the front; no page that states the decision or next steps; slides with more than 150 words; a slide in the other language |
+| Executive-grade design | Draft markers left in (TBC, Lorem ipsum, xx%, [brackets]); stray typefaces; title size and position that change from slide to slide; pictures stretched out of proportion or too coarse for their size; text below 9 pt; content past the slide edge; text breaking the left margin; empty placeholders; missing page numbers |
+
+How to work with it:
+
+- **Findings** are on the right, sorted Fix, Check, Polish. Click one for the detail and the slide numbers; click a slide number to see the slide with the area outlined. "Set aside" removes a finding you have judged not to be an issue; it leaves the report.
+- **Storyline** lists every title in order with a verdict, which is the "read the titles alone" test. "Copy the titles" puts them on the clipboard.
+- **Numbers** is a ledger of every figure that appears more than once, disagreements first, with a search box.
+- **Compare with…** opens the previous version of the deck. Slides are paired even when pages were added, removed or moved; every change to wording and figures is shown, and "Copy the change log" gives a text version to send to the client.
+- **Report** saves a one-page audit report (open it and print to PDF), the findings as a spreadsheet, or the change log.
+- Tick "This is a Metanoia deck" on the Overview to flag every typeface other than the house fonts.
+
+What to keep in mind:
+
+- The checks find patterns, not meaning. Figures are matched by the words around them, so now and then two different metrics are paired, or the same metric worded differently on two slides is missed. A finding is a prompt to look; a clean report does not replace a read-through.
+- A chart pasted as a picture has no data to read. Run such slides through Magic Layers first, or audit the source file.
+- The slide preview is a layout sketch built from the file (text, tables, pictures, chart data). It is for locating a finding, not for judging the design. PDFs are shown exactly.
+- A PDF has no placeholders, tables or chart data, so totals, chart figures and typefaces are checked only in the PowerPoint file. Portrait PDFs are read as reports and the slide rules for density and type size are skipped.
+- Old `.ppt` files must be saved as `.pptx` first.
+
 ## Brand kit
 
 `app/brand.json` holds the house typefaces and colour swatches shown in the editor. Edit it to add colours or to change the heading and body typefaces.
@@ -69,7 +101,7 @@ Everything above works offline with no account. If you add an Anthropic API key,
 2. Copy `.env.example` to `.env` and paste the key after `ANTHROPIC_API_KEY=`.
 3. Restart the app.
 
-With AI assist, the image of the slide you run it on is sent to the Anthropic API. Nothing is sent when you do not use it. For confidential client material, leave it off.
+With AI assist, the image of the slide you run it on is sent to the Anthropic API. The same key switches on "Review the storyline with AI" in the Deck Auditor, which sends the deck's titles and slide text (not pictures) for a partner-style comment on the argument. Nothing is sent when you do not use these buttons. For confidential client material, leave them alone.
 
 ## How it compares with Canva's Magic Layers
 
@@ -97,7 +129,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port and checks that it serves correctly. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies the exported PowerPoint, PSD, SVG, PNG and project files.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with thirteen planted flaws, expects exactly those thirteen findings, and compares it with its previous version.
 
 ## Files
 
@@ -105,7 +137,8 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 | --- | --- |
 | `start.bat`, `start.command`, `start.sh` | Launchers |
 | `server.mjs` | Local server (answers only to this computer) |
-| `ai-assist.mjs` | Optional AI assist endpoint |
+| `ai-assist.mjs`, `ai-storyline.mjs` | Optional AI endpoints (Magic Layers text check, Deck Auditor storyline review) |
+| `app/auditor.html`, `app/js/audit/` | The Deck Auditor: PowerPoint and PDF readers, the checks, version compare, report |
 | `app/` | The application: interface, analysis worker, importers, exporters |
 | `app/vendor/` | Bundled libraries: Tesseract OCR with English and Indonesian data, pdf.js, PptxGenJS, JSZip, ag-psd |
 | `app/brand.json` | House typefaces and colours |

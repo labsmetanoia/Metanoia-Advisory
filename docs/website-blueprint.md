@@ -681,3 +681,21 @@ A desktop tool for the Strategic Storytelling practice, kept in `tools/magic-lay
 | Checks | `npm test` in the tool folder: server checks, and with Playwright a full run over the sample slide, a picture deck and an eight-page PDF, verifying every export |
 
 **Verified.** 38 automated checks pass on Linux with Chromium. Exported PowerPoint files were opened with python-pptx and rendered with LibreOffice against the originals. The Windows and macOS launchers and the live AI assist call could not be exercised in the build environment.
+
+---
+
+## 40. Deck Auditor — pre-delivery checks and version compare (16 November 2026)
+
+A second tool in the same local app as Magic Layers (`tools/magic-layers/`, tab "Deck Auditor", page `app/auditor.html`). It reads a finished PowerPoint or PDF and checks it against the three promises of the storytelling practice, and compares two versions of a deck. User instructions are in the tool's README.
+
+| Area | How it is built |
+| --- | --- |
+| Readers | `app/js/audit/pptx.js` parses the file in the browser (JSZip + XML): slide order, placeholder roles and inherited positions, text runs with resolved typeface, size (including PowerPoint's shrink-to-fit scale) and colour, tables, chart data caches, pictures with pixel size and crop. `pdfdeck.js` builds the same model from pdf.js text with inferred titles |
+| Numbers that match | `numbers.js`: every figure with its unit, currency, period and the words that describe it (English and Indonesian number formats); figures describing the same metric and period are grouped and compared; table total rows and columns, shares and pie charts, growth rates against their own figures, headline figures against the exhibit, missing source lines |
+| Consulting structure | `checks.js`: each title classified as action title, label or standard page, by slide language; missing, duplicate and long titles; executive summary and decision page; density; language mix |
+| Executive-grade design | Draft markers, stray typefaces (or anything but the house fonts on request), title size and position drift, stretched and low-resolution pictures, small type, content off the slide, margin breaks, empty placeholders, page numbers |
+| Version compare | `compare.js`: slides paired by a global alignment on text similarity (added, removed and moved pages), line and word differences, changed figures, replaced pictures and moved objects; change log as text |
+| Output | Findings by pillar and priority with "set aside"; slide view with the area outlined; storyline table; figures ledger; HTML report that prints to PDF, CSV of findings, change log |
+| Optional AI | `ai-storyline.mjs` (`/api/storyline`): with an API key, a partner-style review of the argument from titles and slide text. Off by default |
+
+**Verified.** `npm test` in the tool folder now runs 65 checks. The sample deck carries thirteen planted flaws; the audit reports exactly those thirteen, and the same result on the deck re-saved by LibreOffice. Not exercised: decks authored in PowerPoint itself beyond the python-pptx and LibreOffice files available in the build environment, and the live AI review.

@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/status") {
       const m = await ai();
-      return json(res, 200, { ok: true, version: "1.0.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
+      return json(res, 200, { ok: true, version: "1.1.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
     }
     if (url.pathname === "/api/ai-assist" && req.method === "POST") {
       const m = await ai();
@@ -53,10 +53,18 @@ const server = http.createServer(async (req, res) => {
       const out = await m.assist(body);
       return json(res, out.status || 200, out.body);
     }
+    if (url.pathname === "/api/storyline" && req.method === "POST") {
+      if (!process.env.ANTHROPIC_API_KEY) return json(res, 503, { error: "no_key" });
+      let mod; try { mod = await import("./ai-storyline.mjs"); } catch (e) { return json(res, 503, { error: "not_installed" }); }
+      let body; try { body = JSON.parse(await readBody(req)); } catch (e) { return json(res, 400, { error: e.message === "too_large" ? "too_large" : "bad_json" }); }
+      const out = await mod.review(body);
+      return json(res, out.status || 200, out.body);
+    }
     if (req.method !== "GET" && req.method !== "HEAD") return json(res, 405, { error: "method" });
 
     let p = decodeURIComponent(url.pathname);
     if (p === "/") p = "/index.html";
+    if (p === "/auditor") p = "/auditor.html";
     const file = normalize(join(appDir, p));
     if (!file.startsWith(appDir + sep)) return send(res, 403, "Forbidden");
     let st; try { st = await stat(file); } catch (e) { return send(res, 404, "Not found"); }
@@ -89,7 +97,7 @@ if (!existsSync(join(appDir, "vendor", "tesseract", "tesseract.min.js"))) {
   console.error("\n  The app's libraries are not installed yet.\n  Run this once in this folder (needs an internet connection):  npm install\n"); process.exit(1);
 }
 server.listen(PORT, HOST, () => {
-  console.log(`\n  Magic Layers is running.\n  Open ${address} in your browser.\n  Files stay on this computer. Close this window (or press Ctrl+C) to stop.\n`);
+  console.log(`\n  Magic Layers and Deck Auditor are running.\n  Open ${address} in your browser.\n  Files stay on this computer. Close this window (or press Ctrl+C) to stop.\n`);
   if (!process.env.ANTHROPIC_API_KEY) console.log("  AI assist is off (optional). See README.md to switch it on.\n");
   openBrowser();
 });
