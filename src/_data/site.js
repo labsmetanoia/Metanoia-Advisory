@@ -26,6 +26,13 @@ const formsCfg = cfg.forms || {};
 let formsProvider = formsCfg.provider || (hubspotReady ? "hubspot" : "netlify");
 if (formsProvider === "hubspot" && !hubspotReady) formsProvider = "netlify";
 if (formsProvider === "formspree" && !(formsCfg.formspree && formsCfg.formspree.contact)) { warn.push("forms.formspree.contact"); formsProvider = "none"; }
+// Web3Forms: the access key is public by design (it only names the inbox), so it may sit in site.config.json or in the
+// host's WEB3FORMS_KEY variable. Netlify Forms exists only on Netlify: a build on Cloudflare Pages (CF_PAGES is set
+// there) uses Web3Forms instead, so the same repository serves working forms on either host during a move.
+const web3Key = (process.env.WEB3FORMS_KEY || (formsCfg.web3forms && formsCfg.web3forms.accessKey) || "").trim();
+const onCloudflare = Boolean(process.env.CF_PAGES);
+if (formsProvider === "netlify" && onCloudflare) formsProvider = "web3forms";
+if (formsProvider === "web3forms" && !web3Key) { warn.push("forms.web3forms.accessKey (or WEB3FORMS_KEY)"); formsProvider = "none"; }
 if (!cfg.ga4MeasurementId) warn.push("ga4MeasurementId");
 if (!cfg.linkedinPartnerId) warn.push("linkedinPartnerId");
 
@@ -37,7 +44,7 @@ export default {
   ...cfg,
   phase,
   preview: PREVIEW,
-  forms: { provider: formsProvider, formspree: (formsCfg.formspree || {}) },
+  forms: { provider: formsProvider, formspree: (formsCfg.formspree || {}), web3forms: { accessKey: web3Key } },
   analytics: cfg.analytics || {},
   ai: cfg.ai || {},
   baseUrl: cfg.domain ? cfg.domain.replace(/\/$/, "") : "",

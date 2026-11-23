@@ -4,7 +4,7 @@
 {% for s in services %}{% if fd.services[s.key] %}{% set finderData = (finderData.push({ key: s.key, title: s.title | L(lang), url: s | serviceUrl(lang), line: (s.promiseM or s.promise) | L(lang), tags: fd.services[s.key] }), finderData) %}{% endif %}{% endfor %}
 <section class="section finder-section fade-up" id="finder" aria-labelledby="finder-title">
   <div class="wrap">
-    <div class="finder" data-finder='{{ finderData | json }}'>
+    <div class="finder" data-finder="{{ finderData | json }}">
       <div class="finder__intro">
         <span class="kicker kicker--rule">{{ fd.kicker | L(lang) }}</span>
         <h2 id="finder-title" class="gold-em">{{ fd.title | L(lang) | mdInline | safe }}</h2>

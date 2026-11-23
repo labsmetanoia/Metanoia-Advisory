@@ -9,7 +9,8 @@ Every form on the site (contact, deck review, newsletter, credentials download, 
 | Provider | When to use | Where submissions appear | Set-up |
 | --- | --- | --- | --- |
 | `netlify` (current) | Hosting on Netlify | Netlify dashboard → Forms. Each form has its own inbox and CSV export | Nothing to configure. Turn on email notifications under Forms → Notifications. Spam is filtered by the honeypot and Netlify's Akismet |
-| `formspree` | Hosting anywhere else (GitHub Pages, Cloudflare) | formspree.io inbox, emailed to you | Create a form per type at formspree.io and paste the IDs into `forms.formspree` |
+| `web3forms` | Hosting on Cloudflare Pages (chosen automatically there) | Emailed to the address the access key was created with | Create an access key at web3forms.com; set it as `WEB3FORMS_KEY` in the host's environment variables or in `forms.web3forms.accessKey` |
+| `formspree` | Hosting anywhere else | formspree.io inbox, emailed to you | Create a form per type at formspree.io and paste the IDs into `forms.formspree` |
 | `hubspot` | A HubSpot CRM is in place | HubSpot contacts and form submissions | Fill the `hubspot` block (portal ID and the three form GUIDs) |
 
 Every submission carries, besides the visitor's fields, the page it came from, the referrer, the UTM campaign values, the site language, and the service the visitor was reading (`topic`) when they came from a service page. The thank-you pages are `/en/contact/thank-you/` and `/id/kontak/terima-kasih/`; they are excluded from search engines.
@@ -56,9 +57,17 @@ The credentials PDFs (`src/root/downloads/`) are generated from the same content
 - GitHub Actions keeps the built site of every push as an artifact for seven days (Actions → the run → "site"), so a build can be inspected or uploaded by hand if ever needed.
 - Rollback: Netlify → Deploys → pick an earlier Published deploy → "Publish deploy". Or in git: `git revert <commit>` and push.
 
-## 7. Moving host (if ever needed)
+## 7. Hosting on Cloudflare Pages (free) with Web3Forms
 
-The site is static; GitHub Pages or Cloudflare Pages host it for free. Change `forms.provider` to `formspree`, point the domain's DNS records to the new host, and keep the `_redirects` language negotiation if the host supports it (Cloudflare Pages does). The AI functions are Netlify-specific; on Cloudflare they would move to Pages Functions.
+The site builds unchanged on Cloudflare Pages. A build there is detected automatically (Cloudflare sets `CF_PAGES`): forms switch from Netlify Forms to Web3Forms, and the two redirect rules written in Netlify-only syntax are dropped, so the root page redirects by browser language instead. Netlify keeps working from the same repository, which allows a move with no downtime.
+
+1. **Web3Forms.** At web3forms.com, create an access key with the email address where enquiries should arrive. The key is public by design; it only names the inbox.
+2. **Cloudflare.** Create a free account. Workers & Pages → Create → Pages → Connect to Git → choose `labsmetanoia/Metanoia-Advisory`. Build command `npm run build`, build output directory `_site`. Under Environment variables add `WEB3FORMS_KEY` with the access key. Save and deploy. Node 22 is taken from the `.node-version` file.
+3. **Check** the `…pages.dev` address: pages, both languages, the root redirect, and one test enquiry from the contact form (it should arrive by email).
+4. **Domain.** In the Pages project, Custom domains → add `www.metanoiaadvisors.com`. Where the domain's DNS is managed, point the `www` CNAME record at the `…pages.dev` address. For the bare domain, either move the nameservers to Cloudflare (free; required to serve the bare domain from Pages) or set a forward to `www` at the registrar.
+5. **Netlify.** Once the domain serves from Cloudflare, stop builds on the Netlify project (Project configuration → Build & deploy → Stop builds) and leave it as a fallback for a month.
+
+What differs from Netlify: the deck-review form takes a link instead of a file (Web3Forms' free plan has no uploads); all four forms arrive in one inbox, with the form's name in the subject; without JavaScript a visitor lands on Web3Forms' own confirmation page; the optional AI functions in `netlify/functions` do not run (they are switched off). To skip builds for pushes that only touch `tools/` or `docs/`, set Build watch paths in the Pages project's build settings. Without a key the forms are replaced by the email link and the build prints a warning.
 
 ## 8. Quarterly checklist
 

@@ -753,3 +753,20 @@ Only the slide parts that change are re-serialised; masters, media, charts and n
 The sample deck now carries fifteen planted flaws (an empty placeholder and a title out of place were added).
 
 **Verified.** `npm test` runs 92 checks: the five mechanical findings are offered, the corrected file contains the described changes, its audit shows exactly the ten remaining findings. The same flow was run on the deck re-saved by LibreOffice; both corrected files open in python-pptx and convert in LibreOffice. Not exercised: opening a corrected file in PowerPoint itself.
+
+---
+
+## 44. Host-independent build: Cloudflare Pages and Web3Forms (23 November 2026)
+
+Netlify's free plan pauses production deploys, and in the end the site itself, when its monthly credits run out. The site can now be served from Cloudflare Pages' free plan from the same repository, with Netlify left working as a fallback during the move. Steps for the owner are in `docs/operations-playbook.md`, section 7.
+
+| Area | What changed |
+| --- | --- |
+| Forms | New provider `web3forms` (`components/form-attrs.njk`, `form-hidden.njk`, `main.js`): JSON post to `api.web3forms.com/submit` with the access key, the form's name in the subject, a `botcheck` honeypot, and success read from the response. The key comes from `WEB3FORMS_KEY` or `forms.web3forms.accessKey` |
+| Host detection | `src/_data/site.js`: on Cloudflare Pages (`CF_PAGES`) the configured `netlify` provider becomes `web3forms`; with no key it becomes `none` (email link) and the build warns |
+| Redirects | `scripts/postbuild.mjs` removes the Netlify-only rules (forced status, language condition) from `_redirects` on Cloudflare; the root page's own script redirects by browser language; the plain 301 rules are kept |
+| Headers | `_headers`: `api.web3forms.com` added to `connect-src` and `form-action` (and `formspree.io` to `form-action`, which was missing) |
+| Build | `.node-version` (22) for hosts that read it; the build stamp also reads `CF_PAGES_COMMIT_SHA` |
+| Fix | The service finder's `data-finder` attribute now uses double quotes; it had been failing HTML validation |
+
+**Verified.** `npm test` passes on the default build (62 pages, links, parity, HTML validity). A build with `CF_PAGES=1` and a test key was submitted in a browser against a stubbed Web3Forms API: contact (both languages), deck review and newsletter show the success state, a refused submission shows the error. Not exercised: a real Cloudflare Pages build and a real Web3Forms delivery, neither of which is reachable from the build environment.

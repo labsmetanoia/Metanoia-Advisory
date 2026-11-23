@@ -118,7 +118,7 @@
     if (found) sessionStorage.setItem("utm", JSON.stringify(utm)); else utm = JSON.parse(sessionStorage.getItem("utm") || "{}");
   } catch (e) {}
 
-  /* ---- Forms: Netlify Forms, Formspree or HubSpot, chosen in site.config.json ---- */
+  /* ---- Forms: Netlify Forms, Web3Forms, Formspree or HubSpot, chosen in site.config.json ---- */
   var topicParam = (function () { try { return new URLSearchParams(location.search).get("topic") || ""; } catch (e) { return ""; } })();
   qsa("form[data-provider]").forEach(function (form) {
     var provider = form.getAttribute("data-provider"); if (provider === "none") return;
@@ -163,6 +163,10 @@
         var fd = new FormData(form); fd.delete("website");
         var hasFile = qs("input[type=file]", form) && qs("input[type=file]", form).files.length > 0;
         req = fetch(form.getAttribute("action") || location.pathname, { method: "POST", body: hasFile ? fd : new URLSearchParams(fd) });
+      } else if (provider === "web3forms") {
+        var w3 = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && k !== "botcheck" && typeof v === "string") w3[k] = v; });
+        req = fetch(form.getAttribute("action"), { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(w3) })
+          .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.success === true }; }); });
       } else if (provider === "formspree") {
         var payload = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && typeof v === "string") payload[k] = v; });
         payload._language = lang;

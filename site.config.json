@@ -25,8 +25,11 @@
   "linkedinPartnerId": "",
   "engagementsFromLine": false,
   "forms": {
-    "_comment": "provider: netlify (default on Netlify hosting, no keys needed), formspree (paste the form IDs from formspree.io), hubspot (uses the hubspot block above) or none.",
+    "_comment": "provider: netlify (default on Netlify hosting, no keys needed), web3forms (paste the access key from web3forms.com, or set WEB3FORMS_KEY in the host's environment variables), formspree (paste the form IDs from formspree.io), hubspot (uses the hubspot block above) or none. On Cloudflare Pages, 'netlify' switches to web3forms by itself, because Netlify Forms only works on Netlify.",
     "provider": "netlify",
+    "web3forms": {
+      "accessKey": ""
+    },
     "formspree": {
       "contact": "",
       "deckReview": "",

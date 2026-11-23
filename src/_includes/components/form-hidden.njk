@@ -1,4 +1,5 @@
 {#- Hidden context fields every form carries; the script fills the page, referrer and campaign values. expects `formKey`, `lang` -#}
 {%- if site.forms.provider == "netlify" %}<input type="hidden" name="form-name" value="{{ formKey }}">{% endif -%}
+{%- if site.forms.provider == "web3forms" %}<input type="hidden" name="access_key" value="{{ site.forms.web3forms.accessKey }}"><input type="hidden" name="subject" value="{{ site.name }} website: {{ formKey }}"><input type="hidden" name="from_name" value="{{ site.name }} website"><input type="hidden" name="form_name" value="{{ formKey }}">{% endif -%}
 <input type="hidden" name="language" value="{{ lang }}"><input type="hidden" name="page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="topic" value=""><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value="">
-<div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>{% if site.forms.provider == "web3forms" %}<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">{% endif %}</div>
