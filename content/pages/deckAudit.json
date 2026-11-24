@@ -131,16 +131,25 @@
       "en": "Download the sample report (PDF)",
       "id": "Unduh contoh laporan (PDF)"
     },
-    "file": "/downloads/deck-audit-sample-en.pdf",
-    "image": "/assets/img/deck-audit-sample-1536.webp",
-    "imageSmall": "/assets/img/deck-audit-sample-1000.webp",
+    "file": {
+      "en": "/downloads/deck-audit-sample-en.pdf",
+      "id": "/downloads/deck-audit-sample-id.pdf"
+    },
+    "image": {
+      "en": "/assets/img/deck-audit-sample-1536.webp",
+      "id": "/assets/img/deck-audit-sample-id-1536.webp"
+    },
+    "imageSmall": {
+      "en": "/assets/img/deck-audit-sample-1000.webp",
+      "id": "/assets/img/deck-audit-sample-id-1000.webp"
+    },
     "alt": {
       "en": "Two pages of a sample Deck Audit report: the cover with the reviewer's view, and findings with what to do about each.",
       "id": "Dua halaman contoh laporan Audit Dek: sampul dengan pandangan peninjau, dan temuan beserta tindak lanjutnya."
     },
     "caption": {
-      "en": "Sample only. The company and every figure in it are invented. The report is written in English.",
-      "id": "Hanya contoh. Perusahaan dan seluruh angkanya rekaan. Laporan ditulis dalam bahasa Inggris."
+      "en": "Sample only. The company and every figure in it are invented.",
+      "id": "Hanya contoh. Perusahaan dan seluruh angkanya rekaan; dek contohnya berbahasa Inggris, laporannya berbahasa Indonesia."
     }
   },
   "process": {
@@ -217,8 +226,8 @@
           "id": "Yang Anda terima"
         },
         "text": {
-          "en": "A written report in English (PDF) and a 45-minute readout in Indonesian or English.",
-          "id": "Laporan tertulis berbahasa Inggris (PDF) dan sesi pembahasan 45 menit dalam bahasa Indonesia atau Inggris."
+          "en": "A written report in Indonesian or English (PDF) and a 45-minute readout.",
+          "id": "Laporan tertulis berbahasa Indonesia atau Inggris (PDF) dan sesi pembahasan 45 menit."
         }
       },
       {

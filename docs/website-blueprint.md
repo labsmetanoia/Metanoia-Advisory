@@ -789,3 +789,19 @@ The Deck Auditor produced a working list for the person doing the review. This a
 **To confirm by the owner.** The terms on the page (three working days, a 45-minute readout, one deck per audit) come from the business plan's working assumptions; edit `terms` and the questions in the content files if they change. The confidentiality answer says the software runs on the firm's own computers and the deck is not uploaded to an outside AI service, which holds as long as the tool's optional AI assist stays off for client files.
 
 **Verified.** Tool self-test: 97 checks, including the client report's contents, escaping of the reviewer's text, set-aside findings left out, notes kept between sessions and the saved file. Site: `npm test` passes (66 pages, links, bilingual parity, HTML validity); the page was checked at 1440, 900 and 390 px in both languages; the form was submitted in a browser on a Cloudflare-style build against a stubbed Web3Forms API and showed the success state in both languages. Not exercised: a real submission on the live site.
+
+## 46. Indonesian client report and a wider rule test (24 November 2026)
+
+The Deck Audit is sold to Indonesian boards and finance teams, and its report existed in English only.
+
+| Area | What changed |
+| --- | --- |
+| Indonesian report (tool, v1.6.0) | `app/js/audit/id.js` restates every finding type in Indonesian from its code, slide list and quoted figures, with an Indonesian "what to do" line for each. `clientReportHtml` takes its words from a per-language table (`REPORT.en`, `REPORT.id`); the form has a **Report language** choice. Wording the module does not recognise falls back to English, so a report is never left with a gap |
+| Rule coverage | `test/messy-deck.mjs` builds a deliberately bad deck in the auditor's own model. It exercises fourteen rules the sample deck did not reach (titles missing, repeated or too long, dense pages, no summary, no decision page, total columns, chart totals, shares in a table, rounding, page numbers, small type, content past the edge, margins) |
+| Title judgement | A title with an irregular verb ("held", "stood", "sold", "kept" and others) was read as a label. The verb list now covers them; found by the bad-deck test |
+| Site | The offer page serves the sample in the visitor's language (`deck-audit-sample-id.pdf` added, with its own preview image); the terms and the language question now say the report is written in Indonesian or English |
+
+**Verified.** Tool self-test: 103 checks. Both sample reports were regenerated from the tool and the Indonesian one was read through in full. Site `npm test` passes.
+
+**Still open.** The auditor has not yet been run on real client or published decks; that needs files from the owner.
+

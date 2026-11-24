@@ -108,4 +108,4 @@ body.auditor .doc { overflow: hidden; } body.auditor .doc__meta { overflow: hidd
 .finding textarea.note { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; font: inherit; resize: vertical; margin-bottom: 8px; background: #FDFCFA; }
 .finding textarea.note:focus { outline: 2px solid var(--gold-dark); outline-offset: 0; background: #fff; }
 .menu__form .field { display: grid; gap: 4px; } .menu__form .field span { font-size: 11.5px; color: var(--muted); font-weight: 600; }
-.menu__form .field input, .menu__form .field textarea { border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; font: inherit; width: 100%; resize: vertical; }
+.menu__form .field input, .menu__form .field textarea, .menu__form .field select { border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; font: inherit; width: 100%; resize: vertical; }

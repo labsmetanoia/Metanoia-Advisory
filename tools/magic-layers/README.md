@@ -90,7 +90,7 @@ The findings list is a working tool. The client report is the document you hand 
 
 1. Go through the findings. **Set aside** the ones that are not issues; they are left out of the report.
 2. Open a finding and type in **Note for the client report** where you have something to add: which figure is the right one, a suggested title, what to ask the finance team.
-3. **Report → Client report…** Fill in who it is for, your overall view, and the one page you would rebuild first and why. Leave "Our view" empty and the report states the counts instead.
+3. **Report → Client report…** Choose the report language (English or Bahasa Indonesia), then fill in who it is for, your overall view, and the one page you would rebuild first and why. Leave "Our view" empty and the report states the counts instead.
 4. **Save the client report.** It is a single HTML file; open it and print to PDF (A4).
 
 ![Client report details](docs/auditor-client-form.jpg)
@@ -99,7 +99,9 @@ The report has a cover, your view, the points to fix before the deck goes out, t
 
 ![Client report](docs/auditor-client-report.jpg)
 
-Notes and client details are kept in this browser per file name, so you can close the tool and continue later. They are not written into the deck. A finished example, on an invented company, is on the website as `src/root/downloads/deck-audit-sample-en.pdf`.
+In Bahasa Indonesia the headings, the findings and the "what to do" lines are all restated in Indonesian; text quoted from the deck stays as the deck has it, and your own notes are printed as you typed them, so write them in the report's language. The tool itself stays in English.
+
+Notes and client details are kept in this browser per file name, so you can close the tool and continue later. They are not written into the deck. Finished examples in both languages, on an invented company, are on the website as `src/root/downloads/deck-audit-sample-en.pdf` and `deck-audit-sample-id.pdf`.
 
 ### One-click fixes
 
