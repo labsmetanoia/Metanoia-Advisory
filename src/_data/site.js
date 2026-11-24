@@ -47,6 +47,7 @@ export default {
   forms: { provider: formsProvider, formspree: (formsCfg.formspree || {}), web3forms: { accessKey: web3Key } },
   analytics: cfg.analytics || {},
   ai: cfg.ai || {},
+  tools: { ...(cfg.tools || {}), deckCheck: process.env.DECK_CHECK || (cfg.tools && cfg.tools.deckCheck) || "off" },
   baseUrl: cfg.domain ? cfg.domain.replace(/\/$/, "") : "",
   buildDate: new Date().toISOString(),
   practiceNames: {

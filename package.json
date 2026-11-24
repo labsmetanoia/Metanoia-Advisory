@@ -10,6 +10,7 @@
     "build:preview": "rm -rf _site && SITE_PREVIEW=1 eleventy && node scripts/postbuild.mjs",
     "build:phase1": "rm -rf _site && SITE_PHASE=1 eleventy",
     "clean": "rm -rf _site",
+    "test:deck-check": "node scripts/check-deck-check.mjs",
     "test": "npm run build:preview && node scripts/check-links.mjs && SITE_PREVIEW=1 node scripts/check-parity.mjs && npm run build && node scripts/check-links.mjs && node scripts/check-parity.mjs && npx html-validate \"_site/**/*.html\"",
     "test:a11y": "node scripts/check-a11y.mjs",
     "screenshots": "node scripts/screenshots.mjs",
@@ -22,7 +23,9 @@
     "@11ty/eleventy": "^3.1.7",
     "axe-core": "^4.14.0",
     "esbuild": "^0.24.2",
-    "html-validate": "^11.17.0"
+    "html-validate": "^11.17.0",
+    "jszip": "^3.10.2",
+    "pdfjs-dist": "^6.5.438"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0"

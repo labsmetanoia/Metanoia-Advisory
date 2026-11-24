@@ -276,6 +276,10 @@
     "services": {
       "en": "See all storytelling services",
       "id": "Lihat semua layanan storytelling"
+    },
+    "check": {
+      "en": "Or run the free deck check in your browser",
+      "id": "Atau jalankan cek dek gratis di browser Anda"
     }
   },
   "form": {

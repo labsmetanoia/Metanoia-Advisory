@@ -1,0 +1,248 @@
+{
+  "_comment": "The free in-browser deck check. The deck is read by the Deck Auditor's own modules in the visitor's browser; nothing is uploaded. Whether the page is built, hidden or linked is set by tools.deckCheck in site.config.json.",
+  "seoTitle": {
+    "en": "Free deck check, in your browser",
+    "id": "Cek dek gratis, di browser Anda"
+  },
+  "metaDescription": {
+    "en": "Drop a PowerPoint or PDF and see in seconds how many figures disagree, how many titles are only labels and what still looks like a draft. The file is read on your own computer and is not uploaded.",
+    "id": "Letakkan berkas PowerPoint atau PDF dan lihat dalam hitungan detik berapa angka yang tidak cocok, berapa judul yang hanya label, dan apa yang masih tampak seperti draf. Berkas dibaca di komputer Anda sendiri dan tidak diunggah."
+  },
+  "name": {
+    "en": "Deck check",
+    "id": "Cek dek"
+  },
+  "hero": {
+    "title": {
+      "en": "Check your deck *before anyone else does*",
+      "id": "Periksa dek Anda *sebelum orang lain memeriksanya*"
+    },
+    "lede": {
+      "en": "Drop a PowerPoint or PDF. In a few seconds you see how many figures disagree, how many titles are only labels and what still looks like a draft, with the three findings we would look at first.",
+      "id": "Letakkan berkas PowerPoint atau PDF. Dalam beberapa detik Anda melihat berapa angka yang tidak cocok, berapa judul yang hanya label, dan apa yang masih tampak seperti draf, beserta tiga temuan yang akan kami lihat lebih dulu."
+    },
+    "privacy": {
+      "en": "The file is read on your own computer. It is not uploaded, and we never see it.",
+      "id": "Berkas dibaca di komputer Anda sendiri. Berkas tidak diunggah, dan kami tidak pernah melihatnya."
+    }
+  },
+  "drop": {
+    "title": {
+      "en": "Drop your deck here",
+      "id": "Letakkan dek Anda di sini"
+    },
+    "or": {
+      "en": "or",
+      "id": "atau"
+    },
+    "button": {
+      "en": "Choose a file",
+      "id": "Pilih berkas"
+    },
+    "types": {
+      "en": "PowerPoint (.pptx) or PDF",
+      "id": "PowerPoint (.pptx) atau PDF"
+    },
+    "noscript": {
+      "en": "This check needs JavaScript, because it runs in your browser instead of on a server.",
+      "id": "Pemeriksaan ini memerlukan JavaScript, karena dijalankan di browser Anda, bukan di server."
+    },
+    "sample": {
+      "en": "No deck to hand? Try a sample with errors planted in it",
+      "id": "Belum ada dek? Coba contoh yang sengaja diberi kesalahan"
+    }
+  },
+  "result": {
+    "again": {
+      "en": "Check another deck",
+      "id": "Periksa dek lain"
+    },
+    "first": {
+      "en": "Start with these",
+      "id": "Mulai dari sini"
+    },
+    "more": {
+      "en": "The rest of the list",
+      "id": "Sisa daftarnya"
+    },
+    "ctaTitle": {
+      "en": "Want every finding gone through, and checked against your model?",
+      "id": "Ingin setiap temuan ditelaah, dan dicocokkan dengan model Anda?"
+    },
+    "ctaText": {
+      "en": "A Deck Audit has a senior reviewer go through the whole list, set aside what is not an issue, trace the figures to your source and write up what to fix, with a readout call.",
+      "id": "Dalam Audit Dek, seorang peninjau senior menelaah seluruh daftar, menyisihkan yang bukan masalah, menelusuri angka ke sumber Anda, dan menuliskan apa yang harus diperbaiki, disertai sesi pembahasan."
+    },
+    "ctaButton": {
+      "en": "See the Deck Audit",
+      "id": "Lihat Audit Dek"
+    },
+    "ctaSample": {
+      "en": "See a sample report",
+      "id": "Lihat contoh laporan"
+    },
+    "caveat": {
+      "en": "This is an automatic first pass. Its findings are prompts to look, not verdicts, and some will turn out to be deliberate choices.",
+      "id": "Ini adalah pemeriksaan otomatis tahap pertama. Temuannya adalah petunjuk untuk diperiksa, bukan putusan, dan sebagian mungkin memang pilihan yang disengaja."
+    }
+  },
+  "limits": {
+    "title": {
+      "en": "What this check can and cannot see",
+      "id": "Apa yang dapat dan tidak dapat dilihat pemeriksaan ini"
+    },
+    "items": [
+      {
+        "icon": "doc",
+        "title": {
+          "en": "It reads what is in the file",
+          "id": "Membaca apa yang ada di berkas"
+        },
+        "text": {
+          "en": "Text, titles, tables and the data behind native charts. A PowerPoint file gives more than a PDF, which keeps the words but not the tables or chart data.",
+          "id": "Teks, judul, tabel dan data di balik grafik asli. Berkas PowerPoint memberi lebih banyak daripada PDF, yang menyimpan kata-katanya tetapi tidak tabel atau data grafiknya."
+        }
+      },
+      {
+        "icon": "chartup",
+        "title": {
+          "en": "It cannot read pictures",
+          "id": "Tidak dapat membaca gambar"
+        },
+        "text": {
+          "en": "A chart pasted as an image carries no figures, so numbers inside pictures are not checked.",
+          "id": "Grafik yang ditempel sebagai gambar tidak membawa angka, sehingga angka di dalam gambar tidak diperiksa."
+        }
+      },
+      {
+        "icon": "target",
+        "title": {
+          "en": "It does not know your model",
+          "id": "Tidak mengenal model Anda"
+        },
+        "text": {
+          "en": "It checks the deck against itself. Whether the figures match your accounts or model is part of the Deck Audit.",
+          "id": "Pemeriksaan ini mencocokkan dek dengan dirinya sendiri. Apakah angkanya sesuai dengan pembukuan atau model Anda adalah bagian dari Audit Dek."
+        }
+      }
+    ]
+  },
+  "strings": {
+    "reading": {
+      "en": "Reading the deck…",
+      "id": "Membaca dek…"
+    },
+    "checking": {
+      "en": "Checking figures, titles and layout…",
+      "id": "Memeriksa angka, judul dan tata letak…"
+    },
+    "errType": {
+      "en": "That file type is not supported. Save the deck as .pptx or PDF and try again.",
+      "id": "Jenis berkas itu tidak didukung. Simpan dek sebagai .pptx atau PDF lalu coba lagi."
+    },
+    "errSize": {
+      "en": "That file is larger than 150 MB. Compress its pictures or export a PDF and try again.",
+      "id": "Berkas itu lebih besar dari 150 MB. Kompres gambarnya atau ekspor sebagai PDF lalu coba lagi."
+    },
+    "errRead": {
+      "en": "The file could not be read. If it is password-protected, remove the password and try again.",
+      "id": "Berkas tidak dapat dibaca. Jika dilindungi kata sandi, hapus kata sandinya lalu coba lagi."
+    },
+    "errEmpty": {
+      "en": "No text could be read from this file. It may be made of pictures or scans, which this check cannot read.",
+      "id": "Tidak ada teks yang dapat dibaca dari berkas ini. Mungkin berkasnya berupa gambar atau hasil pindai, yang tidak dapat dibaca pemeriksaan ini."
+    },
+    "headFix": {
+      "en": "{n} things to fix before this deck goes out",
+      "id": "{n} hal yang harus diperbaiki sebelum dek ini dikirim"
+    },
+    "headFix1": {
+      "en": "1 thing to fix before this deck goes out",
+      "id": "1 hal yang harus diperbaiki sebelum dek ini dikirim"
+    },
+    "headCheck": {
+      "en": "Nothing that must be fixed, and {n} things worth a look",
+      "id": "Tidak ada yang wajib diperbaiki, dan {n} hal yang layak dilihat"
+    },
+    "headClean": {
+      "en": "The automatic check found nothing to raise",
+      "id": "Pemeriksaan otomatis tidak menemukan hal yang perlu diangkat"
+    },
+    "meta": {
+      "en": "{slides} slides and {figures} figures were read. {share}% of the titles state a conclusion.",
+      "id": "{slides} slide dan {figures} angka dibaca. {share}% judul menyatakan kesimpulan."
+    },
+    "metaPdf": {
+      "en": "{slides} pages and {figures} figures were read from the PDF. {share}% of the titles state a conclusion.",
+      "id": "{slides} halaman dan {figures} angka dibaca dari PDF. {share}% judul menyatakan kesimpulan."
+    },
+    "counts": {
+      "en": "{h} to fix · {m} to check · {l} to polish",
+      "id": "{h} diperbaiki · {m} diperiksa · {l} dirapikan"
+    },
+    "findings": {
+      "en": "findings",
+      "id": "temuan"
+    },
+    "slide": {
+      "en": "Slide",
+      "id": "Slide"
+    },
+    "slides": {
+      "en": "Slides",
+      "id": "Slide"
+    },
+    "whole": {
+      "en": "Whole deck",
+      "id": "Seluruh dek"
+    },
+    "todo": {
+      "en": "What to do.",
+      "id": "Tindak lanjut."
+    },
+    "moreLine": {
+      "en": "{n} more findings are on the list: {h} to fix, {m} to check and {l} to polish.",
+      "id": "Masih ada {n} temuan lain di daftar: {h} untuk diperbaiki, {m} untuk diperiksa dan {l} untuk dirapikan."
+    },
+    "moreLine1": {
+      "en": "1 more finding is on the list.",
+      "id": "Masih ada 1 temuan lain di daftar."
+    },
+    "moreNone": {
+      "en": "Those are all the findings.",
+      "id": "Itulah seluruh temuannya."
+    },
+    "cleanText": {
+      "en": "That is a good sign, not a guarantee: the check cannot read pictures and does not know your model.",
+      "id": "Itu pertanda baik, bukan jaminan: pemeriksaan ini tidak dapat membaca gambar dan tidak mengenal model Anda."
+    },
+    "pillars": {
+      "numbers": {
+        "en": "Numbers that match",
+        "id": "Angka yang cocok"
+      },
+      "structure": {
+        "en": "Consulting structure",
+        "id": "Struktur konsultansi"
+      },
+      "design": {
+        "en": "Executive-grade design",
+        "id": "Desain kelas eksekutif"
+      }
+    },
+    "sev": {
+      "high": {
+        "en": "Fix",
+        "id": "Perbaiki"
+      },
+      "medium": {
+        "en": "Check",
+        "id": "Periksa"
+      },
+      "low": {
+        "en": "Polish",
+        "id": "Rapikan"
+      }
+    }
+  }
+}

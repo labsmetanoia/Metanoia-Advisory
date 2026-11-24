@@ -5,7 +5,7 @@ import { finishDeck } from "./pptx.js";
 let pdfjs = null;
 async function lib() { if (!pdfjs) { pdfjs = await import("/vendor/pdfjs/pdf.min.mjs"); pdfjs.GlobalWorkerOptions.workerSrc = "/vendor/pdfjs/pdf.worker.min.mjs"; } return pdfjs; }
 
-export async function readPdf(file, onProgress = () => {}) {
+export async function readPdf(file, onProgress = () => {}, { render = true } = {}) {   // render: false reads the text only (the website's quick check shows no page pictures)
   const L = await lib();
   const doc = await L.getDocument({ data: new Uint8Array(await file.arrayBuffer()), isEvalSupported: false, wasmUrl: "/vendor/pdfjs/wasm/", cMapUrl: "/vendor/pdfjs/cmaps/", cMapPacked: true, standardFontDataUrl: "/vendor/pdfjs/standard_fonts/", iccUrl: "/vendor/pdfjs/iccs/" }).promise;
   const slides = []; let W = 0, H = 0;
@@ -13,8 +13,9 @@ export async function readPdf(file, onProgress = () => {}) {
     onProgress(`Reading page ${n} of ${doc.numPages}`, n / doc.numPages);
     const page = await doc.getPage(n), vp = page.getViewport({ scale: 1 }); if (n === 1) { W = vp.width; H = vp.height; }
     // picture of the page for the preview
-    const k = Math.min(3, 1500 / Math.max(vp.width, vp.height)), rv = page.getViewport({ scale: k }), canvas = document.createElement("canvas"); canvas.width = Math.round(rv.width); canvas.height = Math.round(rv.height);
-    const ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height); await page.render({ canvasContext: ctx, viewport: rv }).promise;
+    let canvas = null;
+    if (render) { const k = Math.min(3, 1500 / Math.max(vp.width, vp.height)), rv = page.getViewport({ scale: k }); canvas = document.createElement("canvas"); canvas.width = Math.round(rv.width); canvas.height = Math.round(rv.height);
+      const ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height); await page.render({ canvasContext: ctx, viewport: rv }).promise; }
     // text → lines → blocks
     const tc = await page.getTextContent(), lines = [];
     for (const it of tc.items) {

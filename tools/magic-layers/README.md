@@ -145,6 +145,10 @@ What to keep in mind:
 - A PDF has no placeholders, tables or chart data, so totals, chart figures and typefaces are checked only in the PowerPoint file. Portrait PDFs are read as reports and the slide rules for density and type size are skipped.
 - Old `.ppt` files must be saved as `.pptx` first.
 
+### The same rules on the website
+
+The website's free deck check (`src/pages/deck-check.njk` in the repository) runs these same modules in the visitor's browser: `pptx.js`, `pdfdeck.js`, `numbers.js`, `checks.js`, `id.js` and the action lines from `report.js` are copied into the site at build time. A change to a rule here changes the website at its next deploy, so run `npm test` here and `npm run test:deck-check` in the repository root before pushing.
+
 ## Chart Builder
 
 Open the Chart Builder tab. It starts with a sample chart; replace its data and wording, or press "+ New chart".

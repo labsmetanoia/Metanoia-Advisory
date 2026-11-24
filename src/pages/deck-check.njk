@@ -1,0 +1,58 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: deckCheck
+showCta: false
+---
+{% set a = pages.deckCheck %}{% set prName = site.practiceNames.presentation | L(lang) %}
+<section class="dc-hero" aria-labelledby="dc-title">
+  <div class="wrap dc-hero__inner">
+    {% set crumbs = [{ name: prName, url: "presentation" | pageUrl(lang) }, { name: pages.deckAudit.name | L(lang), url: "deckAudit" | pageUrl(lang) }, { name: a.name | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+    <h1 id="dc-title" class="gold-em">{{ a.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ a.hero.lede | L(lang) }}</p>
+  </div>
+</section>
+
+<section class="section dc" aria-label="{{ a.name | L(lang) }}">
+  <div class="wrap">
+    <div class="dc-drop" id="dc-drop" data-state="idle">
+      <input class="visually-hidden" id="dc-file" type="file" accept=".pptx,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+      <span class="disc-tint dc-drop__icon" aria-hidden="true">{% set icon = "doc" %}{% include "components/icon.njk" %}</span>
+      <p class="dc-drop__title">{{ a.drop.title | L(lang) }}</p>
+      <p class="dc-drop__or">{{ a.drop.or | L(lang) }}</p>
+      <label class="btn btn--primary" for="dc-file"><span>{{ a.drop.button | L(lang) }}</span></label>
+      <p class="dc-drop__types">{{ a.drop.types | L(lang) }}</p>
+      <p class="dc-drop__sample"><button type="button" class="dc-link" id="dc-sample" data-src="/assets/deck-check/sample-deck.pptx">{{ a.drop.sample | L(lang) }}</button></p>
+      <p class="dc-drop__status" id="dc-status" role="status" aria-live="polite"></p>
+      <p class="dc-drop__privacy"><span aria-hidden="true">{% set icon = "shield" %}{% include "components/icon.njk" %}</span>{{ a.hero.privacy | L(lang) }}</p>
+      <noscript><p class="dc-drop__status dc-drop__status--error">{{ a.drop.noscript | L(lang) }}</p></noscript>
+    </div>
+
+    <div class="dc-result" id="dc-result" hidden>
+      <div class="dc-result__head">
+        <div><p class="dc-result__file" id="dc-name"></p><h2 id="dc-headline" tabindex="-1">{{ a.name | L(lang) }}</h2><p class="dc-result__meta" id="dc-meta"></p></div>
+        <button class="btn btn--secondary" type="button" id="dc-again">{{ a.result.again | L(lang) }}</button>
+      </div>
+      <div class="dc-pillars" id="dc-pillars"></div>
+      <div id="dc-first-wrap"><h3 class="dc-sub">{{ a.result.first | L(lang) }}</h3><div class="dc-findings" id="dc-findings"></div></div>
+      <div class="dc-more"><h3 class="dc-sub">{{ a.result.more | L(lang) }}</h3><p id="dc-more"></p></div>
+      <div class="dc-cta">
+        <div><h3>{{ a.result.ctaTitle | L(lang) }}</h3><p>{{ a.result.ctaText | L(lang) }}</p></div>
+        <div class="dc-cta__actions"><a class="btn btn--primary" href="{{ 'deckAudit' | pageUrl(lang) }}" data-event="cta_click" data-location="deck-check-result"><span>{{ a.result.ctaButton | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a><a class="btn btn--secondary" href="{{ pages.deckAudit.sampleReport.file | L(lang) }}" data-event="download" data-asset="deck-audit-sample"><span>{{ a.result.ctaSample | L(lang) }}</span></a></div>
+      </div>
+      <p class="dc-caveat">{{ a.result.caveat | L(lang) }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="band dc-limits fade-up" aria-labelledby="dc-limits-title">
+  <div class="wrap">
+    <div class="svc4-head svc4-head--solo"><h2 id="dc-limits-title">{{ a.limits.title | L(lang) }}</h2></div>
+    <ol class="deck-steps dc-limits__list">{% for st in a.limits.items %}<li><div class="deck-steps__body"><span class="disc-tint">{% set icon = st.icon %}{% include "components/icon.njk" %}</span><div><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div></div></li>{% endfor %}</ol>
+  </div>
+</section>
+
+<script type="application/json" id="dc-strings">{{ a.strings | jsonFor(lang) | safe }}</script>
+<script src="/vendor/jszip/jszip.min.js" defer></script>
+<script type="module" src="/assets/deck-check/check.js?v={{ assetVersion }}" data-lang="{{ lang }}" id="dc-script"></script>

@@ -100,3 +100,12 @@ The offer page is at `/en/strategic-storytelling/deck-audit/` (Indonesian: `/id/
 5. Send the PDF and hold the readout. Keep the tool's AI assist off for client files, because the page tells clients their deck is not uploaded to an outside AI service.
 
 The sample reports on the site (`src/root/downloads/deck-audit-sample-en.pdf` and `-id.pdf`) come from the tool's own sample deck. To refresh it after the report design changes, open the sample deck, add the sample model as the source, write the notes, and save the client report with the client named as an invented company.
+
+### The free deck check (lead tool)
+
+Address: `/en/strategic-storytelling/deck-check/` (Indonesian: `/id/storytelling-strategis/cek-dek/`). A visitor drops a deck and sees the counts and the first three findings; the deck never leaves their browser. It uses the same rules as the Deck Auditor, so a rule fixed in the tool is fixed on the site at the next deploy.
+
+It is published as a preview: the address works, but nothing links to it and search engines are told not to index it. Before making it public, drop five or more real decks on it and read the three findings each time. If they are right, set `tools.deckCheck` to `"live"` in `site.config.json`; the Deck Audit page and the footer then link to it. Set it to `"off"` to remove the page.
+
+If a finding is wrong on a real deck, note the slide and the wording and pass it on: the fix goes into `tools/magic-layers/app/js/audit/` and reaches both the tool and the site.
+

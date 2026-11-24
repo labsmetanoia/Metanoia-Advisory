@@ -805,3 +805,20 @@ The Deck Audit is sold to Indonesian boards and finance teams, and its report ex
 
 **Still open.** The auditor has not yet been run on real client or published decks; that needs files from the owner.
 
+
+## 47. Free deck check in the browser (24 November 2026)
+
+A lead tool for the Deck Audit: a visitor drops a PowerPoint or PDF and sees the counts by pillar and the three findings to look at first; the rest of the list is the paid audit. The deck is read in the visitor's own browser and is never uploaded.
+
+| Area | What changed |
+| --- | --- |
+| Page | `src/pages/deck-check.njk`, content `content/pages/deckCheck.json`. Routes `/en/strategic-storytelling/deck-check/` and `/id/storytelling-strategis/cek-dek/`. Drop area, result (headline, three pillar tiles, three findings with what to do, the count of the rest, a link to the Deck Audit and its sample report), and what the check can and cannot see |
+| Engine | `src/assets/deck-check/check.js` imports the Deck Auditor's own modules, copied at build from `tools/magic-layers/app/js/audit/` to `/assets/deck-check/audit/`, so the site and the desktop tool always apply the same rules. JSZip and pdf.js come from `node_modules` and are served at `/vendor/…`. A PDF is read as text only (`readPdf(..., { render: false })`); pdf.js is loaded only when a PDF is dropped |
+| Indonesian | On the Indonesian page the findings and actions are restated by the tool's `id.js` |
+| Switch | `site.config.json` → `tools.deckCheck`: `preview` (built, but `noindex`, out of the sitemap and not linked from anywhere), `live` (linked from the Deck Audit page and the footer, indexed) or `off` (not built). `DECK_CHECK` in the environment overrides it for a build |
+| Headers | `_headers`: `blob:` added to `img-src`, so pictures inside the visitor's file can be measured locally for the stretched and low-resolution checks |
+| Test | `npm run test:deck-check` drives the built page in a browser under the site's own Content-Security-Policy: a PowerPoint, the sample button on the Indonesian page at phone width, a PDF, three kinds of unreadable file, and a check that no request leaves the browser once a file is chosen. It needs Playwright and is skipped without it |
+
+**Decision.** It ships as `preview`. The rules have only been proven on generated decks; a prospect who sees a wrong finding on their own deck would think less of the firm, not more. In preview the owner can try real decks at the page's address without sending the files to anyone. Switch to `live` once the findings on real decks look right.
+
+**Verified.** `npm test` passes; `npm run test:deck-check` passes (7 checks); the page was viewed at 1440 and 390 px in both languages; the three modes were each built and checked for the page, its `noindex` tag, the sitemap entry and the inbound links. Not exercised: the page on the live host.
