@@ -8,7 +8,7 @@ const CURRENCY = { "rp": "IDR", "rp.": "IDR", idr: "IDR", usd: "USD", "us$": "US
 const STOP = new Set(("the a an and or of to in on at for with by from as is are was were be been will would has have had this that these those its their our your it we they than then into over under per about around approximately nearly more less up down vs versus not no yes also only both each all any which who what when where while during after before between among across " +
   "recovered reached grew grow grows growing rose rise rises increased increase increases decreased decrease fell fall falls declined decline dropped stood remained remains expected estimated forecast compared delivered achieved recorded reported amounted totalled totaled came " +
   "dan atau yang di ke dari untuk dengan pada ini itu adalah akan telah sudah sebagai oleh dalam tidak juga lebih kurang sekitar hingga sampai atas bawah per antara serta karena saat sejak kami kita mereka nya " +
-  "mencapai naik turun tumbuh meningkat menurun menjadi sebesar tercatat dibandingkan diperkirakan sebanyak senilai").split(/\s+/));
+  "mencapai naik turun tumbuh meningkat menurun menjadi sebesar tercatat dibandingkan diperkirakan sebanyak senilai against compared previous prior terhadap dibanding sebelumnya").split(/\s+/));
 const UNITWORD = new Set(["percent", "persen", "billion", "million", "trillion", "miliar", "juta", "triliun", "ribu", "usd", "idr", "rupiah", "dollar", "dollars", "rp", "bps", "basis", "points", "point", "poin"]);
 
 export function detectLanguage(text) { const w = (text.toLowerCase().match(/[a-z]+/g) || []); let en = 0, id = 0; const E = new Set(["the", "and", "of", "to", "in", "for", "with", "is", "from", "by", "our", "that"]), I = new Set(["dan", "yang", "di", "untuk", "dengan", "dari", "pada", "ini", "adalah", "ke", "dalam", "akan"]); for (const x of w) { if (E.has(x)) en++; else if (I.has(x)) id++; } return { lang: id > en ? "id" : "en", en, id, share: (en + id) ? Math.max(en, id) / (en + id) : 1 }; }
@@ -46,10 +46,18 @@ export function factsInText(text, lang, base, opts = {}) {
       if (!opts.all && !unit && !cur && decimals === 0 && !/[.,]/.test(m[3]) && value < 100) continue;                                   // bare small counts
       found.push({ at, end: m.index + m[0].length, raw: (m[1] && sign < 0 ? "−" : "") + [m[2], m[3]].filter(Boolean).join(" ") + (m[4] ? (/^(%|x)$/i.test(m[4]) ? m[4] : ` ${m[4]}`) : ""), value: value * sign, decimals, unit: unit || "", currency: cur || "" });
     }
+    // where a sentence compares periods ("Rp 15.0 tn in Q3 25 against Rp 13.9 tn in Q2 25"), each figure takes the period
+    // written next to it, and a comparative with no words of its own takes the metric of the figure before it
+    const marks = periods.size > 1 ? [...sentence.matchAll(new RegExp(PERIOD.source, PERIOD.flags.includes("g") ? PERIOD.flags : `${PERIOD.flags}g`))].map((x) => ({ at: x.index, p: normPeriod(x[0]) })) : [];
+    const own = (f, i) => { if (!marks.length) return [...periods]; const lo = i ? found[i - 1].end : 0, hi = found[i + 1] ? found[i + 1].at : masked.length;
+      const next = marks.find((x) => x.at >= f.end && x.at < hi), prior = marks.filter((x) => x.at >= lo && x.at < f.at);
+      return next ? [next.p] : prior.length === 1 ? [prior[0].p] : [...periods]; };
     found.forEach((f, i) => {
       const before = wordsOf(masked.slice(i ? found[i - 1].end : 0, f.at)), after = wordsOf(masked.slice(f.end, found[i + 1] ? found[i + 1].at : masked.length));
-      let label = before.slice(-5); if (label.length < 2) label = label.concat(after.slice(0, 4 - label.length));
-      out.push({ ...base, raw: f.raw, value: f.value, decimals: f.decimals, unit: f.unit, currency: f.currency, label: [...new Set(label)], periods: [...periods], context: sentence.trim().slice(0, 160) });
+      let label = before.slice(-5); const prev = out.length && i ? out[out.length - 1] : null;
+      if (!label.length && marks.length && prev && prev.unit === f.unit && prev.currency === f.currency) label = prev.label.slice();
+      else if (label.length < 2) label = label.concat(after.slice(0, 4 - label.length));
+      out.push({ ...base, raw: f.raw, value: f.value, decimals: f.decimals, unit: f.unit, currency: f.currency, label: [...new Set(label)], periods: own(f, i), context: sentence.trim().slice(0, 160) });
     });
   }
   return out;

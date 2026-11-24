@@ -839,3 +839,19 @@ A fourth tab in the desktop tool suite (v1.7.0), so an enquiry becomes a signed,
 
 **For the owner.** Counsel review of the terms; the firm's legal entity name; whether the firm is registered to charge VAT.
 
+## 49. Deck Audit every results season (24 November 2026)
+
+A recurring version of the Deck Audit for investor relations teams that build their own results decks: each quarter's deck audited before release and compared with last quarter's.
+
+| Area | What changed |
+| --- | --- |
+| Rule (tool v1.8.0) | `app/js/audit/quarter.js`: figures for periods that both decks report are matched; a value that changed is a finding (code `restated`, to fix) unless the slide says it was restated, revised or reclassified. Opened from **Compare → Last quarter's deck**; a previous version of the same deck is still compared as before, without this rule |
+| Reader | `numbers.js`: in a sentence that names two or more periods, each figure takes the period written next to it, and a comparative with no words of its own takes the metric of the figure before it. Sentences with one period are read as before. This also sharpens the within-deck mismatch rule and reaches the website's deck check at the next deploy |
+| Client report | With last quarter's deck loaded: a **Since last quarter** section (automatic findings last quarter against this quarter, and the restated figures), the change section retitled, and an optional results period on the cover. English and Indonesian |
+| Proposal kit | New offer "Deck Audit every results season": four results decks a year, annual fee in four instalments before each season |
+| Site | Deck Audit page: an "Every results season" section with its own fee line (`offers.deckAuditQuarterly.price`, empty by default), a "What you need" choice on the request form that the section's button pre-selects (`?topic=deck-audit-quarterly`), and a question in the FAQ |
+
+**Verified.** Tool self-test: 120 checks (new: period-by-figure reading, a silent restatement found while unchanged and disclosed figures are not, Indonesian wording, and the app flow with the sample decks). Site `npm test` and `npm run test:deck-check` pass; the section and the pre-selected form were checked in a browser in both languages at desktop and phone width.
+
+**For the owner.** The fee for the quarterly audit; whether to publish a turnaround per review (the page and proposal say it is agreed with the results calendar).
+

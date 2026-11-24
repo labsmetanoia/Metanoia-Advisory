@@ -43,7 +43,8 @@
   },
   "offers": {
     "_comment": "Published prices. Leave a price empty and the page says the fee is fixed and confirmed before work starts. Example: { \"en\": \"Rp 15 million, excluding VAT\", \"id\": \"Rp 15 juta, belum termasuk PPN\" }.",
-    "deckAudit": { "price": { "en": "", "id": "" } }
+    "deckAudit": { "price": { "en": "", "id": "" } },
+    "deckAuditQuarterly": { "price": { "en": "", "id": "" } }
   },
   "tools": {
     "_comment": "deckCheck: the free in-browser deck check. 'preview' builds the page at its address but keeps it out of search engines, the sitemap and the site's own links, so it can be tried on real decks first. 'live' links it from the Deck Audit page and the footer. 'off' does not build it.",

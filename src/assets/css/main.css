@@ -2035,3 +2035,14 @@ body.menu-open { overflow: hidden; }
 .dc-drop__sample { margin: 0; }
 .dc-link { background: none; border: 0; padding: 0; font: inherit; font-size: 14.5px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; cursor: pointer; }
 .dc-link:hover { text-decoration-color: var(--ink); }
+/* Deck Audit: the quarterly option */
+.audit-quarterly__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--s-5); align-items: start; }
+.audit-quarterly .kicker { display: block; margin-bottom: 12px; letter-spacing: .14em; }
+.audit-quarterly h2 { margin: 0 0 18px; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; }
+.audit-quarterly__grid > div:first-child p { margin: 18px 0 0; font-size: 17px; line-height: 27px; color: var(--grey-1); max-width: 520px; }
+.audit-quarterly__card { background: #fff; border: 1px solid var(--grey-3); border-radius: 16px; padding: var(--s-4); }
+.audit-quarterly__fee { margin: var(--s-3) 0; padding-top: var(--s-3); border-top: 1px solid var(--grey-3); }
+.audit-quarterly__fee dt { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.audit-quarterly__fee dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 26px; }
+.audit-quarterly__card p { margin: 0; }
+@media (max-width: 1024px) { .audit-quarterly__grid { grid-template-columns: 1fr; gap: var(--s-4); } }

@@ -6,6 +6,7 @@ showCta: false
 {% set a = pages.deckAudit %}{% set prName = site.practiceNames.presentation | L(lang) %}
 {% set price = site.offers.deckAudit.price | L(lang) if site.offers and site.offers.deckAudit else "" %}
 {% set hasForm = site.forms.provider != "none" %}
+{% set priceQ = site.offers.deckAuditQuarterly.price | L(lang) if site.offers and site.offers.deckAuditQuarterly else "" %}
 <section class="svc-hero" aria-labelledby="audit-title">
   <div class="svc-hero__grid">
     <div class="svc-hero__copy">
@@ -56,6 +57,17 @@ showCta: false
   </div>
 </section>
 
+<section class="section audit-quarterly fade-up" id="every-quarter" aria-labelledby="audit-quarterly-title">
+  <div class="wrap audit-quarterly__grid">
+    <div><span class="kicker">{{ a.quarterly.kicker | L(lang) }}</span><h2 id="audit-quarterly-title" class="gold-em">{{ a.quarterly.title | L(lang) | mdInline | safe }}</h2><span class="rule-gold rule-gold--short" aria-hidden="true"></span><p>{{ a.quarterly.text | L(lang) }}</p></div>
+    <div class="audit-quarterly__card">
+      <ul class="audit-limits__list">{% for li in a.quarterly.items %}<li>{{ li | L(lang) }}</li>{% endfor %}</ul>
+      <dl class="audit-quarterly__fee"><dt>{{ a.quarterly.feeLabel | L(lang) }}</dt><dd>{{ priceQ or (a.quarterly.fee | L(lang)) }}</dd></dl>
+      <p>{% if hasForm %}<a class="btn btn--primary" href="?topic=deck-audit-quarterly#audit-form" data-event="cta_click" data-location="deck-audit-quarterly"><span>{{ a.quarterly.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% elif site.email %}<a class="btn btn--primary" href="mailto:{{ site.email }}?subject={{ a.quarterly.kicker | L(lang) | urlencode }}" data-event="cta_click" data-location="deck-audit-quarterly"><span>{{ a.quarterly.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% endif %}</p>
+    </div>
+  </div>
+</section>
+
 <section class="band audit-limits fade-up" aria-labelledby="audit-limits-title">
   <div class="wrap audit-limits__grid">
     <div><h2 id="audit-limits-title">{{ a.limits.title | L(lang) }}</h2><span class="rule-gold rule-gold--short" aria-hidden="true"></span></div>
@@ -83,6 +95,7 @@ showCta: false
         <div class="field"><label for="a-email" class="visually-hidden">{{ ui | t(lang, "form.email") }}</label><input id="a-email" name="email" type="email" required autocomplete="email" placeholder="{{ ui | t(lang, 'form.email') }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
         <div class="field"><label for="a-due" class="visually-hidden">{{ a.form.due | L(lang) }}</label><input id="a-due" name="deck_due" type="text" placeholder="{{ a.form.due | L(lang) }}"></div>
       </div>
+      <div class="field"><label for="a-type" class="visually-hidden">{{ a.form.type | L(lang) }}</label><select id="a-type" name="audit_type"><option value="one">{{ a.form.typeOne | L(lang) }}</option><option value="quarterly">{{ a.form.typeQuarterly | L(lang) }}</option></select></div>
       <div class="field"><label for="a-link" class="visually-hidden">{{ ui | t(lang, "form.deckLink") }}</label><input id="a-link" name="deck_link" type="url" placeholder="{{ ui | t(lang, 'form.deckLink') }}"></div>
       <div class="field"><label for="a-message" class="visually-hidden">{{ a.form.message | L(lang) }}</label><textarea id="a-message" name="message" rows="3" placeholder="{{ a.form.message | L(lang) }}"></textarea></div>
       <div class="field field--check"><input id="a-consent" name="consent" type="checkbox" required><label for="a-consent">{{ ui | t(lang, "form.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>

@@ -97,7 +97,8 @@ The offer page is at `/en/strategic-storytelling/deck-audit/` (Indonesian: `/id/
 2. Open the deck in the Deck Auditor. If the client sent a model or source document, add it under **Sources**.
 3. Go through every finding. Set aside the ones that are not issues. Open a finding and write a note where your judgement adds something.
 4. **Report → Client report…**: the report language (English or Bahasa Indonesia), who it is for, your overall view, the page you would rebuild first and why. Write your notes in the same language. Save, open the file, print to PDF (A4).
-5. Send the PDF and hold the readout. Keep the tool's AI assist off for client files, because the page tells clients their deck is not uploaded to an outside AI service.
+5. For a quarterly client, open last quarter's released deck with **Compare → Last quarter's deck** before writing the report: figures for earlier periods that changed without a note become findings, and the report gets a "Since last quarter" section. Fill in the results period in the report form.
+6. Send the PDF and hold the readout. Keep the tool's AI assist off for client files, because the page tells clients their deck is not uploaded to an outside AI service.
 
 The sample reports on the site (`src/root/downloads/deck-audit-sample-en.pdf` and `-id.pdf`) come from the tool's own sample deck. To refresh it after the report design changes, open the sample deck, add the sample model as the source, write the notes, and save the client report with the client named as an invented company.
 

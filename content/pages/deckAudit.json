@@ -306,6 +306,62 @@
     "mail": {
       "en": "Email us about a Deck Audit",
       "id": "Email kami tentang Audit Dek"
+    },
+    "type": {
+      "en": "What you need",
+      "id": "Yang Anda perlukan"
+    },
+    "typeOne": {
+      "en": "One deck",
+      "id": "Satu dek"
+    },
+    "typeQuarterly": {
+      "en": "Every results season",
+      "id": "Setiap musim rilis kinerja"
+    }
+  },
+  "quarterly": {
+    "kicker": {
+      "en": "Every results season",
+      "id": "Setiap musim rilis kinerja"
+    },
+    "title": {
+      "en": "The same audit, *every quarter*",
+      "id": "Audit yang sama, *setiap triwulan*"
+    },
+    "text": {
+      "en": "For investor relations teams that build their own results decks. We audit each quarter's deck before release and compare it with last quarter's, so a figure for an earlier period never changes without a note.",
+      "id": "Untuk tim hubungan investor yang menyusun dek hasilnya sendiri. Kami mengaudit dek setiap triwulan sebelum dirilis dan membandingkannya dengan dek triwulan lalu, agar angka periode sebelumnya tidak pernah berubah tanpa catatan."
+    },
+    "items": [
+      {
+        "en": "Each quarter's results deck audited before release, with figures traced to your source",
+        "id": "Dek hasil setiap triwulan diaudit sebelum dirilis, dengan angka ditelusuri ke sumber Anda"
+      },
+      {
+        "en": "Compared with last quarter's deck: figures for earlier periods that changed without a note are listed",
+        "id": "Dibandingkan dengan dek triwulan lalu: angka periode sebelumnya yang berubah tanpa catatan didaftar"
+      },
+      {
+        "en": "A report each quarter that sets this quarter's findings against last quarter's",
+        "id": "Laporan setiap triwulan yang membandingkan temuan triwulan ini dengan triwulan lalu"
+      },
+      {
+        "en": "A review slot reserved in your results calendar, and a readout before each release",
+        "id": "Jadwal tinjauan yang disiapkan dalam kalender rilis Anda, dan sesi pembahasan sebelum setiap rilis"
+      }
+    ],
+    "fee": {
+      "en": "Fixed annual fee for the four results decks, invoiced before each results season and confirmed before we start.",
+      "id": "Biaya tahunan tetap untuk empat dek hasil, ditagihkan sebelum setiap musim rilis dan dikonfirmasi sebelum kami mulai."
+    },
+    "feeLabel": {
+      "en": "Fee",
+      "id": "Biaya"
+    },
+    "button": {
+      "en": "Ask about the quarterly audit",
+      "id": "Tanyakan audit triwulanan"
     }
   }
 }

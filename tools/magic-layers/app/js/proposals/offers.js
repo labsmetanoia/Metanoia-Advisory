@@ -39,6 +39,45 @@ export const OFFERS = [
     schedule: [{ label: B("On acceptance of this proposal", "Pada saat proposal ini diterima"), pct: 100 }],
   },
   {
+    key: "deckAuditQuarterly", basis: "fixed", planFee: null,
+    name: B("Deck Audit every results season", "Audit Dek setiap musim rilis kinerja"),
+    subjectHint: B("the four quarterly results decks for FY2026", "empat dek hasil triwulanan FY2026"),
+    objective: B("To audit {subject} before each one goes out, so every figure agrees with the rest of the deck, with the source you supply and with what you reported last quarter.",
+      "Mengaudit {subject} sebelum masing-masing dirilis, agar setiap angka selaras dengan bagian lain dek, dengan sumber yang Anda berikan, dan dengan apa yang Anda laporkan pada triwulan lalu."),
+    deliverables: [
+      B("An audit of each quarter's results deck before release: every figure checked against every other mention of it and against your source, the storyline read title by title, and anything that still looks like a draft marked", "Audit atas dek hasil setiap triwulan sebelum dirilis: setiap angka dicocokkan dengan setiap penyebutannya dan dengan sumber Anda, alur cerita dibaca judul demi judul, dan apa pun yang masih tampak seperti draf ditandai"),
+      B("A comparison with last quarter's deck: figures for earlier periods that changed without a note, and what changed in the storyline", "Perbandingan dengan dek triwulan lalu: angka periode sebelumnya yang berubah tanpa catatan, dan perubahan pada alur cerita"),
+      B("A written report each quarter (PDF), with the findings set against last quarter's", "Laporan tertulis setiap triwulan (PDF), dengan temuan yang dibandingkan dengan triwulan lalu"),
+      B("A readout each quarter with the people who will make the changes", "Sesi pembahasan setiap triwulan bersama orang yang akan mengerjakan perbaikannya"),
+    ],
+    steps: [
+      { title: B("Results calendar", "Kalender rilis"), text: B("We agree the year's results dates and reserve a review slot before each release.", "Kami menyepakati tanggal rilis hasil sepanjang tahun dan menyiapkan jadwal tinjauan sebelum setiap rilis."), when: B("At the start", "Di awal") },
+      { title: B("Each quarter", "Setiap triwulan"), text: B("You send the deck, with the source document if you want figures traced; we compare it with last quarter's deck and send the report.", "Anda mengirim dek, beserta dokumen sumber jika Anda ingin angkanya ditelusuri; kami membandingkannya dengan dek triwulan lalu dan mengirim laporannya."), when: B("On the agreed dates", "Pada tanggal yang disepakati") },
+      { title: B("Readout", "Pembahasan"), text: B("We walk your team through the findings before the deck is released.", "Kami membahas temuan bersama tim Anda sebelum dek dirilis."), when: B("Before each release", "Sebelum setiap rilis") },
+    ],
+    inputs: [
+      B("The results calendar for the year", "Kalender rilis hasil untuk tahun tersebut"),
+      B("Each quarter's deck as PowerPoint (preferred) or PDF on the agreed date, with the source document if you want figures traced", "Dek setiap triwulan dalam bentuk PowerPoint (lebih disukai) atau PDF pada tanggal yang disepakati, beserta dokumen sumber jika Anda ingin angkanya ditelusuri"),
+      B("Last quarter's deck as released, for the first review", "Dek triwulan lalu sebagaimana dirilis, untuk tinjauan pertama"),
+      B("One contact for questions during each review", "Satu narahubung untuk pertanyaan selama setiap tinjauan"),
+    ],
+    assumptions: [
+      B("Four results decks in twelve months, in Indonesian or English.", "Empat dek hasil dalam dua belas bulan, berbahasa Indonesia atau Inggris."),
+      B("The turnaround for each review is agreed with the results calendar at the start.", "Waktu penyelesaian setiap tinjauan disepakati bersama kalender rilis di awal."),
+    ],
+    exclusions: [
+      B("Rewriting or rebuilding the decks. If you want us to make the changes, we quote that separately.", "Penulisan ulang atau pembangunan ulang dek. Jika Anda ingin kami yang mengerjakan perbaikannya, kami memberikan penawaran terpisah."),
+      B("Verifying the accounts or the model behind the decks. We report where a deck disagrees with itself, with your source or with last quarter's deck; we do not confirm that the underlying figures are correct.", "Verifikasi pembukuan atau model di balik dek. Kami melaporkan di mana dek tidak konsisten dengan dirinya sendiri, dengan sumber Anda, atau dengan dek triwulan lalu; kami tidak memastikan bahwa angka dasarnya benar."),
+      B("Figures inside charts pasted as pictures, which can be checked by eye only.", "Angka di dalam grafik yang ditempel sebagai gambar, yang hanya dapat diperiksa secara visual."),
+    ],
+    schedule: [
+      { label: B("Before the first results season (on acceptance)", "Sebelum musim rilis pertama (pada saat proposal diterima)"), pct: 25 },
+      { label: B("Before the second results season", "Sebelum musim rilis kedua"), pct: 25 },
+      { label: B("Before the third results season", "Sebelum musim rilis ketiga"), pct: 25 },
+      { label: B("Before the fourth results season", "Sebelum musim rilis keempat"), pct: 25 },
+    ],
+  },
+  {
     key: "deckProject", basis: "fixed", planFee: 85000000,
     name: B("Board and executive deck", "Dek dewan dan eksekutif"),
     subjectHint: B("the 2027 strategy deck for the board", "dek strategi 2027 untuk dewan"),

@@ -127,6 +127,7 @@
     /* Context fields: page, referrer, campaign, topic (from ?topic= on the service pages) */
     var setHidden = function (name, value) { var i = qs("input[type=hidden][name=" + name + "]", form); if (i && value) i.value = value; };
     setHidden("page", location.href); setHidden("referrer", d.referrer); setHidden("topic", topicParam);
+    var auditType = qs("select[name=audit_type]", form); if (auditType && topicParam === "deck-audit-quarterly") auditType.value = "quarterly";
     Object.keys(utm).forEach(function (k) { setHidden(k, utm[k]); });
     var situation = qs("select[name=situation]", form);
     if (situation && topicParam && !situation.value) { var map = { pres: "reporting", me: "entering", adv: "raising" }; var key = map[topicParam.split("-")[0]]; if (key && qs("option[value=" + key + "]", situation)) situation.value = key; }

@@ -7,11 +7,12 @@ import { compareDecks } from "./compare.js";
 import { reportHtml, clientReportHtml, findingsCsv, labels } from "./report.js";
 import { readSource, reconcile, sourceFindings, sourceLocation } from "./sources.js";
 import { fixPlan, applyFixes } from "./fix.js";
+import { restatedFigures, restatedFindings, severityCounts } from "./quarter.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 const { PILLAR, SEV, KIND } = labels;
-const S = { notes: {}, client: {}, sources: [], recon: null, srcFilter: "all", deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
+const S = { notes: {}, client: {}, sources: [], recon: null, srcFilter: "all", deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, prevKind: "version", prevCounts: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
 
 /* ---------- feedback ---------- */
 function toast(msg, kind = "") { const t = el("div", `toast${kind ? ` toast--${kind}` : ""}`, msg); $("toasts").appendChild(t); setTimeout(() => t.remove(), kind === "error" ? 7000 : 3600); }
@@ -26,12 +27,16 @@ async function open(file) {
   const deck = await busy("Reading the deck", async () => { const d = await read(file, "Reading the deck"); if (!d.slides.length) throw new Error("This file has no slides."); progress("Auditing", "Comparing figures, titles and design", 0.95); await new Promise((r) => setTimeout(r, 30)); return d; });
   if (!deck) return;
   if (!S.keepFix) S.fixLog = null; S.file = file;
-  Object.assign(S, { sources: [], recon: null, deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
+  Object.assign(S, { sources: [], recon: null, deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, prevKind: "version", prevCounts: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
   loadReview(); run(); const r = S.result, hi = r.findings.filter((f) => f.severity === "high").length;
   toast(`${deck.slides.length} slides audited: ${r.findings.length} finding${r.findings.length === 1 ? "" : "s"}${hi ? `, ${hi} to fix` : ""}.`);
 }
 function run() {
   S.result = audit(S.deck, { brand: S.useBrand ? S.brand : null }); if (S.prev) S.cmp = compareDecks(S.prev, S.deck, S.result.lang);
+  // against last quarter's deck: figures for earlier periods that changed without a note
+  S.prevCounts = null;
+  if (S.prev && S.prevKind === "quarter") { restatedFindings(restatedFigures(S.prev, S.deck, S.result.lang)).forEach((f, i) => S.result.findings.push({ id: `qtr${i + 1}`, pillar: "numbers", ...f })); S.prevCounts = severityCounts(audit(S.prev, { brand: S.useBrand ? S.brand : null }).findings);
+    const order = { high: 0, medium: 1, low: 2 }; S.result.findings.sort((a, b) => order[a.severity] - order[b.severity] || (a.slides[0] || 0) - (b.slides[0] || 0)); }
   S.recon = S.sources.length ? reconcile(S.result.facts, S.sources) : null;
   if (S.recon) { const order = { high: 0, medium: 1, low: 2 }; sourceFindings(S.recon).forEach((f, i) => S.result.findings.push({ id: `src${i + 1}`, pillar: "numbers", slides: f.slide ? [f.slide] : [], refs: f.slide && f.shapeId ? [{ slide: f.slide, shapeId: f.shapeId }] : [], ...f })); S.result.findings.sort((a, b) => order[a.severity] - order[b.severity] || (a.slides[0] || 0) - (b.slides[0] || 0)); }
   render();
@@ -81,7 +86,8 @@ function viewSources(v) {
 }
 async function openPrevious(file) {
   if (!file || !S.deck) return; const prev = await busy("Reading the previous version", () => read(file, "Reading the previous version")); if (!prev) return;
-  S.prev = prev; S.cmp = compareDecks(prev, S.deck, S.result.lang); S.view = "compare"; render(); const c = S.cmp.summary; toast(`Compared with ${prev.name}: ${c.changed} changed, ${c.added} added, ${c.removed} removed.`);
+  S.prev = prev; S.view = "compare"; run(); const c = S.cmp.summary, q = S.result.findings.filter((f) => f.code === "restated").length;
+  toast(S.prevKind === "quarter" ? `Compared with last quarter's ${prev.name}: ${q ? `${q} figure${q > 1 ? "s" : ""} for an earlier period changed without a note.` : "no figure for an earlier period changed without a note."}` : `Compared with ${prev.name}: ${c.changed} changed, ${c.added} added, ${c.removed} removed.`);
 }
 async function sample() { const get = async (n) => new File([await (await fetch(`/sample/${n}`)).blob()], n); await open(await get("audit-sample.pptx")); }
 
@@ -112,12 +118,12 @@ const noteKey = (f) => `${f.code}|${f.slides.join(",")}|${f.title.slice(0, 48)}`
 const storeKey = () => `audit:${S.deck ? S.deck.name : ""}`;
 function saveReview() { try { localStorage.setItem(storeKey(), JSON.stringify({ notes: S.notes, client: S.client })); } catch (e) { /* private mode */ } }
 function loadReview() { S.notes = {}; S.client = {}; try { const j = JSON.parse(localStorage.getItem(storeKey()) || "null"); if (j) { S.notes = j.notes || {}; S.client = j.client || {}; } } catch (e) { /* start clean */ } }
-const clientReport = () => clientReportHtml(S.deck, S.result, { dismissed: S.dismissed, notes: Object.fromEntries(S.result.findings.filter((f) => S.notes[noteKey(f)]).map((f) => [f.id, S.notes[noteKey(f)]])), client: S.client, recon: S.recon, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null });
+const clientReport = () => clientReportHtml(S.deck, S.result, { dismissed: S.dismissed, notes: Object.fromEntries(S.result.findings.filter((f) => S.notes[noteKey(f)]).map((f) => [f.id, S.notes[noteKey(f)]])), client: S.client, recon: S.recon, compare: S.cmp ? { name: S.prev.name, result: S.cmp, kind: S.prevKind, before: S.prevCounts, after: severityCounts(S.result.findings) } : null });
 function clientForm(anchor) {
   const m = $("menu"); m.textContent = ""; const f = el("div", "menu__form"); f.style.cssText = "min-width:460px;max-height:78vh;overflow:auto"; f.appendChild(el("b", "", "Client report"));
   const field = (key, label, ph, area) => { const l = el("label", "field"); l.appendChild(el("span", "", label)); const i = el(area ? "textarea" : "input"); if (!area) i.type = "text"; else i.rows = area; i.placeholder = ph; i.value = S.client[key] || ""; i.addEventListener("input", () => { S.client[key] = i.value; saveReview(); }); l.appendChild(i); f.appendChild(l); };
   { const l = el("label", "field"); l.appendChild(el("span", "", "Report language")); const sel = el("select"); for (const [v, t] of [["en", "English"], ["id", "Bahasa Indonesia"]]) { const o = el("option", "", t); o.value = v; sel.appendChild(o); } sel.value = S.client.lang === "id" ? "id" : "en"; sel.addEventListener("change", () => { S.client.lang = sel.value; saveReview(); }); l.appendChild(sel); f.appendChild(l); }
-  field("client", "Prepared for", "Client name"); field("deckTitle", "Deck", S.deck.name.replace(/\.(pptx|pdf)$/i, "")); field("purpose", "For", "Board meeting, 12 December"); field("reviewer", "Reviewed by", "Your name");
+  field("client", "Prepared for", "Client name"); field("deckTitle", "Deck", S.deck.name.replace(/\.(pptx|pdf)$/i, "")); field("purpose", "For", "Board meeting, 12 December"); if (S.prevKind === "quarter" && S.prev) field("period", "Results period", "Q3 2025 results"); field("reviewer", "Reviewed by", "Your name");
   field("overall", "Our view", "Two or three sentences: what the deck says today, what it should say, what matters most. Left empty, a factual summary is used.", 4);
   field("rebuild", "The page to rebuild first", "Slide 3: EBITDA margin"); field("rebuildWhy", "Why that page", "One or two sentences.", 2);
   const withNotes = S.result.findings.filter((x) => S.notes[noteKey(x)] && !S.dismissed.has(x.id)).length, open = S.result.findings.filter((x) => !S.dismissed.has(x.id)).length;
@@ -209,10 +215,12 @@ function viewNumbers(v) {
   fill();
 }
 function viewCompare(v) {
-  if (!S.cmp) { v.appendChild(el("h1", "", "What changed since the last version")); v.appendChild(el("p", "lede", "Open the previous version of this deck. Slides are paired even when pages were added, removed or moved, and every change to wording and figures is listed, ready to send to the client as a change log.")); const b = el("button", "btn btn--primary btn--lg", "Open the previous version"); b.addEventListener("click", () => $("file-prev").click()); v.appendChild(b); return; }
-  const c = S.cmp.summary; v.appendChild(el("h1", "", `${c.changed + c.added + c.removed} of ${S.deck.slides.length} slides differ from the previous version`));
+  if (!S.cmp) { v.appendChild(el("h1", "", "What changed since the last version")); v.appendChild(el("p", "lede", "Open the previous version of this deck. Slides are paired even when pages were added, removed or moved, and every change to wording and figures is listed, ready to send to the client as a change log.")); const row = el("div", "toolbar2"); for (const [t, kind, cls] of [["Open the previous version", "version", "btn btn--primary btn--lg"], ["Open last quarter's deck", "quarter", "btn btn--lg"]]) { const b = el("button", cls, t); b.addEventListener("click", () => { S.prevKind = kind; $("file-prev").click(); }); row.appendChild(b); } v.appendChild(row); v.appendChild(el("p", "doc__meta", "Last quarter's deck also checks the figures for earlier periods that both decks report, and lists any that changed without a note.")); return; }
+  const c = S.cmp.summary, q = S.prevKind === "quarter", rs = S.result.findings.filter((f) => f.code === "restated");
+  v.appendChild(el("h1", "", q ? (rs.length ? `${rs.length} figure${rs.length > 1 ? "s" : ""} from last quarter changed without a note` : "No figure from last quarter changed without a note") : `${c.changed + c.added + c.removed} of ${S.deck.slides.length} slides differ from the previous version`));
+  if (q && rs.length) { const box = el("div", "card"); for (const f of rs) { const p = el("p"); p.appendChild(el("b", "", f.title)); p.appendChild(slideChip(f.slides[0])); box.appendChild(p); } v.appendChild(box); }
   v.appendChild(el("p", "lede", `Compared with ${S.prev.name}: ${c.changed} changed, ${c.added} added, ${c.removed} removed, ${c.moved} moved, ${c.same} unchanged. ${c.figures} figure${c.figures === 1 ? "" : "s"} changed.`));
-  const tb = el("div", "toolbar2"), copy = el("button", "btn", "Copy the change log"); copy.addEventListener("click", async () => { try { await navigator.clipboard.writeText(changeLog()); toast("Change log copied."); } catch (e) { toast("Copying is blocked by the browser.", "error"); } }); tb.appendChild(copy); const other = el("button", "btn", "Compare with another file"); other.addEventListener("click", () => $("file-prev").click()); tb.appendChild(other); v.appendChild(tb);
+  const tb = el("div", "toolbar2"), copy = el("button", "btn", "Copy the change log"); copy.addEventListener("click", async () => { try { await navigator.clipboard.writeText(changeLog()); toast("Change log copied."); } catch (e) { toast("Copying is blocked by the browser.", "error"); } }); tb.appendChild(copy); const other = el("button", "btn", "Compare with another file"); other.addEventListener("click", (e) => compareMenu(e.currentTarget)); tb.appendChild(other); v.appendChild(tb);
   const wrap = el("div", "diff");
   for (const p of S.cmp.pairs) { if (p.status === "same") continue; const card = el("div", "card diffcard"), h = el("header"); h.appendChild(el("span", `st st--${p.status}`, p.status)); const s = p.b || p.a; h.appendChild(el("h3", "", `${p.b ? `Slide ${p.b.index}` : `Was slide ${p.a.index}`}${p.a && p.b && p.a.index !== p.b.index ? ` (was ${p.a.index})` : ""} · ${s.title ? s.title.text : "untitled"}`)); if (p.b) h.appendChild(slideChip(p.b.index)); card.appendChild(h);
     if (p.figures.length) { const f = el("p", "figs"); p.figures.forEach((x) => f.appendChild(el("span", "", `${x.from ?? "new"} → ${x.to ?? "removed"}`))); card.appendChild(f); }
@@ -236,6 +244,12 @@ function render() {
   ({ overview: viewOverview, slides: viewSlides, storyline: viewStoryline, numbers: viewNumbers, sources: viewSources, compare: viewCompare })[S.view](v); v.scrollTop = keep;
   renderRail(); renderSide();
 }
+function compareMenu(anchor) {
+  const m = $("menu"); m.textContent = ""; const item = (t, sub, kind) => { const b = el("button", "menu__item"); b.appendChild(el("b", "", t)); b.appendChild(el("small", "", sub)); b.addEventListener("click", () => { m.hidden = true; S.prevKind = kind; $("file-prev").click(); }); m.appendChild(b); };
+  item("Previous version of this deck…", "What changed between two drafts: wording, figures, pictures, pages", "version");
+  item("Last quarter's deck…", "Also checks figures for earlier periods that changed without a note (restatements)", "quarter");
+  m.hidden = false; const r = anchor.getBoundingClientRect(); m.style.top = `${r.bottom + 6}px`; m.style.left = `${Math.max(8, r.right - m.offsetWidth)}px`;
+}
 function exportMenu(anchor) {
   const m = $("menu"); m.textContent = ""; const item = (t, sub, fn) => { const b = el("button", "menu__item"); b.appendChild(el("b", "", t)); b.appendChild(el("small", "", sub)); b.addEventListener("click", () => { m.hidden = true; fn(); }); m.appendChild(b); };
   const stem = S.deck.name.replace(/\.(pptx|pdf)$/i, "");
@@ -251,7 +265,7 @@ async function boot() {
   $("btn-open").addEventListener("click", () => $("file").click()); $("btn-open-2").addEventListener("click", () => $("file").click()); $("btn-sample").addEventListener("click", sample);
   $("file").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; open(f); }); $("file-prev").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; openPrevious(f); });
   $("btn-source").addEventListener("click", () => $("file-src").click()); $("file-src").addEventListener("change", (e) => { const fs = [...e.target.files]; e.target.value = ""; openSources(fs); });
-  $("btn-compare").addEventListener("click", () => $("file-prev").click()); $("btn-export").addEventListener("click", (e) => exportMenu(e.currentTarget)); $("btn-fix").addEventListener("click", (e) => fixMenu(e.currentTarget));
+  $("btn-compare").addEventListener("click", (e) => compareMenu(e.currentTarget)); $("btn-export").addEventListener("click", (e) => exportMenu(e.currentTarget)); $("btn-fix").addEventListener("click", (e) => fixMenu(e.currentTarget));
   $("tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; S.view = b.dataset.view; S.focus = null; if (S.view !== "slides") S.filter.slideOnly = false; render(); });
   document.addEventListener("pointerdown", (e) => { if (!$("menu").hidden && !$("menu").contains(e.target) && !e.target.closest("#btn-export,#btn-fix")) $("menu").hidden = true; }, true);
   let depth = 0; window.addEventListener("dragenter", (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes("Files")) { depth++; document.body.classList.add("is-drop"); } }); window.addEventListener("dragleave", () => { depth = Math.max(0, depth - 1); if (!depth) document.body.classList.remove("is-drop"); });
