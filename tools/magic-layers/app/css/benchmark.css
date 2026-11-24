@@ -1,0 +1,16 @@
+/* Benchmark: the decks on the left of the view, the report on the right. */
+.bench__view { grid-template-rows: auto minmax(0, 1fr); }
+.bench__split { min-height: 0; display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.3fr); }
+.bench__list { overflow: auto; padding: 14px 0 30px 16px; display: grid; align-content: start; gap: 12px; }
+.bench__drop { border: 2px dashed #CFC7B8; border-radius: 12px; background: #fff; padding: 18px; display: grid; gap: 6px; text-align: center; }
+.bench__drop.is-over { border-color: var(--gold-dark); background: #FFFBEF; }
+.bench__drop span { color: var(--muted); font-size: 12.5px; }
+.bench__progress { font-weight: 600; color: var(--ink) !important; min-height: 18px; }
+.bench__table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 12.5px; }
+.bench__table th, .bench__table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.bench__table th { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.bench__table td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.bench__table td.file { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bench__table tr.is-error td { color: var(--danger); }
+.bench__table button { border: 0; background: none; color: var(--muted); padding: 0 4px; }
+.bench__table button:hover { color: var(--danger); }

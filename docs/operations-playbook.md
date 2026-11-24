@@ -116,3 +116,11 @@ Open the tool suite and choose **Proposals**. Pick the offer, the language (bili
 
 Before the first one goes out, have counsel review the standard terms: save any proposal as Word and send it with the questions listed in the tool's README (Proposals → Before the first proposal goes out). Put the final wording into `tools/magic-layers/app/js/proposals/terms.js` in both languages and tick **The standard terms have been reviewed by our counsel** in Settings; until then every document is marked as a draft.
 
+### Running the benchmark study
+
+1. Decide the sample before downloading anything, and write it down: which companies (for example the LQ45 constituents), which document (the public-expose presentation), which dates.
+2. Download the decks as published (IDX website, *Keterbukaan Informasi*, search "public expose"; the presentation is usually attached as a PDF). Keep them in one folder.
+3. Open the tool suite, **Benchmark** tab: add the folder's files, fill in the title, the period and how the decks were chosen.
+4. Read the bars against a few decks before publishing: open two or three decks with high counts in the Deck Auditor and check the findings are real. Write "Our reading" only from figures the report shows.
+5. Save the report, print to PDF, and keep the key file (which code is which company) inside the firm. Never publish the key or name a company.
+

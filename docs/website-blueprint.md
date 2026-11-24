@@ -855,3 +855,18 @@ A recurring version of the Deck Audit for investor relations teams that build th
 
 **For the owner.** The fee for the quarterly audit; whether to publish a turnaround per review (the page and proposal say it is agreed with the results calendar).
 
+## 50. Benchmark of published decks (24 November 2026)
+
+The tool to produce the flagship insight: a set of published decks (for example the year's public-expose decks) audited one by one and counted together. It is the fifth tab of the desktop tool suite (v1.9.0). No study has been run yet: it needs the decks, collected by the owner.
+
+| Area | What changed |
+| --- | --- |
+| Figures | `app/js/audit/benchmark.js`: one row of numbers per deck (slides, figures, words per slide, share of titles stating a conclusion, findings by severity, which kinds of finding occurred). Nineteen measures group the finding codes for "share of decks with …"; checks that need PowerPoint, or eight slides or more, are counted only against decks they apply to |
+| Privacy | Decks are read and dropped; only their figures are kept, in the browser. The report and the figures CSV carry codes (D01…) in an order unrelated to file names; a separate key CSV links codes to files for the firm |
+| Report | A4 HTML in English or Indonesian: headline figures, a bar list per pillar (single hue #A07C00, which passes the 3:1 contrast check; value and "n of N" beside each bar, so the list is its own table), the spread of action titles, the sample's profile, and the method and limits. "How the decks were chosen" is required and printed; the owner's reading is optional and printed as written |
+| Network | A personal cloud environment "Metanoia-Advisory" was created for this repository (IDX and the live site allowed; dependency install saved as its setup script). Downloading decks from IDX from the build environment was then refused by the session's safety checks, so the decks are collected by hand |
+
+**Verified.** Tool self-test: 124 checks (new: every finding code is counted, applicability, stable shuffled codes, no names in the report or the figures in either language, and the screen with three files including an unreadable one).
+
+**Next.** The owner collects the decks and writes down how they were chosen; the study is run in the tool; the report becomes an insight article and a PDF on the site, with the figures as published.
+

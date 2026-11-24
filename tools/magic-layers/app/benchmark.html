@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmark — Metanoia Advisory</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/proposals.css">
+<link rel="stylesheet" href="/css/benchmark.css">
+<script src="/vendor/jszip/jszip.min.js" defer></script>
+<script type="module" src="/js/audit/bench-ui.js"></script>
+</head>
+<body class="proposals bench">
+<header class="top">
+  <div class="brand" title="Metanoia Advisory"><span class="lockup"><span>Metanoia</span><i></i><b>Advisory</b></span><nav class="switch" aria-label="Tools"><a href="/">Magic Layers</a><a href="/auditor.html">Deck Auditor</a><a href="/charts.html">Chart Builder</a><a href="/proposals.html">Proposals</a><a href="/benchmark.html" class="is-on" aria-current="page">Benchmark</a></nav></div>
+  <div class="doc"><span id="doc-name" class="doc__name">Benchmark</span><span id="doc-meta" class="doc__meta"></span></div>
+  <div class="actions">
+    <button class="btn" id="btn-add" title="Add PowerPoint or PDF decks to the study">Add decks</button>
+    <button class="btn" id="btn-csv" title="One row of figures per deck, by code; no file names">Figures (CSV)</button>
+    <button class="btn" id="btn-key" title="Which code is which file. Keep this file inside the firm">Key (CSV)</button>
+    <button class="btn btn--primary" id="btn-report" title="The study report: aggregate figures only. Open it and print to PDF">Report</button>
+  </div>
+</header>
+<main class="pk">
+  <form class="pk__form" id="form" autocomplete="off" novalidate></form>
+  <section class="pk__view bench__view">
+    <ul class="pk__problems" id="problems" aria-live="polite"></ul>
+    <div class="bench__split">
+      <div class="bench__list"><div class="bench__drop" id="drop"><b>Drop decks here</b><span>PowerPoint or PDF, as many as you like. They are read on this computer; only their figures are kept.</span><span id="progress" class="bench__progress" aria-live="polite"></span></div><table class="bench__table" id="table"></table></div>
+      <div class="pk__paper"><iframe id="preview" title="Preview of the study report" sandbox="allow-same-origin allow-modals"></iframe></div>
+    </div>
+  </section>
+</main>
+<input type="file" id="file" accept=".pptx,.pdf" multiple hidden>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

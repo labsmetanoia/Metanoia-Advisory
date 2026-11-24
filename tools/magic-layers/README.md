@@ -1,11 +1,12 @@
-# Magic Layers, Deck Auditor, Chart Builder and Proposals
+# Magic Layers, Deck Auditor, Chart Builder, Proposals and Benchmark
 
-Four desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
+Five desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
 
 - **Magic Layers** takes a flattened slide (a screenshot, an exported image, a PDF page, a PowerPoint made of pictures) and separates it into editable layers: live text boxes, shapes, lines and pictures on a repaired background. The result is edited in the app or exported as a normal, editable PowerPoint.
 - **Deck Auditor** reads a finished PowerPoint or PDF and checks it against the firm's three promises before it goes out: consulting structure, executive-grade design, numbers that match. It also compares two versions of a deck and writes the change log.
 - **Chart Builder** turns a range pasted from Excel, a workbook or a CSV file into native, editable PowerPoint charts in the house style, with the action title, unit line and source line in place.
 - **Proposals** turns an enquiry into a proposal and engagement letter in Indonesian, English or both side by side, ready to print to PDF or to save as a Word file for counsel.
+- **Benchmark** audits a set of published decks one by one and turns the results into an anonymised study: the share of decks with each kind of finding, ready for an insight piece.
 
 Switch between them with the tabs at the top left.
 
@@ -191,6 +192,19 @@ Each proposal gets a reference (MA/P/year/month/number) and is kept in this brow
 
 **Before the first proposal goes out.** The standard terms in `app/js/proposals/terms.js` are a working draft. Until **The standard terms have been reviewed by our counsel** is ticked in Settings, every document says on its cover and in its footer that it is a draft for review by counsel. Save any proposal as Word and send it to counsel with these questions: the legal entity that signs; the liability cap; tax wording (VAT, withholding); the prevailing language; how disputes are settled (court or arbitration, and where); stamp duty (*meterai*) on signed copies; acceptance by email; and the notice period. Put counsel's final wording into `terms.js` in both languages, then tick the box.
 
+## Benchmark
+
+The **Benchmark** tab runs the Deck Auditor over many decks and counts the results, for a study such as "what 40 public-expose decks tell investors".
+
+![Benchmark](docs/benchmark.jpg)
+
+1. Collect the decks yourself, as published (for public-expose decks: the IDX website, *Keterbukaan Informasi*, searching for "public expose"; the presentation is usually attached as a PDF). Keep a note of which companies, which documents and which dates.
+2. **Add decks** (or drop them on the list). Each is read and audited on this computer, then dropped: only its figures are kept, in this browser, so a study can grow over several sittings. Picture-only or scanned files are listed as unreadable and left out.
+3. Fill in the title, the period and **How the decks were chosen**. The report prints that text, and stays off until it is filled in: a benchmark is only as good as its stated sample.
+4. **Report** saves the study as HTML (print to PDF): four headline figures, then for each pillar the share of decks with each kind of finding, the spread of action titles, the sample's profile and how it was done. **Our reading** is optional and printed as you write it; write only what the figures support.
+
+The report and **Figures (CSV)** name no file, company or slide text. Each deck is a code (D01, D02, …) in an order unrelated to the file names; **Key (CSV)** links codes to files and is for the firm only. Checks that need a PowerPoint file (typefaces, pictures, placeholders) are counted only against PowerPoint decks, and the summary and decision-page checks only against decks of eight slides or more; each bar says what it was counted against. The figures are automatic findings, not reviewed one by one, and the method section says so.
+
 ## Brand kit
 
 `app/brand.json` holds the house typefaces and colour swatches shown in the editor. Edit it to add colours or to change the heading and body typefaces.
@@ -231,7 +245,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with fifteen planted flaws, expects exactly those fifteen findings, compares it with its previous version, reconciles it against an Excel model and a Word document, and applies the one-click fixes, expecting the five mechanical findings to be gone from the corrected file and the other ten to remain. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor. It compares two quarters of a results deck, expecting one silently restated figure and none for the unchanged and disclosed ones, and runs the same comparison in the app. Then it fills a proposal, checks that the Word and print buttons wait for the essentials, saves the Word file and parses every part of it. The proposal kit's amounts in words, bilingual parity, draft marking and Word output are also tested without a browser.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with fifteen planted flaws, expects exactly those fifteen findings, compares it with its previous version, reconciles it against an Excel model and a Word document, and applies the one-click fixes, expecting the five mechanical findings to be gone from the corrected file and the other ten to remain. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor. It compares two quarters of a results deck, expecting one silently restated figure and none for the unchanged and disclosed ones, and runs the same comparison in the app. It runs a small benchmark (two decks read, a picture-only file set aside, no file names in the report). Then it fills a proposal, checks that the Word and print buttons wait for the essentials, saves the Word file and parses every part of it. The proposal kit's amounts in words, bilingual parity, draft marking and Word output are also tested without a browser.
 
 ## Files
 
@@ -242,6 +256,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 | `ai-assist.mjs`, `ai-storyline.mjs` | Optional AI endpoints (Magic Layers text check, Deck Auditor storyline review) |
 | `app/auditor.html`, `app/js/audit/` | The Deck Auditor: PowerPoint and PDF readers, the checks, version compare, report |
 | `app/charts.html`, `app/js/charts/` | The Chart Builder: data readers, preview, PowerPoint export |
+| `app/benchmark.html`, `app/js/audit/benchmark.js`, `bench-ui.js` | Benchmark: per-deck figures, aggregates, the study report |
 | `app/proposals.html`, `app/js/proposals/` | Proposals: offers, standard terms, amounts in words, the document, the Word writer |
 | `app/` | The application: interface, analysis worker, importers, exporters |
 | `app/vendor/` | Bundled libraries: Tesseract OCR with English and Indonesian data, pdf.js, PptxGenJS, JSZip, ag-psd |
