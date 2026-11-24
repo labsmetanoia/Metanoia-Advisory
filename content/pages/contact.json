@@ -190,6 +190,14 @@
     "textM": {
       "en": "Send a link or a file. Within two working days a senior designer replies with three observations and the one page we would rebuild first.",
       "id": "Kirimkan tautan atau berkas. Dalam dua hari kerja desainer senior membalas dengan tiga pengamatan dan satu halaman yang akan kami bangun ulang lebih dahulu."
+    },
+    "audit": {
+      "en": "Want every page and every figure checked, with a written report?",
+      "id": "Ingin setiap halaman dan setiap angka diperiksa, dengan laporan tertulis?"
+    },
+    "auditLink": {
+      "en": "See the Deck Audit",
+      "id": "Lihat Audit Dek"
     }
   },
   "confidentiality": {

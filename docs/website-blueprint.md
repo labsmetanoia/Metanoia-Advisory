@@ -770,3 +770,22 @@ Netlify's free plan pauses production deploys, and in the end the site itself, w
 | Fix | The service finder's `data-finder` attribute now uses double quotes; it had been failing HTML validation |
 
 **Verified.** `npm test` passes on the default build (62 pages, links, parity, HTML validity). A build with `CF_PAGES=1` and a test key was submitted in a browser against a stubbed Web3Forms API: contact (both languages), deck review and newsletter show the success state, a refused submission shows the error. Not exercised: a real Cloudflare Pages build and a real Web3Forms delivery, neither of which is reachable from the build environment.
+
+## 45. Deck Audit: client report and offer page (24 November 2026)
+
+The Deck Auditor produced a working list for the person doing the review. This adds the document that is handed to a client, and a page on the site that sells the review as a fixed-fee offer.
+
+| Area | What changed |
+| --- | --- |
+| Client report (tool, v1.5.0) | `app/js/audit/report.js`: `clientReportHtml` and `ACTIONS` (one "what to do" sentence per finding type). Cover, the reviewer's view, the points to fix before the deck goes out, the page to rebuild first, every open finding by pillar with what to do and the reviewer's note, the source reconciliation, the storyline, changes since the previous version, and a closing section on how the review was done and what it does not cover. One HTML file, printed to PDF on A4 |
+| Reviewer input (tool) | `app/js/audit/ui.js`: a note field in each opened finding; **Report → Client report…** asks who it is for, the overall view and the page to rebuild first. Notes and details are kept per file name in the browser's storage; findings set aside are left out of the report |
+| Sample report | `src/root/downloads/deck-audit-sample-en.pdf`, produced by the tool from its sample deck (an invented company with planted errors) and marked as a sample on the cover and in the page copy |
+| Offer page | `src/pages/deck-audit.njk`, content in `content/pages/deckAudit.json`, FAQ set `deckAudit` in `content/pages/faq.json`. Routes `/en/strategic-storytelling/deck-audit/` and `/id/storytelling-strategis/audit-dek/`. Sections: hero, what is checked (the tool's three pillars), the sample report, how it runs and the terms, what a Deck Audit is not, questions, request form (`formKey` `deckAudit`, works with every form provider; an email button when forms are off) |
+| Price | `site.config.json` → `offers.deckAudit.price` (`en`, `id`). Empty by default: the page then says the fee is fixed and confirmed in writing before work starts |
+| Links in | Footer, the storytelling hub's hero (a text link under the buttons) and the free deck-review section on the contact page |
+
+**Decisions.** The page states what the review is not (not an audit of the accounts, assurance or legal advice), in line with the footer statement that the firm does not practise audit. The free three-observation review stays as the entry offer and the two are cross-linked. The written report is in English only for now; the page and the questions say so.
+
+**To confirm by the owner.** The terms on the page (three working days, a 45-minute readout, one deck per audit) come from the business plan's working assumptions; edit `terms` and the questions in the content files if they change. The confidentiality answer says the software runs on the firm's own computers and the deck is not uploaded to an outside AI service, which holds as long as the tool's optional AI assist stays off for client files.
+
+**Verified.** Tool self-test: 97 checks, including the client report's contents, escaping of the reviewer's text, set-aside findings left out, notes kept between sessions and the saved file. Site: `npm test` passes (66 pages, links, bilingual parity, HTML validity); the page was checked at 1440, 900 and 390 px in both languages; the form was submitted in a browser on a Cloudflare-style build against a stubbed Web3Forms API and showed the success state in both languages. Not exercised: a real submission on the live site.

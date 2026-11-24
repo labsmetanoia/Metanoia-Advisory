@@ -41,6 +41,10 @@
     "_comment": "Optional cookieless analytics: the site domain registered at plausible.io (or leave empty).",
     "plausibleDomain": ""
   },
+  "offers": {
+    "_comment": "Published prices. Leave a price empty and the page says the fee is fixed and confirmed before work starts. Example: { \"en\": \"Rp 15 million, excluding VAT\", \"id\": \"Rp 15 juta, belum termasuk PPN\" }.",
+    "deckAudit": { "price": { "en": "", "id": "" } }
+  },
   "ai": {
     "_comment": "Set deckDiagnostic to true after adding ANTHROPIC_API_KEY to the host's environment variables; the function lives in netlify/functions/deck-diagnostic.mjs.",
     "deckDiagnostic": false

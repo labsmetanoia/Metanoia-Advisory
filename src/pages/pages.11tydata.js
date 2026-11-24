@@ -32,6 +32,7 @@ export default {
       if (data.pageKey === "person") return "about";
       if (data.pageKey === "article") return "insights";
       if (data.pageKey === "thanks") return "contact";
+      if (data.pageKey === "deckAudit") return "presentation";
       return data.pageKey;
     }),
     pageTitle: guard((data) => {
@@ -64,7 +65,7 @@ export default {
     noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
     ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
-      const map = { home: "home", hub: "hub", service: "service", article: "insight", person: "person" };
+      const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", article: "insight", person: "person" };
       return `/assets/img/og/og-${map[data.pageKey] || "default"}.png`;
     }),
   },

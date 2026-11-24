@@ -14,6 +14,7 @@ pageKey: hub
       {% if pr.key == "presentation" %}<a class="btn btn--secondary" href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="hub-hero-secondary">{{ ui | t(lang, "cta.deckReview") }}</a>
       {% else %}{% set note = insights | where("type", "flagship") | where("practice", pr.key) | first %}{% if note and note.pdf and not note.forthcoming %}<a class="btn btn--secondary" href="{{ note.pdf }}" data-event="download" data-asset="{{ note.key }}">{{ ui | t(lang, "cta.entryNote") }}</a>{% endif %}{% endif %}
     </div>
+    {% if pr.key == "presentation" %}<p class="hub-hero__more"><a href="{{ 'deckAudit' | pageUrl(lang) }}" data-event="cta_click" data-location="hub-hero-audit">{{ ui | t(lang, "cta.deckAuditLong") }} <span aria-hidden="true">→</span></a></p>{% endif %}
     {% if site.engagementsFromLine and hub.engagementsFrom %}<p class="meta" style="margin-top:16px">{{ ui | t(lang, "labels.engagementsFrom") }} {{ hub.engagementsFrom | L(lang) }}</p>{% endif %}
   </div>
 </section>

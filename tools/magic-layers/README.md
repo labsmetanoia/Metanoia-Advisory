@@ -81,8 +81,25 @@ How to work with it:
 - **Sources** checks the deck against its source of truth: see "Source Check" below.
 - **Compare** opens the previous version of the deck. Slides are paired even when pages were added, removed or moved; every change to wording and figures is shown, and "Copy the change log" gives a text version to send to the client.
 - **Fix…** repairs the findings that have a mechanical remedy and saves a corrected copy: see "One-click fixes" below.
-- **Report** saves a one-page audit report (open it and print to PDF), the findings as a spreadsheet, or the change log.
+- **Report** saves the client report (see below), a working report for your own use, the findings as a spreadsheet, or the change log.
 - Tick "This is a Metanoia deck" on the Overview to flag every typeface other than the house fonts.
+
+### Client report
+
+The findings list is a working tool. The client report is the document you hand over: the same findings, with your judgement around them.
+
+1. Go through the findings. **Set aside** the ones that are not issues; they are left out of the report.
+2. Open a finding and type in **Note for the client report** where you have something to add: which figure is the right one, a suggested title, what to ask the finance team.
+3. **Report → Client report…** Fill in who it is for, your overall view, and the one page you would rebuild first and why. Leave "Our view" empty and the report states the counts instead.
+4. **Save the client report.** It is a single HTML file; open it and print to PDF (A4).
+
+![Client report details](docs/auditor-client-form.jpg)
+
+The report has a cover, your view, the points to fix before the deck goes out, the page to rebuild first, every open finding by pillar with what to do about it and your note, the figure-by-figure reconciliation if you added a source, the storyline title by title, the changes since the previous version if you compared one, and a closing section on how the review was done and what it does not cover.
+
+![Client report](docs/auditor-client-report.jpg)
+
+Notes and client details are kept in this browser per file name, so you can close the tool and continue later. They are not written into the deck. A finished example, on an invented company, is on the website as `src/root/downloads/deck-audit-sample-en.pdf`.
 
 ### One-click fixes
 

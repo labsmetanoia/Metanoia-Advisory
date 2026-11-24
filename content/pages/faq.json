@@ -32,5 +32,22 @@
       { "q": { "en": "Do we keep the editable files?", "id": "Apakah kami menyimpan berkas yang dapat disunting?" },
         "a": { "en": "Yes. Final delivery includes the editable files and a template to continue with, plus a rehearsal with the presenters where it helps. Teams keep producing in the system; we review a sample each quarter if you want us to.", "id": "Ya. Pengiriman akhir mencakup berkas yang dapat disunting dan templat untuk melanjutkan, serta latihan bersama pemapar bila membantu. Tim terus berproduksi dalam sistem; kami meninjau sampel setiap kuartal jika Anda menghendaki." } }
     ]
+  },
+  "deckAudit": {
+    "title": { "en": "Questions about the Deck Audit", "id": "Pertanyaan tentang Audit Dek" },
+    "items": [
+      { "q": { "en": "What do I need to send?", "id": "Apa yang perlu saya kirim?" },
+        "a": { "en": "The deck, as PowerPoint or PDF. PowerPoint lets us read tables and chart data directly; a PDF is read as text and layout, so table arithmetic is checked by eye. If you want figures traced to their origin, send the model or source document as well (an Excel workbook or a Word document).", "id": "Dek Anda, dalam bentuk PowerPoint atau PDF. PowerPoint memungkinkan kami membaca tabel dan data grafik secara langsung; PDF dibaca sebagai teks dan tata letak, sehingga perhitungan tabel diperiksa secara visual. Jika Anda ingin angka ditelusuri ke asalnya, kirim juga model atau dokumen sumbernya (berkas Excel atau dokumen Word)." } },
+      { "q": { "en": "How is this different from the free deck review?", "id": "Apa bedanya dengan tinjauan dek gratis?" },
+        "a": { "en": "The free review is three observations by email on a public-expose deck. A Deck Audit goes through every page and every figure, and gives you a written report and a readout call.", "id": "Tinjauan gratis berupa tiga pengamatan melalui email atas dek public expose. Audit Dek menelaah setiap halaman dan setiap angka, serta memberi Anda laporan tertulis dan sesi pembahasan." } },
+      { "q": { "en": "When should I send the deck?", "id": "Kapan sebaiknya dek dikirim?" },
+        "a": { "en": "When the content is settled, and early enough to act on the report. The audit takes three working days, so a week before the meeting leaves your team time to make the changes.", "id": "Ketika isinya sudah mantap, dan cukup awal untuk menindaklanjuti laporan. Audit memakan waktu tiga hari kerja, sehingga seminggu sebelum rapat memberi tim Anda waktu untuk melakukan perbaikan." } },
+      { "q": { "en": "Is the deck kept confidential?", "id": "Apakah dek dijaga kerahasiaannya?" },
+        "a": { "en": "Yes. Send it from your work address and we confirm receipt under NDA. The software checks run on our own computers, and the deck is not uploaded to an outside AI service.", "id": "Ya. Kirimkan dari alamat kantor Anda dan kami mengonfirmasi penerimaan di bawah NDA. Pemeriksaan perangkat lunak dijalankan di komputer kami sendiri, dan dek tidak diunggah ke layanan AI pihak luar." } },
+      { "q": { "en": "Which languages do you work in?", "id": "Dalam bahasa apa Anda bekerja?" },
+        "a": { "en": "We audit decks in Indonesian or English. The written report is in English; the readout is in Indonesian or English.", "id": "Kami mengaudit dek berbahasa Indonesia atau Inggris. Laporan tertulis dalam bahasa Inggris; sesi pembahasan dalam bahasa Indonesia atau Inggris." } },
+      { "q": { "en": "Do you fix the deck as well?", "id": "Apakah Anda juga memperbaiki deknya?" },
+        "a": { "en": "Not within the audit. The report tells your team exactly what to change and where. If you would like us to make the changes or rebuild pages, we quote that separately.", "id": "Tidak di dalam audit. Laporan memberi tahu tim Anda dengan tepat apa yang harus diubah dan di mana. Jika Anda ingin kami yang melakukan perubahan atau membangun ulang halaman, kami memberikan penawaran terpisah." } }
+    ]
   }
 }

@@ -1,0 +1,298 @@
+{
+  "_comment": "The Deck Audit offer page. The fee is not written here: set offers.deckAudit.price in site.config.json and it appears in the terms; while it is empty the page says the fee is fixed and confirmed before work starts. Turnaround and readout length are in `terms` below.",
+  "seoTitle": {
+    "en": "Deck Audit: a review before your deck goes out",
+    "id": "Audit Dek: tinjauan sebelum dek Anda dikirim"
+  },
+  "metaDescription": {
+    "en": "A fixed-fee review of a board, investor or earnings deck. Every figure checked against every other mention of it, the storyline read title by title, and a written report with a readout call.",
+    "id": "Tinjauan berbiaya tetap untuk dek dewan, investor atau paparan kinerja. Setiap angka dicocokkan dengan setiap penyebutannya, alur cerita dibaca judul demi judul, dan laporan tertulis disertai sesi pembahasan."
+  },
+  "name": {
+    "en": "Deck Audit",
+    "id": "Audit Dek"
+  },
+  "hero": {
+    "title": {
+      "en": "Find what the board will find, *before the meeting*",
+      "id": "Temukan apa yang akan ditemukan dewan, *sebelum rapat*"
+    },
+    "lede": {
+      "en": "A Deck Audit is a fixed-fee review of a finished or nearly finished deck. We check every figure against every other mention of it, read the storyline title by title, and mark what still looks like a draft. You receive a written report and a readout call.",
+      "id": "Audit Dek adalah tinjauan berbiaya tetap atas dek yang sudah atau hampir selesai. Kami mencocokkan setiap angka dengan setiap penyebutannya, membaca alur cerita judul demi judul, dan menandai apa yang masih tampak seperti draf. Anda menerima laporan tertulis dan sesi pembahasan."
+    },
+    "ledeM": {
+      "en": "A fixed-fee review of a finished deck: every figure cross-checked, the storyline read title by title, and a written report with a readout call.",
+      "id": "Tinjauan berbiaya tetap atas dek yang sudah jadi: setiap angka dicocokkan, alur cerita dibaca judul demi judul, dan laporan tertulis disertai sesi pembahasan."
+    },
+    "button": {
+      "en": "Request a Deck Audit",
+      "id": "Minta Audit Dek"
+    },
+    "sample": {
+      "en": "See a sample report",
+      "id": "Lihat contoh laporan"
+    },
+    "photo": "/assets/img/photos/svc-consulting.webp"
+  },
+  "checks": {
+    "label": {
+      "en": "What we check",
+      "id": "Apa yang kami periksa"
+    },
+    "items": [
+      {
+        "icon": "chartup",
+        "title": {
+          "en": "Numbers that match",
+          "id": "Angka yang cocok"
+        },
+        "list": [
+          {
+            "en": "Every figure compared with every other mention of it in the deck",
+            "id": "Setiap angka dibandingkan dengan setiap penyebutannya di dalam dek"
+          },
+          {
+            "en": "Totals, shares and growth rates recalculated from the figures beside them",
+            "id": "Total, porsi dan tingkat pertumbuhan dihitung ulang dari angka di sampingnya"
+          },
+          {
+            "en": "Headline numbers checked against the chart or table on the same page",
+            "id": "Angka pada judul dicocokkan dengan grafik atau tabel di halaman yang sama"
+          },
+          {
+            "en": "Figures traced to your model or source document, if you send one",
+            "id": "Angka ditelusuri ke model atau dokumen sumber Anda, jika Anda mengirimkannya"
+          }
+        ]
+      },
+      {
+        "icon": "doc",
+        "title": {
+          "en": "Consulting structure",
+          "id": "Struktur konsultansi"
+        },
+        "list": [
+          {
+            "en": "Each title read as a sentence: does it state a conclusion, or only name a topic",
+            "id": "Setiap judul dibaca sebagai kalimat: menyatakan kesimpulan, atau hanya menyebut topik"
+          },
+          {
+            "en": "The storyline read from the titles alone, the way a senior reader pages through it",
+            "id": "Alur cerita dibaca dari judulnya saja, seperti cara pembaca senior membolak-balik halaman"
+          },
+          {
+            "en": "Whether the deck opens with a summary and closes with a decision or an ask",
+            "id": "Apakah dek dibuka dengan ringkasan dan ditutup dengan keputusan atau permintaan"
+          },
+          {
+            "en": "Pages that carry more text than a reader can take in",
+            "id": "Halaman yang memuat lebih banyak teks daripada yang dapat dicerna pembaca"
+          }
+        ]
+      },
+      {
+        "icon": "target",
+        "title": {
+          "en": "Executive-grade design",
+          "id": "Desain kelas eksekutif"
+        },
+        "list": [
+          {
+            "en": "Typefaces, title sizes and positions that drift from the deck's own system",
+            "id": "Jenis huruf, ukuran dan posisi judul yang menyimpang dari sistem dek itu sendiri"
+          },
+          {
+            "en": "Stretched or low-resolution pictures",
+            "id": "Gambar yang tertarik atau beresolusi rendah"
+          },
+          {
+            "en": "Draft markers, empty placeholders and pages left over from drafting",
+            "id": "Penanda draf, placeholder kosong dan halaman sisa penyusunan"
+          },
+          {
+            "en": "Text that runs off the page or is too small to read in the room",
+            "id": "Teks yang keluar dari halaman atau terlalu kecil untuk dibaca di ruangan"
+          }
+        ]
+      }
+    ]
+  },
+  "sampleReport": {
+    "title": {
+      "en": "See the report before you ask for one",
+      "id": "Lihat laporannya sebelum Anda memintanya"
+    },
+    "text": {
+      "en": "This sample was produced from an invented company's board update with errors planted in it. Your report has the same sections: our view, what to fix before the deck goes out, the page to rebuild first, and every finding with what to do about it.",
+      "id": "Contoh ini dibuat dari dek pembaruan dewan sebuah perusahaan rekaan yang sengaja diberi kesalahan. Laporan Anda memiliki bagian yang sama: pandangan kami, apa yang harus diperbaiki sebelum dek dikirim, halaman yang dibangun ulang lebih dulu, dan setiap temuan beserta tindak lanjutnya."
+    },
+    "button": {
+      "en": "Download the sample report (PDF)",
+      "id": "Unduh contoh laporan (PDF)"
+    },
+    "file": "/downloads/deck-audit-sample-en.pdf",
+    "image": "/assets/img/deck-audit-sample-1536.webp",
+    "imageSmall": "/assets/img/deck-audit-sample-1000.webp",
+    "alt": {
+      "en": "Two pages of a sample Deck Audit report: the cover with the reviewer's view, and findings with what to do about each.",
+      "id": "Dua halaman contoh laporan Audit Dek: sampul dengan pandangan peninjau, dan temuan beserta tindak lanjutnya."
+    },
+    "caption": {
+      "en": "Sample only. The company and every figure in it are invented. The report is written in English.",
+      "id": "Hanya contoh. Perusahaan dan seluruh angkanya rekaan. Laporan ditulis dalam bahasa Inggris."
+    }
+  },
+  "process": {
+    "title": {
+      "en": "How it runs",
+      "id": "Bagaimana prosesnya"
+    },
+    "steps": [
+      {
+        "icon": "doc",
+        "title": {
+          "en": "Send the deck",
+          "id": "Kirim dek Anda"
+        },
+        "text": {
+          "en": "PowerPoint or PDF, with the model or source document if you want figures traced to it. Under NDA on request.",
+          "id": "PowerPoint atau PDF, beserta model atau dokumen sumber jika Anda ingin angkanya ditelusuri. Di bawah NDA jika diminta."
+        }
+      },
+      {
+        "icon": "people",
+        "title": {
+          "en": "We review it",
+          "id": "Kami meninjaunya"
+        },
+        "text": {
+          "en": "Software reads every figure, title and page. A senior reviewer then goes through each finding, sets aside what is not an issue and adds a view.",
+          "id": "Perangkat lunak membaca setiap angka, judul dan halaman. Peninjau senior kemudian menelaah setiap temuan, menyisihkan yang bukan masalah, dan menambahkan pandangan."
+        }
+      },
+      {
+        "icon": "target",
+        "title": {
+          "en": "Report and readout",
+          "id": "Laporan dan pembahasan"
+        },
+        "text": {
+          "en": "A written report, then a call to walk through it with the people who will make the changes.",
+          "id": "Laporan tertulis, lalu sesi untuk membahasnya bersama orang yang akan mengerjakan perbaikannya."
+        }
+      }
+    ]
+  },
+  "terms": {
+    "title": {
+      "en": "The terms",
+      "id": "Ketentuannya"
+    },
+    "items": [
+      {
+        "key": "fee",
+        "label": {
+          "en": "Fee",
+          "id": "Biaya"
+        },
+        "text": {
+          "en": "Fixed fee, confirmed in writing before we start.",
+          "id": "Biaya tetap, dikonfirmasi tertulis sebelum kami mulai."
+        }
+      },
+      {
+        "label": {
+          "en": "Turnaround",
+          "id": "Waktu pengerjaan"
+        },
+        "text": {
+          "en": "Three working days from the day we receive the deck.",
+          "id": "Tiga hari kerja sejak dek kami terima."
+        }
+      },
+      {
+        "label": {
+          "en": "What you receive",
+          "id": "Yang Anda terima"
+        },
+        "text": {
+          "en": "A written report in English (PDF) and a 45-minute readout in Indonesian or English.",
+          "id": "Laporan tertulis berbahasa Inggris (PDF) dan sesi pembahasan 45 menit dalam bahasa Indonesia atau Inggris."
+        }
+      },
+      {
+        "label": {
+          "en": "Scope",
+          "id": "Cakupan"
+        },
+        "text": {
+          "en": "One deck per audit, in Indonesian or English.",
+          "id": "Satu dek per audit, berbahasa Indonesia atau Inggris."
+        }
+      }
+    ]
+  },
+  "limits": {
+    "title": {
+      "en": "What a Deck Audit is not",
+      "id": "Apa yang bukan Audit Dek"
+    },
+    "items": [
+      {
+        "en": "It reviews a presentation, not the accounts or the model behind it. It is not an audit, an assurance engagement or legal advice.",
+        "id": "Yang ditinjau adalah presentasi, bukan pembukuan atau model di baliknya. Ini bukan audit, perikatan asurans, maupun nasihat hukum."
+      },
+      {
+        "en": "We tell you where the deck disagrees with itself or with the source you send. We do not confirm that the underlying figures are correct.",
+        "id": "Kami menunjukkan di mana dek tidak konsisten dengan dirinya sendiri atau dengan sumber yang Anda kirim. Kami tidak memastikan bahwa angka dasarnya benar."
+      },
+      {
+        "en": "Charts pasted as pictures carry no data, so those are checked by eye.",
+        "id": "Grafik yang ditempel sebagai gambar tidak membawa data, sehingga diperiksa secara visual."
+      },
+      {
+        "en": "The audit does not include rewriting the deck. The report tells your team what to change; if you want us to make the changes, we quote that separately.",
+        "id": "Audit tidak mencakup penulisan ulang dek. Laporan memberi tahu tim Anda apa yang harus diubah; jika Anda ingin kami yang mengerjakannya, kami memberikan penawaran terpisah."
+      }
+    ],
+    "free": {
+      "en": "Not ready for a full audit? Send your last public-expose deck for three observations at no charge.",
+      "id": "Belum perlu audit penuh? Kirim dek public expose terakhir Anda untuk tiga pengamatan tanpa biaya."
+    },
+    "freeLink": {
+      "en": "Request the free review",
+      "id": "Minta tinjauan gratis"
+    },
+    "services": {
+      "en": "See all storytelling services",
+      "id": "Lihat semua layanan storytelling"
+    }
+  },
+  "form": {
+    "title": {
+      "en": "Request a Deck Audit",
+      "id": "Minta Audit Dek"
+    },
+    "text": {
+      "en": "Tell us which deck and when it is due. We reply within two working days with the fee and a start date. Nothing is owed until you confirm.",
+      "id": "Beri tahu kami dek yang mana dan kapan dibutuhkan. Kami membalas dalam dua hari kerja dengan biaya dan tanggal mulai. Tidak ada kewajiban sebelum Anda mengonfirmasi."
+    },
+    "due": {
+      "en": "When is the deck due? (optional)",
+      "id": "Kapan dek dibutuhkan? (opsional)"
+    },
+    "message": {
+      "en": "What is the deck for, and who will read it? (optional)",
+      "id": "Untuk apa dek ini, dan siapa pembacanya? (opsional)"
+    },
+    "success": {
+      "en": "We will reply with the fee and a start date within two working days. If the deck is confidential, send it from your work address and we will confirm receipt under NDA.",
+      "id": "Kami akan membalas dengan biaya dan tanggal mulai dalam dua hari kerja. Jika dek bersifat rahasia, kirimkan dari alamat kantor Anda dan kami akan mengonfirmasi penerimaan di bawah NDA."
+    },
+    "mail": {
+      "en": "Email us about a Deck Audit",
+      "id": "Email kami tentang Audit Dek"
+    }
+  }
+}

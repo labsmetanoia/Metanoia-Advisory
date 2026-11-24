@@ -1944,3 +1944,31 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 900px) { .diag { grid-template-columns: 1fr; gap: var(--s-4); } .diag__obs { grid-template-columns: 1fr; } }
 
 .h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); }
+
+/* Deck Audit offer page: reuses the service hero, facts, artefact card and deck steps; these are the page's own pieces. */
+.svc-facts .svc4-head { margin-bottom: var(--s-4); }
+.svc-facts .fact__head h3 { margin: 0; font-size: 28px; line-height: 33px; }
+.audit-sample { padding-bottom: 0; }
+.audit-sample .audit-sample__cta { margin: var(--s-4) 0 var(--s-5); }
+.audit-sample .svc-artefact__chart a { display: block; }
+.audit-run .deck-steps { margin-bottom: var(--s-4); }
+.audit-terms { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--grey-2); }
+.audit-terms > div { padding: 20px var(--s-3) 0 0; }
+.audit-terms > div + div { padding-left: var(--s-3); border-left: 1px solid var(--grey-3); }
+.audit-terms dt { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
+.audit-terms dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 26px; }
+.audit-limits__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: var(--s-5); align-items: start; }
+.audit-limits h2 { margin: 0 0 18px; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; max-width: 14ch; }
+.audit-limits__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.audit-limits__list li { position: relative; padding-left: 22px; font-size: 17px; line-height: 27px; }
+.audit-limits__list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 10px; height: 2px; background: var(--gold-dark); }
+.audit-limits__free { margin: var(--s-4) 0 0; padding-top: var(--s-3); border-top: 1px solid var(--grey-2); color: var(--grey-1); font-size: 15.5px; line-height: 24px; }
+.audit-request__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: var(--s-5); align-items: start; }
+.audit-request__copy .kicker { display: block; margin-bottom: 12px; letter-spacing: .14em; }
+.audit-request__copy h2 { margin: 0 0 18px; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; }
+.audit-request__copy p { margin: 18px 0 0; font-size: 17px; line-height: 27px; color: var(--grey-1); }
+@media (max-width: 1024px) { .audit-terms { grid-template-columns: 1fr 1fr; row-gap: 20px; } .audit-terms > div:nth-child(3) { padding-left: 0; border-left: 0; } .audit-limits__grid, .audit-request__grid { grid-template-columns: 1fr; gap: var(--s-4); } .audit-sample__cta { margin-bottom: var(--s-4); } }
+@media (max-width: 600px) { .audit-terms { grid-template-columns: 1fr; } .audit-terms > div + div { padding-left: 0; border-left: 0; } .svc-facts .fact__head h3 { font-size: 24px; line-height: 29px; } }
+.deck-steps__more { margin: var(--s-3) 0 0; color: var(--grey-1); font-size: 15.5px; line-height: 24px; }
+.hub-hero__more { margin: 18px 0 0; font-size: 15.5px; line-height: 24px; }
+.hub-hero__more a { color: inherit; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }

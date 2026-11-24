@@ -34,3 +34,78 @@ ${src}${cmp}
 <footer>Produced by the Deck Auditor on this computer; the deck was not uploaded. Automatic checks find patterns, not meaning: a finding is a prompt to look, and a clean report does not replace a read-through.${dismissed.size ? ` ${dismissed.size} finding${dismissed.size > 1 ? "s were" : " was"} reviewed and set aside by the reviewer.` : ""}</footer></body></html>`;
 }
 export function findingsCsv(result, dismissed = new Set()) { const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`; return ["Pillar,Priority,Finding,Slides,Detail,Status"].concat(result.findings.map((f) => [PILLAR[f.pillar], SEV[f.severity], f.title, f.slides.join(" "), f.detail.replace(/\n/g, " / "), dismissed.has(f.id) ? "Set aside" : "Open"].map(q).join(","))).join("\r\n"); }
+
+/* ---------- the client report: the Deck Audit as it is handed to a client ---------- */
+// What to do about each kind of finding, in the words a client can act on.
+export const ACTIONS = {
+  mismatch: "Decide which figure is right, correct the others, and state the period and the basis the same way wherever it appears.",
+  precision: "Choose one level of rounding for each figure and use it on every page.",
+  growth: "Recalculate the rate from the two figures beside it, or correct the figure that is wrong. A reader will do this sum.",
+  "total-row": "Recheck the rows and the total against the source; if a row is missing from the table, add it or relabel the total.",
+  "total-col": "Recheck the cells and the total against the source.",
+  "chart-total": "Open the chart's data and recheck the total bar against its parts.",
+  shares: "Recalculate the shares from the source. If the gap is rounding, say so in a note under the exhibit.",
+  headline: "Make the title and the exhibit agree: change the number in the title, or show the figure it quotes in the chart or table.",
+  "no-source": "Add a source line under every exhibit: where the figures come from and the date they are as of.",
+  "source-differs": "Check the figure against the source and correct whichever is wrong. If the deck is right, the source needs updating before the meeting.",
+  "source-missing": "For each figure, note where it comes from. A figure nobody can trace should not go to a board.",
+  "label-titles": "Rewrite each title as a full sentence that states what the page proves, so the deck can be followed from its titles alone.",
+  "no-title": "Give every page a title that states its point.",
+  "long-title": "Cut the title to one thought of two lines at most; move the qualification into the body.",
+  "duplicate-title": "Give each page its own conclusion, or merge pages that make the same point.",
+  "no-summary": "Add a summary page near the front that gives the answer and the request, so a reader can stop there.",
+  "no-ask": "State the decision or the next steps on a page of their own.",
+  dense: "Split the page, or move detail to an appendix. Keep what the reader needs to decide.",
+  language: "Translate the page, or remove it if it was left over from the other language version.",
+  "draft-marks": "Replace or remove every draft marker before the deck leaves the building.",
+  "empty-placeholder": "Delete the empty placeholders.",
+  fonts: "Set all text in the deck's own typefaces.",
+  stretched: "Reset each picture's proportions and crop it to fit instead of dragging a side.",
+  "low-res": "Replace each picture with a higher-resolution original, or show it smaller.",
+  "page-number": "Number every page; a board refers to pages by number.",
+  "title-size": "Set every title in the same size. Where a title was shrunk to fit, shorten it instead.",
+  "title-position": "Put every title in the same place, so the deck does not jump when paged through.",
+  "small-type": "Raise body text to a size that can be read on a shared screen, cutting words to make room.",
+  "off-slide": "Bring the content back inside the page; anything past the edge is cut off in print and PDF.",
+  margin: "Align text to the deck's left margin.",
+};
+
+export function clientReportHtml(deck, result, { dismissed = new Set(), notes = {}, client = {}, recon = null, compare = null } = {}) {
+  const open = result.findings.filter((f) => !dismissed.has(f.id)), date = client.date || new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const title = (client.deckTitle || deck.name.replace(/\.(pptx|pdf)$/i, "")).trim(), n = (s) => open.filter((f) => f.severity === s).length, slides = (f) => (f.slides.length ? `Slide${f.slides.length > 1 ? "s" : ""} ${f.slides.slice(0, 14).join(", ")}${f.slides.length > 14 ? "…" : ""}` : "Whole deck");
+  const auto = `The deck has ${result.stats.slides} slides and ${result.stats.figures} figures. The review found ${n("high")} point${n("high") === 1 ? "" : "s"} to fix before it goes out, ${n("medium")} to check and ${n("low")} to polish. ${result.stats.actionShare}% of the titles state a conclusion.`;
+  const row = (k, v) => (v ? `<tr><th>${k}</th><td>${esc(v)}</td></tr>` : "");
+  const finding = (f) => `<article class="f f--${f.severity}"><header><b>${SEV[f.severity]}</b><h3>${esc(f.title)}</h3><i>${slides(f)}</i></header><p>${esc(f.detail).replace(/\n/g, "<br>")}</p>${ACTIONS[f.code] ? `<p class="do"><strong>What to do.</strong> ${esc(ACTIONS[f.code])}</p>` : ""}${notes[f.id] ? `<p class="note"><strong>Our note.</strong> ${esc(notes[f.id]).replace(/\n/g, "<br>")}</p>` : ""}</article>`;
+  const sec = (p, lead) => { const fs = open.filter((f) => f.pillar === p); return `<section><h2>${PILLAR[p]} <span>${fs.length ? `${fs.length} finding${fs.length > 1 ? "s" : ""}` : "nothing found"}</span></h2><p class="lead">${lead}</p>${fs.map(finding).join("") || '<p class="none">The review found nothing to raise here.</p>'}</section>`; };
+  const high = open.filter((f) => f.severity === "high");
+  const ST = { differs: "Differs", missing: "Not found", found: "Value found", derived: "Derived", confirmed: "Confirmed" };
+  const src = recon ? `<section><h2>Figures against the source <span>${esc(recon.sources.map((x) => x.name).join(", "))}</span></h2><p class="lead">${recon.summary.total} figures in the deck were looked up in the source: ${recon.summary.confirmed} confirmed, ${recon.summary.derived} derived from it, ${recon.summary.differs} different, ${recon.summary.found} found by value only, ${recon.summary.missing} not found.</p>${recon.items.some((i) => i.status !== "confirmed" && i.status !== "derived") ? `<table><tr><th>Slide</th><th>Figure in the deck</th><th>In the source</th></tr>${recon.items.filter((i) => i.status !== "confirmed" && i.status !== "derived").sort((a, b) => (a.status === "differs" ? 0 : 1) - (b.status === "differs" ? 0 : 1) || a.fact.slide - b.fact.slide).map((i) => `<tr class="${i.status === "differs" ? "bad" : ""}"><td>${i.fact.slide}</td><td><strong>${esc(i.fact.raw)}</strong> ${esc(i.fact.context.slice(0, 110))}</td><td>${ST[i.status]}${i.source ? `: ${esc(i.status === "differs" ? i.sourceValue : i.note)} <em>(${esc(i.source.at || i.source.source)})</em>` : ""}</td></tr>`).join("")}</table>` : ""}</section>` : "";
+  const cmp = compare ? `<section><h2>Changes since the previous version <span>${esc(compare.name)}</span></h2><p class="lead">${compare.result.summary.changed} slides changed, ${compare.result.summary.added} added, ${compare.result.summary.removed} removed. ${compare.result.summary.figures} figure${compare.result.summary.figures === 1 ? "" : "s"} changed.</p>${compare.result.pairs.filter((p) => p.figures.length).map((p) => `<p><strong>Slide ${p.b ? p.b.index : p.a.index}.</strong> ${p.figures.map((f) => `${esc(f.from ?? "new")} → ${esc(f.to ?? "removed")}`).join(" · ")}</p>`).join("")}</section>` : "";
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Deck Audit: ${esc(title)}</title><style>
+@page{size:A4;margin:17mm 16mm}*{box-sizing:border-box}body{font:13.5px/1.55 Inter,"Segoe UI",system-ui,sans-serif;color:#111;max-width:820px;margin:0 auto;padding:40px 28px;background:#FAF8F4}
+.sample{margin:16px 0 0;padding:9px 12px;background:#FBF3D8;border-radius:6px;font-size:12.5px;color:#4a4332}.cover{padding:8px 0 26px;border-bottom:2px solid #C09200;margin-bottom:26px}.brand{font:600 22px "Cormorant Garamond",Georgia,serif;letter-spacing:-.01em}.brand i{display:inline-block;width:1.5px;height:15px;background:#C09200;margin:0 9px -1px}.brand b{font:600 8px Manrope,Inter,sans-serif;letter-spacing:.42em;text-transform:uppercase;vertical-align:3px}
+.k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7A5B00;font-weight:600;margin-top:34px}h1{font:600 36px/1.1 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:8px 0 18px}
+.meta{border-collapse:collapse;border:0;background:none;width:auto}.meta th{font:600 11px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#6B6862;text-align:left;padding:3px 22px 3px 0;border:0;width:auto;white-space:nowrap}.meta td{padding:3px 0;border:0;font-size:14px;color:#111;white-space:normal;width:auto}
+h2{font:600 21px Fraunces,Georgia,serif;margin:34px 0 6px;padding-bottom:8px;border-bottom:1px solid #E3DED3;display:flex;justify-content:space-between;align-items:baseline;break-after:avoid}h2 span{font:500 12px Inter,sans-serif;color:#6B6862}
+.lead{color:#44423E;margin:8px 0 12px}.view{font-size:15.5px;line-height:1.6;margin:0 0 16px;white-space:pre-line}
+.p{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}.p div{background:#fff;border:1px solid #E3DED3;border-radius:10px;padding:13px 15px}.p b{display:block;font-size:11.5px;color:#6B6862;font-weight:600;margin-bottom:5px}.p strong{font:600 26px Fraunces,Georgia,serif}.p small{display:block;color:#6B6862}
+.pri{margin:0;padding-left:20px}.pri li{margin:6px 0}.pri i{font-style:normal;color:#6B6862}
+.box{background:#fff;border:1px solid #E3DED3;border-left:4px solid #111;border-radius:8px;padding:13px 16px;margin:10px 0}
+.f{background:#fff;border:1px solid #E3DED3;border-left:4px solid #C09200;border-radius:8px;padding:12px 16px;margin:10px 0;break-inside:avoid}.f--high{border-left-color:#B3402F}.f--low{border-left-color:#B9B4A8}
+.f header{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.f header b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7A5B00}.f--high header b{color:#B3402F}.f--low header b{color:#6B6862}h3{font-size:14.5px;margin:0;flex:1 1 60%}header i{font-style:normal;color:#6B6862;font-size:12.5px}.f p{margin:6px 0 0;color:#333}.f .do{color:#111}.f .note{background:#FBF3DA;border-radius:6px;padding:8px 10px;color:#111}.none{color:#6B6862}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #E3DED3}td,th{padding:7px 10px;border-bottom:1px solid #EEE7DA;text-align:left;vertical-align:top;font-size:12.5px}th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6B6862}td:first-child{width:44px;color:#6B6862}tr.bad td:last-child,.k-label td:last-child,.k-topic td:last-child,.k-missing td:last-child{color:#B3402F;font-weight:600}.k-action td:last-child{color:#2E6B3A}td em{font-style:normal;color:#6B6862}
+footer{margin-top:40px;color:#6B6862;font-size:11.5px;border-top:1px solid #E3DED3;padding-top:12px}
+@media print{body{background:#fff;padding:0;max-width:none}.f,.box,.p div{box-shadow:none}}</style></head><body>
+<div class="cover"><div class="brand">Metanoia<i></i><b>Advisory</b></div><div class="k">Deck Audit${client.sample ? " · sample report" : ""}</div><h1>${esc(title)}</h1>
+<table class="meta">${row("Prepared for", client.client)}${row("For", client.purpose)}${row("Date", date)}${row("Reviewed by", client.reviewer)}${row("Slides", `${result.stats.slides} slides, ${result.stats.figures} figures read${deck.kind === "pdf" ? " (from PDF)" : ""}`)}</table>${client.sample ? '<p class="sample">This is a sample. The company, the deck and every figure in it are invented to show what a Deck Audit report looks like; the reviewer\'s notes are illustrative.</p>' : ""}</div>
+<section><h2 style="margin-top:0">Our view</h2><p class="view">${esc((client.overall || "").trim() || auto)}</p>
+<div class="p">${["numbers", "structure", "design"].map((p) => { const fs = open.filter((f) => f.pillar === p), c = (s) => fs.filter((f) => f.severity === s).length; return `<div><b>${PILLAR[p]}</b><strong>${fs.length}</strong><small>${c("high")} to fix · ${c("medium")} to check · ${c("low")} to polish</small></div>`; }).join("")}</div></section>
+${high.length ? `<section><h2>Fix before it goes out <span>${high.length} point${high.length > 1 ? "s" : ""}</span></h2><ol class="pri">${high.map((f) => `<li>${esc(f.title)} <i>(${slides(f).toLowerCase()})</i></li>`).join("")}</ol></section>` : ""}
+${(client.rebuild || "").trim() ? `<section><h2>The page to rebuild first</h2><div class="box"><strong>${esc(client.rebuild)}</strong>${client.rebuildWhy ? `<p style="margin:6px 0 0">${esc(client.rebuildWhy).replace(/\n/g, "<br>")}</p>` : ""}</div></section>` : ""}
+${sec("numbers", "Every figure was compared with every other mention of it, with its own arithmetic and with the exhibit beside it.")}${src}
+${sec("structure", "The deck was read from its titles alone, the way a senior reader pages through it first.")}
+<section><h2>The storyline, title by title <span>${result.stats.actionShare}% state a conclusion</span></h2><table><tr><th>#</th><th>Title</th><th>Reads as</th></tr>${deck.slides.filter((s) => !s.hidden).map((s) => `<tr class="k-${s.titleKind}"><td>${s.index}</td><td>${s.title ? esc(s.title.text) : "<em>no title</em>"}</td><td>${KIND[s.titleKind] || ""}</td></tr>`).join("")}</table></section>
+${sec("design", "Each page was checked for anything that drifted from the deck's own system or was left over from drafting.")}${cmp}
+<section><h2>How this review was done</h2><p class="lead">The deck was read by software that extracts every figure, title, typeface, picture and position from the file, and its findings were then reviewed by a person. ${dismissed.size ? `${dismissed.size} automatic finding${dismissed.size > 1 ? "s were" : " was"} judged not to be an issue and left out. ` : ""}The file was processed on Metanoia Advisory's own computers and was not uploaded to any outside service.</p><p class="lead">A Deck Audit reviews a presentation, not the accounts or the model behind it. It is not an audit, an assurance engagement or legal advice, and it does not confirm that the underlying figures are correct, only that the deck is consistent with itself${recon ? " and with the source supplied" : ""}. Charts pasted as pictures carry no data and could be checked only by eye.</p></section>
+<footer>Metanoia Advisory · Strategic Storytelling &amp; Corporate Communications${client.client ? ` · Prepared for ${esc(client.client)}` : ""} · Confidential</footer></body></html>`;
+}

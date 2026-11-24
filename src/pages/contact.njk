@@ -92,6 +92,7 @@ showCta: false
 <div class="section deck-steps-wrap">
   <div class="wrap">
     <ol class="deck-steps">{% for st in c.deckReview.steps %}<li><div class="fact__index" aria-hidden="true"><span>{{ loop.index | pad2 }}</span></div><div class="deck-steps__body"><span class="disc-tint">{% set icon = st.icon %}{% include "components/icon.njk" %}</span><div><h3>{{ st.title | L(lang) }}</h3><p>{{ st.text | L(lang) }}</p></div></div></li>{% endfor %}</ol>
+    {% if c.deckReview.audit %}<p class="deck-steps__more">{{ c.deckReview.audit | L(lang) }} <a href="{{ 'deckAudit' | pageUrl(lang) }}" data-event="cta_click" data-location="deck-review-audit">{{ c.deckReview.auditLink | L(lang) }}</a></p>{% endif %}
     {% if site.forms.provider != "none" %}
     <form class="form form--compact deck-form" id="deck-form" {% set formKey = "deckReview" %}{% include "components/form-attrs.njk" %}{% if site.forms.provider == "netlify" %} enctype="multipart/form-data"{% endif %} data-form-type="deck_review" novalidate>
       <div class="form__row">

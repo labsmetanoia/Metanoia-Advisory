@@ -4,14 +4,14 @@ import { readPptx } from "./pptx.js";
 import { readPdf } from "./pdfdeck.js";
 import { audit } from "./checks.js";
 import { compareDecks } from "./compare.js";
-import { reportHtml, findingsCsv, labels } from "./report.js";
+import { reportHtml, clientReportHtml, findingsCsv, labels } from "./report.js";
 import { readSource, reconcile, sourceFindings, sourceLocation } from "./sources.js";
 import { fixPlan, applyFixes } from "./fix.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 const { PILLAR, SEV, KIND } = labels;
-const S = { sources: [], recon: null, srcFilter: "all", deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
+const S = { notes: {}, client: {}, sources: [], recon: null, srcFilter: "all", deck: null, result: null, view: "overview", slide: 1, focus: null, filter: { pillar: "all", sev: "all", slideOnly: false }, dismissed: new Set(), open: new Set(), prev: null, cmp: null, ai: { available: false }, aiReview: null, brand: null, useBrand: false, busy: false, query: "" };
 
 /* ---------- feedback ---------- */
 function toast(msg, kind = "") { const t = el("div", `toast${kind ? ` toast--${kind}` : ""}`, msg); $("toasts").appendChild(t); setTimeout(() => t.remove(), kind === "error" ? 7000 : 3600); }
@@ -27,7 +27,7 @@ async function open(file) {
   if (!deck) return;
   if (!S.keepFix) S.fixLog = null; S.file = file;
   Object.assign(S, { sources: [], recon: null, deck, slide: 1, focus: null, dismissed: new Set(), open: new Set(), prev: null, cmp: null, aiReview: null, view: "overview", filter: { pillar: "all", sev: "all", slideOnly: false }, query: "" });
-  run(); const r = S.result, hi = r.findings.filter((f) => f.severity === "high").length;
+  loadReview(); run(); const r = S.result, hi = r.findings.filter((f) => f.severity === "high").length;
   toast(`${deck.slides.length} slides audited: ${r.findings.length} finding${r.findings.length === 1 ? "" : "s"}${hi ? `, ${hi} to fix` : ""}.`);
 }
 function run() {
@@ -107,6 +107,24 @@ function drawSlide(host, deck, s, marks = []) {
   host.appendChild(wrap);
 }
 
+/* ---------- reviewer's notes and client details (kept in this browser, per deck) ---------- */
+const noteKey = (f) => `${f.code}|${f.slides.join(",")}|${f.title.slice(0, 48)}`;
+const storeKey = () => `audit:${S.deck ? S.deck.name : ""}`;
+function saveReview() { try { localStorage.setItem(storeKey(), JSON.stringify({ notes: S.notes, client: S.client })); } catch (e) { /* private mode */ } }
+function loadReview() { S.notes = {}; S.client = {}; try { const j = JSON.parse(localStorage.getItem(storeKey()) || "null"); if (j) { S.notes = j.notes || {}; S.client = j.client || {}; } } catch (e) { /* start clean */ } }
+const clientReport = () => clientReportHtml(S.deck, S.result, { dismissed: S.dismissed, notes: Object.fromEntries(S.result.findings.filter((f) => S.notes[noteKey(f)]).map((f) => [f.id, S.notes[noteKey(f)]])), client: S.client, recon: S.recon, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null });
+function clientForm(anchor) {
+  const m = $("menu"); m.textContent = ""; const f = el("div", "menu__form"); f.style.cssText = "min-width:460px;max-height:78vh;overflow:auto"; f.appendChild(el("b", "", "Client report"));
+  const field = (key, label, ph, area) => { const l = el("label", "field"); l.appendChild(el("span", "", label)); const i = el(area ? "textarea" : "input"); if (!area) i.type = "text"; else i.rows = area; i.placeholder = ph; i.value = S.client[key] || ""; i.addEventListener("input", () => { S.client[key] = i.value; saveReview(); }); l.appendChild(i); f.appendChild(l); };
+  field("client", "Prepared for", "Client name"); field("deckTitle", "Deck", S.deck.name.replace(/\.(pptx|pdf)$/i, "")); field("purpose", "For", "Board meeting, 12 December"); field("reviewer", "Reviewed by", "Your name");
+  field("overall", "Our view", "Two or three sentences: what the deck says today, what it should say, what matters most. Left empty, a factual summary is used.", 4);
+  field("rebuild", "The page to rebuild first", "Slide 3: EBITDA margin"); field("rebuildWhy", "Why that page", "One or two sentences.", 2);
+  const withNotes = S.result.findings.filter((x) => S.notes[noteKey(x)] && !S.dismissed.has(x.id)).length, open = S.result.findings.filter((x) => !S.dismissed.has(x.id)).length;
+  const p = el("p", "doc__meta", `${open} findings will be included, ${withNotes} with your note. Add a note by opening a finding on the right; set aside the ones that are not issues.`); p.style.whiteSpace = "normal"; f.appendChild(p);
+  const go = el("button", "btn btn--primary btn--block", "Save the client report"); go.addEventListener("click", () => { m.hidden = true; download(new Blob([clientReport()], { type: "text/html" }), `${(S.client.deckTitle || S.deck.name.replace(/\.(pptx|pdf)$/i, "")).replace(/[\\/:*?"<>|]+/g, " ")} - Deck Audit.html`); toast("Report saved. Open it and print to PDF to send it."); }); f.appendChild(go);
+  m.appendChild(f); m.hidden = false; const r = anchor.getBoundingClientRect(); m.style.top = `${r.bottom + 6}px`; m.style.left = `${Math.max(8, r.right - m.offsetWidth)}px`;
+}
+
 /* ---------- findings panel ---------- */
 const visible = () => S.result.findings.filter((f) => (S.filter.pillar === "all" || f.pillar === S.filter.pillar) && (S.filter.sev === "all" || f.severity === S.filter.sev) && (!S.filter.slideOnly || f.slides.includes(S.slide)));
 function goSlide(n, focus = null) { S.slide = n; S.focus = focus; S.view = "slides"; render(); }
@@ -116,6 +134,7 @@ function findingCard(f, compact = false) {
   const h = el("header"); h.appendChild(el("b", "", SEV[f.severity])); h.appendChild(el("h3", "", f.title)); c.appendChild(h);
   c.appendChild(el("small", "", `${PILLAR[f.pillar]}${f.slides.length ? ` · slide${f.slides.length > 1 ? "s" : ""} ${f.slides.slice(0, 8).join(", ")}${f.slides.length > 8 ? "…" : ""}` : ""}`));
   if (S.open.has(f.id) || compact) { const m = el("div", "more"); m.appendChild(el("p", "", f.detail)); if (f.slides.length && !compact) { const ch = el("div", "chips"); f.slides.slice(0, 40).forEach((n) => ch.appendChild(slideChip(n, f))); m.appendChild(ch); }
+    if (!compact) { const ta = el("textarea", "note"); ta.rows = 2; ta.placeholder = "Your note for the client report (optional)"; ta.value = S.notes[noteKey(f)] || ""; ta.setAttribute("aria-label", "Note for the client report"); ta.addEventListener("click", (e) => e.stopPropagation()); ta.addEventListener("input", () => { if (ta.value.trim()) S.notes[noteKey(f)] = ta.value; else delete S.notes[noteKey(f)]; saveReview(); }); m.appendChild(ta); }
     const acts = el("div", "acts"), off = el("button", "link", S.dismissed.has(f.id) ? "Reopen" : "Set aside"); off.title = "Mark as reviewed and not an issue; it leaves the report"; off.addEventListener("click", (e) => { e.stopPropagation(); if (S.dismissed.has(f.id)) S.dismissed.delete(f.id); else S.dismissed.add(f.id); render(); }); acts.appendChild(off); m.appendChild(acts); c.appendChild(m); }
   h.addEventListener("click", () => { if (compact) return; if (S.open.has(f.id)) S.open.delete(f.id); else S.open.add(f.id); S.focus = f.id; if (f.slides.length && S.view === "slides" && !f.slides.includes(S.slide)) S.slide = f.slides[0]; render(); });
   return c;
@@ -219,7 +238,8 @@ function render() {
 function exportMenu(anchor) {
   const m = $("menu"); m.textContent = ""; const item = (t, sub, fn) => { const b = el("button", "menu__item"); b.appendChild(el("b", "", t)); b.appendChild(el("small", "", sub)); b.addEventListener("click", () => { m.hidden = true; fn(); }); m.appendChild(b); };
   const stem = S.deck.name.replace(/\.(pptx|pdf)$/i, "");
-  item("Audit report", "One page to print or save as PDF; open findings only", () => download(new Blob([reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon, ai: S.aiReview })], { type: "text/html" }), `${stem} - audit.html`));
+  { const b = el("button", "menu__item"); b.appendChild(el("b", "", "Client report…")); b.appendChild(el("small", "", "The Deck Audit as handed to a client: cover, your view, priorities, what to do, your notes")); b.addEventListener("click", () => clientForm(anchor)); m.appendChild(b); }
+  item("Working report", "The full internal list; open findings only", () => download(new Blob([reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon, ai: S.aiReview })], { type: "text/html" }), `${stem} - audit.html`));
   item("Findings as a spreadsheet", "CSV for a tracker or a shared checklist", () => download(new Blob(["﻿" + findingsCsv(S.result, S.dismissed)], { type: "text/csv" }), `${stem} - findings.csv`));
   if (S.cmp) item("Change log", "What changed since the previous version, as text", () => download(new Blob([changeLog()], { type: "text/plain" }), `${stem} - changes.txt`));
   m.hidden = false; const r = anchor.getBoundingClientRect(); m.style.top = `${r.bottom + 6}px`; m.style.left = `${Math.max(8, r.right - m.offsetWidth)}px`;
@@ -237,7 +257,7 @@ async function boot() {
   window.addEventListener("dragover", (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes("Files")) e.preventDefault(); }); window.addEventListener("drop", (e) => { if (!e.dataTransfer || !e.dataTransfer.files.length) return; e.preventDefault(); depth = 0; document.body.classList.remove("is-drop"); const fs = [...e.dataTransfer.files]; if (S.deck && e.shiftKey) openPrevious(fs[0]); else open(fs[0]); });
   window.addEventListener("keydown", (e) => { if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return; const mod = e.ctrlKey || e.metaKey; if (mod && e.key.toLowerCase() === "o") { e.preventDefault(); $("file").click(); } else if (e.key === "Escape") $("menu").hidden = true; else if (S.deck && S.view === "slides" && e.key === "ArrowRight" && S.slide < S.deck.slides.length) goSlide(S.slide + 1); else if (S.deck && S.view === "slides" && e.key === "ArrowLeft" && S.slide > 1) goSlide(S.slide - 1); });
   let rz = 0; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (S.deck && S.view === "slides") render(); }, 120); });
-  render(); window.__audit = { S, open, openPrevious, openSources, fix, fixPlan: () => fixPlan(S.deck, S.result, S.dismissed), changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon }), csv: () => findingsCsv(S.result, S.dismissed) };
+  render(); window.__audit = { S, open, openPrevious, openSources, fix, clientReport, noteKey, saveReview, fixPlan: () => fixPlan(S.deck, S.result, S.dismissed), changeLog, report: () => reportHtml(S.deck, S.result, { dismissed: S.dismissed, compare: S.cmp ? { name: S.prev.name, result: S.cmp } : null, recon: S.recon }), csv: () => findingsCsv(S.result, S.dismissed) };
   document.documentElement.dataset.ready = "1";
 }
 boot();

@@ -88,3 +88,15 @@ The third tab, **Chart Builder**, makes the charts: paste a range from Excel, ch
 Before a deck with numbers goes out, open the Deck Auditor's **Sources** tab and load the client's Excel model (or the report the deck must agree with). Figures that differ from the source are listed with the cell they should match.
 
 The Auditor's **Fix…** button repairs the mechanical findings (stray fonts, title size and position, stretched pictures, empty placeholders) and saves a corrected copy next to the original, which is left unchanged. Check the corrected slides in PowerPoint before sending.
+
+### Delivering a Deck Audit
+
+The offer page is at `/en/strategic-storytelling/deck-audit/` (Indonesian: `/id/storytelling-strategis/audit-dek/`). Requests arrive like any other form, with the subject ending in `deckAudit`.
+
+1. Reply with the fee and a start date. To publish the fee on the page, fill `offers.deckAudit.price` in `site.config.json` (both languages); leave it empty to quote case by case.
+2. Open the deck in the Deck Auditor. If the client sent a model or source document, add it under **Sources**.
+3. Go through every finding. Set aside the ones that are not issues. Open a finding and write a note where your judgement adds something.
+4. **Report → Client report…**: who it is for, your overall view, the page you would rebuild first and why. Save, open the file, print to PDF (A4).
+5. Send the PDF and hold the readout. Keep the tool's AI assist off for client files, because the page tells clients their deck is not uploaded to an outside AI service.
+
+The sample report on the site (`src/root/downloads/deck-audit-sample-en.pdf`) comes from the tool's own sample deck. To refresh it after the report design changes, open the sample deck, add the sample model as the source, write the notes, and save the client report with the client named as an invented company.
