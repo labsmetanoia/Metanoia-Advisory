@@ -109,3 +109,9 @@ It is published as a preview: the address works, but nothing links to it and sea
 
 If a finding is wrong on a real deck, note the slide and the wording and pass it on: the fix goes into `tools/magic-layers/app/js/audit/` and reaches both the tool and the site.
 
+### Writing a proposal
+
+Open the tool suite and choose **Proposals**. Pick the offer, the language (bilingual for Indonesian clients), fill in the client, the subject and the fee, and read the list above the preview until only warnings you accept remain. **Print / PDF** for the client; **Word** when counsel or the client wants to mark it up. Each proposal keeps its reference (MA/P/year/month/number) and can be reopened from **Recent proposals** on the same computer.
+
+Before the first one goes out, have counsel review the standard terms: save any proposal as Word and send it with the questions listed in the tool's README (Proposals → Before the first proposal goes out). Put the final wording into `tools/magic-layers/app/js/proposals/terms.js` in both languages and tick **The standard terms have been reviewed by our counsel** in Settings; until then every document is marked as a draft.
+

@@ -1,10 +1,11 @@
-# Magic Layers, Deck Auditor and Chart Builder
+# Magic Layers, Deck Auditor, Chart Builder and Proposals
 
-Three desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
+Four desktop tools for Metanoia Advisory's Strategic Storytelling & Corporate Communications work, in one app that runs on your computer. Files are not uploaded anywhere.
 
 - **Magic Layers** takes a flattened slide (a screenshot, an exported image, a PDF page, a PowerPoint made of pictures) and separates it into editable layers: live text boxes, shapes, lines and pictures on a repaired background. The result is edited in the app or exported as a normal, editable PowerPoint.
 - **Deck Auditor** reads a finished PowerPoint or PDF and checks it against the firm's three promises before it goes out: consulting structure, executive-grade design, numbers that match. It also compares two versions of a deck and writes the change log.
 - **Chart Builder** turns a range pasted from Excel, a workbook or a CSV file into native, editable PowerPoint charts in the house style, with the action title, unit line and source line in place.
+- **Proposals** turns an enquiry into a proposal and engagement letter in Indonesian, English or both side by side, ready to print to PDF or to save as a Word file for counsel.
 
 Switch between them with the tabs at the top left.
 
@@ -173,6 +174,22 @@ What to keep in mind:
 - In a stacked chart the totals above the bars come from a hidden "Total" series: if you edit the data in PowerPoint, update that column as well. A 100% chart stores the shares, not the amounts.
 - A formula cell in a workbook is read from its last saved result. Old `.xls` files must be saved as `.xlsx` first.
 
+## Proposals
+
+The **Proposals** tab writes a proposal and engagement letter in one document: what we will do, how it runs, what we need from the client, the fee in figures and in words, assumptions and exclusions, the standard terms and the signature blocks.
+
+![Proposals](docs/proposals.jpg)
+
+1. **Settings** (once): the firm's legal entity name, the signatory, payment days, notice period, how long a proposal stays open, a VAT rate if the firm charges VAT, bank details, and whether the standard terms have been reviewed by counsel.
+2. **Offer**: Deck Audit, board and executive deck, earnings-call retainer, corporate template system, annual and sustainability report, or a custom engagement. The scope, steps, client inputs, assumptions, exclusions and payment schedule fill in from the offer, in wording taken from the service pages on the website. Edit any of them for this client.
+3. **Language**: Bilingual (Indonesian on the left, English on the right, the Indonesian text prevailing), Bahasa Indonesia or English. Agreements with Indonesian parties are generally required to be in Bahasa Indonesia, so the tool warns when an English-only letter goes to an Indonesian client.
+4. **Client and fee**: the client's company, contact and signatory, the subject, and the fee. The fee is never filled in for you; the field shows the working price from the business plan as a hint only. The amount is written out in words in both languages (*terbilang*).
+5. The panel above the preview lists what is missing. **Word** and **Print / PDF** stay off until the client, the fee and the firm's signatory are in, and the payment schedule adds up to 100%.
+
+Each proposal gets a reference (MA/P/year/month/number) and is kept in this browser; **Recent proposals** reopens the last thirty. Nothing is sent anywhere.
+
+**Before the first proposal goes out.** The standard terms in `app/js/proposals/terms.js` are a working draft. Until **The standard terms have been reviewed by our counsel** is ticked in Settings, every document says on its cover and in its footer that it is a draft for review by counsel. Save any proposal as Word and send it to counsel with these questions: the legal entity that signs; the liability cap; tax wording (VAT, withholding); the prevailing language; how disputes are settled (court or arbitration, and where); stamp duty (*meterai*) on signed copies; acceptance by email; and the notice period. Put counsel's final wording into `terms.js` in both languages, then tick the box.
+
 ## Brand kit
 
 `app/brand.json` holds the house typefaces and colour swatches shown in the editor. Edit it to add colours or to change the heading and body typefaces.
@@ -213,7 +230,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 
 ## Checking that it works
 
-`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with fifteen planted flaws, expects exactly those fifteen findings, compares it with its previous version, reconciles it against an Excel model and a Word document, and applies the one-click fixes, expecting the five mechanical findings to be gone from the corrected file and the other ten to remain. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor.
+`npm test` starts the app on a spare port, checks that it serves correctly and runs the Deck Auditor's number and title rules. When Playwright is available it also drives the real app: it separates the sample slide, a picture deck and an eight-page PDF, edits, and verifies every export; then it audits a sample deck with fifteen planted flaws, expects exactly those fifteen findings, compares it with its previous version, reconciles it against an Excel model and a Word document, and applies the one-click fixes, expecting the five mechanical findings to be gone from the corrected file and the other ten to remain. Last, it builds five charts, exports them to PowerPoint, inspects the chart parts and runs the result through the Deck Auditor. Then it fills a proposal, checks that the Word and print buttons wait for the essentials, saves the Word file and parses every part of it. The proposal kit's amounts in words, bilingual parity, draft marking and Word output are also tested without a browser.
 
 ## Files
 
@@ -224,6 +241,7 @@ Where Canva is stronger: it uses large generative models, so it can rebuild comp
 | `ai-assist.mjs`, `ai-storyline.mjs` | Optional AI endpoints (Magic Layers text check, Deck Auditor storyline review) |
 | `app/auditor.html`, `app/js/audit/` | The Deck Auditor: PowerPoint and PDF readers, the checks, version compare, report |
 | `app/charts.html`, `app/js/charts/` | The Chart Builder: data readers, preview, PowerPoint export |
+| `app/proposals.html`, `app/js/proposals/` | Proposals: offers, standard terms, amounts in words, the document, the Word writer |
 | `app/` | The application: interface, analysis worker, importers, exporters |
 | `app/vendor/` | Bundled libraries: Tesseract OCR with English and Indonesian data, pdf.js, PptxGenJS, JSZip, ag-psd |
 | `app/brand.json` | House typefaces and colours |

@@ -1,0 +1,61 @@
+/* Proposals: the form on the left, the printed document on the right. */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.recent select { height: 34px; max-width: 230px; border: 1px solid var(--line); border-radius: var(--radius); padding: 0 8px; background: #fff; }
+.pk { height: calc(100% - var(--top)); display: grid; grid-template-columns: minmax(380px, 470px) minmax(0, 1fr); }
+.pk__form { overflow: auto; background: var(--panel); border-right: 1px solid var(--line); padding: 14px 16px 60px; display: grid; align-content: start; gap: 12px; }
+.pk__form details { border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.pk__form summary { cursor: pointer; padding: 10px 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 8px; list-style: none; }
+.pk__form summary::-webkit-details-marker { display: none; }
+.pk__form summary::after { content: "+"; color: var(--muted); font-weight: 500; }
+.pk__form details[open] summary::after { content: "–"; }
+.pk__form summary small { color: var(--muted); font-weight: 500; margin-left: auto; }
+.pk__body { padding: 2px 12px 12px; display: grid; gap: 10px; }
+.pk__row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pk__row--3 { grid-template-columns: 1fr 1fr 1fr; }
+.pk .field input[type="date"], .pk .field input[type="email"] { width: 100%; height: 30px; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; background: #fff; }
+.pk .field textarea { height: 62px; }
+.pk .field textarea.tall { height: 110px; }
+.pk .check { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; }
+.pk .check input { margin-top: 2px; }
+.pk__hint { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; background: #fff; padding: 6px 12px; font-weight: 500; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button.is-on { background: var(--ink); color: #fff; }
+.pk__form[data-mode="en"] [data-lang="id"], .pk__form[data-mode="id"] [data-lang="en"] { display: none; }
+.pk__form[data-mode="bi"] .pk__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.pk__pair { display: grid; gap: 6px; }
+.pk__pair .field > span::after { content: attr(data-l); margin-left: 4px; color: var(--gold-text); font-weight: 600; }
+.pk__item { border-top: 1px solid var(--line); padding-top: 8px; display: grid; gap: 6px; position: relative; }
+.pk__item:first-child { border-top: 0; padding-top: 0; }
+.pk__item .pk__del { position: absolute; right: 0; top: 4px; }
+.pk__item:first-child .pk__del { top: -4px; }
+.pk__del { border: 0; background: none; color: var(--muted); font-size: 12px; padding: 2px 6px; border-radius: 6px; }
+.pk__del:hover { background: var(--sand); color: var(--danger); }
+.pk__add { justify-self: start; }
+.pk__sched { display: grid; grid-template-columns: minmax(0, 1fr) 70px auto; gap: 6px; align-items: end; }
+.pk__sum { font-size: 12px; color: var(--muted); }
+.pk__sum.is-bad { color: var(--danger); font-weight: 600; }
+.pk__fee { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; }
+.pk__words { margin: 0; font-size: 12px; color: var(--muted); font-style: italic; }
+.pk__view { min-width: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); background: var(--canvas); }
+.pk__problems { list-style: none; margin: 0; padding: 10px 16px 0; display: grid; gap: 6px; }
+.pk__problems:empty { display: none; }
+.pk__problems li { padding: 7px 11px; border-radius: 8px; background: #fff; border-left: 3px solid var(--gold-dark); font-size: 12.5px; }
+.pk__problems li.is-error { border-left-color: var(--danger); background: #FBEDE9; }
+.pk__problems li.is-ok { border-left-color: #2E6B3A; }
+.pk__paper { overflow: auto; padding: 16px; }
+.pk__paper iframe { display: block; width: 100%; max-width: 900px; height: 100%; min-height: 600px; margin: 0 auto; border: 0; background: #fff; box-shadow: 0 18px 40px -24px rgba(0,0,0,.35); border-radius: 4px; }
+.pk__settings { width: min(640px, 92vw); max-height: 88vh; border: 1px solid var(--line); border-radius: 14px; padding: 0; box-shadow: 0 30px 70px -30px rgba(0,0,0,.5); }
+.pk__settings::backdrop { background: rgba(0,0,0,.28); }
+.pk__settings form { padding: 18px 20px; display: grid; gap: 12px; }
+.pk__settings h2 { margin: 0; font-size: 17px; }
+.pk__settings h3 { margin: 6px 0 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pk__settings .pk__reviewed { padding: 10px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+.pk__settings footer { display: flex; justify-content: flex-end; gap: 8px; position: sticky; bottom: -18px; background: #fff; padding: 10px 0 4px; }
+.pk__settings .pk__pair { grid-template-columns: 1fr 1fr; }
+.pk__settings .pk__pair .field > span::after { content: attr(data-l); margin-left: 4px; color: var(--gold-text); font-weight: 600; }
+.proposals .recent select { max-width: 170px; }
+.proposals .doc { overflow: hidden; }
+.proposals .doc__name { flex: none; }
+.proposals .doc__meta { overflow: hidden; text-overflow: ellipsis; }

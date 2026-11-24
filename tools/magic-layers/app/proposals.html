@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposals — Metanoia Advisory</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/proposals.css">
+<script src="/vendor/jszip/jszip.min.js" defer></script>
+<script type="module" src="/js/proposals/ui.js"></script>
+</head>
+<body class="proposals">
+<header class="top">
+  <div class="brand" title="Metanoia Advisory"><span class="lockup"><span>Metanoia</span><i></i><b>Advisory</b></span><nav class="switch" aria-label="Tools"><a href="/">Magic Layers</a><a href="/auditor.html">Deck Auditor</a><a href="/charts.html">Chart Builder</a><a href="/proposals.html" class="is-on" aria-current="page">Proposals</a></nav></div>
+  <div class="doc"><span id="doc-name" class="doc__name"></span><span id="doc-meta" class="doc__meta"></span></div>
+  <div class="actions">
+    <label class="recent" title="Reopen a proposal you saved earlier"><span class="visually-hidden">Recent proposals</span><select id="recent"></select></label>
+    <button class="btn" id="btn-new" title="Start a new proposal">New</button>
+    <button class="btn" id="btn-settings" title="The firm's details, payment terms and the counsel review flag">Settings</button>
+    <button class="btn" id="btn-docx" title="Save as a Word document for counsel or the client to mark up">Word</button>
+    <button class="btn btn--primary" id="btn-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button>
+  </div>
+</header>
+<main class="pk">
+  <form class="pk__form" id="form" autocomplete="off" novalidate></form>
+  <section class="pk__view">
+    <ul class="pk__problems" id="problems" aria-live="polite"></ul>
+    <div class="pk__paper"><iframe id="preview" title="Preview of the proposal" sandbox="allow-same-origin allow-modals"></iframe></div>
+  </section>
+</main>
+<dialog class="pk__settings" id="settings"><form method="dialog" id="settings-form" autocomplete="off"></form></dialog>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

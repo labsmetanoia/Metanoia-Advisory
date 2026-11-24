@@ -822,3 +822,20 @@ A lead tool for the Deck Audit: a visitor drops a PowerPoint or PDF and sees the
 **Decision.** It ships as `preview`. The rules have only been proven on generated decks; a prospect who sees a wrong finding on their own deck would think less of the firm, not more. In preview the owner can try real decks at the page's address without sending the files to anyone. Switch to `live` once the findings on real decks look right.
 
 **Verified.** `npm test` passes; `npm run test:deck-check` passes (7 checks); the page was viewed at 1440 and 390 px in both languages; the three modes were each built and checked for the page, its `noindex` tag, the sitemap entry and the inbound links. Not exercised: the page on the live host.
+
+## 48. Proposal and engagement-letter kit (24 November 2026)
+
+A fourth tab in the desktop tool suite (v1.7.0), so an enquiry becomes a signed, fixed-fee engagement in one sitting. It is a local tool, not part of the website: client names and fees stay on the firm's computer.
+
+| Area | What changed |
+| --- | --- |
+| Offers | `app/js/proposals/offers.js`: Deck Audit, board and executive deck, earnings-call retainer, corporate template system, annual and sustainability report, custom. Scope, steps, client inputs, assumptions and exclusions follow the wording of the matching service pages, in English and Indonesian. Fees are never pre-filled; the business plan's working price appears only as a hint |
+| Terms | `app/js/proposals/terms.js`: fourteen standard clauses. Conflicts, confidentiality, disclosure sign-off, no success fee and "we do not practise law, tax or audit" repeat the site's published policy. Liability, tax, language and governing law are flagged for counsel |
+| Document | `doc.js` builds the proposal as blocks per language; a bilingual letter pairs them (Indonesian left, English right, Indonesian prevailing). Fee table with optional VAT, amount in words in both languages, payment schedule or monthly invoicing, signature blocks with room for *meterai* |
+| Output | Print / PDF from the live preview; Word (`docx.js`, Office Open XML written directly, with footer, page numbers and the bilingual two-column layout) for counsel and clients who mark up |
+| Safeguards | Word and print are blocked until the client, the fee and the firm's signatory are in and the schedule adds up to 100%. Warnings for a missing legal entity name, a missing client signatory, an English-only letter to an Indonesian party, and untranslated text. Until counsel review is ticked in Settings, the cover and footer say the document is a draft |
+
+**Verified.** Tool self-test: 116 checks (13 new: amounts in words, bilingual completeness and parity for every offer, problems, draft marking, escaping, retainer totals with VAT, Word parts and well-formed XML, and a browser run that fills a proposal, saves the Word file and parses every part). The Word files were opened with python-docx and converted with LibreOffice; not opened in Microsoft Word itself.
+
+**For the owner.** Counsel review of the terms; the firm's legal entity name; whether the firm is registered to charge VAT.
+

@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/status") {
       const m = await ai();
-      return json(res, 200, { ok: true, version: "1.6.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
+      return json(res, 200, { ok: true, version: "1.7.0", ai: Boolean(m && process.env.ANTHROPIC_API_KEY), aiInstalled: Boolean(m) });
     }
     if (url.pathname === "/api/ai-assist" && req.method === "POST") {
       const m = await ai();
@@ -66,6 +66,7 @@ const server = http.createServer(async (req, res) => {
     if (p === "/") p = "/index.html";
     if (p === "/auditor") p = "/auditor.html";
     if (p === "/charts") p = "/charts.html";
+    if (p === "/proposals") p = "/proposals.html";
     const file = normalize(join(appDir, p));
     if (!file.startsWith(appDir + sep)) return send(res, 403, "Forbidden");
     let st; try { st = await stat(file); } catch (e) { return send(res, 404, "Not found"); }

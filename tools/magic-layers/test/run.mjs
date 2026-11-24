@@ -65,6 +65,32 @@ try {
   check("source check: a growth rate is derived from the row, an unknown figure is not found", st("Revenue grew 14.8% in FY25") === "derived" && st("Headcount of 4,820 in FY25") === "missing");
 } catch (e) { check("rules load in Node", false, e.message); }
 
+console.log("\nProposal kit");
+try {
+  const W = await import("../app/js/proposals/words.js"), O = await import("../app/js/proposals/offers.js"), D = await import("../app/js/proposals/doc.js"), X = await import("../app/js/proposals/docx.js");
+  check("amounts in words: Indonesian (terbilang) and English", W.terbilang(15000000) === "lima belas juta" && W.terbilang(1100) === "seribu seratus" && W.terbilang(11) === "sebelas" && W.terbilang(2500000000) === "dua miliar lima ratus juta" && W.terbilang(120000000) === "seratus dua puluh juta" && W.inWords(15000000) === "fifteen million" && W.inWords(1250) === "one thousand two hundred and fifty" && W.money(15000000, "IDR", "id") === "Rp 15.000.000" && W.parseAmount("Rp 15.000.000") === 15000000);
+  const holes = []; const walk = (v, path) => { if (v && typeof v === "object") { if (typeof v.en === "string" && "id" in v) { if (!v.en.trim() || !String(v.id).trim()) holes.push(path); } else for (const k in v) walk(v[k], `${path}.${k}`); } };
+  for (const o of O.OFFERS) walk(o, o.key);
+  check("offers: every text is in English and Indonesian, every schedule adds up to 100%", holes.length === 0 && O.OFFERS.filter((o) => o.basis !== "monthly").every((o) => o.schedule.reduce((a, x) => a + x.pct, 0) === 100), holes.join());
+  const set = { ...D.DEFAULT_SETTINGS, signatory: "A. Signatory", signatoryTitle: "Partner", legalName: "PT Contoh Firma" }, mk = (key, extra = {}) => { const p = D.newProposal(key, set, new Date("2026-11-24T00:00:00")); p.ref = D.makeRef(p.date, 7); p.client.company = "PT Contoh <Klien>"; p.client.signatory = "B. Client"; p.fee = 15000000; return Object.assign(p, extra); };
+  const shape = (bl) => bl.map((x) => `${x.t}${x.rows ? x.rows.length : ""}${x.items ? x.items.length : ""}`).join();
+  check("proposal: the English and Indonesian versions have the same shape for every offer", O.OFFERS.every((o) => shape(D.buildBlocks(mk(o.key), set, "en")) === shape(D.buildBlocks(mk(o.key), set, "id"))));
+  const blank = D.newProposal("deckAudit", D.DEFAULT_SETTINGS), errs = D.problems(blank, D.DEFAULT_SETTINGS).filter((x) => x.level === "error").map((x) => x.text).join(" ");
+  const bad = mk("deckProject"); bad.schedule[0].pct = 40; const en = mk("deckAudit", { mode: "en" });
+  check("proposal: missing client, fee or signatory and a schedule short of 100% are errors", /company/.test(errs) && /fee/.test(errs) && /signatory/.test(errs) && D.problems(bad, set).some((x) => x.level === "error" && /90%/.test(x.text)) && !D.problems(mk("deckAudit"), set).some((x) => x.level === "error"));
+  check("proposal: an English-only letter to an Indonesian party is flagged", D.problems(en, set).some((x) => /Bahasa Indonesia/.test(x.text)) && !D.problems(mk("deckAudit"), set).some((x) => /Bahasa Indonesia/.test(x.text)));
+  const draft = D.proposalHtml(mk("deckAudit"), set), final = D.proposalHtml(mk("deckAudit"), { ...set, reviewed: true });
+  check("proposal: marked as a draft until counsel has reviewed the terms", /belum ditinjau/.test(draft) && /not yet been reviewed/.test(draft) && /DRAF \/ DRAFT/.test(draft) && !/not yet been reviewed|DRAFT/.test(final));
+  check("proposal: fee in figures and words, the legal entity in the terms, client text escaped", draft.includes("Rp 15.000.000") && draft.includes("lima belas juta rupiah") && draft.includes("fifteen million rupiah") && draft.includes("PT Contoh Firma does not practise law") && draft.includes("PT Contoh &lt;Klien&gt;") && !draft.includes("<Klien>"));
+  const ret = mk("retainer", { fee: 35000000, months: 12 }), T = D.totals(ret, { ...set, vatRate: "11" }), rh = D.proposalHtml(ret, { ...set, vatRate: "11" });
+  check("proposal: a retainer totals the term, with VAT when a rate is set", T.total === (35000000 + 3850000) * 12 && rh.includes("Rp 466.200.000") && rh.includes("PPN 11%") && rh.includes("monthly in advance"));
+  let JZ = null; try { JZ = createRequire(join(root, "package.json"))("jszip"); } catch (e) { /* optional */ }
+  if (JZ) { const z = X.proposalDocx(mk("deckAudit"), set, JZ), names = Object.keys(z.files), doc = await z.file("word/document.xml").async("string"), foot = await z.file("word/footer1.xml").async("string");
+    const balanced = (x) => { const st = []; for (const m of x.matchAll(/<(\/?)(w:[A-Za-z]+)[^>]*?(\/?)>/g)) { if (m[3]) continue; if (m[1]) { if (st.pop() !== m[2]) return false; } else st.push(m[2]); } return st.length === 0; };
+    check("Word: the parts are there and the XML is balanced", ["[Content_Types].xml", "word/document.xml", "word/styles.xml", "word/footer1.xml", "docProps/core.xml"].every((n) => names.includes(n)) && balanced(doc) && balanced(foot));
+    check("Word: bilingual text, fee in words and the draft line in the footer", doc.includes("Audit Dek untuk PT Contoh &lt;Klien&gt;") && doc.includes("lima belas juta rupiah") && doc.includes("fifteen million rupiah") && /DRAF \/ DRAFT/.test(foot) && /PAGE/.test(foot)); }
+} catch (e) { check("proposal kit loads in Node", false, e.message); }
+
 console.log("\nChart Builder rules");
 try {
   const D = await import("../app/js/charts/data.js"), R = await import("../app/js/charts/render.js");
@@ -178,6 +204,19 @@ else {
       check("PowerPoint: bridge base is invisible, stack totals sit above the stack", /<c:v>\(base\)<\/c:v>[\s\S]*?<a:noFill\/>/.test(all) && /inBase/.test(all) && /<c:legendEntry>/.test(all)); }
     await pg.goto(`${base}/auditor.html`); await pg.waitForFunction("document.documentElement.dataset.ready === '1'"); await pg.setInputFiles("#file", cpath); await pg.waitForFunction("window.__audit.S.result && !window.__audit.S.busy", null, { timeout: 60000 });
     const au = await pg.evaluate(() => ({ n: window.__audit.S.deck.slides.length, f: window.__audit.S.result.findings.map((x) => x.code), figs: window.__audit.S.result.stats.figures })); check("the exported charts pass the Deck Auditor with their data read", au.n === 5 && au.f.length === 0 && au.figs >= 20, JSON.stringify(au));
+    // 8. the proposal kit: fill a proposal, see the checks clear, save a Word file and check every part parses
+    await pg.goto(`${base}/proposals.html`); await pg.evaluate(() => localStorage.clear()); await pg.reload(); await pg.waitForFunction(() => document.documentElement.dataset.ready === "1", null, { timeout: 20000 });
+    const pk0 = await pg.evaluate(() => ({ errors: window.__proposals.problems().filter((x) => x.level === "error").length, disabled: document.getElementById("btn-docx").disabled }));
+    await pg.locator(".pk__form label.field", { hasText: "Company" }).locator("input").fill("PT Contoh Logistik"); await pg.locator(".pk__form label.field", { hasText: /^Fee/ }).locator("input").fill("15.000.000");
+    await pg.evaluate(() => { const P = window.__proposals; Object.assign(P.S.s, { signatory: "A. Signatory", signatoryTitle: "Partner", legalName: "PT Contoh Firma" }); P.render(); }); await pg.waitForTimeout(400);
+    const pk1 = await pg.evaluate(() => ({ errors: window.__proposals.problems().filter((x) => x.level === "error").map((x) => x.text), disabled: document.getElementById("btn-docx").disabled, words: document.querySelector(".pk__words").textContent, preview: document.getElementById("preview").srcdoc.includes("Audit Dek untuk PT Contoh Logistik") }));
+    check("proposals: the Word and print buttons wait until the client, fee and signatory are in", pk0.errors === 3 && pk0.disabled && pk1.errors.length === 0 && !pk1.disabled && pk1.preview && /lima belas juta rupiah/.test(pk1.words), JSON.stringify(pk1));
+    const [wdl] = await Promise.all([pg.waitForEvent("download", { timeout: 30000 }), pg.click("#btn-docx")]); const wpath = join(out, "proposal.docx"); await wdl.saveAs(wpath);
+    const parsed = await pg.evaluate(async (b64) => { const z = await window.JSZip.loadAsync(b64, { base64: true }), bad = []; for (const n of Object.keys(z.files).filter((x) => /\.(xml|rels)$/.test(x))) { const d = new DOMParser().parseFromString(await z.file(n).async("string"), "application/xml"); if (d.getElementsByTagName("parsererror").length) bad.push(n); } return { bad, n: Object.keys(z.files).length }; }, readFileSync(wpath).toString("base64"));
+    check("proposals: the Word file is named after the reference and every part parses", /^MA-P-\d{4}-\d{2}-\d{3} PT Contoh Logistik Deck Audit\.docx$/.test(wdl.suggestedFilename()) && parsed.bad.length === 0 && parsed.n >= 8, `${wdl.suggestedFilename()} ${JSON.stringify(parsed)}`);
+    await pg.locator(".pk__form label.field", { hasText: "Offer" }).locator("select").selectOption("retainer"); await pg.waitForTimeout(300);
+    const pk2 = await pg.evaluate(() => ({ offer: window.__proposals.S.p.offer, client: window.__proposals.S.p.client.company, fee: window.__proposals.S.p.fee, kept: Object.keys(JSON.parse(localStorage.getItem("proposals:saved"))).length }));
+    check("proposals: changing the offer keeps the client, clears the fee, and the proposal is kept for later", pk2.offer === "retainer" && pk2.client === "PT Contoh Logistik" && pk2.fee === 0 && pk2.kept === 1, JSON.stringify(pk2));
     check("no script errors", errors.length === 0, errors.slice(0, 2).join(" ; "));
   } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
   await browser.close(); console.log(`  (files written to ${out}: ${readdirSync(out).length})`);
