@@ -14,7 +14,8 @@ function urlFor(data, lang) {
     default: return pageUrl(data.pageKey, lang);
   }
 }
-const deckCheckMode = (data) => (data.site.tools && data.site.tools.deckCheck) || "off";
+// free tools with a preview / live / off switch in site.config.json (tools.*); null for every other page
+const toolMode = (data) => (["deckCheck", "headlineCheck"].includes(data.pageKey) ? (data.site.tools && data.site.tools[data.pageKey]) || "off" : null);
 const L = (v, lang) => (v && typeof v === "object" && lang in v ? v[lang] : v);
 
 // Templates without pagination (root chooser, root 404, sitemap) set their own permalink/layout and skip this.
@@ -24,7 +25,7 @@ export default {
   eleventyComputed: {
     layout: (data) => (data.p ? "layouts/base.njk" : data.layout),
     lang: (data) => data.p?.lang,
-    permalink: (data) => (data.p ? (data.pageKey === "deckCheck" && deckCheckMode(data) === "off" ? false : urlFor(data, data.p.lang)) : data.permalink),
+    permalink: (data) => (data.p ? (toolMode(data) === "off" ? false : urlFor(data, data.p.lang)) : data.permalink),
     alternates: guard((data) => Object.fromEntries(langs.map((l) => [l, urlFor(data, l)]))),
     activeNav: guard((data) => {
       const p = data.p;
@@ -33,7 +34,7 @@ export default {
       if (data.pageKey === "person") return "about";
       if (data.pageKey === "article") return "insights";
       if (data.pageKey === "thanks") return "contact";
-      if (data.pageKey === "deckAudit" || data.pageKey === "deckCheck") return "presentation";
+      if (["deckAudit", "deckCheck", "headlineCheck"].includes(data.pageKey)) return "presentation";
       return data.pageKey;
     }),
     pageTitle: guard((data) => {
@@ -63,10 +64,10 @@ export default {
         default: return L(pages[data.pageKey].metaDescription, lang);
       }
     }),
-    noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || (data.pageKey === "deckCheck" && deckCheckMode(data) !== "live") || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
+    noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || (toolMode(data) !== null && toolMode(data) !== "live") || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
     ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
-      const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", deckCheck: "service", article: "insight", person: "person" };
+      const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", deckCheck: "service", headlineCheck: "service", article: "insight", person: "person" };
       return `/assets/img/og/og-${map[data.pageKey] || "default"}.png`;
     }),
   },

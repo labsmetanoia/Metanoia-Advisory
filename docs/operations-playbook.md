@@ -17,29 +17,20 @@ Every submission carries, besides the visitor's fields, the page it came from, t
 
 File uploads on the deck-review form are accepted up to 10 MB (PDF, PowerPoint, Keynote) on the Netlify provider.
 
-## 2. Lead triage with AI (optional)
+## 2. Lead triage with AI (inactive on Cloudflare)
 
-`netlify/functions/submission-created.mjs` runs automatically on every submission once the site has these environment variables (Netlify → Site configuration → Environment variables):
+`netlify/functions/submission-created.mjs` classified each enquiry and drafted a first reply, but Netlify runs it only for Netlify Forms. Since the move to Cloudflare Pages and Web3Forms it does not run. It is kept for the record and for the Netlify fallback; enquiries arrive by Web3Forms email as they are. Bringing it back on Cloudflare would mean a Pages Function, an Anthropic API key and the question of whether enquiry text may go to an AI service.
 
-- `ANTHROPIC_API_KEY`: classifies the enquiry (practice, likely service, urgency, fit, flags such as "listed company: run the conflict check") and drafts a first reply in the enquirer's language.
-- `LEADS_WEBHOOK_URL`: a Slack or Microsoft Teams incoming-webhook URL; the brief is posted there.
-- `RESEND_API_KEY`, `LEADS_EMAIL`, optionally `LEADS_FROM`: the brief is emailed through resend.com (free tier covers a firm's volume).
+## 3. The instant deck diagnostic (retired, 28 November 2026)
 
-Without the key the function forwards the raw submission; without a webhook or email it does nothing, and Netlify's own notifications still work. The brief never includes attached files.
-
-## 3. The instant deck diagnostic (optional)
-
-A visitor pastes a deck's storyline (up to 4,000 characters) on the Contact page and receives three observations and the page to rebuild first, in the shape of the firm's human review. To switch it on:
-
-1. Add `ANTHROPIC_API_KEY` in the host's environment variables.
-2. Set `ai.deckDiagnostic` to `true` in `site.config.json` and deploy.
-
-Guard rails: 5 runs per visitor per hour, 4,000-character cap, honeypot, nothing the visitor pastes is stored, and the model is told to comment only on what the text shows. Each run costs a few cents. The visitor's email (if given) and the one-line summary land in the `deckDiagnostic` form inbox so the human review can follow.
+The AI first read of a pasted storyline was removed. It ran only as a Netlify function, it would have cost money per run, and it sat awkwardly next to the Deck Audit page's promise that decks are not uploaded to an outside AI service. Its place is taken by the free checks that run in the visitor's browser: the headline check (live) and the deck check (preview).
 
 ## 4. Analytics
 
-- **Plausible (recommended, cookieless):** register the domain at plausible.io and put it in `analytics.plausibleDomain`. No consent banner is needed for it. Custom events are sent for every call-to-action click, form submission, finder use, credentials download and diagnostic run, so the Plausible dashboard shows which pages and campaigns produce enquiries.
+- **Cloudflare Web Analytics (free, cookieless, recommended):** in the Cloudflare dashboard, Analytics & Logs → Web Analytics → add `metanoiaadvisors.com` with automatic setup, or copy the site token into `analytics.cloudflareToken`. The site's security policy already allows its beacon. It counts page views, referrers, countries and devices; it has no custom events, so for click and form events use one of the options below as well.
+- **Plausible (paid, cookieless):** register the domain at plausible.io and put it in `analytics.plausibleDomain`. No consent banner is needed for it. Custom events are sent for every call-to-action click, form submission, finder use, credentials download and diagnostic run, so the Plausible dashboard shows which pages and campaigns produce enquiries.
 - **Google Analytics 4:** put the measurement ID in `ga4MeasurementId`. It loads only after the visitor accepts analytics in the consent banner. The same events are sent.
+- **Booking link:** put a scheduling page in `calendarUrl` (for example a free Cal.com page offering the 45-minute working session). Every "Book a working session" button and the contact page use it; while it is empty they fall back to the contact form and email.
 - **Campaign links:** add `?utm_source=linkedin&utm_campaign=…` to links you share; the values are stored for the session and attached to any form the visitor submits.
 
 ## 5. Changing content

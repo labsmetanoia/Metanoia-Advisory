@@ -870,3 +870,18 @@ The tool to produce the flagship insight: a set of published decks (for example 
 
 **Next.** The owner collects the decks and writes down how they were chosen; the study is run in the tool; the report becomes an insight article and a PDF on the site, with the figures as published.
 
+## 51. Measurement, the AI diagnostic retired, and the free headline check (28 November 2026)
+
+| Area | What changed |
+| --- | --- |
+| Analytics | Cloudflare Web Analytics: `analytics.cloudflareToken` in `site.config.json` loads its beacon (cookieless, no consent needed, like Plausible). `_headers` now allows `static.cloudflareinsights.com` (script) and `cloudflareinsights.com` (connect), so the beacon also works when the owner turns on automatic setup in the Cloudflare dashboard; before, the site's policy would have blocked it |
+| Privacy policy | Adds the cookieless analytics paragraph and lists Cloudflare (hosting, analytics) and Web3Forms (form delivery) among processors, in both languages; updated date 28 November 2026. HubSpot is still listed although it is not configured; the owner decides whether to keep it |
+| AI diagnostic | Removed: the contact-page section, its script, styles and strings, the `ai.deckDiagnostic` setting and `netlify/functions/deck-diagnostic.mjs`. It ran only on Netlify. The Netlify lead-triage function is kept but documented as inactive on Cloudflare |
+| Headline check | `src/pages/headline-check.njk`, `content/pages/headlineCheck.json`, `src/assets/headline-check/check.js`. Routes `/en/strategic-storytelling/headline-check/` and `/id/storytelling-strategis/cek-judul/`. The visitor pastes slide titles; each is marked as a conclusion, a topic, a standard page or the cover, with repeats and over-long titles flagged; the conclusions are shown in order as what a skimming reader takes away; a summary and a decision page are checked on lists of eight or more; three illustrative before-and-after examples; a link to the Deck Audit. Nothing leaves the browser. Switch: `tools.headlineCheck` (`live`) |
+| Shared rule | `tools/magic-layers/app/js/audit/titles.js` (copied into the site at build) reviews a list of titles with the Deck Auditor's `classifyTitle`. Each line is judged in its own language when its words show one, otherwise in the list's language; an Indonesian reading is accepted for a silent line only on an unmistakable verb |
+| Rule fix | `classifyTitle` no longer counts a period, a year or a date ("9M 2025", "FY26", "30 September 2025") as a finding, so "Solid financial performance in 9M 2025" is a topic, not a conclusion. This applies to the Deck Auditor too |
+
+**Verified.** 71 realistic titles from board, results and public-expose decks (41 English, 30 Indonesian) are read as a reviewer would, singly and as pasted lists in either language or mixed; this list is now part of the tool's self-test (127 checks). `npm test` passes (68 pages); `npm run test:deck-check` adds three headline-check checks under the site's own security policy, including that nothing is requested once titles are pasted. Checked at 1440 and 390 px in both languages. Not exercised on the live host until the deploy.
+
+**For the owner.** A booking link for `calendarUrl`; turning on Cloudflare Web Analytics; the `hello@` email routing.
+

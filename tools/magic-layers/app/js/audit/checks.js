@@ -3,7 +3,7 @@
 //   design     "Executive-grade design": one typographic system, one grid, nothing left over from drafting
 //   numbers    "Numbers that match": every figure agrees with every other mention of it and with its own arithmetic
 // Each finding names the slides and shapes it concerns so the reader can go straight to them.
-import { detectLanguage, collectFacts, metricGroups, arithmeticChecks, headlineChecks } from "./numbers.js";
+import { detectLanguage, collectFacts, metricGroups, arithmeticChecks, headlineChecks, PERIOD } from "./numbers.js";
 
 const VERB_EN = /\b(is|are|was|were|be|been|has|have|had|will|would|can|could|should|must|may|does|do|did|needs?|requires?|shows?|drives?|delivers?|remains?|becomes?|grows?|grew|rose|rises?|fell|falls?|leads?|led|gives?|takes?|makes?|keeps?|puts?|holds?|wins?|won|lost|loses?|cuts?|adds?|pays?|costs?|saves?|doubles?|triples?|halves|exceeds?|outperforms?|lags?|depends?|comes?|came|accounts?|represents?|supplied|supplies|recovered|reached|carry|carries|means?|lets?|allows?|enables?|turns?|moves?|shifts?|held|stood|stands?|stays?|sits?|kept|built|sold|bought|brought|brings?|made|took|gave|went|saw|beat|met|spent|paid|ran|began|begins?|broke|drove|shrank|shrinks?|slid|sank|continues?|improves?|expands?|generates?|creates?|reduces?|raises?|lowers?|reflects?|provides?|outpaces?|outstrips?|offsets?|overtook|overtakes?|outgrew|underperforms?|slows?|accelerates?|stabili[sz]es?|widens?|narrows?)\b|\S\s+\w{3,}ed\b/i;   // "-ed" counts unless it opens the title ("Proposed structure"); "-ing" nouns (pricing, storytelling) do not
 const VERB_ID = /\b(adalah|akan|telah|sudah|dapat|harus|perlu|naik|turun|tumbuh|tetap|menjadi|memiliki|menunjukkan|mendorong|memberikan|menghasilkan|mencapai|menurun|meningkat|butuh|ada|merupakan)\b|\b(me|mem|men|meng|ber|di|ter)[a-z]{4,}\b/i;
@@ -15,10 +15,15 @@ const pct = (n, d) => (d ? Math.round((n / d) * 100) : 0);
 const list = (ns, max = 12) => { const u = [...new Set(ns)].sort((a, b) => a - b); return u.length > max ? `${u.slice(0, max).join(", ")} and ${u.length - max} more` : u.join(", "); };
 export const wordCount = (t) => (t.match(/[\p{L}\p{N}][\p{L}\p{N}'’%.,-]*/gu) || []).length;
 
+// a summary near the front, and a page that states the decision or next steps
+export const SUMMARY_RE = /executive summary|ringkasan eksekutif|key messages?|summary|ringkasan|at a glance|sekilas|overview of (the )?(recommendation|findings)/i;
+export const ASK_RE = /\b(recommendation|recommend|next steps?|decision|the ask|approval|rekomendasi|langkah (selanjutnya|berikutnya)|keputusan|persetujuan)\b/i;
+
 export function classifyTitle(text, lang) {
   const t = text.trim(), n = wordCount(t); if (!t) return { kind: "missing", words: 0 };
   if (EXEMPT.test(t)) return { kind: "exempt", words: n };
-  const verb = (lang === "id" ? VERB_ID : VERB_EN).test(t), figure = /\d/.test(t);
+  // a period or a year ("9M 2025", "FY26", "2027") dates a title; it is not a finding, so it does not make a title a conclusion
+  const verb = (lang === "id" ? VERB_ID : VERB_EN).test(t), figure = /\d/.test(t.replace(/\b\d{1,2}\s+\p{L}{3,9}\.?\s+(?:19|20)\d{2}\b/gu, " ").replace(new RegExp(PERIOD.source, "gi"), " ").replace(/\b(?:19|20)\d{2}\b/g, " "));
   if (n >= 6 && (verb || figure)) return { kind: "action", words: n };
   if (n >= 4 && verb) return { kind: "action", words: n };
   return { kind: n <= 5 ? "label" : "topic", words: n };
@@ -45,9 +50,9 @@ export function audit(deck, options = {}) {
   const seen = new Map(); for (const t of titles) if (t.s.title && !t.cover && t.kind !== "exempt") { const k = t.s.title.text.toLowerCase().replace(/\s+/g, " ").replace(/\s*\(?(cont(inued|'d|\.)?|lanjutan|\d+\/\d+)\)?$/i, ""); if (!seen.has(k)) seen.set(k, []); seen.get(k).push(t.s.index); }
   for (const [k, where] of seen) if (where.length > 1) add("structure", { code: "duplicate-title", severity: "medium", title: `The same title is used on ${where.length} slides`, detail: `"${k.slice(0, 90)}" appears on slides ${list(where)}. Each page should make its own point; if it is one argument over several pages, say what each adds.`, slides: where });
   if (n >= 8) {
-    const front = live.slice(0, 4).some((s) => /executive summary|ringkasan eksekutif|key messages?|summary|ringkasan|at a glance|sekilas|overview of (the )?(recommendation|findings)/i.test((s.title && s.title.text) || s.text.slice(0, 80)));
+    const front = live.slice(0, 4).some((s) => SUMMARY_RE.test((s.title && s.title.text) || s.text.slice(0, 80)));
     if (!front) add("structure", { code: "no-summary", severity: "medium", title: "No executive summary in the first pages", detail: "A senior reader should be able to stop after page two or three with the answer. No page near the front is titled as a summary or key messages.", slides: [] });
-    const ask = live.some((s) => /\b(recommendation|recommend|next steps?|decision|the ask|approval|rekomendasi|langkah (selanjutnya|berikutnya)|keputusan|persetujuan)\b/i.test((s.title && s.title.text) || ""));
+    const ask = live.some((s) => ASK_RE.test((s.title && s.title.text) || ""));
     if (!ask) add("structure", { code: "no-ask", severity: "low", title: "No page states the decision or next steps", detail: "None of the titles names a recommendation, a decision or next steps. If the deck asks for something, give the request its own page.", slides: [] });
   }
   const dense = document ? [] : content.filter((s) => s.words > 150); if (dense.length) add("structure", { code: "dense", severity: "low", title: `${dense.length} slide${dense.length > 1 ? "s carry" : " carries"} more than 150 words`, detail: `Slide${dense.length > 1 ? "s" : ""} ${dense.map((s) => `${s.index} (${s.words})`).join(", ")}. Past that, a page is read as a document, not presented. Split it or move detail to an appendix.`, slides: dense.map((s) => s.index) });

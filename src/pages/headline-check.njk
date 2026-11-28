@@ -1,0 +1,64 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: headlineCheck
+showCta: false
+---
+{% set a = pages.headlineCheck %}{% set prName = site.practiceNames.presentation | L(lang) %}
+<section class="dc-hero" aria-labelledby="hc-title">
+  <div class="wrap dc-hero__inner">
+    {% set crumbs = [{ name: prName, url: "presentation" | pageUrl(lang) }, { name: pages.deckAudit.name | L(lang), url: "deckAudit" | pageUrl(lang) }, { name: a.name | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+    <h1 id="hc-title" class="gold-em">{{ a.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ a.hero.lede | L(lang) }}</p>
+  </div>
+</section>
+
+<section class="section dc hc" aria-label="{{ a.name | L(lang) }}">
+  <div class="wrap">
+    <form class="hc-input" id="hc-form" novalidate>
+      <label for="hc-text" class="hc-input__label">{{ a.input.label | L(lang) }}</label>
+      <textarea id="hc-text" rows="10" spellcheck="false" placeholder="{{ a.input.placeholder | L(lang) }}"></textarea>
+      <p class="hc-input__hint">{{ a.input.hint | L(lang) }}</p>
+      <div class="hc-input__actions">
+        <button class="btn btn--primary" type="submit"><span>{{ a.input.check | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></button>
+        <button class="btn btn--secondary" type="button" id="hc-example" data-example="{{ a.input.example_text | L(lang) }}">{{ a.input.example | L(lang) }}</button>
+        <button class="dc-link" type="button" id="hc-clear">{{ a.input.clear | L(lang) }}</button>
+      </div>
+      <p class="dc-drop__status" id="hc-status" role="status" aria-live="polite"></p>
+      <p class="dc-drop__privacy"><span aria-hidden="true">{% set icon = "shield" %}{% include "components/icon.njk" %}</span>{{ a.hero.privacy | L(lang) }}</p>
+      <noscript><p class="dc-drop__status dc-drop__status--error">{{ pages.deckCheck.drop.noscript | L(lang) }}</p></noscript>
+    </form>
+
+    <div class="dc-result hc-result" id="hc-result" hidden>
+      <h2 id="hc-headline" tabindex="-1">{{ a.name | L(lang) }}</h2>
+      <p class="dc-result__meta">{{ a.strings.meta | L(lang) }}</p>
+      <div class="hc-meter" aria-hidden="true"><i id="hc-meter"></i></div>
+      <div class="hc-grid">
+        <div>
+          <h3 class="dc-sub">{{ a.strings.titles | L(lang) }}</h3>
+          <ol class="hc-list" id="hc-list"></ol>
+        </div>
+        <div>
+          <h3 class="dc-sub">{{ a.strings.story | L(lang) }}</h3>
+          <div class="hc-story" id="hc-story"></div>
+          <h3 class="dc-sub">{{ a.strings.structure | L(lang) }}</h3>
+          <dl class="hc-structure" id="hc-structure"></dl>
+        </div>
+      </div>
+      <div class="hc-advice">
+        <h3>{{ a.advice.title | L(lang) }}</h3><p>{{ a.advice.text | L(lang) }}</p>
+        <table><thead><tr><th scope="col">{{ a.advice.before | L(lang) }}</th><th scope="col">{{ a.advice.after | L(lang) }}</th></tr></thead><tbody>{% for pr in a.advice.pairs %}<tr><td>{{ pr[0] | L(lang) }}</td><td>{{ pr[1] | L(lang) }}</td></tr>{% endfor %}</tbody></table>
+        <p class="hc-advice__note">{{ a.advice.note | L(lang) }}</p>
+      </div>
+      <div class="dc-cta">
+        <div><h3>{{ a.cta.title | L(lang) }}</h3><p>{{ a.cta.text | L(lang) }}</p></div>
+        <div class="dc-cta__actions"><a class="btn btn--primary" href="{{ 'deckAudit' | pageUrl(lang) }}" data-event="cta_click" data-location="headline-check-result"><span>{{ a.cta.button | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>{% if site.tools.deckCheck == "live" %}<a class="btn btn--secondary" href="{{ 'deckCheck' | pageUrl(lang) }}" data-event="cta_click" data-location="headline-check-deck-check"><span>{{ a.cta.check | L(lang) }}</span></a>{% endif %}</div>
+      </div>
+      <p class="dc-caveat">{{ a.caveat | L(lang) }}</p>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="hc-strings">{{ a.strings | jsonFor(lang) | safe }}</script>
+<script type="module" src="/assets/headline-check/check.js?v={{ assetVersion }}" id="hc-script"></script>

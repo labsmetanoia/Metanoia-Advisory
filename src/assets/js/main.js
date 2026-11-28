@@ -465,33 +465,3 @@
     if (reset) reset.addEventListener("click", function () { Array.prototype.forEach.call(form.querySelectorAll("input[type=radio]"), function (r) { r.checked = false; }); update(); });
   });
 })();
-
-/* ---- Deck diagnostic (calls the site's own function; shown only when enabled in site.config.json) ---- */
-(function () {
-  var form = document.querySelector("[data-diag]"); if (!form) return;
-  var result = document.querySelector("[data-diag-result]"), status = form.querySelector(".form__status"), btn = form.querySelector("button[type=submit]");
-  var errors = {}; try { errors = JSON.parse(status.getAttribute("data-errors") || "{}"); } catch (e) {}
-  var text = form.querySelector("textarea"), count = form.querySelector("[data-count]"), consent = form.querySelector("input[type=checkbox]");
-  text.addEventListener("input", function () { count.textContent = text.value.length; });
-  function esc(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); status.textContent = "";
-    var v = text.value.trim();
-    if (!consent.checked) { consent.closest(".field").classList.add("has-error"); return; } consent.closest(".field").classList.remove("has-error");
-    if (v.length < 120) { status.textContent = errors.short || ""; return; }
-    if (v.length > 4000) { status.textContent = errors.long || ""; return; }
-    btn.disabled = true; btn.textContent = btn.getAttribute("data-submitting");
-    fetch("/api/deck-diagnostic", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: v, email: form.querySelector("input[type=email]").value, language: document.documentElement.lang, page: location.href, website: form.querySelector(".hp input").value }) })
-      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || r.status); return j; }); })
-      .then(function (j) {
-        var res = j.result;
-        result.querySelector("[data-summary]").textContent = res.summary; result.querySelector("[data-audience]").textContent = res.audienceGuess;
-        result.querySelector("[data-observations]").innerHTML = res.observations.map(function (o) { return "<li><strong>" + esc(o.title) + "</strong><p>" + esc(o.detail) + "</p></li>"; }).join("");
-        result.querySelector("[data-page]").textContent = res.rebuildFirst.page; result.querySelector("[data-why]").textContent = res.rebuildFirst.why; result.querySelector("[data-action]").textContent = res.rebuildFirst.actionTitle;
-        result.hidden = false; result.classList.remove("is-in"); void result.offsetWidth; result.classList.add("is-in"); result.scrollIntoView({ behavior: "smooth", block: "start" });
-        btn.disabled = false; btn.textContent = btn.getAttribute("data-label");
-        if (window.plausible) window.plausible("deck_diagnostic"); if (window.gtag) window.gtag("event", "deck_diagnostic");
-      })
-      .catch(function (err) { var k = String(err.message); status.textContent = k === "rate_limited" || k === "busy" ? (errors.busy || "") : k === "too_short" ? errors.short : k === "too_long" ? errors.long : (errors.generic || ""); btn.disabled = false; btn.textContent = btn.getAttribute("data-label"); });
-  });
-})();

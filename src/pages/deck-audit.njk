@@ -73,7 +73,7 @@ showCta: false
     <div><h2 id="audit-limits-title">{{ a.limits.title | L(lang) }}</h2><span class="rule-gold rule-gold--short" aria-hidden="true"></span></div>
     <div>
       <ul class="audit-limits__list">{% for li in a.limits.items %}<li>{{ li | L(lang) }}</li>{% endfor %}</ul>
-      <p class="audit-limits__free">{{ a.limits.free | L(lang) }} <a href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="deck-audit-free">{{ a.limits.freeLink | L(lang) }}</a> · <a href="{{ 'presentation' | pageUrl(lang) }}">{{ a.limits.services | L(lang) }}</a>{% if site.tools.deckCheck == "live" %} · <a href="{{ 'deckCheck' | pageUrl(lang) }}" data-event="cta_click" data-location="deck-audit-check">{{ a.limits.check | L(lang) }}</a>{% endif %}</p>
+      <p class="audit-limits__free">{{ a.limits.free | L(lang) }} <a href="{{ 'contact' | pageUrl(lang) }}#deck-review" data-event="cta_click" data-location="deck-audit-free">{{ a.limits.freeLink | L(lang) }}</a> · <a href="{{ 'presentation' | pageUrl(lang) }}">{{ a.limits.services | L(lang) }}</a>{% if site.tools.deckCheck == "live" %} · <a href="{{ 'deckCheck' | pageUrl(lang) }}" data-event="cta_click" data-location="deck-audit-check">{{ a.limits.check | L(lang) }}</a>{% endif %}{% if site.tools.headlineCheck == "live" %} · <a href="{{ 'headlineCheck' | pageUrl(lang) }}" data-event="cta_click" data-location="deck-audit-headline">{{ a.limits.headline | L(lang) }}</a>{% endif %}</p>
     </div>
   </div>
 </section>

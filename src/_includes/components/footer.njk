@@ -22,6 +22,7 @@
           {% if site.phase == 2 %}<li><a href="{{ 'insights' | pageUrl(lang) }}">{{ ui | t(lang, "nav.insights") }}</a></li>{% endif %}
           <li><a href="{{ 'deckAudit' | pageUrl(lang) }}">{{ ui | t(lang, "cta.deckAudit") }}</a></li>
           {% if site.tools.deckCheck == "live" %}<li><a href="{{ 'deckCheck' | pageUrl(lang) }}">{{ ui | t(lang, "cta.deckCheck") }}</a></li>{% endif %}
+          {% if site.tools.headlineCheck == "live" %}<li><a href="{{ 'headlineCheck' | pageUrl(lang) }}">{{ ui | t(lang, "cta.headlineCheck") }}</a></li>{% endif %}
           {% if site.credentialsPdf %}<li><a href="{{ 'about' | pageUrl(lang) }}#credentials">{{ ui | t(lang, "cta.credentials") }}</a></li>{% endif %}
           {% if site.linkedin %}<li><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a></li>{% endif %}
         </ul>

@@ -114,29 +114,6 @@ showCta: false
   </div>
 </div>
 
-{% if site.ai.deckDiagnostic %}
-<section class="section diag-section fade-up" id="deck-diagnostic" aria-labelledby="diag-title">
-  <div class="wrap diag">
-    <div class="diag__intro"><span class="kicker kicker--rule">{{ ui | t(lang, "diag.kicker") }}</span><h2 id="diag-title" class="gold-em">{{ ui | t(lang, "diag.title") | mdInline | safe }}</h2><p class="muted">{{ ui | t(lang, "diag.text") }}</p></div>
-    <form class="diag__form" data-diag novalidate>
-      <div class="field"><label for="diag-text" class="visually-hidden">{{ ui | t(lang, "diag.placeholder") }}</label><textarea id="diag-text" name="text" maxlength="4000" rows="8" required placeholder="{{ ui | t(lang, 'diag.placeholder') }}"></textarea><span class="diag__count" aria-live="polite"><span data-count>0</span> / 4000</span></div>
-      <div class="field"><label for="diag-email" class="visually-hidden">{{ ui | t(lang, "diag.email") }}</label><input id="diag-email" name="email" type="email" autocomplete="email" placeholder="{{ ui | t(lang, 'diag.email') }}"></div>
-      <div class="field field--check"><input id="diag-consent" name="consent" type="checkbox" required><label for="diag-consent">{{ ui | t(lang, "diag.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
-      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-      <div><button class="btn btn--primary" type="submit" data-label="{{ ui | t(lang, 'diag.button') }}" data-submitting="{{ ui | t(lang, 'diag.running') }}">{{ ui | t(lang, "diag.button") }}</button></div>
-      <p class="form__status" role="alert" data-errors='{{ ui[lang].diag.errors | json }}'></p>
-    </form>
-    <div class="diag__result" data-diag-result hidden aria-live="polite">
-      <div class="diag__card diag__card--summary"><span class="kicker">{{ ui | t(lang, "diag.summary") }}</span><p data-summary></p><p class="meta"><span>{{ ui | t(lang, "diag.audience") }}:</span> <span data-audience></span></p></div>
-      <ol class="diag__obs" data-observations></ol>
-      <div class="diag__card diag__card--rebuild"><span class="kicker">{{ ui | t(lang, "diag.rebuild") }}</span><h3 data-page></h3><p data-why></p><p class="diag__action"><span class="kicker">{{ ui | t(lang, "diag.actionTitle") }}</span><strong data-action></strong></p></div>
-      <a class="btn btn--primary" href="#deck-form">{{ ui | t(lang, "diag.next") }} <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-</section>
-<form name="deckDiagnostic" data-netlify="true" netlify-honeypot="website" hidden aria-hidden="true"><input type="hidden" name="form-name" value="deckDiagnostic"><input type="email" name="email"><input type="text" name="language"><input type="text" name="page"><input type="text" name="audience"><input type="text" name="summary"><input type="text" name="website"></form>
-{% endif %}
-
 {% set faqKey = "general" %}{% include "components/faq.njk" %}
 
 <section class="section fade-up contact-info" aria-label="{{ ui | t(lang, 'labels.office') }}">

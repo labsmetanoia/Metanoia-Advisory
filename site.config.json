@@ -38,7 +38,8 @@
     }
   },
   "analytics": {
-    "_comment": "Optional cookieless analytics: the site domain registered at plausible.io (or leave empty).",
+    "_comment": "Cookieless analytics, loaded without consent because nothing is stored on the visitor's device. Cloudflare Web Analytics (free): either turn on automatic setup for the domain in the Cloudflare dashboard (Analytics & Logs, Web Analytics), or paste the site token here. plausibleDomain: the site domain registered at plausible.io (paid). Leave both empty for none.",
+    "cloudflareToken": "",
     "plausibleDomain": ""
   },
   "offers": {
@@ -47,11 +48,8 @@
     "deckAuditQuarterly": { "price": { "en": "", "id": "" } }
   },
   "tools": {
-    "_comment": "deckCheck: the free in-browser deck check. 'preview' builds the page at its address but keeps it out of search engines, the sitemap and the site's own links, so it can be tried on real decks first. 'live' links it from the Deck Audit page and the footer. 'off' does not build it.",
-    "deckCheck": "preview"
-  },
-  "ai": {
-    "_comment": "Set deckDiagnostic to true after adding ANTHROPIC_API_KEY to the host's environment variables; the function lives in netlify/functions/deck-diagnostic.mjs.",
-    "deckDiagnostic": false
+    "_comment": "deckCheck: the free in-browser deck check. 'preview' builds the page at its address but keeps it out of search engines, the sitemap and the site's own links, so it can be tried on real decks first. 'live' links it from the Deck Audit page and the footer. 'off' does not build it. headlineCheck: the free headline checker, same three modes.",
+    "deckCheck": "preview",
+    "headlineCheck": "live"
   }
 }

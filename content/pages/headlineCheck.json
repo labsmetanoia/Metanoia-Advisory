@@ -1,0 +1,223 @@
+{
+  "_comment": "The free headline checker. Titles pasted by the visitor are read in the browser by the Deck Auditor's own title rule (tools/magic-layers/app/js/audit/titles.js); nothing is sent anywhere. Built when tools.headlineCheck in site.config.json is 'live' (linked) or 'preview' (unlinked, noindex); 'off' removes it.",
+  "seoTitle": {
+    "en": "Headline check: does your deck state its conclusions?",
+    "id": "Cek judul: apakah dek Anda menyatakan kesimpulannya?"
+  },
+  "metaDescription": {
+    "en": "Paste your slide titles and see which state a conclusion and which only name a topic, and what a reader who skims the titles takes away. Free, in your browser, nothing is sent.",
+    "id": "Tempel judul slide Anda dan lihat mana yang menyatakan kesimpulan dan mana yang hanya menyebut topik, serta apa yang ditangkap pembaca yang hanya membaca judulnya. Gratis, di browser Anda, tidak ada yang dikirim."
+  },
+  "name": {
+    "en": "Headline check",
+    "id": "Cek judul"
+  },
+  "hero": {
+    "title": {
+      "en": "Read your deck *the way the board will*",
+      "id": "Baca dek Anda *seperti dewan membacanya*"
+    },
+    "lede": {
+      "en": "A board member pages through a deck by its titles first. Paste yours: you see at once which state a conclusion and which only name a topic, and what someone who reads nothing else takes away.",
+      "id": "Anggota dewan membolak-balik dek melalui judulnya lebih dulu. Tempel judul Anda: Anda langsung melihat mana yang menyatakan kesimpulan dan mana yang hanya menyebut topik, serta apa yang ditangkap orang yang tidak membaca bagian lain."
+    },
+    "privacy": {
+      "en": "What you paste stays in your browser. Nothing is sent to us or to anyone else.",
+      "id": "Teks yang Anda tempel tetap di browser Anda. Tidak ada yang dikirim kepada kami maupun pihak lain."
+    }
+  },
+  "input": {
+    "label": {
+      "en": "Your slide titles, one per line",
+      "id": "Judul slide Anda, satu per baris"
+    },
+    "placeholder": {
+      "en": "Executive summary\nRevenue grew 12% as volumes recovered in every region\nRevenue by segment\nMarket overview\nNext steps",
+      "id": "Ringkasan eksekutif\nPendapatan naik 12% didorong pemulihan volume di semua wilayah\nPendapatan per segmen\nIkhtisar pasar\nLangkah selanjutnya"
+    },
+    "check": {
+      "en": "Check the titles",
+      "id": "Periksa judul"
+    },
+    "example": {
+      "en": "Try an example",
+      "id": "Coba contoh"
+    },
+    "clear": {
+      "en": "Clear",
+      "id": "Hapus"
+    },
+    "hint": {
+      "en": "Copy them from the outline view in PowerPoint, or type them. Numbers and bullets at the start of a line are ignored.",
+      "id": "Salin dari tampilan outline di PowerPoint, atau ketik. Nomor dan butir di awal baris diabaikan."
+    },
+    "example_text": {
+      "en": "FY25 board update\nExecutive summary\nEBITDA margin recovered to 14% in Q3 25 as logistics costs normalised\nRevenue by segment\nConsumer now supplies two-fifths of revenue\nMarket overview\nCapex plan\nThree projects take 70% of next year's capex\nRisks and mitigations\nNext steps",
+      "id": "Pembaruan dewan FY25\nRingkasan eksekutif\nMarjin EBITDA pulih menjadi 14% pada kuartal III seiring normalnya biaya logistik\nPendapatan per segmen\nSegmen konsumen kini menyumbang dua perlima pendapatan\nIkhtisar pasar\nRencana belanja modal\nTiga proyek menyerap 70% belanja modal tahun depan\nRisiko dan mitigasi\nLangkah selanjutnya"
+    }
+  },
+  "strings": {
+    "head": {
+      "en": "{a} of {n} titles state a conclusion",
+      "id": "{a} dari {n} judul menyatakan kesimpulan"
+    },
+    "headNone": {
+      "en": "None of the {n} titles states a conclusion",
+      "id": "Tidak satu pun dari {n} judul menyatakan kesimpulan"
+    },
+    "headAll": {
+      "en": "All {n} titles state a conclusion",
+      "id": "Seluruh {n} judul menyatakan kesimpulan"
+    },
+    "meta": {
+      "en": "The cover and standard pages such as the agenda, the summary and the appendix are not counted.",
+      "id": "Sampul dan halaman standar seperti agenda, ringkasan dan lampiran tidak dihitung."
+    },
+    "empty": {
+      "en": "Paste at least two titles.",
+      "id": "Tempel setidaknya dua judul."
+    },
+    "kinds": {
+      "action": {
+        "en": "Conclusion",
+        "id": "Kesimpulan"
+      },
+      "label": {
+        "en": "Names a topic",
+        "id": "Menyebut topik"
+      },
+      "topic": {
+        "en": "Names a topic",
+        "id": "Menyebut topik"
+      },
+      "exempt": {
+        "en": "Standard page",
+        "id": "Halaman standar"
+      },
+      "cover": {
+        "en": "Cover",
+        "id": "Sampul"
+      }
+    },
+    "long": {
+      "en": "Past two lines: cut it to one thought",
+      "id": "Lebih dari dua baris: pangkas menjadi satu gagasan"
+    },
+    "repeat": {
+      "en": "Same title as {n}",
+      "id": "Sama dengan judul {n}"
+    },
+    "titles": {
+      "en": "Title by title",
+      "id": "Judul demi judul"
+    },
+    "story": {
+      "en": "What a reader who skims the titles takes away",
+      "id": "Yang ditangkap pembaca yang hanya membaca judul"
+    },
+    "storyNone": {
+      "en": "Nothing beyond a list of topics: none of the titles says what its page proves.",
+      "id": "Tidak lebih dari daftar topik: tidak ada judul yang menyatakan apa yang dibuktikan halamannya."
+    },
+    "structure": {
+      "en": "Structure",
+      "id": "Struktur"
+    },
+    "summary": {
+      "en": "A summary near the front",
+      "id": "Ringkasan di bagian depan"
+    },
+    "ask": {
+      "en": "A page with the decision or next steps",
+      "id": "Halaman berisi keputusan atau langkah selanjutnya"
+    },
+    "yes": {
+      "en": "Found",
+      "id": "Ada"
+    },
+    "no": {
+      "en": "Not found",
+      "id": "Tidak ditemukan"
+    },
+    "short": {
+      "en": "Checked on decks of eight titles or more.",
+      "id": "Diperiksa pada dek dengan delapan judul atau lebih."
+    }
+  },
+  "advice": {
+    "title": {
+      "en": "Turning a topic into a conclusion",
+      "id": "Mengubah topik menjadi kesimpulan"
+    },
+    "text": {
+      "en": "Say what the page proves, in one sentence with a verb, and keep it to two lines. A reader should be able to agree or disagree with it.",
+      "id": "Nyatakan apa yang dibuktikan halaman itu, dalam satu kalimat dengan kata kerja, paling banyak dua baris. Pembaca harus dapat setuju atau tidak setuju dengannya."
+    },
+    "before": {
+      "en": "Topic",
+      "id": "Topik"
+    },
+    "after": {
+      "en": "Conclusion",
+      "id": "Kesimpulan"
+    },
+    "pairs": [
+      [
+        {
+          "en": "Revenue by segment",
+          "id": "Pendapatan per segmen"
+        },
+        {
+          "en": "Consumer and Industrial each added Rp 3 tn of revenue in FY25",
+          "id": "Segmen konsumen dan industri masing-masing menambah pendapatan Rp 3 tn pada FY25"
+        }
+      ],
+      [
+        {
+          "en": "Market overview",
+          "id": "Ikhtisar pasar"
+        },
+        {
+          "en": "Port volumes recovered faster than the market expected",
+          "id": "Volume pelabuhan pulih lebih cepat dari perkiraan pasar"
+        }
+      ],
+      [
+        {
+          "en": "Capex plan",
+          "id": "Rencana belanja modal"
+        },
+        {
+          "en": "Three projects take 70% of next year's capex",
+          "id": "Tiga proyek menyerap 70% belanja modal tahun depan"
+        }
+      ]
+    ],
+    "note": {
+      "en": "The examples are illustrative.",
+      "id": "Contoh bersifat ilustratif."
+    }
+  },
+  "cta": {
+    "title": {
+      "en": "Titles are the first thing a reader checks. Figures are the second.",
+      "id": "Judul adalah hal pertama yang diperiksa pembaca. Angka adalah yang kedua."
+    },
+    "text": {
+      "en": "A Deck Audit reads the whole deck: every figure checked against every other mention of it and against your source, the storyline, and anything left over from drafting, with a written report.",
+      "id": "Audit Dek membaca seluruh dek: setiap angka dicocokkan dengan setiap penyebutannya dan dengan sumber Anda, alur cerita, dan apa pun yang tertinggal dari penyusunan, disertai laporan tertulis."
+    },
+    "button": {
+      "en": "See the Deck Audit",
+      "id": "Lihat Audit Dek"
+    },
+    "check": {
+      "en": "Check the whole deck for free",
+      "id": "Periksa seluruh dek secara gratis"
+    }
+  },
+  "caveat": {
+    "en": "An automatic first pass on wording. It cannot tell whether a conclusion is true: that is for your figures.",
+    "id": "Pemeriksaan otomatis tahap pertama atas kata-kata. Pemeriksaan ini tidak dapat menilai apakah sebuah kesimpulan benar: itu ditentukan oleh angka Anda."
+  }
+}

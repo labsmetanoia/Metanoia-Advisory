@@ -150,7 +150,7 @@ What to keep in mind:
 
 ### The same rules on the website
 
-The website's free deck check (`src/pages/deck-check.njk` in the repository) runs these same modules in the visitor's browser: `pptx.js`, `pdfdeck.js`, `numbers.js`, `checks.js`, `id.js` and the action lines from `report.js` are copied into the site at build time. A change to a rule here changes the website at its next deploy, so run `npm test` here and `npm run test:deck-check` in the repository root before pushing.
+The website's free deck check (`src/pages/deck-check.njk` in the repository) runs these same modules in the visitor's browser: `pptx.js`, `pdfdeck.js`, `numbers.js`, `checks.js`, `id.js` and the action lines from `report.js` are copied into the site at build time. A change to a rule here changes the website at its next deploy, so run `npm test` here and `npm run test:deck-check` in the repository root before pushing. The headline check on the website uses `titles.js`, which reviews a pasted list of titles with the same title rule.
 
 ## Chart Builder
 

@@ -45,5 +45,6 @@
 {% include "components/footer.njk" %}
 {% include "components/consent.njk" %}
 <script src="/assets/js/main.js?v={{ assetVersion }}" defer></script>
+{% if site.analytics.cloudflareToken %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{ { "token": site.analytics.cloudflareToken } | json }}'></script>{% endif %}
 </body>
 </html>

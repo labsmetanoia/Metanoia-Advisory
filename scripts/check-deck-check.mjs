@@ -37,6 +37,20 @@ try {
   const e1 = await pg.textContent("#dc-status"); await pg.setInputFiles("#dc-file", { name: "broken.pptx", mimeType: "application/zip", buffer: Buffer.from("not a zip") }); await pg.waitForFunction(() => /could not be read/.test(document.getElementById("dc-status").textContent));
   await pg.setInputFiles("#dc-file", T + "test/samples/flat-deck.pptx"); await pg.waitForFunction(() => /No text could be read/.test(document.getElementById("dc-status").textContent), null, { timeout: 60000 });
   check("an unsupported, a broken and a picture-only file each get a plain message", /not supported/.test(e1) && await pg.evaluate(() => document.getElementById("dc-result").hidden));
+  // the headline checker: titles pasted as text, read by the same rule
+  if (existsSync(join(root, "en/strategic-storytelling/headline-check/index.html"))) {
+    const hopen = async (path, w = 1280) => { const pg = await (await b.newContext({ viewport: { width: w, height: 900 } })).newPage(); pg.errors = []; pg.reqs = []; pg.on("console", (m) => { if (m.type() === "error") pg.errors.push(m.text()); }); pg.on("pageerror", (e) => pg.errors.push(e.message)); await pg.goto(base + path); await pg.waitForFunction(() => document.documentElement.dataset.headlineCheck === "ready", null, { timeout: 20000 }); pg.on("request", (r) => pg.reqs.push(r.url())); return pg; };
+    let pg = await hopen("/en/strategic-storytelling/headline-check/");
+    await pg.fill("#hc-text", "1. FY25 board update\nExecutive summary\nEBITDA margin recovered to 14% in Q3 25\n- Revenue by segment\nMarket overview\nMarket overview\nConsumer now supplies two-fifths of revenue\nCapex plan\nThree projects take 70% of next year's capex\nNext steps"); await pg.click("#hc-form button[type=submit]");
+    await pg.waitForFunction(() => !document.getElementById("hc-result").hidden);
+    const h = await pg.evaluate(() => ({ head: document.getElementById("hc-headline").textContent, tags: [...document.querySelectorAll(".hc-tag")].map((e) => e.textContent).join("|"), story: document.querySelectorAll("#hc-story li").length, repeat: /Same title as 5/.test(document.getElementById("hc-list").textContent), structure: document.getElementById("hc-structure").textContent }));
+    check("headline check: titles read one by one, repeats flagged, the storyline and the structure shown", h.head === "3 of 7 titles state a conclusion" && h.story === 3 && h.repeat && /FoundA page with the decision or next stepsFound/.test(h.structure), JSON.stringify(h));
+    check("headline check: nothing leaves the browser, no script or policy errors", pg.reqs.length === 0 && pg.errors.length === 0, JSON.stringify([pg.reqs, pg.errors]));
+    await pg.close(); pg = await hopen("/id/storytelling-strategis/cek-judul/", 390); await pg.click("#hc-example"); await pg.waitForFunction(() => !document.getElementById("hc-result").hidden);
+    const hi = await pg.evaluate(() => ({ head: document.getElementById("hc-headline").textContent, wide: document.documentElement.scrollWidth - document.documentElement.clientWidth }));
+    check("headline check: the Indonesian example at phone width", /^3 dari 7 judul menyatakan kesimpulan$/.test(hi.head) && hi.wide <= 0, JSON.stringify(hi));
+    await pg.close();
+  }
 } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
 await b.close(); server.close();
 console.log(failed ? `\nFAILED: ${failed}` : "\nDeck check OK."); process.exit(failed ? 1 : 0);
