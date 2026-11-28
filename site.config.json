@@ -57,6 +57,7 @@
   "tools": {
     "_comment": "deckCheck: the free in-browser deck check. 'preview' builds the page at its address but keeps it out of search engines, the sitemap and the site's own links, so it can be tried on real decks first. 'live' links it from the Deck Audit page and the footer. 'off' does not build it. headlineCheck: the free headline checker, same three modes.",
     "deckCheck": "preview",
-    "headlineCheck": "live"
+    "headlineCheck": "live",
+    "disclosureCalendar": "preview"
   }
 }

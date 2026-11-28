@@ -64,6 +64,15 @@ try {
     check("accept: the reference comes from the proposal's link and the page stays out of search", ac.ref === "MA/P/2026/11/007" && /noindex/.test(ac.robots || ""), JSON.stringify(ac));
     check("brief and accept: no script or policy errors", errs.length === 0, errs.join(" ; "));
   }
+  // the disclosure calendar
+  if (existsSync(join(root, "en/strategic-storytelling/disclosure-calendar/index.html"))) {
+    const pg = await (await b.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true })).newPage(); const errs = []; pg.on("pageerror", (e) => errs.push(e.message)); pg.on("console", (m) => { if (m.type() === "error") errs.push(m.text()); });
+    await pg.goto(base + "/id/storytelling-strategis/kalender-keterbukaan/"); await pg.waitForFunction(() => document.documentElement.dataset.calendar === "ready", null, { timeout: 20000 });
+    await pg.fill("#cal-fye", "2025-12-31"); await pg.fill("#cal-agm", "2026-06-17"); await pg.click("#cal-form button[type=submit]");
+    const cr = await pg.evaluate(() => ({ n: document.querySelectorAll(".cal-item").length, first: document.querySelector(".cal-when").textContent, wide: document.documentElement.scrollWidth - document.documentElement.clientWidth, pending: !document.getElementById("cal-pending").hidden }));
+    const [dl] = await Promise.all([pg.waitForEvent("download"), pg.click("#cal-ics")]);
+    check("calendar: deadlines in order in Indonesian, the unchecked rules flagged, and a calendar file", cr.n === 13 && cr.first === "Selasa, 31 Maret 2026" && cr.wide <= 0 && cr.pending && dl.suggestedFilename() === "kalender-keterbukaan-2025.ics" && errs.length === 0, JSON.stringify([cr, errs]));
+  }
 } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
 await b.close(); server.close();
 console.log(failed ? `\nFAILED: ${failed}` : "\nDeck check OK."); process.exit(failed ? 1 : 0);

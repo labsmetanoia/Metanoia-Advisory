@@ -2085,3 +2085,24 @@ body.menu-open { overflow: hidden; }
 .field--upload input[type=file] { min-height: 0; padding: 6px 0; border: 0; background: none; font-size: 14px; }
 .field--upload .field__note { margin: 0; font-size: 13px; line-height: 19px; color: var(--grey-1); }
 .field--upload.has-error .field__error { display: block; }
+
+/* Disclosure calendar */
+.cal-pending { margin: 0 0 var(--s-3); padding: 12px 16px; border-left: 4px solid #A33A2B; background: #FBEDE9; border-radius: 0 12px 12px 0; font-size: 15px; line-height: 23px; }
+.cal-form .field > label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; }
+.cal-review { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+.cal-review legend { font-size: 13.5px; font-weight: 600; margin-bottom: 8px; padding: 0; }
+.cal-review label { font-weight: 500 !important; color: var(--grey-1); }
+.cal-result { margin-top: var(--s-4); }
+.cal-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cal-item { display: grid; grid-template-columns: minmax(170px, 0.32fr) minmax(0, 1fr); gap: 16px; background: #fff; border: 1px solid var(--grey-3); border-left: 4px solid #A07C00; border-radius: 12px; padding: 16px 20px; }
+.cal-item--meeting { border-left-color: var(--ink); background: var(--tint); }
+.cal-when { font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 23px; }
+.cal-body h3 { margin: 0 0 4px; font-family: inherit; font-size: 16.5px; line-height: 23px; font-weight: 700; }
+.cal-rule, .cal-meta, .cal-basis, .cal-flag { margin: 4px 0 0; font-size: 14.5px; line-height: 21px; color: var(--grey-1); }
+.cal-basis { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
+.cal-status { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.cal-status--checked { background: #E5F0E7; color: #2E6B3A; }
+.cal-status--to-check { background: #FBEDE9; color: #A33A2B; }
+.cal-flag { color: #A33A2B; }
+.cal-need { margin: var(--s-3) 0 0; color: var(--grey-1); font-size: 15px; }
+@media (max-width: 760px) { .cal-review { grid-template-columns: 1fr; } .cal-item { grid-template-columns: 1fr; gap: 6px; padding: 14px 16px; } }

@@ -15,7 +15,7 @@ function urlFor(data, lang) {
   }
 }
 // free tools with a preview / live / off switch in site.config.json (tools.*); null for every other page
-const toolMode = (data) => (["deckCheck", "headlineCheck"].includes(data.pageKey) ? (data.site.tools && data.site.tools[data.pageKey]) || "off" : null);
+const toolMode = (data) => (["deckCheck", "headlineCheck", "disclosureCalendar"].includes(data.pageKey) ? (data.site.tools && data.site.tools[data.pageKey]) || "off" : null);
 const L = (v, lang) => (v && typeof v === "object" && lang in v ? v[lang] : v);
 
 // Templates without pagination (root chooser, root 404, sitemap) set their own permalink/layout and skip this.
@@ -34,7 +34,7 @@ export default {
       if (data.pageKey === "person") return "about";
       if (data.pageKey === "article") return "insights";
       if (["thanks", "brief", "accept"].includes(data.pageKey)) return "contact";
-      if (["deckAudit", "deckCheck", "headlineCheck"].includes(data.pageKey)) return "presentation";
+      if (["deckAudit", "deckCheck", "headlineCheck", "disclosureCalendar"].includes(data.pageKey)) return "presentation";
       return data.pageKey;
     }),
     pageTitle: guard((data) => {
@@ -67,7 +67,7 @@ export default {
     noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || data.pageKey === "accept" || (toolMode(data) !== null && toolMode(data) !== "live") || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
     ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
-      const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", deckCheck: "service", headlineCheck: "service", article: "insight", person: "person" };
+      const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", deckCheck: "service", headlineCheck: "service", disclosureCalendar: "service", article: "insight", person: "person" };
       return `/assets/img/og/og-${map[data.pageKey] || "default"}.png`;
     }),
   },

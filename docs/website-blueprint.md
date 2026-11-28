@@ -928,3 +928,15 @@ Web3Forms on the free plan does not take attachments, so clients sent links. Dec
 
 **Verified.** The editor was run in a browser against a stand-in for the GitHub API serving this repository's files: sign-in by token, all six insights listed, an article opened, edited and saved (one commit; the file differs only in the edited title and a trailing line break), and a new insight created by Duplicate (the new file carries every field, with Draft on). The site built with the editor's saved file published, and rendered it. Not exercised: GitHub itself (no token here) and the new-entry form typed from scratch.
 
+## 55. Disclosure calendar, in preview (28 November 2026)
+
+A free planning tool for corporate secretaries and investor relations: the financial year-end and a planned AGM date give the year's reporting and GMS deadlines, in order, with the rule behind each and an `.ics` file for a calendar. It runs in the browser; nothing is sent.
+
+| Area | What changed |
+| --- | --- |
+| Rules and dates | `src/assets/disclosure-calendar/calendar.js`: twelve rules (annual statements, annual and sustainability reports, mid-year and quarterly statements by review level, latest annual GMS, the GMS notice chain from the meeting date, the public expose), each with its citation and a status. Months are counted to the end of the month; the notice chain counts calendar or working days back from the meeting, excluding both ends where the rule says so. Working days skip weekends only; deadlines on a weekend are flagged, not moved |
+| Page | `src/pages/disclosure-calendar.njk`, `content/pages/disclosureCalendar.json`, `src/assets/disclosure-calendar/page.js`. Routes `/en/strategic-storytelling/disclosure-calendar/`, `/id/storytelling-strategis/kalender-keterbukaan/`. A banner states how many rules are still to be checked |
+| Switch | `tools.disclosureCalendar`: `preview` (built, noindex, unlinked). It goes live only when every rule is `checked` |
+| Network | OJK, peraturan.go.id and the BPK legal database were added to the repository's cloud environment, but all three refuse automated downloads (OJK's firewall, a connection reset, a bot check). They were not worked around. Every rule is therefore `to-check`; `docs/disclosure-calendar-sources.md` lists what to verify, article by article |
+| Tests | `scripts/check-calendar.mjs` (in `npm test`): December and March year-ends, review levels, the notice chain, flags for a late meeting and weekend deadlines, and the calendar file (12 events, CRLF, lines folded within 75 bytes). `npm run test:deck-check` runs the page in Indonesian at phone width |
+

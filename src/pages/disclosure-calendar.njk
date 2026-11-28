@@ -1,0 +1,38 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: disclosureCalendar
+showCta: false
+---
+{% set a = pages.disclosureCalendar %}{% set F = a.form %}{% set prName = site.practiceNames.presentation | L(lang) %}
+<section class="dc-hero" aria-labelledby="cal-title">
+  <div class="wrap dc-hero__inner">
+    {% set crumbs = [{ name: prName, url: "presentation" | pageUrl(lang) }, { name: a.name | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+    <h1 id="cal-title" class="gold-em">{{ a.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ a.hero.lede | L(lang) }}</p>
+  </div>
+</section>
+<div class="section dc cal">
+  <div class="wrap">
+    <p class="cal-pending" id="cal-pending" hidden></p>
+    <form class="hc-input cal-form" id="cal-form" novalidate>
+      <div class="form__row">
+        <div class="field"><label for="cal-fye">{{ F.yearEnd | L(lang) }}</label><input id="cal-fye" type="date" required></div>
+        <div class="field"><label for="cal-agm">{{ F.agm | L(lang) }}</label><input id="cal-agm" type="date"></div>
+      </div>
+      <fieldset class="cal-review"><legend>{{ F.review | L(lang) }}</legend>
+        {% for k, lbl in { "Q1": F.q1, "H1": F.h1, "Q3": F.q3 } %}<div class="field"><label for="cal-{{ k }}">{{ lbl | L(lang) }}</label><select id="cal-{{ k }}">{% for lv, t in F.levels %}<option value="{{ lv }}"{% if (k == "H1" and lv == "limited") or (k != "H1" and lv == "none") %} selected{% endif %}>{{ t | L(lang) }}</option>{% endfor %}</select></div>{% endfor %}
+      </fieldset>
+      <div class="hc-input__actions"><button class="btn btn--primary" type="submit"><span>{{ F.show | L(lang) }}</span><span class="btn__arrow" aria-hidden="true">→</span></button><button class="btn btn--secondary" type="button" id="cal-ics" disabled>{{ F.ics | L(lang) }}</button></div>
+    </form>
+    <div class="cal-result" id="cal-result" hidden>
+      <ol class="cal-list" id="cal-list"></ol>
+      <p class="cal-need" id="cal-need" hidden></p>
+    </div>
+    <p class="dc-caveat">{{ a.strings.disclaimer | L(lang) }}</p>
+    <p class="dc-caveat">{{ a.limits | L(lang) }}</p>
+  </div>
+</div>
+<script type="application/json" id="cal-strings">{{ a.strings | jsonFor(lang) | safe }}</script>
+<script type="module" src="/assets/disclosure-calendar/page.js?v={{ assetVersion }}" data-lang="{{ lang }}" id="cal-script"></script>

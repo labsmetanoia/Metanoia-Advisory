@@ -1,0 +1,131 @@
+{
+  "_comment": "The disclosure calendar. Rules and dates live in src/assets/disclosure-calendar/calendar.js; each rule is 'checked' only once its wording has been read in the regulation text. Keep tools.disclosureCalendar at 'preview' while any rule is 'to-check'.",
+  "seoTitle": {
+    "en": "Disclosure calendar for listed companies",
+    "id": "Kalender keterbukaan informasi untuk emiten"
+  },
+  "metaDescription": {
+    "en": "Enter your financial year-end and planned AGM date to see the year's reporting and GMS deadlines, with the rule behind each, and add them to your calendar.",
+    "id": "Masukkan akhir tahun buku dan rencana tanggal RUPS untuk melihat batas waktu pelaporan dan RUPS sepanjang tahun, beserta dasar aturannya."
+  },
+  "name": {
+    "en": "Disclosure calendar",
+    "id": "Kalender keterbukaan"
+  },
+  "hero": {
+    "title": {
+      "en": "Your disclosure year, *on one page*",
+      "id": "Tahun keterbukaan Anda, *dalam satu halaman*"
+    },
+    "lede": {
+      "en": "Enter your financial year-end and, if you know it, the date of your annual GMS. You get the year's reporting and meeting deadlines in order, the rule behind each one, and a file to add them to your calendar.",
+      "id": "Masukkan akhir tahun buku dan, jika sudah ada, tanggal RUPS tahunan Anda. Anda mendapatkan batas waktu pelaporan dan rapat sepanjang tahun secara berurutan, dasar aturan masing-masing, dan berkas untuk menambahkannya ke kalender Anda."
+    }
+  },
+  "form": {
+    "yearEnd": {
+      "en": "Last day of the financial year being reported",
+      "id": "Hari terakhir tahun buku yang dilaporkan"
+    },
+    "agm": {
+      "en": "Planned annual GMS date (optional)",
+      "id": "Rencana tanggal RUPS tahunan (opsional)"
+    },
+    "review": {
+      "en": "Interim statements",
+      "id": "Laporan keuangan interim"
+    },
+    "q1": {
+      "en": "First quarter",
+      "id": "Triwulan pertama"
+    },
+    "h1": {
+      "en": "Half-year",
+      "id": "Tengah tahunan"
+    },
+    "q3": {
+      "en": "Third quarter",
+      "id": "Triwulan ketiga"
+    },
+    "levels": {
+      "none": {
+        "en": "Not reviewed",
+        "id": "Tidak ditelaah"
+      },
+      "limited": {
+        "en": "Limited review",
+        "id": "Ditelaah terbatas"
+      },
+      "audited": {
+        "en": "Audited",
+        "id": "Diaudit"
+      }
+    },
+    "show": {
+      "en": "Show the deadlines",
+      "id": "Tampilkan batas waktu"
+    },
+    "ics": {
+      "en": "Add to my calendar (.ics)",
+      "id": "Tambahkan ke kalender (.ics)"
+    }
+  },
+  "strings": {
+    "meeting": {
+      "en": "Annual GMS (your planned date)",
+      "id": "RUPS tahunan (rencana Anda)"
+    },
+    "meetingNote": {
+      "en": "The date you entered.",
+      "id": "Tanggal yang Anda masukkan."
+    },
+    "late": {
+      "en": "This is after the latest date allowed for the annual GMS.",
+      "id": "Tanggal ini melewati batas akhir RUPS tahunan."
+    },
+    "weekend": {
+      "en": "Falls on a weekend: check how the rule treats non-working days.",
+      "id": "Jatuh pada akhir pekan: periksa ketentuan untuk hari libur."
+    },
+    "checked": {
+      "en": "Checked against the regulation",
+      "id": "Telah dicocokkan dengan peraturan"
+    },
+    "toCheck": {
+      "en": "To be checked against the regulation text",
+      "id": "Perlu dicocokkan dengan naskah peraturan"
+    },
+    "noDate": {
+      "en": "No fixed date",
+      "id": "Tanpa tanggal tetap"
+    },
+    "period": {
+      "en": "Period ends",
+      "id": "Periode berakhir"
+    },
+    "needAgm": {
+      "en": "Enter a planned GMS date to see the notice chain: agenda to OJK, announcement, summons and minutes.",
+      "id": "Masukkan rencana tanggal RUPS untuk melihat rangkaian pemberitahuan: mata acara ke OJK, pengumuman, pemanggilan dan risalah."
+    },
+    "pending": {
+      "en": "Preview: {n} of {m} rules are still to be checked against the regulation text. Do not rely on them yet.",
+      "id": "Pratinjau: {n} dari {m} aturan masih perlu dicocokkan dengan naskah peraturan. Jangan dijadikan acuan dahulu."
+    },
+    "meetingTitle": {
+      "en": "Annual GMS",
+      "id": "RUPS tahunan"
+    },
+    "disclaimer": {
+      "en": "A planning aid, not legal advice. Check every date with your corporate secretary and counsel. Public holidays and collective leave days are not taken into account.",
+      "id": "Alat bantu perencanaan, bukan nasihat hukum. Periksa setiap tanggal bersama sekretaris perusahaan dan penasihat hukum Anda. Hari libur nasional dan cuti bersama tidak diperhitungkan."
+    },
+    "file": {
+      "en": "disclosure-calendar",
+      "id": "kalender-keterbukaan"
+    }
+  },
+  "limits": {
+    "en": "Dates are worked out from the rules as cited. Where a deadline falls on a weekend, the list says so; it does not move dates for public holidays or collective leave. The calendar covers the main periodic reports and the annual GMS; incidental disclosures such as material information have their own deadlines from the date of the event.",
+    "id": "Tanggal dihitung dari aturan sebagaimana dikutip. Jika batas waktu jatuh pada akhir pekan, daftar ini menyebutkannya; tanggal tidak digeser karena hari libur nasional atau cuti bersama. Kalender ini mencakup laporan berkala utama dan RUPS tahunan; keterbukaan insidentil seperti informasi material memiliki batas waktunya sendiri sejak tanggal kejadian."
+  }
+}
