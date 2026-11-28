@@ -1,0 +1,101 @@
+{
+  "_comment": "Online acceptance of a proposal. Linked only from proposals made with the Proposals tool once counsel has reviewed the standard terms; not indexed and not in the sitemap.",
+  "seoTitle": {
+    "en": "Accept a proposal",
+    "id": "Terima proposal"
+  },
+  "metaDescription": {
+    "en": "Accept a Metanoia Advisory proposal online with its reference.",
+    "id": "Terima proposal Metanoia Advisory secara daring dengan nomornya."
+  },
+  "name": {
+    "en": "Accept a proposal",
+    "id": "Terima proposal"
+  },
+  "hero": {
+    "title": {
+      "en": "Accept a *proposal*",
+      "id": "Terima *proposal*"
+    },
+    "lede": {
+      "en": "Use the reference on the cover of the proposal. The proposal's terms say that confirming acceptance in writing accepts it: this form is that confirmation. We confirm receipt by email.",
+      "id": "Gunakan nomor yang tercantum di sampul proposal. Ketentuan proposal menyatakan bahwa konfirmasi penerimaan secara tertulis berarti menerimanya: formulir ini adalah konfirmasi tersebut. Kami mengonfirmasi penerimaannya melalui email."
+    }
+  },
+  "sections": {
+    "proposal": {
+      "en": "The proposal",
+      "id": "Proposal"
+    },
+    "you": {
+      "en": "Who accepts",
+      "id": "Yang menerima"
+    },
+    "invoice": {
+      "en": "Invoicing (optional)",
+      "id": "Penagihan (opsional)"
+    }
+  },
+  "fields": {
+    "ref": {
+      "en": "Proposal reference",
+      "id": "Nomor proposal"
+    },
+    "refPh": {
+      "en": "MA/P/2026/11/001",
+      "id": "MA/P/2026/11/001"
+    },
+    "title": {
+      "en": "Your title",
+      "id": "Jabatan Anda"
+    },
+    "billing": {
+      "en": "Billing address",
+      "id": "Alamat penagihan"
+    },
+    "taxId": {
+      "en": "Tax number (NPWP)",
+      "id": "NPWP"
+    },
+    "invoiceEmail": {
+      "en": "Email for invoices",
+      "id": "Email untuk tagihan"
+    },
+    "po": {
+      "en": "Purchase order number",
+      "id": "Nomor purchase order"
+    },
+    "authorised": {
+      "en": "I am authorised to accept this proposal on behalf of the company.",
+      "id": "Saya berwenang menerima proposal ini atas nama perusahaan."
+    },
+    "accept": {
+      "en": "We accept the proposal with this reference, including its fee and terms of engagement.",
+      "id": "Kami menerima proposal dengan nomor ini, termasuk biaya dan ketentuan penugasannya."
+    },
+    "errAuthorised": {
+      "en": "Please confirm you are authorised to accept.",
+      "id": "Mohon konfirmasi bahwa Anda berwenang menerima."
+    },
+    "errAccept": {
+      "en": "Please confirm the acceptance.",
+      "id": "Mohon konfirmasi penerimaan."
+    },
+    "errRef": {
+      "en": "Please enter the proposal reference.",
+      "id": "Mohon isi nomor proposal."
+    },
+    "errTitle": {
+      "en": "Please tell us your title.",
+      "id": "Mohon isi jabatan Anda."
+    },
+    "submit": {
+      "en": "Accept the proposal",
+      "id": "Terima proposal"
+    }
+  },
+  "success": {
+    "en": "We have your acceptance. We will confirm by email and send the first invoice as the payment schedule sets out.",
+    "id": "Penerimaan Anda sudah kami terima. Kami akan mengonfirmasi melalui email dan mengirim tagihan pertama sesuai jadwal pembayaran."
+  }
+}

@@ -885,3 +885,20 @@ The tool to produce the flagship insight: a set of published decks (for example 
 
 **For the owner.** A booking link for `calendarUrl`; turning on Cloudflare Web Analytics; the `hello@` email routing.
 
+## 52. Online brief and proposal acceptance (28 November 2026)
+
+From enquiry to signed engagement without email back and forth. Both pages send through the existing form provider (Web3Forms on Cloudflare), at no cost.
+
+| Area | What changed |
+| --- | --- |
+| Brief | `src/pages/brief.njk`, `content/pages/brief.json`: `/en/contact/brief/`, `/id/kontak/brief/`, linked from the contact page. About you (with "registered in Indonesia"), what you need (offer, deck, audience, the decision it must support, key message, sources, deadline, language), confidentiality (a box for information not yet public, which shows a note asking for no such figures and promising a conflict check and NDA first), notes |
+| Brief code | `tools/magic-layers/app/js/proposals/brief.js`, copied into the site as `/assets/brief/brief-code.js`. The page script keeps a hidden `brief_code` field current: `MAB1-` + the answers as UTF-8 JSON in base64url + a full stop that ends it. Decoding ignores the line breaks and quote marks email clients add, stops at the full stop, and refuses a cut or edited code. It is an encoding, not encryption; it carries only what the client typed |
+| Proposals (tool v1.10.0) | **Import brief** reads the code and starts a proposal: offer, client and contact, subject, language mode, Indonesian-party flag and a situation drafted from the answers in the brief's language. A brief marked as involving non-public information adds a warning to run the conflict check and send the NDA |
+| Acceptance | `src/pages/accept.njk`, `content/pages/accept.json`: `/en/contact/accept/`, `/id/kontak/terima-proposal/`, `noindex` and out of the sitemap. Reference (filled from `?ref=`), who accepts and their title, optional invoicing details (address, NPWP, invoice email, PO), and declarations of authority and acceptance. The reference is added to the email subject |
+| Proposal letter | The acceptance section names the acceptance page with the reference, in the letter's language, only once "terms reviewed by counsel" is ticked (Settings → Website for online acceptance) |
+| Cookie banner | Now says visits are counted without cookies, and that consent covers more detailed analytics and LinkedIn, in both languages |
+
+**Verified.** Tool self-test: 131 checks (brief code round trip through an email's wrapping, refusals, the proposal it starts, the acceptance line gated on counsel review, Import brief in the app). Site `npm test` passes (72 pages); `npm run test:deck-check` adds three checks (the code matches the answers and the note shows; the reference comes from the link and the page is `noindex`; no errors). Both forms were submitted on a Cloudflare-style build against a stubbed Web3Forms: the brief arrives with its code, the acceptance with the reference in its subject.
+
+**For the owner.** Counsel to confirm that acceptance by this form is acceptance under the terms before the first proposal goes out with the link; the link stays out of proposals until "terms reviewed by counsel" is ticked.
+

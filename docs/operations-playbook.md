@@ -101,6 +101,10 @@ It is published as a preview: the address works, but nothing links to it and sea
 
 If a finding is wrong on a real deck, note the slide and the wording and pass it on: the fix goes into `tools/magic-layers/app/js/audit/` and reaches both the tool and the site.
 
+### From a brief to a proposal
+
+Briefs from the website (Contact → Send a one-page brief) arrive by email with a `brief_code` line. In the tool suite, **Proposals → Import brief**, paste the code (or the whole email), check the offer, write the subject in the second language if the letter is bilingual, and enter the fee. If the brief says the work involves information not yet public, run the conflict check and send the NDA before asking for files. Acceptances arrive by email with the proposal reference in the subject; reply to confirm and raise the first invoice.
+
 ### Writing a proposal
 
 Open the tool suite and choose **Proposals**. Pick the offer, the language (bilingual for Indonesian clients), fill in the client, the subject and the fee, and read the list above the preview until only warnings you accept remain. **Print / PDF** for the client; **Word** when counsel or the client wants to mark it up. Each proposal keeps its reference (MA/P/year/month/number) and can be reopened from **Recent proposals** on the same computer.

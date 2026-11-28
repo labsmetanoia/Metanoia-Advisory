@@ -51,6 +51,19 @@ try {
     check("headline check: the Indonesian example at phone width", /^3 dari 7 judul menyatakan kesimpulan$/.test(hi.head) && hi.wide <= 0, JSON.stringify(hi));
     await pg.close();
   }
+  // the online brief and proposal acceptance
+  if (existsSync(join(root, "en/contact/brief/index.html"))) {
+    const pg = await (await b.newContext({ viewport: { width: 1280, height: 900 } })).newPage(); const errs = []; pg.on("pageerror", (e) => errs.push(e.message)); pg.on("console", (m) => { if (m.type() === "error") errs.push(m.text()); });
+    await pg.goto(base + "/id/kontak/brief/"); await pg.waitForFunction(() => document.documentElement.dataset.brief === "ready", null, { timeout: 20000 });
+    await pg.fill("#b-name", "Siti Rahma"); await pg.fill("#b-company", "PT Contoh Logistik"); await pg.fill("#b-email", "siti@contoh.test"); await pg.selectOption("#b-offer", "deckAuditQuarterly"); await pg.fill("#b-subject", "dek hasil kuartalan 2026");
+    await pg.fill("#b-audience", "Analis & investor"); await pg.fill("#b-decision", "Mempertahankan rekomendasi"); await pg.check("#b-mnpi");
+    const br = await pg.evaluate(async () => { const { decodeBrief } = await import("/assets/brief/brief-code.js"); const code = document.getElementById("b-code").value; return { note: !document.getElementById("b-mnpi-note").hidden, brief: decodeBrief(`brief_code: ${code}\nlanguage: id`) }; });
+    check("brief: the answers travel as a brief code the Proposals tool can read, and the confidentiality note shows", br.note && br.brief.lang === "id" && br.brief.offer === "deckAuditQuarterly" && br.brief.company === "PT Contoh Logistik" && br.brief.audience === "Analis & investor" && br.brief.mnpi && br.brief.indonesian, JSON.stringify(br));
+    await pg.goto(base + "/en/contact/accept/?ref=MA/P/2026/11/007"); await pg.waitForFunction(() => document.documentElement.dataset.accept === "ready", null, { timeout: 20000 });
+    const ac = await pg.evaluate(() => ({ ref: document.getElementById("a-ref").value, robots: (document.querySelector("meta[name=robots]") || {}).content }));
+    check("accept: the reference comes from the proposal's link and the page stays out of search", ac.ref === "MA/P/2026/11/007" && /noindex/.test(ac.robots || ""), JSON.stringify(ac));
+    check("brief and accept: no script or policy errors", errs.length === 0, errs.join(" ; "));
+  }
 } catch (e) { check("browser run completed", false, e.message.split("\n")[0]); }
 await b.close(); server.close();
 console.log(failed ? `\nFAILED: ${failed}` : "\nDeck check OK."); process.exit(failed ? 1 : 0);

@@ -17,6 +17,7 @@
   <div class="actions">
     <label class="recent" title="Reopen a proposal you saved earlier"><span class="visually-hidden">Recent proposals</span><select id="recent"></select></label>
     <button class="btn" id="btn-new" title="Start a new proposal">New</button>
+    <button class="btn" id="btn-brief" title="Start a proposal from the brief code in an enquiry email from the website">Import brief</button>
     <button class="btn" id="btn-settings" title="The firm's details, payment terms and the counsel review flag">Settings</button>
     <button class="btn" id="btn-docx" title="Save as a Word document for counsel or the client to mark up">Word</button>
     <button class="btn btn--primary" id="btn-print" title="Print, or choose Save as PDF in the print dialog">Print / PDF</button>
@@ -30,6 +31,7 @@
   </section>
 </main>
 <dialog class="pk__settings" id="settings"><form method="dialog" id="settings-form" autocomplete="off"></form></dialog>
+<dialog class="pk__settings" id="brief"><form method="dialog" class="pk__briefform"><h2>Import a brief</h2><p class="pk__hint">Paste the brief code from the website's enquiry email. It starts with MAB1- and ends with a full stop; the rest of the email can come with it.</p><label class="field"><span>Brief code</span><textarea id="brief-text" rows="6" spellcheck="false"></textarea></label><p class="pk__error" id="brief-error" role="alert"></p><footer><button class="btn" type="button" id="brief-cancel">Cancel</button><button class="btn btn--primary" type="button" id="brief-go">Start the proposal</button></footer></form></dialog>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 </body>
 </html>

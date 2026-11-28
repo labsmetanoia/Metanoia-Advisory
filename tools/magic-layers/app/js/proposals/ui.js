@@ -4,6 +4,7 @@ import { OFFERS, offerByKey } from "./offers.js";
 import { DEFAULT_SETTINGS, newProposal, makeRef, problems, proposalHtml, totals } from "./doc.js";
 import { proposalDocx } from "./docx.js";
 import { money, moneyWords, parseAmount, CURRENCIES } from "./words.js";
+import { decodeBrief, proposalFromBrief } from "./brief.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
@@ -130,6 +131,7 @@ function buildSettings() {
   f.appendChild(row(txt("Invoices payable within (days)", "days", { type: "number" }), txt("Notice to end (days)", "notice", { type: "number" }), txt("Proposal valid for (days)", "validDays", { type: "number" })));
   f.appendChild(txt("VAT rate (%)", "vatRate", { ph: "Leave empty unless the firm charges VAT", hint: "Only if the firm is registered to charge VAT (PKP). Empty: the terms say fees exclude VAT and other taxes." }));
   f.appendChild(row(txt("Bank", "bankName"), txt("Account number", "bankAccount"), txt("Account holder", "bankHolder")));
+  f.appendChild(txt("Website for online acceptance", "acceptUrl", { ph: "https://www.metanoiaadvisors.com", hint: "Once the terms are reviewed by counsel, the acceptance section names the website's acceptance page with the proposal's reference filled in. Leave empty to leave it out." }));
   f.appendChild(el("h3", "", "Terms"));
   const forum = pair("Disputes are settled by (optional)", s, "forum"); forum.addEventListener("input", saveSettings); f.appendChild(forum);
   f.appendChild(el("p", "pk__hint", "For example a named court or arbitration body. Leave empty until counsel advises: the clause then ends after 30 days of good-faith discussion."));
@@ -168,6 +170,16 @@ async function saveDocx() {
 }
 function print() { const t = document.title; document.title = fileBase(); const w = $("preview").contentWindow; w.focus(); w.print(); setTimeout(() => { document.title = t; }, 1000); }
 
+/* ---------- a brief from the website ---------- */
+function importBrief(text) {
+  let b; try { b = decodeBrief(text); } catch (e) { $("brief-error").textContent = e.message; return false; }
+  S.s.counter = (Number(S.s.counter) || 0) + 1; saveSettings();
+  const p = proposalFromBrief(b, newProposal, S.s); p.ref = makeRef(p.date, S.s.counter); S.p = p;
+  $("brief").close(); buildForm(); render();
+  toast(`Proposal ${p.ref} started from ${b.company || "the"} brief. Check the offer, write the subject in the other language if needed, and enter the fee.`);
+  return true;
+}
+
 /* ---------- start ---------- */
 function start() {
   S.s = loadSettings(); S.p = read(KEY.current, null) || fresh();
@@ -176,9 +188,12 @@ function start() {
   $("btn-settings").addEventListener("click", () => { buildSettings(); $("settings").showModal(); });
   $("settings").addEventListener("close", () => { buildForm(); render(); });
   $("btn-docx").addEventListener("click", saveDocx);
+  $("btn-brief").addEventListener("click", () => { $("brief-text").value = ""; $("brief-error").textContent = ""; $("brief").showModal(); $("brief-text").focus(); });
+  $("brief-cancel").addEventListener("click", () => $("brief").close());
+  $("brief-go").addEventListener("click", () => importBrief($("brief-text").value));
   $("btn-print").addEventListener("click", print);
   $("recent").addEventListener("change", (e) => { const x = read(KEY.saved, {})[e.target.value]; if (x) { S.p = x; buildForm(); render(); } });
-  window.__proposals = { S, render, buildForm, problems: () => problems(S.p, S.s), html: () => proposalHtml(S.p, S.s), docx: () => proposalDocx(S.p, S.s, window.JSZip), fresh: (k) => { S.p = fresh(k); buildForm(); render(); } };
+  window.__proposals = { S, render, buildForm, importBrief, problems: () => problems(S.p, S.s), html: () => proposalHtml(S.p, S.s), docx: () => proposalDocx(S.p, S.s, window.JSZip), fresh: (k) => { S.p = fresh(k); buildForm(); render(); } };
   document.documentElement.dataset.ready = "1";
 }
 if (window.JSZip) start(); else window.addEventListener("load", start);

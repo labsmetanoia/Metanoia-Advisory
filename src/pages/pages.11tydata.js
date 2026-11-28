@@ -33,7 +33,7 @@ export default {
       if (data.pageKey === "service") return p.service.practice;
       if (data.pageKey === "person") return "about";
       if (data.pageKey === "article") return "insights";
-      if (data.pageKey === "thanks") return "contact";
+      if (["thanks", "brief", "accept"].includes(data.pageKey)) return "contact";
       if (["deckAudit", "deckCheck", "headlineCheck"].includes(data.pageKey)) return "presentation";
       return data.pageKey;
     }),
@@ -64,7 +64,7 @@ export default {
         default: return L(pages[data.pageKey].metaDescription, lang);
       }
     }),
-    noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || (toolMode(data) !== null && toolMode(data) !== "live") || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
+    noindex: guard((data) => data.pageKey === "notfound" || data.pageKey === "thanks" || data.pageKey === "accept" || (toolMode(data) !== null && toolMode(data) !== "live") || Boolean(data.p?.item?.draft || data.p?.person?.draft)),
     ogType: guard((data) => (["article"].includes(data.pageKey) ? "article" : "website")),
     ogImage: guard((data) => {
       const map = { home: "home", hub: "hub", service: "service", deckAudit: "service", deckCheck: "service", headlineCheck: "service", article: "insight", person: "person" };

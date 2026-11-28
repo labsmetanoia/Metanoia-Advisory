@@ -59,3 +59,6 @@
 .proposals .doc { overflow: hidden; }
 .proposals .doc__name { flex: none; }
 .proposals .doc__meta { overflow: hidden; text-overflow: ellipsis; }
+.pk__briefform { padding: 18px 20px; display: grid; gap: 12px; }
+.pk__briefform textarea { width: 100%; font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; }
+.pk__error { margin: 0; color: var(--danger); font-size: 12.5px; min-height: 1em; }

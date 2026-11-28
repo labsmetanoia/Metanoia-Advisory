@@ -176,7 +176,7 @@
       "credentialsDownload": "Download the PDF"
     },
     "consent": {
-      "text": "We use strictly necessary cookies to remember your language. With your consent we also measure visits (analytics) and matched audiences on LinkedIn (marketing).",
+      "text": "We use strictly necessary cookies to remember your language, and count visits without cookies. With your consent we also measure visits in more detail (analytics) and matched audiences on LinkedIn (marketing).",
       "accept": "Accept all",
       "decline": "Decline non-essential",
       "settings": "Cookie settings",
@@ -389,7 +389,7 @@
       "credentialsDownload": "Unduh PDF"
     },
     "consent": {
-      "text": "Kami menggunakan cookie yang diperlukan untuk mengingat bahasa Anda. Dengan persetujuan Anda, kami juga mengukur kunjungan (analitik) dan audiens yang dipadankan di LinkedIn (pemasaran).",
+      "text": "Kami menggunakan cookie yang diperlukan untuk mengingat bahasa Anda, dan menghitung kunjungan tanpa cookie. Dengan persetujuan Anda, kami juga mengukur kunjungan secara lebih rinci (analitik) dan audiens yang dipadankan di LinkedIn (pemasaran).",
       "accept": "Terima semua",
       "decline": "Tolak yang tidak esensial",
       "settings": "Pengaturan cookie",

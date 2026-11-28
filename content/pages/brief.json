@@ -1,0 +1,169 @@
+{
+  "_comment": "The online brief. Its script (src/assets/brief/brief.js) puts the answers into a brief code that arrives in the enquiry email; Proposals → Import brief turns the code into a new proposal.",
+  "seoTitle": {
+    "en": "Send us a brief",
+    "id": "Kirim brief kepada kami"
+  },
+  "metaDescription": {
+    "en": "One page is enough: who the deck is for, what it must help them decide, where the figures come from and when it is due. We reply within two working days.",
+    "id": "Satu halaman sudah cukup: untuk siapa dek ini, keputusan apa yang harus didukungnya, dari mana angkanya, dan kapan dibutuhkan. Kami membalas dalam dua hari kerja."
+  },
+  "name": {
+    "en": "Brief",
+    "id": "Brief"
+  },
+  "hero": {
+    "title": {
+      "en": "Send us a *one-page brief*",
+      "id": "Kirim *brief satu halaman*"
+    },
+    "lede": {
+      "en": "Who the deck is for, what it must help them decide, where the figures come from and when it is due. That is enough for us to reply within two working days with a view and, if you want one, a fixed-fee proposal.",
+      "id": "Untuk siapa dek ini, keputusan apa yang harus didukungnya, dari mana angkanya, dan kapan dibutuhkan. Itu cukup bagi kami untuk membalas dalam dua hari kerja dengan pandangan dan, bila Anda menginginkannya, proposal berbiaya tetap."
+    }
+  },
+  "sections": {
+    "you": {
+      "en": "About you",
+      "id": "Tentang Anda"
+    },
+    "need": {
+      "en": "What you need",
+      "id": "Yang Anda perlukan"
+    },
+    "confidential": {
+      "en": "Confidentiality",
+      "id": "Kerahasiaan"
+    }
+  },
+  "fields": {
+    "role": {
+      "en": "Your role (optional)",
+      "id": "Jabatan Anda (opsional)"
+    },
+    "indonesian": {
+      "en": "Our company is registered in Indonesia",
+      "id": "Perusahaan kami terdaftar di Indonesia"
+    },
+    "offer": {
+      "en": "What do you need?",
+      "id": "Apa yang Anda perlukan?"
+    },
+    "offers": {
+      "deckAudit": {
+        "en": "A Deck Audit of one deck",
+        "id": "Audit Dek untuk satu dek"
+      },
+      "deckAuditQuarterly": {
+        "en": "A Deck Audit every results season",
+        "id": "Audit Dek setiap musim rilis kinerja"
+      },
+      "deckProject": {
+        "en": "A board or executive deck",
+        "id": "Dek dewan atau eksekutif"
+      },
+      "pitch": {
+        "en": "An investor pitch deck",
+        "id": "Dek pitch investor"
+      },
+      "retainer": {
+        "en": "Results decks and investor updates, every quarter",
+        "id": "Dek hasil dan pembaruan investor, setiap triwulan"
+      },
+      "templateSystem": {
+        "en": "A corporate template system",
+        "id": "Sistem templat korporat"
+      },
+      "report": {
+        "en": "An annual or sustainability report",
+        "id": "Laporan tahunan atau keberlanjutan"
+      },
+      "other": {
+        "en": "Something else",
+        "id": "Hal lain"
+      }
+    },
+    "subject": {
+      "en": "Which deck or document?",
+      "id": "Dek atau dokumen apa?"
+    },
+    "subjectPh": {
+      "en": "For example: the FY25 board update",
+      "id": "Misalnya: dek pembaruan dewan FY25"
+    },
+    "audience": {
+      "en": "Who will read it?",
+      "id": "Siapa yang akan membacanya?"
+    },
+    "audiencePh": {
+      "en": "The board, analysts, a lender, a regulator…",
+      "id": "Dewan, analis, kreditur, regulator…"
+    },
+    "decision": {
+      "en": "What must it help them decide or believe?",
+      "id": "Keputusan atau keyakinan apa yang harus didukungnya?"
+    },
+    "decisionPh": {
+      "en": "For example: approve the FY26 budget",
+      "id": "Misalnya: menyetujui anggaran FY26"
+    },
+    "message": {
+      "en": "The one thing they should remember (optional)",
+      "id": "Satu hal yang harus mereka ingat (opsional)"
+    },
+    "sources": {
+      "en": "Where do the figures come from? (optional)",
+      "id": "Dari mana angkanya berasal? (opsional)"
+    },
+    "sourcesPh": {
+      "en": "The model, the management accounts, last year's deck…",
+      "id": "Model, laporan manajemen, dek tahun lalu…"
+    },
+    "deadline": {
+      "en": "When is it due? (optional)",
+      "id": "Kapan dibutuhkan? (opsional)"
+    },
+    "languages": {
+      "en": "In which language?",
+      "id": "Dalam bahasa apa?"
+    },
+    "languageOptions": {
+      "bi": {
+        "en": "Indonesian and English",
+        "id": "Bahasa Indonesia dan Inggris"
+      },
+      "id": {
+        "en": "Indonesian",
+        "id": "Bahasa Indonesia"
+      },
+      "en": {
+        "en": "English",
+        "id": "Bahasa Inggris"
+      }
+    },
+    "mnpi": {
+      "en": "The work involves information that is not yet public",
+      "id": "Pekerjaan ini melibatkan informasi yang belum diumumkan"
+    },
+    "mnpiNote": {
+      "en": "Please do not put figures that are not yet public in this form. We will run a conflict check and send a non-disclosure agreement before any files change hands.",
+      "id": "Mohon jangan mencantumkan angka yang belum diumumkan dalam formulir ini. Kami akan melakukan pemeriksaan benturan kepentingan dan mengirim perjanjian kerahasiaan sebelum ada berkas yang dipertukarkan."
+    },
+    "notes": {
+      "en": "Anything else (optional)",
+      "id": "Hal lain (opsional)"
+    },
+    "submit": {
+      "en": "Send the brief",
+      "id": "Kirim brief"
+    }
+  },
+  "success": {
+    "en": "We will read the brief and reply within two working days, in the language you wrote in.",
+    "id": "Kami akan membaca brief Anda dan membalas dalam dua hari kerja, dalam bahasa yang Anda gunakan."
+  },
+  "privacy": {
+    "en": "Only what you type here is sent, to us, by email. Nothing is attached.",
+    "id": "Hanya yang Anda ketik di sini yang dikirim, kepada kami, melalui email. Tidak ada lampiran."
+  }
+}

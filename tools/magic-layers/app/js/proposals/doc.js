@@ -11,7 +11,7 @@ const copy = (v) => JSON.parse(JSON.stringify(v ?? null));
 export const DEFAULT_SETTINGS = {
   tradingName: "Metanoia Advisory", legalName: "", address: "Jakarta, Indonesia", email: "", phone: "", taxId: "",
   signatory: "", signatoryTitle: "", days: 14, notice: 30, validDays: 30, vatRate: "",
-  bankName: "", bankAccount: "", bankHolder: "", forum: { en: "", id: "" }, meterai: true, reviewed: false, counter: 0,
+  bankName: "", bankAccount: "", bankHolder: "", forum: { en: "", id: "" }, meterai: true, reviewed: false, counter: 0, acceptUrl: "https://www.metanoiaadvisors.com",
 };
 
 export const LABELS = {
@@ -22,7 +22,7 @@ export const LABELS = {
     vat: (r) => `VAT ${r}%`, total: "Total", totalTerm: (n) => `Total for ${n} months`, words: "In words", instalment: "Instalment", share: "Share", amount: "Amount", plusVat: "VAT is added to each invoice.",
     payDays: (d) => `Invoices are payable within ${d} days of the invoice date.`, bank: (b) => `Payment to ${b.bankName}, account ${b.bankAccount}, in the name of ${b.bankHolder}.`,
     assumptions: "Assumptions", excluded: "Not included", assumeHead: "Assumptions and what is not included", terms: "Terms of engagement",
-    accept: "Acceptance", acceptText: "Signed by the authorised representatives of both parties.", forFirm: "For", name: "Name", title: "Title", sign: "Signature", signDate: "Date", meterai: "Stamp duty",
+    accept: "Acceptance", acceptText: "Signed by the authorised representatives of both parties.", acceptOnline: (u) => `The proposal can also be accepted online, with its reference, at ${u}`, forFirm: "For", name: "Name", title: "Title", sign: "Signature", signDate: "Date", meterai: "Stamp duty",
     footer: "Confidential", page: "Page" },
   id: { kicker: "Proposal dan surat penugasan", for: "untuk", preparedFor: "Disiapkan untuk", attention: "Up.", date: "Tanggal", ref: "Nomor", valid: "Berlaku hingga", by: "Disiapkan oleh",
     draft: (n) => `Draf untuk ditinjau penasihat hukum: ketentuan standar pada bagian ${n} belum ditinjau.`,
@@ -31,7 +31,7 @@ export const LABELS = {
     vat: (r) => `PPN ${r}%`, total: "Total", totalTerm: (n) => `Total untuk ${n} bulan`, words: "Terbilang", instalment: "Termin", share: "Porsi", amount: "Jumlah", plusVat: "PPN ditambahkan pada setiap tagihan.",
     payDays: (d) => `Tagihan dibayar dalam ${d} hari sejak tanggal tagihan.`, bank: (b) => `Pembayaran ke ${b.bankName}, rekening ${b.bankAccount}, atas nama ${b.bankHolder}.`,
     assumptions: "Asumsi", excluded: "Tidak termasuk", assumeHead: "Asumsi dan hal yang tidak termasuk", terms: "Ketentuan penugasan",
-    accept: "Persetujuan", acceptText: "Ditandatangani oleh wakil yang berwenang dari kedua belah pihak.", forFirm: "Untuk", name: "Nama", title: "Jabatan", sign: "Tanda tangan", signDate: "Tanggal", meterai: "Meterai",
+    accept: "Persetujuan", acceptText: "Ditandatangani oleh wakil yang berwenang dari kedua belah pihak.", acceptOnline: (u) => `Proposal ini juga dapat diterima secara daring, dengan nomornya, di ${u}`, forFirm: "Untuk", name: "Nama", title: "Jabatan", sign: "Tanda tangan", signDate: "Tanggal", meterai: "Meterai",
     footer: "Rahasia", page: "Halaman" },
 };
 
@@ -87,9 +87,14 @@ export function buildBlocks(p, s, lang) {
   const ctx = { firm, client, days: s.days, notice: s.notice, vat: Boolean(T.rate), forum: (s.forum && (s.forum.en || s.forum.id)) ? { en: s.forum.en || s.forum.id, id: s.forum.id || s.forum.en } : null, bilingual: p.mode === "bi", basis: T.basis, validUntil: { en: fmtDate(validIso, "en"), id: fmtDate(validIso, "id") } };
   standardTerms(ctx, lang).forEach((c, i) => out.push({ t: "clause", n: `${n}.${i + 1}`, key: c.key, title: c.title, text: c.text }));
   head(L.accept); out.push({ t: "p", text: L.acceptText });
+  // online acceptance is offered only once counsel has reviewed the terms it accepts
+  if (s.reviewed && (s.acceptUrl || "").trim()) out.push({ t: "p", text: L.acceptOnline(acceptLink(s.acceptUrl, lang, p.ref)) });
   out.push({ t: "sign", meterai: Boolean(s.meterai) && lang === "id", parties: [{ label: `${L.forFirm} ${firm}`, name: s.signatory, title: s.signatoryTitle }, { label: `${L.forFirm} ${client}`, name: p.client.signatory, title: p.client.signatoryTitle }], L: { name: L.name, title: L.title, sign: L.sign, date: L.signDate, meterai: L.meterai } });
   return out;
 }
+
+// The website's acceptance page (lib/routes.js: accept), in the letter's language, with the reference filled in.
+export const acceptLink = (base, lang, ref) => `${String(base).trim().replace(/\/+$/, "")}/${lang === "id" ? "id/kontak/terima-proposal" : "en/contact/accept"}/?ref=${encodeURIComponent(ref || "")}`;
 
 // What stops the document from going out, and what deserves a second look.
 export function problems(p, s) {
@@ -104,6 +109,7 @@ export function problems(p, s) {
   if (p.mode === "bi") { const half = []; for (const [k, label] of [["subject", "the subject"], ["situation", "Your situation"], ["team", "Who will do the work"]]) { const b = p[k]; if (filled(b) && (!(b.en || "").trim() || !(b.id || "").trim())) half.push(label); }
     const lists = ["deliverables", "inputs", "assumptions", "exclusions"].filter((k) => p[k].some((x) => !(x.en || "").trim() || !(x.id || "").trim())); if (p.steps.some((x) => !(x.title.en && x.title.id && x.text.en && x.text.id))) lists.push("steps");
     if (half.length || lists.length) warn(`Some text is in one language only (${[...half, ...lists].join(", ")}); the other column repeats it untranslated.`); }
+  if (p.flags && p.flags.mnpi) warn("The client's brief says the work involves information that is not yet public: run the conflict check and send the NDA before any files arrive.");
   if (!s.reviewed) warn("The standard terms have not been reviewed by counsel, so the document is marked as a draft.");
   return out;
 }

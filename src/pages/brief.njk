@@ -1,0 +1,63 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: brief
+showCta: false
+---
+{% set a = pages.brief %}{% set F = a.fields %}{% set c = pages.contact %}{% set hasForm = site.forms.provider != "none" %}
+<section class="dc-hero" aria-labelledby="brief-title">
+  <div class="wrap dc-hero__inner">
+    {% set crumbs = [{ name: ui | t(lang, "nav.contact"), url: "contact" | pageUrl(lang) }, { name: a.name | L(lang) }] %}
+    {% include "components/breadcrumb.njk" %}
+    <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+    <h1 id="brief-title" class="gold-em">{{ a.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ a.hero.lede | L(lang) }}</p>
+  </div>
+</section>
+<div class="section dc">
+  <div class="wrap">
+    {% if hasForm %}
+    <form class="form form--compact brief-form" id="brief-form" {% set formKey = "brief" %}{% include "components/form-attrs.njk" %} data-form-type="brief" data-lang="{{ lang }}" novalidate>
+      <fieldset><legend>{{ a.sections.you | L(lang) }}</legend>
+        <div class="form__row">
+          <div class="field"><label for="b-name">{{ ui | t(lang, "form.name") }}</label><input id="b-name" name="name" type="text" required autocomplete="name"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+          <div class="field"><label for="b-role">{{ F.role | L(lang) }}</label><input id="b-role" name="role" type="text" autocomplete="organization-title"></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="b-company">{{ ui | t(lang, "form.company") }}</label><input id="b-company" name="company" type="text" required autocomplete="organization"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
+          <div class="field"><label for="b-email">{{ ui | t(lang, "form.email") }}</label><input id="b-email" name="email" type="email" required autocomplete="email"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
+        </div>
+        <div class="field field--check"><input id="b-indonesian" name="registered_in_indonesia" type="checkbox" checked><label for="b-indonesian">{{ F.indonesian | L(lang) }}</label></div>
+      </fieldset>
+      <fieldset><legend>{{ a.sections.need | L(lang) }}</legend>
+        <div class="form__row">
+          <div class="field"><label for="b-offer">{{ F.offer | L(lang) }}</label><select id="b-offer" name="need" required><option value="">{{ ui | t(lang, "form.situationPlaceholder") }}</option>{% for k, v in F.offers %}<option value="{{ k }}">{{ v | L(lang) }}</option>{% endfor %}</select><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.situation") }}</span></div>
+          <div class="field"><label for="b-subject">{{ F.subject | L(lang) }}</label><input id="b-subject" name="deck" type="text" required placeholder="{{ F.subjectPh | L(lang) }}"><span class="field__error" role="alert">{{ F.subject | L(lang) }}</span></div>
+        </div>
+        <div class="field"><label for="b-audience">{{ F.audience | L(lang) }}</label><textarea id="b-audience" name="audience" rows="2" required maxlength="600" placeholder="{{ F.audiencePh | L(lang) }}"></textarea><span class="field__error" role="alert">{{ F.audience | L(lang) }}</span></div>
+        <div class="field"><label for="b-decision">{{ F.decision | L(lang) }}</label><textarea id="b-decision" name="decision" rows="2" required maxlength="600" placeholder="{{ F.decisionPh | L(lang) }}"></textarea><span class="field__error" role="alert">{{ F.decision | L(lang) }}</span></div>
+        <div class="field"><label for="b-message">{{ F.message | L(lang) }}</label><input id="b-message" name="key_message" type="text" maxlength="300"></div>
+        <div class="field"><label for="b-sources">{{ F.sources | L(lang) }}</label><textarea id="b-sources" name="sources" rows="2" maxlength="600" placeholder="{{ F.sourcesPh | L(lang) }}"></textarea></div>
+        <div class="form__row">
+          <div class="field"><label for="b-deadline">{{ F.deadline | L(lang) }}</label><input id="b-deadline" name="deadline" type="date"></div>
+          <div class="field"><label for="b-languages">{{ F.languages | L(lang) }}</label><select id="b-languages" name="languages">{% for k, v in F.languageOptions %}<option value="{{ k }}">{{ v | L(lang) }}</option>{% endfor %}</select></div>
+        </div>
+      </fieldset>
+      <fieldset><legend>{{ a.sections.confidential | L(lang) }}</legend>
+        <div class="field field--check"><input id="b-mnpi" name="not_yet_public" type="checkbox"><label for="b-mnpi">{{ F.mnpi | L(lang) }}</label></div>
+        <p class="brief-form__note" id="b-mnpi-note" hidden>{{ F.mnpiNote | L(lang) }}</p>
+        <div class="field"><label for="b-notes">{{ F.notes | L(lang) }}</label><textarea id="b-notes" name="notes" rows="3" maxlength="800"></textarea></div>
+      </fieldset>
+      <input type="hidden" name="brief_code" id="b-code" value="">
+      <div class="field field--check"><input id="b-consent" name="consent" type="checkbox" required><label for="b-consent">{{ ui | t(lang, "form.consent") }} <a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "consent.privacy") }}</a></label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
+      {% set formKey = "brief" %}{% include "components/form-hidden.njk" %}
+      <div><button class="btn btn--primary" type="submit" data-label="{{ F.submit | L(lang) }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ F.submit | L(lang) }}</button></div>
+      <p class="brief-form__privacy">{{ a.privacy | L(lang) }}</p>
+      <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+    </form>
+    <div class="form__success brief-success" data-success hidden><h2>{{ ui | t(lang, "form.success.title") }}</h2><p>{{ a.success | L(lang) }}</p></div>
+    {% else %}
+    <p class="lede">{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+    {% endif %}
+  </div>
+</div>
+<script src="/assets/brief/brief.js?v={{ assetVersion }}" type="module"></script>

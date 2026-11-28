@@ -124,6 +124,14 @@
     "notConnected": {
       "en": "The form is not connected yet. Please *email us* or *book a time* directly.",
       "id": "Formulir belum terhubung. Silakan *kirim email* atau *pilih waktu* secara langsung."
+    },
+    "brief": {
+      "en": "Already know what you need?",
+      "id": "Sudah tahu apa yang Anda perlukan?"
+    },
+    "briefLink": {
+      "en": "Send a one-page brief",
+      "id": "Kirim brief satu halaman"
     }
   },
   "deckReview": {

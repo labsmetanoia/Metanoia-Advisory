@@ -1,0 +1,52 @@
+---
+pagination: { data: langPages, size: 1, alias: p, addAllPagesToCollections: true }
+pageKey: accept
+showCta: false
+---
+{% set a = pages.accept %}{% set F = a.fields %}{% set hasForm = site.forms.provider != "none" %}
+<section class="dc-hero" aria-labelledby="accept-title">
+  <div class="wrap dc-hero__inner">
+    <span class="rule-gold rule-gold--short" aria-hidden="true"></span>
+    <h1 id="accept-title" class="gold-em">{{ a.hero.title | L(lang) | mdInline | safe }}</h1>
+    <p class="lede">{{ a.hero.lede | L(lang) }}</p>
+  </div>
+</section>
+<div class="section dc">
+  <div class="wrap">
+    {% if hasForm %}
+    <form class="form form--compact brief-form" id="accept-form" {% set formKey = "accept" %}{% include "components/form-attrs.njk" %} data-form-type="accept" novalidate>
+      <fieldset><legend>{{ a.sections.proposal | L(lang) }}</legend>
+        <div class="field"><label for="a-ref">{{ F.ref | L(lang) }}</label><input id="a-ref" name="reference" type="text" required autocomplete="off" spellcheck="false" placeholder="{{ F.refPh | L(lang) }}"><span class="field__error" role="alert">{{ F.errRef | L(lang) }}</span></div>
+      </fieldset>
+      <fieldset><legend>{{ a.sections.you | L(lang) }}</legend>
+        <div class="form__row">
+          <div class="field"><label for="a-name">{{ ui | t(lang, "form.name") }}</label><input id="a-name" name="name" type="text" required autocomplete="name"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.name") }}</span></div>
+          <div class="field"><label for="a-title">{{ F.title | L(lang) }}</label><input id="a-title" name="title" type="text" required autocomplete="organization-title"><span class="field__error" role="alert">{{ F.errTitle | L(lang) }}</span></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="a-company">{{ ui | t(lang, "form.company") }}</label><input id="a-company" name="company" type="text" required autocomplete="organization"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.company") }}</span></div>
+          <div class="field"><label for="a-email">{{ ui | t(lang, "form.email") }}</label><input id="a-email" name="email" type="email" required autocomplete="email"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
+        </div>
+      </fieldset>
+      <fieldset><legend>{{ a.sections.invoice | L(lang) }}</legend>
+        <div class="field"><label for="a-billing">{{ F.billing | L(lang) }}</label><textarea id="a-billing" name="billing_address" rows="2" maxlength="400"></textarea></div>
+        <div class="form__row form__row--3">
+          <div class="field"><label for="a-tax">{{ F.taxId | L(lang) }}</label><input id="a-tax" name="tax_number" type="text"></div>
+          <div class="field"><label for="a-invoice">{{ F.invoiceEmail | L(lang) }}</label><input id="a-invoice" name="invoice_email" type="email"></div>
+          <div class="field"><label for="a-po">{{ F.po | L(lang) }}</label><input id="a-po" name="purchase_order" type="text"></div>
+        </div>
+      </fieldset>
+      <div class="field field--check"><input id="a-authorised" name="authorised" type="checkbox" required><label for="a-authorised">{{ F.authorised | L(lang) }}</label><span class="field__error" role="alert">{{ F.errAuthorised | L(lang) }}</span></div>
+      <div class="field field--check"><input id="a-accept" name="accepted" type="checkbox" required><label for="a-accept">{{ F.accept | L(lang) }}</label><span class="field__error" role="alert">{{ F.errAccept | L(lang) }}</span></div>
+      <div class="field field--check"><input id="a-consent" name="consent" type="checkbox" required><label for="a-consent">{{ ui | t(lang, "form.consent") }} <a href="{{ 'privacy' | legalUrl(lang) }}">{{ ui | t(lang, "consent.privacy") }}</a></label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
+      {% set formKey = "accept" %}{% include "components/form-hidden.njk" %}
+      <div><button class="btn btn--primary" type="submit" data-label="{{ F.submit | L(lang) }}" data-submitting="{{ ui | t(lang, 'form.submitting') }}">{{ F.submit | L(lang) }}</button></div>
+      <p class="form__status" role="alert" data-generic="{{ ui | t(lang, 'form.errors.generic') }}"></p>
+    </form>
+    <div class="form__success brief-success" data-success hidden><h2>{{ ui | t(lang, "form.success.title") }}</h2><p>{{ a.success | L(lang) }}</p></div>
+    {% else %}
+    <p class="lede">{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+    {% endif %}
+  </div>
+</div>
+<script src="/assets/brief/accept.js?v={{ assetVersion }}" type="module"></script>

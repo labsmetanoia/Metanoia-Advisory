@@ -35,6 +35,7 @@ showCta: false
       <div class="fact__index" aria-hidden="true"><span>02</span></div>
       <h2 id="form-title">{{ c.form.title | L(lang) }}</h2>
       <p class="ccard__text">{{ c.form.text | L(lang) }}</p>
+      <p class="ccard__brief">{{ c.form.brief | L(lang) }} <a href="{{ 'brief' | pageUrl(lang) }}" data-event="cta_click" data-location="contact-brief">{{ c.form.briefLink | L(lang) }}</a></p>
       {% set ph = c.form.placeholders %}
       {% if site.forms.provider != "none" %}
       <form class="form form--compact" {% set formKey = "contact" %}{% include "components/form-attrs.njk" %} data-form-type="contact" novalidate>
