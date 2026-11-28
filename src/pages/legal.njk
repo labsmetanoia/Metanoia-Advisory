@@ -13,6 +13,7 @@ showCta: false
       <p class="meta">{{ ui | t(lang, "labels.lastUpdated") }}: <time datetime="{{ doc.updated }}">{{ doc.updated | date(lang) }}</time></p>
       {% if doc.reviewNote and site.preview %}<div class="notice"><strong>{{ "For counsel review." if lang == "en" else "Untuk ditinjau penasihat hukum." }}</strong> {{ doc.reviewNote | L(lang) }}</div>{% endif %}
       <div class="article__body">{{ doc.body | L(lang) | md | safe }}</div>
+      {% if doc.uploads and site.uploads.enabled %}<div class="article__body">{{ doc.uploads | L(lang) | replace("{days}", site.uploads.retentionDays) | md | safe }}</div>{% endif %}
     </div>
   </div>
 </section>

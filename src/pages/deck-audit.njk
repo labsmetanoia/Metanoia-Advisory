@@ -97,6 +97,7 @@ showCta: false
       </div>
       <div class="field"><label for="a-type" class="visually-hidden">{{ a.form.type | L(lang) }}</label><select id="a-type" name="audit_type"><option value="one">{{ a.form.typeOne | L(lang) }}</option><option value="quarterly">{{ a.form.typeQuarterly | L(lang) }}</option></select></div>
       <div class="field"><label for="a-link" class="visually-hidden">{{ ui | t(lang, "form.deckLink") }}</label><input id="a-link" name="deck_link" type="url" placeholder="{{ ui | t(lang, 'form.deckLink') }}"></div>
+      {% set upId = "a-up" %}{% set formKey = "deckAudit" %}{% include "components/deck-upload.njk" %}
       <div class="field"><label for="a-message" class="visually-hidden">{{ a.form.message | L(lang) }}</label><textarea id="a-message" name="message" rows="3" placeholder="{{ a.form.message | L(lang) }}"></textarea></div>
       <div class="field field--check"><input id="a-consent" name="consent" type="checkbox" required><label for="a-consent">{{ ui | t(lang, "form.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
       {% set formKey = "deckAudit" %}{% include "components/form-hidden.njk" %}

@@ -104,6 +104,7 @@ showCta: false
         <div class="field"><label for="d-email" class="visually-hidden">{{ ui | t(lang, "form.email") }}</label><input id="d-email" name="email" type="email" required autocomplete="email" placeholder="{{ c.form.placeholders.email | L(lang) }}"><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.email") }}</span></div>
         <div class="field"><label for="d-link" class="visually-hidden">{{ ui | t(lang, "form.deckLink") }}</label><input id="d-link" name="deck_link" type="url" placeholder="{{ ui | t(lang, 'form.deckLink') }}"></div>
       </div>
+      {% set upId = "d-up" %}{% set formKey = "deckReview" %}{% include "components/deck-upload.njk" %}
       {% if site.forms.provider == "netlify" %}<div class="field field--file"><label for="d-file">{{ ui | t(lang, "form.deckFile") }}</label><input id="d-file" name="deck" type="file" accept=".pdf,.ppt,.pptx,.key,application/pdf"></div>{% endif %}
       <div class="field field--check"><input id="d-consent" name="consent" type="checkbox" required><label for="d-consent">{{ ui | t(lang, "form.consent") }}</label><span class="field__error" role="alert">{{ ui | t(lang, "form.errors.consent") }}</span></div>
       {% set formKey = "deckReview" %}{% include "components/form-hidden.njk" %}

@@ -173,7 +173,19 @@
       "credentialsLead": "Leave a work email and the eight-page credentials document (PDF, both languages available) is yours.",
       "credentialsButton": "Get the credentials",
       "credentialsReady": "Thank you. Your copy is ready.",
-      "credentialsDownload": "Download the PDF"
+      "credentialsDownload": "Download the PDF",
+      "upload": {
+        "label": "Attach the deck (PowerPoint or PDF, up to {mb} MB)",
+        "note": "Stored privately and opened only by the people working on your request. Deleted automatically {days} days after upload.",
+        "uploading": "Uploading the deck…",
+        "errors": {
+          "too_large": "That file is larger than {mb} MB. Share a link instead, or compress the pictures.",
+          "type": "Only PowerPoint (.pptx) and PDF files can be attached.",
+          "verification": "Please complete the check above and try again.",
+          "not_configured": "Attachments are not available right now. Share a link instead.",
+          "failed": "The upload did not go through. Try again, or share a link instead."
+        }
+      }
     },
     "consent": {
       "text": "We use strictly necessary cookies to remember your language, and count visits without cookies. With your consent we also measure visits in more detail (analytics) and matched audiences on LinkedIn (marketing).",
@@ -386,7 +398,19 @@
       "credentialsLead": "Tinggalkan email kantor Anda dan dokumen kredensial delapan halaman (PDF, tersedia dua bahasa) menjadi milik Anda.",
       "credentialsButton": "Dapatkan kredensial",
       "credentialsReady": "Terima kasih. Salinan Anda sudah siap.",
-      "credentialsDownload": "Unduh PDF"
+      "credentialsDownload": "Unduh PDF",
+      "upload": {
+        "label": "Lampirkan dek (PowerPoint atau PDF, hingga {mb} MB)",
+        "note": "Disimpan secara privat dan hanya dibuka oleh orang yang menangani permintaan Anda. Dihapus otomatis {days} hari setelah diunggah.",
+        "uploading": "Mengunggah dek…",
+        "errors": {
+          "too_large": "Berkas tersebut lebih besar dari {mb} MB. Bagikan tautan saja, atau kompres gambarnya.",
+          "type": "Hanya berkas PowerPoint (.pptx) dan PDF yang dapat dilampirkan.",
+          "verification": "Mohon selesaikan pemeriksaan di atas lalu coba lagi.",
+          "not_configured": "Lampiran sedang tidak tersedia. Bagikan tautan saja.",
+          "failed": "Unggahan tidak berhasil. Coba lagi, atau bagikan tautan saja."
+        }
+      }
     },
     "consent": {
       "text": "Kami menggunakan cookie yang diperlukan untuk mengingat bahasa Anda, dan menghitung kunjungan tanpa cookie. Dengan persetujuan Anda, kami juga mengukur kunjungan secara lebih rinci (analitik) dan audiens yang dipadankan di LinkedIn (pemasaran).",

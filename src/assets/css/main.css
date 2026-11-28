@@ -2079,3 +2079,9 @@ body.menu-open { overflow: hidden; }
 .ccard__brief { margin: 0 0 var(--s-3); font-size: 15px; color: var(--grey-1); }
 .ccard__brief a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
 @media (max-width: 768px) { .brief-form { padding: var(--s-3); } .form__row--3 { grid-template-columns: 1fr; } }
+/* Deck attachment (uploads to private storage) */
+.field--upload { display: grid; gap: 6px; padding: 12px 14px; border: 1px dashed var(--grey-2); border-radius: 12px; background: var(--paper); }
+.field--upload > label { font-size: 14px; font-weight: 600; }
+.field--upload input[type=file] { min-height: 0; padding: 6px 0; border: 0; background: none; font-size: 14px; }
+.field--upload .field__note { margin: 0; font-size: 13px; line-height: 19px; color: var(--grey-1); }
+.field--upload.has-error .field__error { display: block; }

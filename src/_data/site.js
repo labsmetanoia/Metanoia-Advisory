@@ -47,6 +47,9 @@ export default {
   forms: { provider: formsProvider, formspree: (formsCfg.formspree || {}), web3forms: { accessKey: web3Key } },
   analytics: cfg.analytics || {},
   ai: cfg.ai || {},
+  // Uploads need Cloudflare Pages Functions (R2 storage); Netlify keeps its own file field on the deck-review form.
+  uploads: { maxMb: 60, retentionDays: 30, ...(cfg.uploads || {}), turnstileSiteKey: (process.env.TURNSTILE_SITE_KEY || (cfg.uploads && cfg.uploads.turnstileSiteKey) || "").trim(),
+    enabled: Boolean((process.env.UPLOADS === "1" || (cfg.uploads && cfg.uploads.enabled)) && formsProvider !== "netlify" && formsProvider !== "none") },
   tools: { ...(cfg.tools || {}), deckCheck: process.env.DECK_CHECK || (cfg.tools && cfg.tools.deckCheck) || "off", headlineCheck: process.env.HEADLINE_CHECK || (cfg.tools && cfg.tools.headlineCheck) || "off" },
   baseUrl: cfg.domain ? cfg.domain.replace(/\/$/, "") : "",
   buildDate: new Date().toISOString(),

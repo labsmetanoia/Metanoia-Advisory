@@ -47,6 +47,13 @@
     "deckAudit": { "price": { "en": "", "id": "" } },
     "deckAuditQuarterly": { "price": { "en": "", "id": "" } }
   },
+  "uploads": {
+    "_comment": "Decks attached to the Deck Audit and deck-review forms, stored privately in Cloudflare R2 by functions/api/upload.js. Leave enabled false until the R2 bucket, its binding (DECKS) and its lifecycle rule (delete after retentionDays) exist: see docs/operations-playbook.md. retentionDays is printed on the forms and in the privacy policy, so it must match the lifecycle rule. turnstileSiteKey: optional bot check (pair it with TURNSTILE_SECRET in Cloudflare). UPLOADS=1 in the build environment also switches uploads on.",
+    "enabled": false,
+    "maxMb": 60,
+    "retentionDays": 30,
+    "turnstileSiteKey": ""
+  },
   "tools": {
     "_comment": "deckCheck: the free in-browser deck check. 'preview' builds the page at its address but keeps it out of search engines, the sitemap and the site's own links, so it can be tried on real decks first. 'live' links it from the Deck Audit page and the footer. 'off' does not build it. headlineCheck: the free headline checker, same three modes.",
     "deckCheck": "preview",

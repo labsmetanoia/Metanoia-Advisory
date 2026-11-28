@@ -4,7 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://www.googletagmanager.com https://snap.licdn.com https://plausible.io; connect-src 'self' https://cloudflareinsights.com https://api.hsforms.com https://formspree.io https://api.web3forms.com https://plausible.io https://www.google-analytics.com https://*.analytics.google.com https://px.ads.linkedin.com; img-src 'self' data: blob: https://www.google-analytics.com https://px.ads.linkedin.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.hsforms.com https://formspree.io https://api.web3forms.com
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://challenges.cloudflare.com https://www.googletagmanager.com https://snap.licdn.com https://plausible.io; connect-src 'self' https://cloudflareinsights.com https://api.hsforms.com https://formspree.io https://api.web3forms.com https://plausible.io https://www.google-analytics.com https://*.analytics.google.com https://px.ads.linkedin.com; img-src 'self' data: blob: https://www.google-analytics.com https://px.ads.linkedin.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.hsforms.com https://formspree.io https://api.web3forms.com
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/css/*

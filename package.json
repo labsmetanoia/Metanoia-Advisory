@@ -11,7 +11,7 @@
     "build:phase1": "rm -rf _site && SITE_PHASE=1 eleventy",
     "clean": "rm -rf _site",
     "test:deck-check": "node scripts/check-deck-check.mjs",
-    "test": "npm run build:preview && node scripts/check-links.mjs && SITE_PREVIEW=1 node scripts/check-parity.mjs && npm run build && node scripts/check-links.mjs && node scripts/check-parity.mjs && npx html-validate \"_site/**/*.html\"",
+    "test": "npm run build:preview && node scripts/check-upload.mjs && node scripts/check-links.mjs && SITE_PREVIEW=1 node scripts/check-parity.mjs && npm run build && node scripts/check-links.mjs && node scripts/check-parity.mjs && npx html-validate \"_site/**/*.html\"",
     "test:a11y": "node scripts/check-a11y.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "export:preview": "npm run build:preview --silent && node scripts/export-artifact.mjs artifact-export"

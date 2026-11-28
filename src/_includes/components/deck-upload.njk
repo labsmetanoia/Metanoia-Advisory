@@ -1,0 +1,13 @@
+{#- Optional deck attachment, stored privately by functions/api/upload.js. expects `upId` (unique id prefix), `formKey`, `lang`. Renders only when uploads are on. -#}
+{%- if site.uploads.enabled -%}
+{%- set up = ui[lang].form.upload -%}
+<div class="field field--file field--upload" data-upload-field data-max-mb="{{ site.uploads.maxMb }}" data-uploading="{{ up.uploading }}" data-errors='{{ up.errors | json | replace("{mb}", site.uploads.maxMb) }}'>
+  <label for="{{ upId }}-file">{{ up.label | replace("{mb}", site.uploads.maxMb) }}</label>
+  <input id="{{ upId }}-file" type="file" data-upload data-form="{{ formKey }}" accept=".pptx,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+  <p class="field__note">{{ up.note | replace("{days}", site.uploads.retentionDays) }}</p>
+  {% if site.uploads.turnstileSiteKey %}<div class="cf-turnstile" data-sitekey="{{ site.uploads.turnstileSiteKey }}" data-size="flexible" data-appearance="interaction-only"></div>{% endif %}
+  <span class="field__error" role="alert"></span>
+  <input type="hidden" name="deck_upload" value="">
+</div>
+{%- if site.uploads.turnstileSiteKey %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif -%}
+{%- endif -%}

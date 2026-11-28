@@ -119,3 +119,19 @@ Before the first one goes out, have counsel review the standard terms: save any 
 4. Read the bars against a few decks before publishing: open two or three decks with high counts in the Deck Auditor and check the findings are real. Write "Our reading" only from figures the report shows.
 5. Save the report, print to PDF, and keep the key file (which code is which company) inside the firm. Never publish the key or name a company.
 
+### Deck uploads (secure attachment on the deck forms)
+
+Visitors can attach a deck (PowerPoint or PDF) to the Deck Audit form and the deck-review form on the contact page. The file goes to a private Cloudflare R2 bucket through `functions/api/upload.js`; the form email carries only its reference (for example `UP-20261128-a1b2c3d4e5 (FY25-board.pptx, 12.4 MB)`). Uploads are **off** until the steps below are done, and the privacy policy's paragraph on uploads appears only once they are on.
+
+Setting it up (once):
+
+1. **R2.** Cloudflare dashboard → R2 Object Storage. Cloudflare may ask for a payment method before R2 can be used, even within the free allowance (at the time of writing 10 GB stored per month; check Cloudflare's R2 pricing page). With the 60 MB limit and the 30-day deletion rule below, a firm's volume stays far inside it.
+2. **Bucket.** Create a bucket, for example `metanoia-decks`. Leave public access off.
+3. **Deletion rule.** Bucket → Settings → Object lifecycle rules → add a rule for the prefix `decks/` that deletes objects 30 days after upload. This must match `uploads.retentionDays` in `site.config.json`, because the forms and the privacy policy promise it.
+4. **Binding.** Workers & Pages → `metanoia-advisory` → Settings → Bindings → add an R2 bucket binding: variable name `DECKS`, bucket `metanoia-decks` (Production).
+5. **Bot check (recommended).** Cloudflare → Turnstile → add a widget for `metanoiaadvisors.com` (managed mode). Put the site key in `uploads.turnstileSiteKey` and the secret key in the Pages project's variables as `TURNSTILE_SECRET` (encrypted).
+6. **Rate limit (optional).** Security → WAF → rate limiting rule for the path `/api/upload`, for example 10 requests per 10 minutes per IP. The free plan includes one rule.
+7. **Switch on.** Set `uploads.enabled` to `true` (or ask Claude) and push. Send yourself a small PDF through the Deck Audit form and find it in the bucket.
+
+Finding a file: R2 → `metanoia-decks` → Objects → `decks/<date>/` → the object whose name starts with the reference in the email → Download. Delete it once the work no longer needs it; the rule deletes it after 30 days regardless. Never forward client files to consumer AI tools.
+

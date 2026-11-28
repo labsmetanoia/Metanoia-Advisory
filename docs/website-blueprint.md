@@ -902,3 +902,18 @@ From enquiry to signed engagement without email back and forth. Both pages send 
 
 **For the owner.** Counsel to confirm that acceptance by this form is acceptance under the terms before the first proposal goes out with the link; the link stays out of proposals until "terms reviewed by counsel" is ticked.
 
+## 53. Secure deck upload, built and switched off (28 November 2026)
+
+Web3Forms on the free plan does not take attachments, so clients sent links. Decks can now be attached on the Deck Audit form and the contact page's deck-review form, stored privately in Cloudflare R2.
+
+| Area | What changed |
+| --- | --- |
+| Function | `functions/api/upload.js` (Cloudflare Pages Function, `POST /api/upload`). Same-origin requests only; size limit (`UPLOAD_MAX_MB`, default 60); file type read from the bytes (PDF signature, or a zip whose directory names `ppt/presentation.xml`), so a renamed spreadsheet is refused; optional Turnstile verification (`TURNSTILE_SECRET`); stored as `decks/<date>/UP-<date>-<random>-<name>` with the original name, form and time as metadata. No download or listing route. Answers 503 until the `DECKS` binding exists |
+| Form | `components/deck-upload.njk`: an optional file field with the limit, the retention promise and, when configured, a Turnstile widget. `main.js` uploads the file first, then sends the form with the reference in `deck_upload`; the file and the Turnstile token are kept out of the email. Errors (type, size, verification, not configured, failed) are shown in the field in the page's language and the form is not sent |
+| Switch | `site.config.json` → `uploads` (`enabled` false, `maxMb` 60, `retentionDays` 30, `turnstileSiteKey`); `UPLOADS=1` in the build environment also enables it. Off on Netlify (which keeps its own file field) and when forms are off |
+| Privacy | `legal.json` → `privacy.uploads`, shown on the privacy page only while uploads are on, with the retention period from the setting |
+| Headers | `_headers`: `challenges.cloudflare.com` allowed as a script source and frame source for Turnstile |
+| Tests | `scripts/check-upload.mjs` (part of `npm test`): type from bytes, storage name and metadata, and the five refusals |
+
+**Verified.** The function in Node against an in-memory bucket (`npm test`), and in Cloudflare's own runtime with Wrangler 3 (`wrangler pages dev` with a local R2 binding): a PDF and a deck stored, another origin and GET refused. In a browser against that runtime: a deck attached on the Deck Audit form was stored and its reference arrived in the (stubbed) Web3Forms payload without the file or the Turnstile token; a spreadsheet was refused in the browser and a fake `.pptx` by the function, with the message in Indonesian on the Indonesian page. Not exercised: Turnstile with real keys, and the live Cloudflare account (R2 bucket, binding, lifecycle rule), which the owner sets up.
+

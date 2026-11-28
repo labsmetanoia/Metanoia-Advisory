@@ -159,17 +159,35 @@
       if (!validate()) return;
       var last = Number(store("lastSubmit") || 0); if (Date.now() - last < 15000) return; // client-side rate limit
       status.textContent = ""; btn.disabled = true; btn.textContent = btn.getAttribute("data-submitting");
+      // an attached deck goes up first; the form then carries its reference
+      var upField = qs("[data-upload-field]", form), upInput = upField && qs("input[data-upload]", upField), upFile = upInput && upInput.files && upInput.files[0];
+      if (upFile) {
+        var upErr = qs(".field__error", upField), errs = {}; try { errs = JSON.parse(upField.getAttribute("data-errors") || "{}"); } catch (x) {}
+        var upFail = function (code) { upErr.textContent = errs[code] || errs.failed || ""; upField.classList.add("has-error"); btn.disabled = false; btn.textContent = btn.getAttribute("data-label"); };
+        if (upFile.size > Number(upField.getAttribute("data-max-mb")) * 1048576) return upFail("too_large");
+        if (!/\.(pptx|pdf)$/i.test(upFile.name)) return upFail("type");
+        upField.classList.remove("has-error"); btn.textContent = upField.getAttribute("data-uploading");
+        var tok = qs("input[name='cf-turnstile-response']", form);
+        fetch("/api/upload", { method: "POST", body: upFile, headers: { "X-File-Name": encodeURIComponent(upFile.name), "X-Form": upInput.getAttribute("data-form") || "", "X-Turnstile-Token": tok ? tok.value : "", "Content-Type": "application/octet-stream" } })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || "failed"); return j; }); })
+          .then(function (j) { setHidden("deck_upload", j.ref + " (" + j.name + ", " + (Math.round(j.size / 104857.6) / 10) + " MB)"); btn.textContent = btn.getAttribute("data-submitting"); send(); })
+          .catch(function (e) { upFail(String(e.message)); });
+        return;
+      }
+      send();
+    });
+    function send() {
       var req;
       if (provider === "netlify") {
         var fd = new FormData(form); fd.delete("website");
         var hasFile = qs("input[type=file]", form) && qs("input[type=file]", form).files.length > 0;
         req = fetch(form.getAttribute("action") || location.pathname, { method: "POST", body: hasFile ? fd : new URLSearchParams(fd) });
       } else if (provider === "web3forms") {
-        var w3 = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && k !== "botcheck" && typeof v === "string") w3[k] = v; });
+        var w3 = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && k !== "botcheck" && k !== "cf-turnstile-response" && typeof v === "string") w3[k] = v; });
         req = fetch(form.getAttribute("action"), { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(w3) })
           .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.success === true }; }); });
       } else if (provider === "formspree") {
-        var payload = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && typeof v === "string") payload[k] = v; });
+        var payload = {}; new FormData(form).forEach(function (v, k) { if (k !== "website" && k !== "cf-turnstile-response" && typeof v === "string") payload[k] = v; });
         payload._language = lang;
         req = fetch(form.getAttribute("action"), { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
       } else { /* hubspot */
@@ -181,7 +199,7 @@
         req = fetch("https://api.hsforms.com/submissions/v3/integration/submit/" + encodeURIComponent(portal) + "/" + encodeURIComponent(guid), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       }
       req.then(function (r) { if (!r.ok) throw new Error(r.status); done(); }).catch(fail);
-    });
+    }
   });
 
   /* ---- Before / after slider (range input = keyboard + touch) ---- */
