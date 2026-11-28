@@ -22,7 +22,7 @@ pageKey: article
       {% endif %}
       {% if a.chart %}<figure style="margin:32px 0">{% include "charts/" + a.chart + ".njk" %}</figure>{% endif %}
       <div class="article__body">{{ a.body | L(lang) | md | safe }}</div>
-      {% if a.sources %}<h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:48px">{{ "Sources" if lang == "en" else "Sumber" }}</h2><ul class="meta">{% for s in a.sources %}<li>{{ s | mdInline | safe }}</li>{% endfor %}</ul>{% endif %}
+      {% if a.sources and a.sources.length %}<h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:48px">{{ "Sources" if lang == "en" else "Sumber" }}</h2><ul class="meta">{% for s in a.sources %}<li>{{ s | mdInline | safe }}</li>{% endfor %}</ul>{% endif %}
       {% set rs = [] %}{% for sk in a.relatedServices or [] %}{% set s = services | find("key", sk) %}{% if s %}{% set rs = (rs.push(s), rs) %}{% endif %}{% endfor %}
       {% if rs | length %}<h2 style="font-size:var(--fs-h3);line-height:var(--lh-h3);margin-top:48px">{{ ui | t(lang, "labels.relatedServices") }}</h2><ul>{% for s in rs %}<li><a href="{{ s | serviceUrl(lang) }}">{{ s.title | L(lang) }}</a></li>{% endfor %}</ul>{% endif %}
       <div class="share meta"><span>{{ ui | t(lang, "labels.share") }}:</span>

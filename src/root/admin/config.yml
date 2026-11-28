@@ -1,0 +1,119 @@
+# Sveltia CMS: the website's own editing screen at /admin/. It reads and writes the files in this repository on
+# GitHub; every save is a commit to main, which Cloudflare Pages publishes within a few minutes.
+# Sign in with a GitHub fine-grained personal access token for this repository (Contents: read and write).
+# Every field the content files use is listed here, so saving never drops one; add a field here before adding it to a file.
+backend:
+  name: github
+  repo: labsmetanoia/Metanoia-Advisory
+  branch: main
+  commit_messages:
+    create: "Insights: add {{slug}} (via the content editor)"
+    update: "Insights: edit {{slug}} (via the content editor)"
+    delete: "Insights: remove {{slug}} (via the content editor)"
+media_folder: src/assets/img/insights
+public_folder: /assets/img/insights
+# keep saved files clean: no empty optional fields, two-space JSON like the rest of the repository
+output:
+  omit_empty_optional_fields: true
+  json:
+    indent_style: space
+    indent_size: 2
+site_url: https://www.metanoiaadvisors.com
+display_url: https://www.metanoiaadvisors.com
+
+collections:
+  - name: insights
+    label: Insights
+    label_singular: Insight
+    description: "Notes, newsletters and flagship reports, in English and Indonesian. An insight stays off the public site while Draft is ticked."
+    folder: content/insights
+    extension: json
+    format: json
+    create: true
+    identifier_field: key
+    slug: "{{fields.key}}"
+    summary: "{{fields.title.en}} — {{fields.date}}{{fields.draft | ternary(' (draft)', '')}}"
+    sortable_fields: [date, key]
+    fields:
+      - { name: key, label: "File name", widget: string, pattern: ['^[a-z0-9-]+$', 'Lower-case letters, digits and hyphens only'], hint: "For example note-titles-board-can-skim. Do not change it after publishing." }
+      - { name: draft, label: "Draft (not on the public site)", widget: boolean, default: true }
+      - { name: type, label: Type, widget: select, options: [note, newsletter, flagship], default: note }
+      - { name: practice, label: Practice, widget: select, options: [{ label: "Strategic Storytelling", value: presentation }, { label: "Market Entry", value: marketEntry }, { label: "Strategy & Investment", value: advisory }], default: presentation }
+      - name: slug
+        label: "Web address"
+        widget: object
+        collapsed: false
+        hint: "Lower-case words joined by hyphens, one per language."
+        fields:
+          - { name: en, label: English, widget: string, pattern: ['^[a-z0-9-]+$', 'Lower-case letters, digits and hyphens only'] }
+          - { name: id, label: "Bahasa Indonesia", widget: string, pattern: ['^[a-z0-9-]+$', 'Lower-case letters, digits and hyphens only'] }
+      - name: title
+        label: "Title"
+        widget: object
+        collapsed: false
+        fields:
+          - { name: en, label: English, widget: string }
+          - { name: id, label: "Bahasa Indonesia", widget: string }
+      - name: metaDescription
+        label: "Search description"
+        widget: object
+        collapsed: false
+        hint: "155 characters at most in each language: the build refuses longer ones."
+        fields:
+          - { name: en, label: English, widget: text, maxlength: 155 }
+          - { name: id, label: "Bahasa Indonesia", widget: text, maxlength: 155 }
+      - { name: date, label: Date, widget: datetime, type: date, format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { name: authors, label: Authors, widget: list, required: false, default: [], hint: "Keys of people on the site; leave empty to show the firm." }
+      - { name: readingTime, label: "Reading time (minutes)", widget: number, value_type: int, min: 1, default: 3 }
+      - name: summary
+        label: "Summary"
+        widget: object
+        collapsed: false
+        hint: "400 characters at most in each language."
+        fields:
+          - { name: en, label: English, widget: text, maxlength: 400 }
+          - { name: id, label: "Bahasa Indonesia", widget: text, maxlength: 400 }
+      - name: body
+        label: "Article"
+        widget: object
+        collapsed: false
+        fields:
+          - { name: en, label: English, widget: markdown }
+          - { name: id, label: "Bahasa Indonesia", widget: markdown }
+      - { name: sources, label: Sources, widget: list, required: false, default: [], hint: "One source per line, with a link where there is one." }
+      - name: relatedServices
+        label: "Related services"
+        widget: select
+        multiple: true
+        required: false
+        default: []
+        options:
+              - adv-business-case
+              - adv-documentation
+              - adv-feasibility
+              - adv-strategy
+              - me-assessment
+              - me-localisation
+              - me-partner-search
+              - me-representation
+              - pres-ai-express
+              - pres-board-decks
+              - pres-consulting
+              - pres-earnings
+              - pres-educational
+              - pres-marketing
+              - pres-newsletters
+              - pres-pitch
+              - pres-reports
+              - pres-sales
+              - pres-templates
+      - { name: chart, label: "Chart component (developers)", widget: string, required: false }
+      - { name: forthcoming, label: "Forthcoming (flagship only)", widget: boolean, required: false }
+      - { name: pdf, label: "PDF path (flagship only)", widget: string, required: false }
+      - name: findings
+        label: "Questions the study answers (flagship only)"
+        widget: list
+        required: false
+        fields:
+          - { name: en, label: English, widget: text }
+          - { name: id, label: "Bahasa Indonesia", widget: text }

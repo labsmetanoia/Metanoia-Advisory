@@ -917,3 +917,14 @@ Web3Forms on the free plan does not take attachments, so clients sent links. Dec
 
 **Verified.** The function in Node against an in-memory bucket (`npm test`), and in Cloudflare's own runtime with Wrangler 3 (`wrangler pages dev` with a local R2 binding): a PDF and a deck stored, another origin and GET refused. In a browser against that runtime: a deck attached on the Deck Audit form was stored and its reference arrived in the (stubbed) Web3Forms payload without the file or the Turnstile token; a spreadsheet was refused in the browser and a fake `.pptx` by the function, with the message in Indonesian on the Indonesian page. Not exercised: Turnstile with real keys, and the live Cloudflare account (R2 bucket, binding, lifecycle rule), which the owner sets up.
 
+## 54. Three method notes and the content editor (28 November 2026)
+
+| Area | What changed |
+| --- | --- |
+| Notes (drafts) | `content/insights/note-titles-board-can-skim.json`, `note-five-checks-before-a-figure-reaches-the-board.json`, `note-when-last-quarters-figure-changes.json`: method notes in English and Indonesian drawn from what the Deck Audit checks (action titles; consistency, arithmetic, title against exhibit, source lines, reconciliation; restated comparatives). No statistics or client claims; examples are marked illustrative. Each links to the free headline check or the Deck Audit. All `draft: true` until the owner publishes them |
+| Content editor | `/admin/`: Sveltia CMS 0.265.1 (the latest release at least two weeks old), installed as a dev dependency and copied from `node_modules` at build, so no CDN script runs. `src/root/admin/config.yml` defines the Insights collection with every field the files use, the build's length limits (155, 400) and the address pattern; output omits empty optional fields and keeps two-space JSON. Sign-in with a GitHub fine-grained token (no OAuth server); saves are commits to `main` with "(via the content editor)" in the message |
+| Headers and robots | `_headers`: `/admin/*` detaches the site policy and sets its own (scripts from the site only; GitHub's API and status page, the font and update CDNs; blob workers), plus `X-Robots-Tag: noindex`. `robots.txt` disallows `/admin/` |
+| Fixes | The article template no longer prints an empty Sources heading; `authors` is no longer required on insights (the editor leaves out an empty list; the templates already fall back to the firm) |
+
+**Verified.** The editor was run in a browser against a stand-in for the GitHub API serving this repository's files: sign-in by token, all six insights listed, an article opened, edited and saved (one commit; the file differs only in the edited title and a trailing line break), and a new insight created by Duplicate (the new file carries every field, with Draft on). The site built with the editor's saved file published, and rendered it. Not exercised: GitHub itself (no token here) and the new-entry form typed from scratch.
+

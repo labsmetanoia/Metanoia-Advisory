@@ -135,3 +135,18 @@ Setting it up (once):
 
 Finding a file: R2 → `metanoia-decks` → Objects → `decks/<date>/` → the object whose name starts with the reference in the email → Download. Delete it once the work no longer needs it; the rule deletes it after 30 days regardless. Never forward client files to consumer AI tools.
 
+### Publishing insights yourself (the content editor)
+
+The site has its own editing screen at **www.metanoiaadvisors.com/admin/** (Sveltia CMS, free, served from the site). It edits the insight files in this repository; every save is a commit to `main`, and Cloudflare publishes it a few minutes later. Articles with **Draft** ticked stay off the public site.
+
+Signing in (once per browser):
+
+1. On GitHub: Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Resource owner `labsmetanoia`; Repository access: only `Metanoia-Advisory`; Permissions: **Contents: Read and write**. Choose an expiry (90 days is sensible) and copy the token. If GitHub says the organisation does not allow fine-grained tokens, an owner of `labsmetanoia` allows them under the organisation's settings (Personal access tokens).
+2. Open `/admin/`, choose **Sign In Using Access Token** and paste it. The token stays in that browser; sign out on a shared computer, and revoke the token on GitHub if a device is lost.
+
+Publishing a draft: open it under Insights, read both languages, edit what needs editing, untick **Draft**, **Save**. Check the article on the site after a few minutes.
+
+Writing a new one: open a similar insight → the ⋮ menu at the top → **Duplicate**. Change the file name, **both** web addresses (English and Indonesian), both titles, the date and the text, then Save. Two articles may not share a web address: if they do, the site's build stops at the clash and the live site keeps its previous version until it is fixed. The editor holds search descriptions to 155 characters and summaries to 400, as the build does.
+
+What not to publish: statistics, client results or quotations without a source and permission. Illustrative examples are marked as illustrative.
+

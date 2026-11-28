@@ -15,7 +15,9 @@ export default function (eleventyConfig) {
   // They expect their libraries at /vendor/…, the same paths the desktop tool serves.
   for (const f of ["pptx", "pdfdeck", "numbers", "checks", "id", "report", "titles"]) eleventyConfig.addPassthroughCopy({ [`tools/magic-layers/app/js/audit/${f}.js`]: `assets/deck-check/audit/${f}.js` });
   eleventyConfig.addPassthroughCopy({ "tools/magic-layers/app/sample/audit-sample.pptx": "assets/deck-check/sample-deck.pptx" });
-  eleventyConfig.addPassthroughCopy({ "tools/magic-layers/app/js/proposals/brief.js": "assets/brief/brief-code.js" });   // the brief code, shared with Proposals → Import brief
+  eleventyConfig.addPassthroughCopy({ "tools/magic-layers/app/js/proposals/brief.js": "assets/brief/brief-code.js" });
+  // The content editor at /admin/ (Sveltia CMS), served from this site rather than a CDN
+  eleventyConfig.addPassthroughCopy({ "node_modules/@sveltia/cms/dist/sveltia-cms.js": "admin/sveltia-cms.js", "node_modules/@sveltia/cms/dist/chunks/*.js": "admin/chunks" });   // the brief code, shared with Proposals → Import brief
   eleventyConfig.addPassthroughCopy({ "node_modules/jszip/dist/jszip.min.js": "vendor/jszip/jszip.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/pdfjs-dist/build/pdf.min.mjs": "vendor/pdfjs/pdf.min.mjs", "node_modules/pdfjs-dist/build/pdf.worker.min.mjs": "vendor/pdfjs/pdf.worker.min.mjs", "node_modules/pdfjs-dist/cmaps": "vendor/pdfjs/cmaps" });
   eleventyConfig.addWatchTarget("content/");
